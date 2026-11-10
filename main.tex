@@ -1,0 +1,260 @@
+
+
+\def\mystudentname{Oliver Racey}
+
+\def\mysupervisor{Idris Ibrahim} 
+
+\def\mytitle{Image Analysis of Electrocardiograms}
+
+\def\mydegree{MEng}
+
+\def\mydepartment{School of Mathematics and Computer Science}
+
+\def\myuniversityname{Heriot-Watt University}
+
+%% ---------------------------------------------
+
+
+\documentclass[oneside,a4paper,11pt]{book}
+
+%%-----------------         
+
+%\usepackage{mathptmx}
+%\usepackage{anyfontsize}
+%\usepackage{t1enc}
+\usepackage{amsmath}
+\usepackage[document]{ragged2e}
+
+%%-----------------         
+
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+%
+\addtolength{\topmargin}{-.15in}
+\addtolength{\textheight}{0.30in}
+
+%%%-----------------
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\graphicspath{{./images/}} % Specifies the directory where pictures are stored
+
+%% ----
+
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+%\renewcommand{\thefigure}{A\arabic{section}.\arabic{figure}}
+%\counterwithout{section}{chapter}
+%\counterwithin{chapter}{part}
+
+%% ----
+
+\usepackage[absolute,overlay]{textpos}
+
+\usepackage{lastpage}
+
+%% -------------------------------------------------------
+
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks = true, 
+	linkcolor = black,
+	anchorcolor = red,
+	citecolor = blue, 
+	filecolor = black, 
+	%urlcolor = red,
+}
+
+%%%-----------------
+
+\usepackage{makeidx}
+\makeindex
+
+\setlength{\parindent}{0pt} % remove indent
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sorting=none
+]{biblatex}
+
+\addbibresource{image_processing_bibliography.bib}
+
+\begin{document}
+	\frontmatter
+	
+% titlepage
+
+\begin{titlepage}
+\begin{textblock}{4}(1.5,14.5)
+	\small 
+	Number Pages:  \pageref{LastPage}\\
+	Word Count: x
+\end{textblock}
+	\begin{center}
+		\vspace*{1cm}
+		
+		{\fontsize{25pt}{30pt}\selectfont
+		 \textbf{\mytitle} \par}
+	
+		
+		\vspace{1.5cm}
+		
+		{\LARGE
+		\textbf{\mystudentname}
+	    }
+	
+		\vspace{3.0cm}
+		{\fontsize{12pt}{12pt}\selectfont \mydepartment}
+		
+		\vfill
+		
+		A thesis presented for the degree of\\
+		\mydegree
+		
+		\vspace{0.8cm}
+		
+		\includegraphics[width=0.3\textwidth]{HWUlogo.jpg}
+		
+		\vspace{2.5cm}
+		
+		% \mydepartment\\
+		\myuniversityname\\
+		\today
+		
+	\end{center}
+\end{titlepage}
+
+
+
+% copyright
+\newpage
+\addcontentsline{toc}{chapter}{Declaration of Authorship}
+{\fontsize{18pt}{18}\selectfont\textbf{Declaration of Authorship}}
+\vspace{1.5cm}
+
+I, \mystudentname, declare that this thesis titled, `\mytitle' and thework presented in it is my own. I confirm that this work submitted for assessment is myown and is expressed in my own words. Any uses made within it of the works of otherauthors in any form (e.g., ideas, equations, figures, text, tables, programs) are properly acknowledged at any point of their use. A list of the references employed is included.
+\vspace{1.5cm}
+
+Signed:  
+
+\vspace{1.5cm}
+
+Dated: 
+
+
+
+% dedication
+
+% abstract
+\newpage
+\addcontentsline{toc}{chapter}{Abstract}
+\thispagestyle{plain}
+\begin{center}
+	{
+	\Large
+	\textbf{\mytitle}
+	
+	\vspace{0.4cm}
+	\textbf{\mystudentname}
+	
+	\vspace{0.9cm}
+	\textbf{Abstract}
+	\vspace{0.5cm}
+    }
+
+    \begin{justify}
+    In the medical world, Electrocardiograms are often one of the most common tests used for cardio diagnostics. Many of these ECGs are stored only as printed or scanned images, whilst automated analysis has been developed for digital signals. Converting these signals into readable images can be erroneous - whilst AI models only trained on clean images might not produce the same outputs with real scans and photographs. This project investigates how accurately a deep-learning model can flag possible cardiac abnormalities directly from the ECG image, how well it performs on real-world images, and whether its explanations are reliable enough to support users understand what the 
+    \end{justify}
+	
+\end{center}
+
+
+% Contents and lists
+% Each list starts on a fresh page. LaTeX writes the entries to auxiliary
+% files on one run and displays them on the next run.
+\cleardoublepage
+\pagestyle{plain}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Table of Contents}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\cleardoublepage
+
+% abreviations
+\addcontentsline{toc}{chapter}{Abbreviations}
+
+\clearpage
+\newpage
+
+{\Huge \textbf{Abbreviations (Appearance Order)}}
+\vspace{1.0cm}
+
+\begin{table*}[!h]
+  \centering
+  \begin{tabular}{ll}
+\textbf{ECG} & \textbf{E}lectro\textbf{c}ardio\textbf{g}ram \\
+\textbf{HE} & \textbf{H}istogram \textbf{E}qualization\\
+\textbf{CLAHE} & \textbf{C}ontrast \textbf{L}imited \textbf{A}daptive \textbf{H}istogram \textbf{E}qualization \\
+\textbf{HF} & \textbf{H}omomorphic \textbf{F}ilter \\
+\textbf{WT} & \textbf{W}avelet \textbf{T}ransforms \\
+\textbf{CNN} & \textbf{C}onvolutional \textbf{N}eural \textbf{N}etwork \\
+\textbf{GN} & \textbf{G}aussian \textbf{N}oise \\
+\textbf{PDF} & \textbf{P}robability \textbf{D}ensity \textbf{F}unction \\
+\textbf{SNR} & \textbf{S}ignal-to-\textbf{N}oise \textbf{R}atio \\
+\textbf{FT} & \textbf{F}ourier \textbf{T}ransforms \\
+\textbf{AMBE} & \textbf{A}bsolute \textbf{M}ean 
+\textbf{B}rightness \textbf{E}rror\\
+\textbf{MSE} & \textbf{M}ean \textbf{S}quared \textbf{E}rror \\
+\textbf{LOE} & \textbf{L}ightness \textbf{O}rder \textbf{E}rror \\
+\textbf{PSNR} & \textbf{P}eak \textbf{S}ignal-to-\textbf{N}oise \textbf{R}atio  \\
+\textbf{SSIM} & \textbf{S}tructural \textbf{S}imilarity of \textbf{Im}ages  \\
+\textbf{GAN} & \textbf{G}enerative \textbf{A}dversarial \textbf{N}etwork \\
+
+
+
+  \end{tabular}
+\end{table*}
+
+\newpage
+
+	\mainmatter
+	
+	\include{./chapters/ch01.tex}
+	\include{./chapters/ch02.tex}
+    \include{./chapters/ch03.tex}
+	\include{./chapters/ch04.tex}
+
+	\appendix
+	\include{./chapters/apA.tex}
+
+	\backmatter
+	\printbibliography[heading=bibintoc,title={References}]
+
+    \printindex
+
+    \end{document}
+	
+
+
+
+
+
+
+
