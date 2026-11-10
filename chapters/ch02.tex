@@ -101,7 +101,7 @@ distribution with mean 0 and variance $\sigma^2$, so a larger $\sigma^2$ means
 stronger noise.
 
 The general methods of Section~\ref{sec:image-processing} were adapted for medical
-use, but each involves a trade-off. Adaptive histogram equalisation was developed for
+use, but each involves a trade-off. Adaptive \textbf{HE} was developed for
 medical image display \cite{pizer_adaptive_1987}, yet even its contrast-limited form
 needs the clip limit tuned, and averaging filters suppress noise whilst blurring the
 edges that carry diagnostic information. Whether an enhancement helps therefore
@@ -129,7 +129,7 @@ generalisation problem, with the added risk of rendering-specific shortcuts.
 \section{ECG Fundamentals}
 \label{sec:ecg-fundamentals}
 
-The electrocardiogram is an electrical tracing of the heart, recorded non-invasively
+The \textbf{ECG} is an electrical tracing of the heart, recorded non-invasively
 from the surface of the body \cite{sattar_electrocardiogram_2023}. It shows how the
 impulse that triggers each heartbeat spreads through the heart, so it is well suited
 to detecting problems of rhythm and conduction. Each heartbeat produces a repeating
@@ -183,16 +183,16 @@ rates and rhythms are known as arrhythmias \cite{nhs_heart_2018}; they include a
 fibrillation, where beats are irregularly spaced and clear P waves are absent
 \cite{van_gelder_2024_2024}, and atrial flutter, which shows a regular saw-tooth
 pattern in the inferior leads \cite{cosio_atrial_2017}. Conduction disturbances such as
-bundle branch blocks usually widen the QRS complex \cite{scherbak_left_2024},
-myocardial infarction and other ischaemic changes often alter the ST segment and T wave
+\textbf{bundle branch blocks (BBB)} usually widen the QRS complex \cite{scherbak_left_2024},
+\textbf{myocardial infarction (MI)} and other ischaemic changes often alter the ST segment and T wave
 in the leads facing the affected region, and hypertrophy of the heart's chambers is
 associated with changes in amplitude \cite{channer_myocardial_2002}. Some of these
 signs depend on the shape of the trace, whereas others depend on timing and regularity,
 which in an image depends on the grid scale.
 
 Public datasets encode these findings as labels. PTB-XL contains 21,837 ten-second
-twelve-lead ECGs from about 19,000 patients, annotated by cardiologists, with diagnostic
-labels grouped into five superclasses (normal, myocardial infarction, ST/T change,
+twelve-lead \textbf{ECG}s from about 19,000 patients, annotated by cardiologists, with diagnostic
+labels grouped into five superclasses (normal, \textbf{MI}, ST/T change,
 conduction disturbance and hypertrophy) plus form and rhythm statements, and a single
 record can carry several labels \cite{wagner_ptbxl_2020}. It provides signals, not
 images; a dataset from UMT provides real ECG images instead \cite{khan_ecg_2021}. These
@@ -200,7 +200,6 @@ fundamentals define the classes this project will detect and the two kinds of
 information the classifier must use: the shape of each beat, and the timing between
 beats.
 
-% =====================================================================
 \section{ECG Imaging and Digitisation}
 \label{sec:ecg-imaging}
 
@@ -220,7 +219,7 @@ from the image so that established signal-based methods can be applied. This giv
 measurable intervals, but needs several steps (locating the grid, separating the leads
 and tracing each waveform), and an error at any step carries through to the
 reconstructed signal. The George B.\ Moody PhysioNet Challenge 2024, for example,
-evaluated digitisation by the signal-to-noise ratio (\textbf{SNR}) of the recovered
+evaluated digitisation by the \textbf{ signal-to-noise ratio (SNR)} of the recovered
 signal \cite{physionet_challenge_2024}. The alternative is to classify the image
 directly (Section~\ref{sec:ml-ecg}), which avoids reconstruction, but the model must then
 learn timing from pixels, so its results depend on how the images were produced, which is
@@ -233,14 +232,13 @@ analyses ECG images directly and avoids a full digitisation step: it trains on i
 rendered from PTB-XL and tests on real-world images, so that the effect of real imaging
 conditions can be measured.
 
-% =====================================================================
 \section{Pre-processing and Noise Removal}
 \label{sec:preprocessing}
 
 Preprocessing corrects problems introduced during printing and capture, using the
-methods of Section~\ref{sec:image-processing} matched to problems that occur in ECG
-images, and each carries a risk. Uneven lighting and shadows can be reduced with CLAHE
-\cite{pizer_adaptive_1987,zuiderveld_contrast_1994} or homomorphic filtering
+methods of Section~\ref{sec:image-processing} matched to problems that occur in \textbf{ECG}
+images, and each carries a risk. Uneven lighting and shadows can be reduced with \textbf{CLAHE}
+\cite{pizer_adaptive_1987,zuiderveld_contrast_1994} or \textbf{HF}
 \cite{stockham_image_1972}, at the cost of amplifying noise. Noise and specks
 (Equation~\ref{eq:gaussian-noise}) can be reduced with median filtering, bilateral
 filtering \cite{tomasi_bilateral_1998} or non-local means \cite{buades_non-local_2005},
@@ -264,7 +262,7 @@ looks.
 \section{Feature Extraction}
 \label{sec:features}
 
-Before deep learning, automated ECG analysis relied on hand-designed features: once the
+Before deep learning, automated \textbf{ECG} analysis relied on hand-designed features: once the
 beats were located, quantities such as interval lengths and wave amplitudes were
 measured and passed to a classical classifier, as in the heartbeat classification of
 \textcite{de_chazal_automatic_2004}, which combined morphology and interval features.
@@ -288,7 +286,7 @@ waveform-detection step (Section~\ref{sec:waveform}) address this.
 \section{Waveform Detection}
 \label{sec:waveform}
 
-Waveform detection finds the parts of the ECG that features are measured from. In digital
+Waveform detection finds the parts of the \textbf{ECG} that features are measured from. In digital
 signals this usually means locating the QRS complex: the Pan--Tompkins algorithm does so in
 real time by band-pass filtering and differentiating the signal, squaring it, smoothing it
 with a moving window, and applying adaptive thresholds \cite{pan_real-time_1985}. For an
@@ -305,7 +303,7 @@ it can be accurate: \textcite{randazzo_development_2022} reported an average cor
 0.94 with reference signals on images from 16 subjects, and \textcite{wu_automated_2022}
 about 99\% on standard layouts once images with overlapping leads were excluded. It is also
 fragile: the correlation of \textcite{wu_automated_2022} fell to about 96\% on printed and
-rescanned ECGs, whilst a different pipeline scored a
+rescanned \textbf{ECGs}, whilst a different pipeline scored a
 signal-to-noise ratio of $-2.44$\,dB on 100 rendered PTB-XL images, a poor reconstruction
 by that measure. A missed or false peak changes the RR intervals and every timing feature
 that follows, so errors here carry through to the prediction. This project therefore
@@ -316,7 +314,7 @@ and not only on rendered ones.
 \section{AI/ML Algorithms for ECG Analysis}
 \label{sec:ml-ecg}
 
-Deep learning has largely replaced feature-based methods for ECG classification
+Deep learning has largely replaced feature-based methods for \textbf{ECG}classification
 (Table~\ref{tab:ecg-studies}). On signals, networks reached cardiologist-level performance
 on single-lead rhythm classification \cite{hannun_cardiologist_2019}, outperformed
 cardiology residents on 12-lead abnormalities \cite{ribeiro_automatic_2020}, and a PTB-XL
@@ -326,7 +324,7 @@ performed best \cite{strodthoff_deep_2021}. Image-based work is newer.
 and tested it on held-out, external and printed ECGs, \textcite{gliner_domain_2023} used
 domain adaptation to transfer a model to phone-captured images, and
 \textcite{wang_pipeline_2025} fine-tuned a ConvNeXt backbone first on synthetic and
-external images. Because labelled ECG images are limited, such work relies on transfer
+external images. Because labelled \textbf{ECG} images are limited, such work relies on transfer
 learning, in which networks such as ResNet \cite{he_deep_2016}, pretrained on natural
 images, learn general features that transfer to new tasks
 \cite{yosinski_transfer_2014}.
