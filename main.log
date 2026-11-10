@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  10 NOV 2026 16:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  10 NOV 2026 17:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -669,19 +669,19 @@ Chapter 2.
 
 
 ]
-<images/OtsuSegmentation.jpg, id=247, 266.05592pt x 79.30513pt>
+<images/OtsuSegmentation.jpg, id=250, 266.05592pt x 79.30513pt>
 File: images/OtsuSegmentation.jpg Graphic file (type jpg)
 <use images/OtsuSegmentation.jpg>
 Package pdftex.def Info: images/OtsuSegmentation.jpg  used on input line 70.
 (pdftex.def)             Requested size: 169.7572pt x 50.60143pt.
  [3 <./images/OtsuSegmentation.jpg>]
-<images/LabelledHeartbeat.jpg, id=280, 301.87115pt x 297.39424pt>
+<images/LabelledHeartbeat.jpg, id=283, 301.87115pt x 297.39424pt>
 File: images/LabelledHeartbeat.jpg Graphic file (type jpg)
 <use images/LabelledHeartbeat.jpg>
 Package pdftex.def Info: images/LabelledHeartbeat.jpg  used on input line 147.
 (pdftex.def)             Requested size: 156.35603pt x 154.04236pt.
  [4]
-<images/ECGGrid.jpg, id=302, 675.52374pt x 387.4475pt>
+<images/ECGGrid.jpg, id=305, 675.52374pt x 387.4475pt>
 File: images/ECGGrid.jpg Graphic file (type jpg)
 <use images/ECGGrid.jpg>
 Package pdftex.def Info: images/ECGGrid.jpg  used on input line 175.
@@ -786,17 +786,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17708 strings out of 467310
- 323816 string characters out of 5402813
+ 17713 strings out of 467310
+ 323896 string characters out of 5402813
  1176941 words of memory out of 5000000
- 46787 multiletter control sequences out of 15000+600000
+ 46789 multiletter control sequences out of 15000+600000
  638112 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,9n,79p,763b,1493s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,9n,79p,1033b,1493s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Ollie\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (26 pages, 1916182 bytes).
+Output written on main.pdf (26 pages, 1917149 bytes).
 PDF statistics:
- 664 PDF objects out of 1000 (max. 8388607)
- 120 named destinations out of 1000 (max. 500000)
+ 668 PDF objects out of 1000 (max. 8388607)
+ 123 named destinations out of 1000 (max. 500000)
  285 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,13 +5,16 @@
 
 \section{Motivation}
 
-The electrocardiogram records the electrical activity of the heart over time and is one of the most widely used tests in cardiology. Over technological advancement, 
+The electrocardiogram records the electrical activity of the heart over time and is one of the most widely used tests in cardiology. Even though the test is so common, we have only recently been trying to digitise and read them. Most ECGs are stored as raw signals, which does not help interpretation for the majority of the clinicians. On the other hand, ECGs stored as images often have degradations and artefacts that can make them difficult to read. Furthermore, the majority of research on automated ECG analysis has been done on clean or pre-rendered signals, and less on real-world images. This project will investigate how accurately an AI model can flag possible cardiac abnormalities directly from any ECG image, the performance of the model on real-world images, and whether the explanations given are reliable and verbose enough to support clinicians and general users in understanding what the ECG is showing.  
 
 \section{Aims and Objectives}
-To develop an image preprocessing pipeline that prepares ECG images, either rendered or real, for reliable automated analysis. 
 
-To develop and evaluate a deep-learning-based, “multi-label” classifier, that flags possible cardiac abnormalities in ECG images, with calibrated confidence scores. 
+The aims and objectives are as followed:
+\begin{enumerate}
+  \item To develop an image preprocessing pipeline that prepares ECG images, either rendered or real, for reliable automated analysis. 
+  \item To develop and evaluate a deep-learning-based, “multi-label” classifier, that flags possible cardiac abnormalities in ECG images, with calibrated confidence scores.
+  \item To build and evaluate an application that presents flagged abnormalities with visual explanations, as a supporting decision for trained users, and not used as a standalone diagnostic tool. 
+\end{enumerate}
 
-To build and evaluate an application that presents flagged abnormalities with visual explanations, as a supporting decision for trained users, and not used as a standalone diagnostic tool. 
 \section{Research Question}
 
