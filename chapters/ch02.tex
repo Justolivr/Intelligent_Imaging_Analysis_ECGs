@@ -13,12 +13,7 @@ and how it is captured as images (Section~\ref{sec:ecg-imaging}); preparing the
 image, extracting features and detecting waveforms
 (Sections~\ref{sec:preprocessing}--\ref{sec:waveform}); and the algorithms
 (Section~\ref{sec:ml-ecg}) and existing systems (Section~\ref{sec:existing-systems})
-that define the gaps this project addresses. Sources were found by searching Google
-Scholar and PubMed between [dates] for terms such as ``ECG image classification'',
-``calibration'' and ``explainable AI ECG'', and by following citations from key
-papers [TODO: replace with your real search log].
-
-% =====================================================================
+that define the gaps this project addresses. 
 \section{Digital Image Processing}
 \label{sec:image-processing}
 
@@ -161,10 +156,8 @@ classifier must learn which leads matter for which condition. On the grid, the d
 $x$ along the paper and the deflection $y$ convert to time and voltage by $t = x/v$ and
 $V = y/g$, where $v$ is the paper speed and $g$ the gain (25\,mm/s and 10\,mm/mV as
 standard \cite{sattar_electrocardiogram_2023}). Clinicians read rate and intervals by
-counting squares; for example, the heart rate follows from the RR interval,
-\[
-  \mathrm{HR} = \frac{60}{\mathrm{RR}} = \frac{300}{N},
-\]
+counting squares; for example, the heart rate follows from the RR interval 
+(\(\mathrm{HR} = 60/\mathrm{RR} = 300/N\))
 where RR is the time in seconds between successive R peaks and $N$ is the number of
 large squares between them. Timing and amplitude can thus only be read from an image if
 the grid calibration is known, so skewing, cropping, resizing or photographing the page
@@ -386,12 +379,7 @@ provides suggested folds \cite{wagner_ptbxl_2020}. A model used for decision sup
 also show how far its outputs can be trusted. Modern neural networks are often
 overconfident, but temperature scaling can calibrate their scores
 \cite{guo_calibration_2017}. For multi-label classification each class has its own sigmoid
-output, so each class score $z_k$ is divided by a temperature $T$ fitted on a held-out
-validation set,
-\begin{equation}
-  \hat{p}_k = \sigma\!\left(\frac{z_k}{T}\right),
-  \label{eq:temperature-multilabel}
-\end{equation}
+output, so each class score $z_k$ is divided by a temperature $T$ fitted on a held-out validation set, \(\hat{p}_k = \sigma(z_k/T)\)
 by minimising the binary cross-entropy of the scaled outputs. Because dividing by $T$ does
 not change the ranking of scores, AUC is unaffected and only the reliability of the
 probabilities changes, which is measured with the expected calibration error for each

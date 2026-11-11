@@ -1,11 +1,27 @@
 
 
 \chapter{Methodology}
+\label{ch:method}
 
+\section{Research Question}
 
-\section{Introduction}
+This project addresses one question: \textbf{Can a CNN, trained on rendered ECG images, detect cardiac abnormalities and rhythm disorders in real world images, and how can information and confidence be made reliable and understandable to users?}
+It is broken into the objectives O1--O6 of Chapter~\ref{ch:intro}, and each method
+below is linked to the objective it serves.
 
-\section{Professional, Legal, Ethical and Social Issues}
+\section{Users and Requirements}
+
+The main users are university students learning ECG interpretation, who need to
+understand why a trace was flagged. A clinician view, which would show a short list of
+flags with measured values and no teaching text, is a secondary target. The
+requirements were drawn from the literature on how clinicians and users respond to
+explained AI output \cite{hughes-noehrer_contrasting_2024,cabitza_painting_2023} and
+from the gaps identified in Chapter~\ref{ch:lit}, and are prioritised with MoSCoW
+analysis (Appendix~\ref{app:moscow}). The must-have requirements are:
+upload of an ECG image; display of flagged conditions with a calibrated confidence for
+each; a Grad-CAM heatmap over the original image; and a clear statement that the output
+supports review and is not a diagnosis. [TODO: confirm and trim to your final must-have list.]
+
 
 
 

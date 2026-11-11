@@ -1,0 +1,100 @@
+\section{Data}
+
+\textbf{Training data (O1).} Images are rendered from PTB-XL records using
+ECG-Image-Kit \cite{shivashankara_ecg-image-kit_2024,wagner_ptb-xl_2020}. Labels are the
+five diagnostic superclasses (normal, myocardial infarction, ST/T change, conduction
+disturbance and hypertrophy) and four rhythm classes: atrial fibrillation, atrial
+flutter, tachycardia and bradycardia. A record can carry several labels, so the task is
+multi-label. [TODO: confirm the PTB-XL statement codes for the rhythm classes (for
+example sinus tachycardia and sinus bradycardia) and count the records in each class;
+atrial flutter is expected to be rare.]
+
+\textbf{Test data (O4).} Real images come from the ECG-Image-Database
+\cite{reyna_ecg-image-database_2024}, which contains printed ECGs that were scanned or
+photographed with real artefacts. [TODO: state which labels these images carry and which
+classes can therefore be evaluated on them.]
+
+\textbf{Splits.} Records are split by patient to avoid leakage, using the folds suggested
+with PTB-XL \cite{wagner_ptb-xl_2020} [TODO: confirm: folds 1--8 training, 9
+validation, 10 test]. The validation fold is also used to fit the calibration
+temperature (Section~\ref{sec:method-calib}).
+
+\section{Image Processing and Timing Features}
+
+\textbf{Preprocessing (O2).} Images are prepared with the methods reviewed in
+Section~\ref{sec:preprocessing}, implemented in OpenCV \cite{bradski_opencv_2000}:
+contrast correction (CLAHE), noise reduction, rotation correction, and grid handling.
+The grid is separated from the trace without discarding the scale needed for timing. The
+choice and order of steps will be judged by their effect on classification performance
+(Section~\ref{sec:medical-imaging}).
+
+\textbf{Waveform detection and timing features.} The trace is isolated by binarisation,
+grid removal and line detection, following the pipelines reviewed in
+Section~\ref{sec:waveform} \cite{wu_automated_2022,wadehn_ecg_2024}. Each column of the
+isolated trace is reduced to one vertical position, the R peaks are located, and the
+RR intervals are converted to seconds with the grid scale. From these, heart rate and RR
+regularity are calculated. Real images do not come with these values, so they are
+always extracted from the image, for training and test images alike, to keep the
+classifier's input consistent.
+
+\textbf{Checking the detector.} For images whose source signal is available, the true
+RR intervals are found by applying Pan--Tompkins \cite{pan_real-time_1985} to the
+signal. The error between these and the image-based values (for example, mean absolute
+error in heart rate) measures the accuracy of the detection step on rendered and on real
+images. [TODO: add the accuracy target stated in O2.]
+
+\section{Models}
+
+\textbf{Own CNN (O3).} A convolutional network designed for this project takes the
+preprocessed image, with the timing features joined to the learned features before the
+final layer, and has one sigmoid output per class so that several conditions can be
+flagged at once. [TODO: give input resolution, number of layers, kernel sizes and the
+reason for each, then fix the loss, for example binary cross-entropy, with class
+weighting for imbalance.]
+
+\textbf{Pretrained comparison.} One pretrained network, [TODO: for example ResNet
+\cite{he_deep_2016}], is fine-tuned on the same data and splits, with its pretrained
+features justified by transfer learning \cite{yosinski_how_2014}. The comparison shows
+what the custom design adds or loses. [TODO: optional, if time allows: a version of the
+own CNN without the timing features, to test whether they help.]
+
+\section{Calibration and Explanation}
+\label{sec:method-calib}
+
+\textbf{Calibration (O5).} After training, each class score is divided by a temperature
+fitted on the validation fold (Equation~\ref{eq:temperature-multilabel}), which changes
+the probabilities but not the ranking of cases \cite{guo_calibration_2017}. Calibration
+is reported per class, before and after scaling.
+
+\textbf{Explanation (O6).} Grad-CAM heatmaps \cite{selvaraju_gradcam_2017} are produced
+for each flagged class. They are checked on labelled cases against the region where the
+abnormality is expected, for example the QRS complex for a conduction disturbance, and
+for shortcuts such as attention on the grid or printed text
+\cite{geirhos_shortcut_2020}. This check is qualitative.
+
+\section{Evaluation}
+
+\textbf{Classification (O3, O4).} Each class is evaluated separately, using sensitivity,
+specificity, Matthews correlation coefficient and AUROC, since the classes are imbalanced
+\cite{chicco_advantages_2020}. The main comparison is between the held-out rendered test
+fold and the real images, and the difference between them measures the generalisation gap
+(Section~\ref{sec:medical-imaging}). Both models are evaluated in the same way.
+
+\textbf{Calibration (O5).} Expected calibration error is reported per class, with
+reliability diagrams before and after temperature scaling.
+
+\textbf{User evaluation (O6).} The application is tested with university students within
+the scope of the approved ethics application [TODO: state reference number and what it
+covers]. The study measures [TODO: for example, whether users understand the confidence
+values and heatmaps, and their trust in the output, using a short questionnaire]. Testing
+with clinicians is outside this stage and is future work.
+
+\section{Tools and Risks}
+
+The system is implemented in Python, with OpenCV for image processing and
+[TODO: PyTorch] for the networks and for Grad-CAM, and a [TODO: GUI framework] interface. The main risks are:
+atrial flutter has few examples, so its results may be unstable; labels come from at
+most two annotators \cite{wagner_ptb-xl_2020}; models trained on rendered images may not
+transfer to real ones; and the preprocessing may fail on poor images. They are addressed
+by reporting per-class results with the class counts, by measuring the rendered-to-real
+gap explicitly, and by evaluating the detection step separately on real images.
