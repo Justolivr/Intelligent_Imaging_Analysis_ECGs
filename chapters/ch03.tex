@@ -9,18 +9,77 @@ This project addresses one question: \textbf{Can a CNN, trained on rendered ECG 
 It is broken into the objectives O1--O6 of Chapter~\ref{ch:intro}, and each method
 below is linked to the objective it serves.
 
-\section{Users and Requirements}
+\section{Project Requirements}
+The table below shows each part of the system and its importance, in order of devlopment. If there is time at the end of the system's development, more features may be implemented. MoSCoW method has been used to keep objectives on track, and to limit scope creeping.
 
-The main users are university students learning ECG interpretation, who need to
-understand why a trace was flagged. A clinician view, which would show a short list of
-flags with measured values and no teaching text, is a secondary target. The
-requirements were drawn from the literature on how clinicians and users respond to
-explained AI output \cite{hughes-noehrer_contrasting_2024,cabitza_painting_2023} and
-from the gaps identified in Chapter~\ref{ch:lit}, and are prioritised with MoSCoW
-analysis (Appendix~\ref{app:moscow}). The must-have requirements are:
-upload of an ECG image; display of flagged conditions with a calibrated confidence for
-each; a Grad-CAM heatmap over the original image; and a clear statement that the output
-supports review and is not a diagnosis. [TODO: confirm and trim to your final must-have list.]
+\begin{table}[ht]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}      % thickness of every line
+  \renewcommand{\arraystretch}{1.3}       % row height
+  \caption{Functional and Non-Functional Requirements}
+  \label{tab:functional-req}
+  \begin{tabular}{|p{0.08\linewidth}|p{0.5\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Requirement}} &
+    \textcolor{white}{\textbf{MoSCoW}} & \textcolor{white}{\textbf{Objective}} \\
+    \hline
+    FR01 & The user can upload an ECG image (scans or photos). & Must & O1, O6 \\
+    \hline
+    FR02 & The system preprocesses the image. & Must & O2 \\
+    \hline
+    FR03 & The system traces R peak. & Must & O2 \\
+    \hline
+    FR04 & The system extracts \textbf{HR} and RR regularity. & Must & O2 \\
+    \hline
+    FR05 & The system flags possible abnormalities across nine classes. & Must & O3 \\
+    \hline
+    FR06 & Each flag shows a confidence score & Must & O5 \\
+    \hline
+    FR07 & A heatmap is overlaid on the original image for each flagged class. & Should & O6 \\
+    \hline
+    FR08 & The interface shows measured values. & Should & O2,O6 \\
+    \hline
+    FR09 & A plain language explanation of each flagged condition. & Should & O6 \\
+    \hline
+    FR10 & A labelled diagram of the waves for referencing. & Could & O6 \\
+    \hline
+    FR11 & A clinical view with a short flag list, and no teaching text. & Could & O6 \\
+    \hline
+    FR12 & The user can export a result. & Could & O6 \\
+    \hline
+    FR13 & The user can save a result. & Could & O6 \\
+    \hline
+    FR14 & The system warns the user if an image is too poor quality to analyse. & Should & O2 \\
+    \hline
+    FR15 & Real-Time/Live ECG analysis & Won't & N/A \\ % as no equipment
+    \hline
+    FR16 & Advice on treatments, or diagnosis  & Won't & N/A \\
+    \hline
+    NFR01 & System will return a result within a set time period (<10s) & Must & O6 \\
+    \hline
+    NFR02 & Accuracy should be measured, with a target percentage for the main 5 classes & Must & O3 \\
+    \hline
+    NFR03 & Stated confidence scores should match the accuracy of the model. & Must & O5 \\
+    \hline
+    NFR04 & System must work on rendered to real images of varying quality & Must & O4 \\
+    \hline   
+    NFR05 & Users can understand the output without previous training. & Should & O6 \\
+    \hline 
+    NFR06 & Limitations of model are shown to the user. & Should & O6 \\
+    \hline
+    NFR07 & Uploaded images are not shared or stored beyond the session. & Should & N/A \\
+    \hline
+    NFR08 & Other users should be able to repeat my results. & Must & O3 \\
+    \hline
+    NFR09 & System can run on a standard machine. & Could & N/A \\
+    \hline
+    NFR10 & System should be maintainable for future devlopment. & Could & N/A \\
+    \hline
+  \end{tabular}
+\end{table}
+
 
 
 
