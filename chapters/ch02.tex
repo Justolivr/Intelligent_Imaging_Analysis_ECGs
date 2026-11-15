@@ -2,55 +2,47 @@
 \label{ch:lit}
 \section{Introduction}
 
-The electrocardiogram (\textbf{ECG}) is one of the most widely used tests of the
-heart, so reliable interpretation matters, yet many ECGs are stored or shared as
-printed or photographed images that software built for digital signals cannot use.
+The electrocardiogram (\textbf{ECG}) is one of the most common tests of the
+heart, therfore correct interpretation is needed. However, many ECGs are kept as
+prints or photographs, that  current software built for digital signals cannot use.
 This chapter reviews the work needed to build a system that analyses ECGs directly
-from images, moving from the general to the specific: image processing
-(Section~\ref{sec:image-processing}) and its use in medical imaging
-(Section~\ref{sec:medical-imaging}); the ECG (Section~\ref{sec:ecg-fundamentals})
-and how it is captured as images (Section~\ref{sec:ecg-imaging}); preparing the
-image, extracting features and detecting waveforms
-(Sections~\ref{sec:preprocessing}--\ref{sec:waveform}); and the algorithms
-(Section~\ref{sec:ml-ecg}) and existing systems (Section~\ref{sec:existing-systems})
-that define the gaps this project addresses. 
+from images, moving from the general to the specific: Image processing
+(Section~\ref{sec:image-processing}) and its function in medical imaging
+(Section~\ref{sec:medical-imaging}); the ECG fundamentals (Section~\ref{sec:ecg-fundamentals})
+and how an ECG is captured (Section~\ref{sec:ecg-imaging}); Pre-processing
+images, the extraction of features from images as well as the detection of waveforms (Sections~\ref{sec:preprocessing}--\ref{sec:waveform}); and relevant algorithms
+(Section~\ref{sec:ml-ecg})/existing systems (Section~\ref{sec:existing-systems})
+, that outline the gaps addressed by this project.
 \section{Digital Image Processing}
 \label{sec:image-processing}
-
 A digital image is a two-dimensional function $f(x,y)$, where $x$ and $y$ are
 spatial coordinates and the value of $f$ at each pair is the intensity at that
-point, or pixel \cite{gonzalez_digital_2018}. The intensity is the product of the
+point, also known as a pixel \cite{gonzalez_digital_2018}. The intensity is the product of the
 illumination of the scene and the proportion of light its surface reflects
 \cite{stockham_image_1972}: \[f(x,y) = i(x,y)\,r(x,y),\]
 where $i$ is the illumination and $r$ is the reflectance, bounded by 0 (total
-absorption) and 1 (total reflection). Because $i$ can change whilst $r$ stays the
-same, one object can look different under different lighting, so one \textbf{ECG}
-trace can form many different images. A computer cannot store a continuous
-function, so images are digitised by sampling, which divides the image into a grid
+absorption) and 1 (total reflection). As $i$ can change whilst $r$ stays the
+same, one object can look different under different lighting. In the same way, a single \textbf{ECG}
+trace can form many different images. Signals like \textbf{ECGs} are often continuous. As computers have insufficient memory to store continuous
+functions, images are instead digitised by sampling, which divides the image into a grid
 of pixels, and quantisation, which rounds each value to one of a finite number of
-intensity levels. More samples give higher resolution, and quantisation is
-irreversible because rounding discards the difference, albeit at 8 bits per pixel
-this loss is rarely visible \cite{gonzalez_digital_2018}.
+intensity levels. A higher sample rate produces a higher resolution. The quantisation step is irreversible, as rounding up or down discards any difference (albeit at 8 bits per pixel
+this loss is rarely visible).\cite{gonzalez_digital_2018}.
 
-Enhancement makes an image more suitable for a task, whereas restoration corrects
-known degradations. \textbf{Histogram equalisation (HE)} spreads pixel values across
-the full intensity range to increase contrast, but handles local detail poorly;
-\textbf{contrast-limited adaptive histogram equalisation (CLAHE)} works on local
-regions and limits noise amplification \cite{zuiderveld_contrast_1994}. Neighbourhood
-filters each have drawbacks: Gaussian filters reduce random noise but blur edges
-\cite{gonzalez_digital_2018}, median filters remove isolated specks whilst preserving
-edges better, and bilateral filtering smooths flat regions whilst keeping boundaries
-sharp \cite{verma_ali_2013}. Frequency-domain methods work on a transformed image. The
-Fourier transform describes an image as a sum of patterns at different frequencies,
+Image enhancement makes an image more suitable for a task, whereas image restoration fixes found degradations. One technique that is used is \textbf{Histogram equalisation (HE)}, which spreads pixel values across
+the full intensity range. Whilst this increases contrast, the drawback is it handles local detail poorly. An updated version named \textbf{contrast-limited adaptive histogram equalisation (CLAHE)} instead works on local
+regions and limits the amount of noise. \cite{zuiderveld_contrast_1994}. Once  contrast is adjusted, noise must be cleaned up to limit the amount of artefacts on an image. Most commonly, spatial filters are used, where it looks at each pixel and its immediate neighbours. Spatial
+filters often have specific drawbacks: For example, gaussian filters reduce random noise, but blur edges
+\cite{gonzalez_digital_2018}; median filters remove "salt and pepper" noise, whilst preserving
+edges better; and bilateral filtering smooths flat regions (like the grid) whilst keeping any vertices sharp \cite{verma_ali_2013}. In contrast, frequency-domain methods often work on a transformed images. Namely, the
+inverse Fourier Transform (FT) describes an image as a sum of patterns at different frequencies,
 \[f(x,y) = \frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1}
            F(u,v)\,e^{\,j2\pi\left(\frac{ux}{M}+\frac{vy}{N}\right)}\]
 so regular repeating patterns, which appear as sharp peaks, can be removed with a
-notch filter. \textbf{Homomorphic filtering (HF)} takes the logarithm of the image,
-turning the product $i\,r$ into a sum, so that illumination (low frequency) can be
-suppressed and reflectance (high frequency) boosted; it suits uneven lighting but can
-amplify noise. \textbf{Wavelet transforms (WT)} split an image into components at
+notch filter. Similarly, \textbf{Homomorphic filtering (HF)} takes the logarithm of the image and turns the product $i\,r$ into a sum, so that $i$ (low frequency) can be
+suppressed and $r$ (high frequency) boosted. As a result, \textbf{HF} suits uneven lighting, but can amplify noise. On the other hand, \textbf{Wavelet transforms (WT)} split an image into components at
 several scales whilst keeping their position, which suits noise removal
-\cite{lepcha_deep_2023}, and the two can be combined. Removing noise can distort real
+\cite{lepcha_deep_2023}. Combining \textbf{HF} and \textbf{WT} is the technique to remove noise and keep detail. We must consider that removing noise can distort real
 detail, and no single method suits every image, so the choice depends on the
 degradation and the task \cite{qi_comprehensive_2022}.
 
