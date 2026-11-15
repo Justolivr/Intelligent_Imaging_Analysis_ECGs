@@ -1,8 +1,156 @@
 \chapter{Feasibility}
-\label{ch:feas}
+\label{ch:feasibility}
+
+This chapter presents the preparation carried out so far and shows that the plan in
+Chapter~\ref{ch:method} is achievable. Section~\ref{sec:env} describes the coding
+environment, Section~\ref{sec:datasets} reviews the datasets, Section~\ref{sec:design}
+presents the design, Section~\ref{sec:prototypes} reports the prototypes, and
+Section~\ref{sec:feas-risks} summarises the main risks.
+
+% =====================================================================
 \section{Coding Environment}
-\section{Design}
-\section{Prototypes}
+\label{sec:env}
+
+The system is developed in Python. OpenCV \cite{bradski_opencv_2000} is used for image
+processing, PyTorch for the networks and Grad-CAM, and
+Streamlit % might change 
+for the interface. Training runs on my own PC, and the code is
+kept under version control on GitHub. Python has been chosen as it has a wide range of libraries like PyTorch to help me speed up processing, and Streamlit is useful if we have multiple displays.
+
 \section{Datasets}
-\section{Hardware}
-\section{Focus Groups}
+\label{sec:datasets}
+
+\textbf{PTB-XL.} PTB-XL contains 21,837 ten-second twelve-lead ECGs, with diagnostic
+labels and rhythm statements, and suggested patient-wise folds
+\cite{wagner_ptbxl_2020}. Table~\ref{tab:class-counts} gives the number of records for each
+class used in this project. [TODO: fill in from your own count in Prototype~1.]
+
+\begin{table}[ht]
+  \centering
+  \footnotesize
+  \caption{Records per class in PTB-XL. [TODO: replace with your own counts.]}
+  \label{tab:class-counts}
+  \begin{tabular}{@{}p{0.35\linewidth} p{0.15\linewidth} p{0.3\linewidth}@{}}
+    \toprule
+    \textbf{Class} & \textbf{Records} & \textbf{In real-image subset} \\
+    \midrule
+    Normal & [TODO] & [TODO] \\
+    Myocardial infarction & [TODO] & [TODO] \\
+    ST/T change & [TODO] & [TODO] \\
+    Conduction disturbance & [TODO] & [TODO] \\
+    Hypertrophy & [TODO] & [TODO] \\
+    Atrial fibrillation & 1514 [verify] & [TODO] \\
+    Atrial flutter & 73 [verify] & [TODO] \\
+    Sinus tachycardia & 826 [verify] & [TODO] \\
+    Sinus bradycardia & 637 [verify] & [TODO] \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textbf{Real images.} The ECG-Image-Database provides 35,595 images of 1,977 recordings,
+977 from PTB-XL and 1,000 from Emory Healthcare, printed, degraded and then scanned or
+photographed \cite{reyna_ecg-image-database_2024}. The PTB-XL part can be matched to the
+PTB-XL labels by record, which gives the labelled real test set; the Emory part uses
+different labels and is [TODO: used only for the detection check, or left out].
+
+\textbf{Limitations and preparation.} The classes are imbalanced, and the rare classes
+have few cases, especially in the real-image subset, so some classes may only be evaluated
+on rendered images. Labels come from at most two annotators \cite{wagner_ptbxl_2020} and
+cardiologists can disagree \cite{dhutia_interrater_2017}. PTB-XL was collected in one period
+with one manufacturer's devices, so models may not transfer to other settings. Preparation
+consists of rendering images from the PTB-XL folds, converting labels to the nine classes,
+and matching the real images to their labels.
+
+% =====================================================================
+\section{Design}
+\label{sec:design}
+
+Figure~\ref{fig:pipeline} shows the pipeline. An uploaded image is preprocessed, the trace
+and beats are detected to give timing features, and the CNN uses the image and the timing
+features to produce a probability for each class. Temperature scaling calibrates these
+probabilities, and Grad-CAM produces a heatmap for each flagged class. The interface shows
+the flags, the calibrated confidence, the heatmap and the measured values. The pipeline,
+model and interface are separate modules, so any one can be replaced without changing the
+others, for example swapping the pretrained model for the own CNN.
+
+\begin{figure}[ht]
+  \centering
+  \fbox{\parbox{0.85\linewidth}{\centering [TODO: pipeline diagram: image $\rightarrow$
+  preprocessing $\rightarrow$ trace and beat detection $\rightarrow$ timing features
+  $+$ image $\rightarrow$ CNN $\rightarrow$ calibration $\rightarrow$ Grad-CAM
+  $\rightarrow$ interface]}}
+  \caption{Planned system pipeline.}
+  \label{fig:pipeline}
+\end{figure}
+
+The interface has a student view, with the explanation and teaching support, and a clinician
+view, with a short list of flags and measured values. [TODO: insert wireframes of both
+views, and state the priority of the clinician view you decided on.]
+
+% =====================================================================
+\section{Prototypes}
+\label{sec:prototypes}
+
+Three prototypes were built to test the main risks of the plan.
+
+\textbf{Prototype 1: data and rendering.} [TODO: describe what you did: how many PTB-XL
+records were rendered with ECG-Image-Kit \cite{shivashankara_ecg-image-kit_2024}, how long
+it took, any problems, and what the class counts showed.]
+Figure~\ref{fig:rendered} shows [TODO: a rendered image next to its source signal].
+
+\begin{figure}[ht]
+  \centering
+  \fbox{\parbox{0.85\linewidth}{\centering [TODO: rendered image and source signal]}}
+  \caption{A rendered ECG image and the signal it was generated from.}
+  \label{fig:rendered}
+\end{figure}
+
+\textbf{Prototype 2: preprocessing and detection.} [TODO: describe the steps applied to
+[N] images, and the heart-rate error against the value calculated from the source signal
+\cite{pan_real-time_1985}, with one before and after figure. State what the result means for
+the plan, including any failures.]
+
+\textbf{Prototype 3: baseline model.} [TODO: if completed: describe the small CNN, the subset
+and number of epochs, and give a per-class table. State clearly that it is a pilot result and
+what it shows about the rare classes and the rendered-to-real gap. If not completed, say it
+is planned and explain why this does not change the plan.]
+
+% =====================================================================
+\section{Risks}
+\label{sec:feas-risks}
+
+Table~\ref{tab:feas-risks} lists the main risks. The full analysis is in
+Appendix~\ref{app:risks}.
+\begin{table}[ht]
+  \centering
+  \footnotesize
+  \caption{Main risks, ratings and fallbacks.}
+  \label{tab:feas-risks}
+  \begin{tabular}{@{}p{0.27\linewidth} p{0.09\linewidth} p{0.09\linewidth} p{0.45\linewidth}@{}}
+    \toprule
+    \textbf{Risk} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Fallback} \\
+    \midrule
+    Models trained on rendered images do not transfer to real images \cite{geirhos_shortcut_2020} &
+      High & High &
+      Report the gap as a result;add augmentation to the image that imitates real-life artefacts \\
+    Trace detection fails on poor real images &
+      Medium & High &
+      Guess on overall image; Report failure \\
+    Rare classes have too few cases &
+      High & Medium &
+      Report per class with counts; evaluate on rendered images only if there is not enough \\
+    Short on time for the full interface &
+      Medium & Medium &
+      Reduced GUI interface \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Summary}
+
+The preliminary work shows that [TODO: what the prototypes demonstrated, for example that
+images can be rendered and processed and that the detection step can be measured], and
+identifies the rendered-to-real gap and the rare classes as the main risks. The next stage is
+to build the full pipeline, models, calibration, explanation and interface, and to evaluate
+them as set out in Chapter~\ref{ch:method}.

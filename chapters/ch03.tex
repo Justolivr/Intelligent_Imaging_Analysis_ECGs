@@ -3,11 +3,19 @@
 \chapter{Methodology}
 \label{ch:method}
 
-\section{Research Question}
-
-This project addresses one question: \textbf{Can a CNN, trained on rendered ECG images, detect cardiac abnormalities and rhythm disorders in real world images, and how can information and confidence be made reliable and understandable to users?}
-It is broken into the objectives O1--O6 of Chapter~\ref{ch:intro}, and each method
-below is linked to the objective it serves.
+\section{Research Goals}
+\label{sec:goals}
+The project addresses one main question:
+\begin{quote}
+\emph{Can a CNN trained on rendered ECG images detect cardiac abnormalities and rhythm disorders in real ECG images, and how can its information be made reliable and understandable to users?}
+\end{quote} 
+It has three parts, each tied to the gaps identified
+in Chapter~\ref{ch:lit}:
+\begin{itemize}
+  \item \textbf{SQ1 (O1--O4):} How much does performance fall from rendered to real images, and how far do preprocessing and timing features reduce the fall?
+  \item \textbf{SQ2 (O5):} How reliable is the model's confidence per class, and how much does temperature scaling improve it?
+  \item \textbf{SQ3 (O6):} Do the explanations highlight the expected regions, and can students understand the confidence and explanation shown?
+\end{itemize}
 
 \section{Project Requirements}
 The table below shows each part of the system and its importance, in order of devlopment. If there is time at the end of the system's development, more features may be implemented. MoSCoW method has been used to keep objectives on track, and to limit scope creeping.
@@ -80,9 +88,88 @@ The table below shows each part of the system and its importance, in order of de
   \end{tabular}
 \end{table}
 
+\section{Development Plan}
+\label{sec:dev-plan}
 
+The work is divided into seven phases. Each phase produces a result that the next one needs, and the corresponding Gantt Chart is in Appendix~\ref{app:gantt}.
 
+\textbf{Phase 1: Preparing Data (O1).} The first phase builds the datasets. Training images for the CNN are rendered from PTB-XL, using ECG-Image-Kit, with the labels for the five
+diagnostic superclasses and the four rhythm classes, and the records are split by patient. A separate test set is prepared from ECG-Image-Database, and the labels these images carry are checked so that it is clear which
+classes can be evaluated on them. The class counts are recorded early, since rare classes such as atrial flutter may need to be reported separately.
 
+\textbf{Phase 2: Image Processing and Timing Features (O2).} OpenCV will be used to preprocess the images and to isolate the trace. This will be built first, to ensure the timing measurements are reliable before any learned method is created. The R peaks are then
+located in addition to the heart rate and RR regularity being calculated. The detection is checked against the Pan--Tompkins Equation, which is applied to the source signal. If detection proves unreliable on real
+images, the classifier will use the image alone and the failure will be reported.
+
+\textbf{Phase 3: Model Development (O3, O4).} A multi-label CNN, will be created, and it will be trained on the rendered images, with and without the timing features. A different, pretrained
+CNN will be fine-tuned on the same splits for comparison. Both are evaluated per class on the rendered test fold and on the real images, so that the drop in performance between the two is measured. The performance of the CNN will be recorded for evaluation.
+
+\textbf{Phase 4: Calibration and Explanation (O5, O6).} Temperature scaling will be fitted on the validation fold and its effect on calibration error reported per class. Grad-CAM
+heatmaps will then be produced for each flagged class and checked on labelled cases against the expected region, and for shortcuts such as attention on the grid or printed text.
+
+\textbf{Phase 5: Integration and Testing (O6).} The components will be combined into one Python application with a user-friendly GUI: upload of an image, any flagged
+conditions with a calibrated confidence, and a heatmap. The workflow runs from the uploaded image through the pipeline and the model to
+the results screen. Each module is tested on its own before the whole system is tested. If there is no time, the interface will instead be reduced to uploading, flagging and having the heatmap.
+
+\textbf{Phase 6: Advanced Features.} If the core system performs reliably, extra features will be considered, such as a clinician view with a short list of flags and measured values, and explanations in plain language for each condition. These are optional and are dropped
+first if the schedule slips.
+
+\textbf{Phase 7: Evaluation and Review.} All components will be evaluated as described in Section~\ref{sec:evaluation}, including the user study with students within the approved
+ethics application. The results will be recorded and compared with the success criteria. If participants cannot be recruited, an expert review will
+replace the user study. The risks behind these fallbacks are analysed in
+Appendix~\ref{app:risks}.
+\section{Evaluation Strategy}
+\label{sec:evaluation}
+
+\textbf{Test scenarios.} Models are tested on (i) the held-out rendered fold, using the
+folds suggested with PTB-XL (folds 1--8 for training, 9 for validation and 10 for testing,
+split by patient) \cite{wagner_ptbxl_2020}, and (ii) real images from the
+ECG-Image-Database \cite{reyna_ecg-image-database_2024}. The difference between (i) and (ii)
+answers our SQ1, and results on real images are also split by image type, such as scan and
+photograph, where the numbers allow.  % (I need tostate which classes the real images can evaluate)
+
+\textbf{Metrics.} For each class, predictions are turned into flags using a threshold
+chosen on the validation fold. Each class threshold is chosen on the validation fold to maximise the Matthews correlation coefficient, after temperature scaling, and then held fixed for all test sets; classes with too few validation cases use 0.5. On the
+test sets, each class is then scored for sensitivity, $\mathrm{TP}/(\mathrm{TP}+\mathrm{FN})$
+(the share of true cases found), specificity, $\mathrm{TN}/(\mathrm{TN}+\mathrm{FP})$ (the
+share of non-cases correctly cleared), the Matthews correlation coefficient (MCC), and the
+area under the ROC curve (AUROC), which does not depend on the threshold. These are used
+instead of accuracy because the classes are imbalanced \cite{chicco_advantages_2020}. The
+\emph{rendered-to-real gap} for SQ1 is the difference in AUROC and in MCC for each class
+between the rendered test fold and the real images.
+Calibration (SQ2) is measured per class as the expected calibration error,
+$\mathrm{ECE}=\sum_{m=1}^{M}\frac{|B_m|}{n}\,|\mathrm{acc}(B_m)-\mathrm{conf}(B_m)|$,
+where predictions are grouped into $M$ confidence bins $B_m$ and $\mathrm{acc}$ and
+$\mathrm{conf}$ are the observed frequency of the class and the mean predicted probability in
+each bin; it is computed on the test sets before and after temperature scaling and shown in
+reliability diagrams. Detection of the trace and beats is measured on images whose source
+signal is available, by comparing the image-based result with Pan--Tompkins applied to that
+signal \cite{pan_real-time_1985}: the mean absolute error of the heart rate (beats per
+minute) and of the RR intervals (milliseconds), and the share of R peaks found within
+a specific tolerance of the true peak.
+
+\textbf{Comparisons.} The own CNN is compared with the pretrained model on identical splits,
+and a variant without timing features tests H2. Because some classes are small
+(like AFLT), results are reported with bootstrap confidence
+intervals and the class counts.
+
+\textbf{Explanation and user study (SQ3).} Heatmaps are checked on labelled cases against the
+expected region, and for shortcuts such as attention on the grid or printed text. The
+application is tested with university students under the approved ethics application
+, using a questionnaire to measure
+whether the confidence and heatmap are understood. Clinician testing is future work.
+
+\textbf{Success criteria.} The criteria are: calibration error is lower after scaling for
+every class reported; the rendered-to-real gap is measured and reported per class; and the
+detection error is within a tolerance justified by the results.
+
+\textbf{Limitations.} Labels come from at most two annotators \cite{wagner_ptbxl_2020} and
+agreement between cardiologists can be poor \cite{dhutia_interrater_2017}, so scores partly
+measure agreement with imperfect labels. PTB-XL reflects one period and one manufacturer.
+The system supports review and does not give a diagnosis; the wider issues are discussed in
+Appendix~\ref{app:ples}.
+
+This chapter set out the research goals, requirements, tasks and evaluation strategy. The next chapter presents the preliminary work that shows the plan is feasible.
 
 
 

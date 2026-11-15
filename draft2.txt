@@ -1,0 +1,166 @@
+\chapter{Work Plan}
+\label{ch:method}
+
+This chapter presents the proposed work plan. Section~\ref{sec:goals} states the research
+goals and hypotheses; Section~\ref{sec:requirements} summarises the requirements;
+Section~\ref{sec:tasks} describes the tasks, their dependencies and the choices of methods;
+and Section~\ref{sec:evaluation} sets out how the project will be evaluated.
+
+% =====================================================================
+\section{Research Goals}
+\label{sec:goals}
+
+The project addresses one main question:
+
+\begin{quote}
+\emph{To what extent can a CNN trained on rendered ECG images detect cardiac abnormalities
+and rhythm disorders in real ECG images, and how can its confidence and explanations be
+made reliable and understandable to users?}
+\end{quote}
+[TODO: replace with your own wording.] It has three parts, each tied to the gaps identified
+in Chapter~\ref{ch:lit}:
+\begin{itemize}
+  \item \textbf{SQ1 (O1--O4):} how much does performance fall from rendered to real images,
+        and how far do preprocessing and timing features reduce the fall?
+  \item \textbf{SQ2 (O5):} how reliable is the model's confidence per class, and how much
+        does temperature scaling improve it?
+  \item \textbf{SQ3 (O6):} do the Grad-CAM explanations highlight the expected regions, and
+        can students understand the confidence and explanation shown?
+\end{itemize}
+The preliminary hypotheses are that: (H1) performance will fall on real images, because
+rendered images lack real artefacts and may allow shortcuts
+\cite{geirhos_shortcut_2020}; (H2) timing features will help the rhythm classes, which depend
+on beat spacing, more than the diagnostic superclasses; and (H3) temperature scaling will
+lower calibration error without changing the ranking of cases \cite{guo_calibration_2017}.
+Answering these questions advances understanding of whether models trained on synthetic
+images can be trusted on real ones, which is the gap left by earlier image-based work
+\cite{gliner_domain_2023,wang_pipeline_2025}.
+
+% =====================================================================
+\section{Requirements}
+\label{sec:requirements}
+
+The main users are university students learning ECG interpretation; a clinician view is a
+secondary, optional target. Requirements come from the gaps in Chapter~\ref{ch:lit} and
+from studies of how clinicians respond to explained AI output
+\cite{hughes-noehrer_contrasting_2024,cabitza_painting_2023}, and are prioritised with
+MoSCoW analysis. The must-have functional requirements are: upload of an ECG image;
+preprocessing; flags for the nine classes (five diagnostic superclasses and four rhythm
+classes) with a calibrated confidence for each; a Grad-CAM heatmap over the original image;
+and a notice that the output supports review and is not a diagnosis. The must-have
+non-functional requirements are per-class accuracy reporting, calibration reporting, and a
+measured rendered-to-real performance gap. The full table, including should-have, could-have
+and won't-have items, is in Appendix~\ref{app:moscow}.
+
+% =====================================================================
+\section{Tasks and Methods}
+\label{sec:tasks}
+
+Table~\ref{tab:tasks} lists the tasks, what each depends on, the objective it serves and its
+status. The tasks run in sequence along one main path: training images and the real test set
+come first, then the image pipeline, then the models, then calibration and explanation, then
+the interface, and finally the evaluation. The full schedule for both semesters is in
+Appendix~\ref{app:gantt}.
+
+\begin{table}[ht]
+  \centering
+  \footnotesize
+  \caption{Tasks, dependencies and status. [TODO: update the status column.]}
+  \label{tab:tasks}
+  \begin{tabular}{@{}p{0.05\linewidth} p{0.43\linewidth} p{0.12\linewidth} p{0.1\linewidth} p{0.2\linewidth}@{}}
+    \toprule
+    \textbf{ID} & \textbf{Task} & \textbf{Depends on} & \textbf{Obj.} & \textbf{Status} \\
+    \midrule
+    T1 & Literature review and gap analysis & --- & all & Done \\
+    T2 & Ethics approval & --- & O6 & Done \\
+    T3 & Render training images from PTB-XL; check class counts & T2 & O1 & Planned \\
+    T4 & Prepare real test set; check which labels it carries & T2 & O1 & Planned \\
+    T5 & Preprocessing, trace and beat detection, timing features & T3, T4 & O2 & Planned \\
+    T6 & Train own CNN and a pretrained comparison model & T3, T5 & O3, O4 & Planned \\
+    T7 & Temperature scaling and Grad-CAM & T6 & O5, O6 & Planned \\
+    T8 & Build the GUI (student view) & T7 & O6 & Semester 2 \\
+    T9 & Evaluation and user study & T6--T8 & O3--O6 & Semester 2 \\
+    T10 & Write-up & all & all & Semester 2 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Each method was chosen against realistic alternatives (Table~\ref{tab:choices}).
+
+\begin{table}[ht]
+  \centering
+  \footnotesize
+  \caption{Method choices and alternatives considered.}
+  \label{tab:choices}
+  \begin{tabular}{@{}p{0.19\linewidth} p{0.23\linewidth} p{0.52\linewidth}@{}}
+    \toprule
+    \textbf{Decision} & \textbf{Alternative} & \textbf{Reason for the choice} \\
+    \midrule
+    Classify the image directly &
+      Digitise, then classify the signal &
+      Digitisation adds steps where errors carry through
+      (Section~\ref{sec:ecg-imaging}); direct classification keeps the pipeline short but must
+      learn timing from pixels, which timing features address. \\
+    Own CNN, plus one pretrained model &
+      Pretrained model only &
+      A custom design shows what each layer contributes and gives a baseline; the pretrained
+      model shows what transfer learning adds \cite{yosinski_how_2014}. [TODO: name the
+      pretrained model.] \\
+    Temperature scaling &
+      Other calibration methods &
+      One fitted parameter, simple to apply, and effective for neural networks
+      \cite{guo_calibration_2017}; it does not change the ranking of cases. \\
+    Grad-CAM &
+      Other explanation methods &
+      Applies to any CNN without changing it \cite{selvaraju_gradcam_2017}.
+      [TODO: justify against one named alternative.] \\
+    PyTorch with OpenCV &
+      TensorFlow; own image code &
+      [TODO: your reason, for example easier access to internal layers for Grad-CAM.] \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Evaluation Strategy}
+\label{sec:evaluation}
+
+\textbf{Test scenarios.} Models are tested on (i) the held-out rendered fold, using the
+folds suggested with PTB-XL (folds 1--8 for training, 9 for validation and 10 for testing,
+split by patient) \cite{wagner_ptb-xl_2020}, and (ii) real images from the
+ECG-Image-Database \cite{reyna_ecg-image-database_2024}. The difference between (i) and (ii)
+answers SQ1, and results on real images are also split by image type, such as scan and
+photograph, where the numbers allow. [TODO: state which classes the real images can evaluate.]
+
+\textbf{Metrics.} Each class is reported separately, using sensitivity, specificity,
+Matthews correlation coefficient and AUROC, because the classes are imbalanced
+\cite{chicco_advantages_2020}. Calibration is reported as expected calibration error per
+class, with reliability diagrams before and after scaling (SQ2). Detection of the trace and
+beats is checked against Pan--Tompkins applied to the source signal
+\cite{pan_real-time_1985}, using the error in heart rate and RR interval.
+
+\textbf{Comparisons.} The own CNN is compared with the pretrained model on identical splits,
+and a variant without timing features tests H2. Because the rhythm classes are small
+(atrial flutter has only 73 records), results are reported with bootstrap confidence
+intervals and the class counts.
+
+\textbf{Explanation and user study (SQ3).} Heatmaps are checked on labelled cases against the
+expected region, and for shortcuts such as attention on the grid or printed text. The
+application is tested with university students under the approved ethics application
+[TODO: reference number and scope], using [TODO: tasks and a short questionnaire] to measure
+whether the confidence and heatmap are understood. Clinician testing is future work.
+
+\textbf{Success criteria.} The criteria are: calibration error is lower after scaling for
+every class reported; the rendered-to-real gap is measured and reported per class; and the
+detection error is within a tolerance justified by the pilot results
+[TODO: set numeric targets after the pilot, relative to the baseline or to figures in the
+literature, and justify each].
+
+\textbf{Limitations.} Labels come from at most two annotators \cite{wagner_ptb-xl_2020} and
+agreement between cardiologists can be poor \cite{dhutia_interrater_2017}, so scores partly
+measure agreement with imperfect labels. PTB-XL reflects one period and one manufacturer.
+The system supports review and does not give a diagnosis; the wider issues are discussed in
+Appendix~\ref{app:ples}.
+
+This chapter set out the research goals, requirements, tasks and evaluation strategy. The
+next chapter presents the preliminary work that shows the plan is feasible.

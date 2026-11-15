@@ -22,14 +22,16 @@
 \contentsline {section}{\numberline {2.9}AI/ML Algorithms for ECG Analysis}{9}{section.2.9}%
 \contentsline {section}{\numberline {2.10}Existing Systems and Limitations}{10}{section.2.10}%
 \contentsline {chapter}{\numberline {3}Methodology}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Research Question}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Research Goals}{11}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Project Requirements}{11}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Feasibility}{13}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Coding Environment}{13}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Design}{13}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Prototypes}{13}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Datasets}{13}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Hardware}{13}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Focus Groups}{13}{section.4.6}%
-\contentsline {chapter}{\numberline {A}Appendix A}{14}{appendix.A}%
-\contentsline {chapter}{References}{15}{appendix*.9}%
+\contentsline {section}{\numberline {3.3}Development Plan}{11}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Evaluation Strategy}{12}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Feasibility}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Coding Environment}{15}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Datasets}{15}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Design}{16}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Prototypes}{16}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Risks}{17}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Summary}{17}{section.4.6}%
+\contentsline {chapter}{\numberline {A}Appendix A}{18}{appendix.A}%
+\contentsline {chapter}{References}{19}{appendix*.9}%
