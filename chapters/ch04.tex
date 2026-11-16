@@ -96,7 +96,14 @@ Three prototypes were built to test the main risks of the plan.
 \textbf{Prototype 1: data and rendering.} [TODO: describe what you did: how many PTB-XL
 records were rendered with ECG-Image-Kit \cite{shivashankara_ecg-image-kit_2024}, how long
 it took, any problems, and what the class counts showed.]
-
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\linewidth]{images/rendered_vs_signal.png}
+  \caption{A clean rendering of PTB-XL record 00001\_lr with ECG-Image-Kit
+    \cite{shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated
+    from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}
+  \label{fig:rendered}
+\end{figure}
 
 \textbf{Prototype 2: preprocessing and detection.} [TODO: describe the steps applied to
 [N] images, and the heart-rate error against the value calculated from the source signal
