@@ -226,39 +226,32 @@ next paragprah (Section~\ref{sec:waveform}) address this.
 \label{sec:waveform}
 
 Waveform detection finds the parts of the \textbf{ECG} that features are measured from. In digital
-signals, this usually means locating the QRS complex. The Pan--Tompkins algorithm does so in real time by band-pass filtering and differentiating the signal, squaring it,window-smoothing, and applying adaptive thresholds \cite{pan_real-time_1985}. For an
-image, the first task is finding the trace itself. Published pipelines binarise the image,
-remove the grid and text, repair gaps in the trace and locate each lead, using a Hough
-transform to find the grid lines or lead baselines
+signals, this usually means locating the QRS complex. The Pan--Tompkins algorithm does so in real time by band-pass filtering and differentiating the signal, squaring it,window-smoothing, and applying adaptive thresholds \cite{pan_real-time_1985}. For an image, the first task is finding the trace itself. Some published work binarise the image,
+remove the grid and text, repair gaps in the trace and locate each lead, using a Hough transform to find the grid lines or lead baselines
 \cite{wu_automated_2022}. Each column of the isolated trace is then
-reduced to one value, for example the median vertical position of the trace pixels
-\cite{wu_automated_2022}, and converted to time and voltage using the grid scale, after
-which peaks can be detected as in the signal case.
+reduced to one value, for example, the median vertical position of the trace pixels \cite{wu_automated_2022}. This is converted to time and voltage using the grid scale, after which peaks can be detected as in the signal case.
 
 Explicit detection gives measurable intervals and a rate that a clinician can check, and
-it can be accurate: \textcite{randazzo_development_2022} reported an average correlation of
+it can be very accurate. \textcite{randazzo_development_2022} reported an average correlation of
 0.94 with reference signals on images from 16 subjects, and \textcite{wu_automated_2022}
-about 99\% on standard layouts once images with overlapping leads were excluded. It is also
-fragile: the correlation of \textcite{wu_automated_2022} fell to about 96\% on printed and
-rescanned \textbf{ECGs}, whilst a different pipeline scored a
-signal-to-noise ratio of $-2.44$\,dB on 100 rendered PTB-XL images, a poor reconstruction
-by that measure. A missed or false peak changes the RR intervals and every timing feature
-that follows, so errors here carry through to the prediction. This project therefore
-applies waveform detection to locate the trace and the beats and supply timing features
-alongside the learned image features, evaluating the detection step on real-world images
+ found about 0.99 on standard layouts, once images with overlapping leads were excluded. Conversely, it is also
+fragile. The correlation of \textcite{wu_automated_2022} fell to about 0.96 on printed and
+rescanned \textbf{ECGs}, whilst \textcite{wadehn_ecg_2024} scored a
+\textbf{SNR} of $-2.44$\,dB on 100 rendered PTB-XL images,which indicates that background noise dominates the cardiac signal. This means that it can degrade the waveform, and even a missed or false peak changes the RR intervals and every timing feature
+that follows, so errors made at this step carry through to the prediction. This project therefore
+uses waveform detection to find the trace and the beats, whilst supplying  the timing features
+alongside the learned image features. It will evaluate the detection step on real-world images
 and not only on rendered ones.
 
 \section{AI/ML Algorithms for ECG Analysis}
 \label{sec:ml-ecg}
 
 Deep learning has largely replaced feature-based methods for \textbf{ECG}classification
-(Table~\ref{tab:ecg-studies}). On signals, networks reached cardiologist-level performance
-on single-lead rhythm classification \cite{hannun_cardiologist_2019}, outperformed
-cardiology residents on 12-lead abnormalities \cite{ribeiro_automatic_2020}, and a PTB-XL
-benchmark found convolutional architectures, especially ResNet- and Inception-based ones,
-performed best \cite{strodthoff_deep_2021}. Image-based work is newer.
+(Table~\ref{tab:ecg-studies}). On signals, networks reached cardiologist-level performance on single-lead rhythm classification \cite{hannun_cardiologist_2019}. They also outperformed cardiology residents on 12-lead abnormalities \cite{ribeiro_automatic_2020}. Finally, a PTB-XL
+benchmark found convolutional architectures, like ResNet- and Inception-based ones,
+performed best \cite{strodthoff_deep_2021}. On the contrary, image-based work is newer.
 \textcite{sangha_automated_2022} trained a \textbf{CNN} on images generated from signals
-and tested it on held-out, external and printed ECGs, \textcite{gliner_domain_2023} used
+and tested it on various forms of external ECGs, \textcite{gliner_domain_2023} used
 domain adaptation to transfer a model to phone-captured images, and
 \textcite{wang_pipeline_2025} fine-tuned a ConvNeXt backbone first on synthetic and
 external images. Because labelled \textbf{ECG} images are limited, such work relies on transfer
@@ -290,11 +283,11 @@ images, learn general features that transfer to new tasks
       Signals; hidden weakness in subclasses \\
     \textcite{sangha_automated_2022} &
       Images generated from signals; printed ECGs to test &
-      Strong performance on held-out, external and printed ECGs [TODO: AUROC] &
-      Training images generated from signals [TODO: check] \\
+      Strong performance on held-out, external and printed ECGs (0.98 AUROC average) &
+      Training images are generated from signals \\
     \textcite{gliner_domain_2023} &
       79,226 scanned labelled ECGs plus unlabelled phone-captured frames &
-      Average ROC-AUC 0.91 on phone-captured images &
+      Average AUROC of 0.91 on phone-captured images &
       Phone images made by filming printed pages; six unseen formats tested \\
     \textcite{wang_pipeline_2025} &
       Synthetic PTB-XL images plus external scanned sets &
@@ -307,67 +300,59 @@ images, learn general features that transfer to new tasks
 These results do not transfer directly to images. \textcite{hannun_cardiologist_2019} used
 a single lead, with test labels from a consensus committee of cardiologists, and both they
 and \textcite{ribeiro_automatic_2020} worked on signals, which arrive with a known sampling
-rate and amplitude scale; an image carries its scale only through the printed grid, so
-timing must be recovered from pixels (Section~\ref{sec:ecg-imaging}). Label quality is a
+rate and amplitude scale. An image therefore carries its scale only through the printed grid, so timing must be recovered from pixels (Section~\ref{sec:ecg-imaging}). Label quality is a
 further limit. PTB-XL's labels come from at most two cardiologists
 \cite{wagner_ptbxl_2020}, and agreement between cardiologists can be only poor to moderate
-\cite{dhutia_interrater_2017}, so a high AUROC partly measures agreement with imperfect
-labels. Studies also use different datasets, label sets and metrics (F1, specificity,
-AUROC), so their headline numbers cannot be ranked directly.
+\cite{dhutia_interrater_2017}, so a high AUROC partly measures agreement with imperfect labels. Studies also use different datasets, label sets and metrics (F1, specificity,
+AUROC), so their "headline" numbers cannot be ranked directly.
 
-Evaluation therefore needs particular care. ECG datasets are imbalanced, so accuracy can
-be high even when rare but important conditions are missed; measures such as sensitivity,
-specificity and the Matthews correlation coefficient give a more truthful picture
-\cite{chicco_advantages_2020}, and data should be split by patient, for which PTB-XL
-provides suggested folds \cite{wagner_ptbxl_2020}. A model used for decision support must
-also show how far its outputs can be trusted. Modern neural networks are often
-overconfident, but temperature scaling can calibrate their scores
-\cite{guo_calibration_2017}. For multi-label classification each class has its own sigmoid
-output, so each class score $z_k$ is divided by a temperature $T$ fitted on a held-out validation set, \(\hat{p}_k = \sigma(z_k/T)\)
-by minimising the binary cross-entropy of the scaled outputs. Because dividing by $T$ does
-not change the ranking of scores, AUC is unaffected and only the reliability of the
-probabilities changes, which is measured with the expected calibration error for each
-class. Guo et al.\ described the method for single-label classification, so applying
-Equation~\eqref{eq:temperature-multilabel} to independent sigmoid outputs is an
-adaptation. Grad-CAM heatmaps show which image regions influenced a prediction
-\cite{selvaraju_gradcam_2017}, but not why a clinician would reach the same conclusion, so
-they need checking against known cases.
+Evaluation therefore needs particular care. ECG datasets are imbalanced, so accuracy can be high even when rare conditions are missed. Measures like sensitivity, specificity and the Matthews correlation coefficient give a more truthful picture % matthews correlation
+\cite{chicco_advantages_2020}. Data should be split by patient, for which PTB-XL
+provides suggested folds \cite{wagner_ptbxl_2020}. A model used to support decisions must also show how much the outputs can be trusted. Modern neural networks are often overconfident, but temperature scaling can calibrate their scores
+\cite{guo_calibration_2017}. For multi-label classification, each class has its own sigmoid output, so each class score $z_k$ is divided by a temperature $T$ fitted on a held-out validation set, \(\hat{p}_k = \sigma(z_k/T)\)
+by minimising the binary cross-entropy of the scaled outputs. As dividing by $T$ does
+not change the ranking of scores, AUC is unaffected and only the reliability of the probabilities changes, which is measured for each class with the expected calibration error. \textcite{guo_calibration_2017} described the method for single-label classification, so applying
+the equation to independent sigmoid outputs is an
+adaptation. A more relevant concern is that $T$ is fitted on validation data, that also looks like training data. Calibration has been found to deteriorate, as data shifts away from the training distribution \cite{ovadia_trust_2019}. This project fits $T$ on rendered images, and then applies the CNN to real ones. Whether the calibration survives is something the project has to measure. In addition, evaluation raises another point.  Grad-CAM heatmaps show which image regions influenced a prediction
+\cite{selvaraju_gradcam_2017}. However, a map that looks sensible is not definitive proof that it reflects the learned model. In addition, sanity checks on saliency methods found that some maps barely changed when the model's weight was randomised \cite{adebayo_sanity_2018}. The heatmaps therefore will be checked against known cases. 
 
 \section{Existing Systems and Limitations}
 \label{sec:existing-systems}
 
-Automated interpretation has been part of clinical ECG machines for decades: millions of
+Automated interpretation has been part of clinical ECG machines for decades. Millions of
 ECGs are recorded each year, and most are analysed by computer with an immediate report
 \cite{schlapfer_computer-interpreted_2017}. However, limitations in their diagnostic
-accuracy were recognised early and persist, and the authors state that over-reading and
-confirmation by an experienced ECG reader are essential, because inexperienced physicians
-may accept an automated reading without question
-\cite{schlapfer_computer-interpreted_2017}. These systems also work on the digital signal
-at the point of recording, so they cannot analyse an ECG that exists only as a printout or
-image.
+accuracy were recognised early , and the authors state that over-reading and
+confirmation by an experienced ECG reader are necessary, as inexperienced physicians
+may accept an automated reading without any critical analysis
+\cite{schlapfer_computer-interpreted_2017}. These systems also work on the digital signal at the point of recording, so they cannot analyse an ECG that exists only as a printout or image.
 
 Deep learning systems have achieved strong results (Section~\ref{sec:ml-ecg}), but four
 gaps remain that are relevant to this project. First, image-based classification has
 mostly been tested on synthetic or limited real images. \textcite{gliner_domain_2023}
 adapted a model to phone-captured ECGs, but their images were produced by filming printed
-pages and only six unseen formats were tested, and a challenge-winning pipeline was
+pages, and only six unseen formats were tested, and a challenge-winning pipeline was
 evaluated on synthetic images rendered from PTB-XL, which its authors note may inflate
 results through data leakage \cite{wang_pipeline_2025}. Second, calibration has been
-studied for signal-based atrial fibrillation detection, where uncertainty estimates
-improved the expected calibration error \cite{chen_quantifying_2022}, but the image-based
-studies above report discrimination measures such as AUROC. Third, explanations are seldom assessed: a review of explainable AI in cardiology found that 43\% of the studies examined did not evaluate their explanations at
-all, and only 11\% involved clinicians \cite{salih_review_2024}. Fourth, how results are
-presented matters and depends on the user. In interviews with 23 clinicians, accuracy
-mattered more than explanation, and visualisations of what the algorithm analysed were
-preferred \cite{hughes-noehrer_contrasting_2024}, while a simulated-AI experiment with 44
-cardiologists found that explanations raised the trust of novices more than experts and
-could mislead \cite{cabitza_painting_2023}. Datasets also reflect limited populations and
-recording conditions: PTB-XL, for instance, was collected between 1989 and 1996 using
-devices from a single manufacturer \cite{wagner_ptbxl_2020}, so models may not generalise
-to other settings, an ethical concern discussed in the Professional, Legal, Ethical and
-Social Issues section.
+studied for signal-based atrial fibrillation detection, where uncertainty improved the expected calibration error \cite{chen_quantifying_2022}. However  the image-based
+studies above report discrimination in measures like AUROC. Third, explanations are seldom assessed. A review of explainable AI in cardiology found that 43\% of the studies examined did not evaluate their explanations at
+all, and only 11\% involved clinicians \cite{salih_review_2024}. Fourth, how results are presented matters and depends on the user. In interviews with 23 clinicians, accuracy mattered more than explanation, and visualisations of what the algorithm analysed were preferred \cite{hughes-noehrer_contrasting_2024}. Another simulated-AI experiment with 44
+cardiologists found that explanations raised the trust of novices more than experts and could be misunderstood \cite{cabitza_painting_2023}. Datasets also reflect limited populations and
+recording conditions: PTB-XL, for instance, was collected between 1989 and 1996 using devices from a single manufacturer \cite{wagner_ptbxl_2020}, so models may not generalise
+to other settings.
 
 These gaps define the aims of this project. A preprocessing and detection pipeline tested
 on real-world images addresses the first gap; a calibrated multi-label classifier
 evaluated with imbalance-aware metrics addresses the second; and an application that
 presents explained results to different users addresses the third and fourth.
+
+\section{Summary}
+\label{sec:lit-summary}
+
+Reading an ECG from an image combines two problems that the literature has mostly treated
+separately: the image problem of recovering a measurable trace from a degraded picture, and the
+clinical problem of deciding what the trace shows. Whilst Signal-based deep learning is mature,
+image-based work has relied on synthetic data and has paid little attention to whether its
+confidence can be trusted or its explanations understood, especially once the images change
+from those the model was trained on. This project responds by training on rendered images,
+testing on real ones, adding timing features alongside the learned ones, and reporting the calibrated confidence with explanations. Chapter~\ref{ch:method} sets out how.

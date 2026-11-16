@@ -13,14 +13,14 @@ Section~\ref{sec:feas-risks} summarises the main risks.
 
 The system is developed in Python. OpenCV \cite{bradski_opencv_2000} is used for image
 processing, PyTorch for the networks and Grad-CAM, and
-Streamlit % might change 
+matplotlib % might change 
 for the interface. Training runs on my own PC, and the code is
-kept under version control on GitHub. Python has been chosen as it has a wide range of libraries like PyTorch to help me speed up processing, and Streamlit is useful if we have multiple displays.
+kept under version control on GitHub. Python has been chosen as it has a wide range of libraries like PyTorch to help me speed up processing, and matplotlib is useful for graph reading.
 
 \section{Datasets}
 \label{sec:datasets}
 
-\textbf{PTB-XL.} PTB-XL contains 21,837 ten-second twelve-lead ECGs, with diagnostic
+\textbf{PTB-XL.} PTB-XL contains 21,800 ten-second twelve-lead ECGs, with diagnostic
 labels and rhythm statements, and suggested patient-wise folds
 \cite{wagner_ptbxl_2020}. Table~\ref{tab:class-counts} gives the number of records for each
 class used in this project. [TODO: fill in from your own count in Prototype~1.]
@@ -34,19 +34,20 @@ class used in this project. [TODO: fill in from your own count in Prototype~1.]
     \toprule
     \textbf{Class} & \textbf{Records} & \textbf{In real-image subset} \\
     \midrule
-    Normal & [TODO] & [TODO] \\
-    Myocardial infarction & [TODO] & [TODO] \\
-    ST/T change & [TODO] & [TODO] \\
-    Conduction disturbance & [TODO] & [TODO] \\
-    Hypertrophy & [TODO] & [TODO] \\
-    Atrial fibrillation & 1514 [verify] & [TODO] \\
-    Atrial flutter & 73 [verify] & [TODO] \\
-    Sinus tachycardia & 826 [verify] & [TODO] \\
-    Sinus bradycardia & 637 [verify] & [TODO] \\
+    Normal & 9514 & [TODO] \\
+    Myocardial infarction & 5469 & [TODO] \\
+    ST/T change & 5235 & [TODO] \\
+    Conduction disturbance & 4898 & [TODO] \\
+    Hypertrophy & 2649 & [TODO] \\
+    Atrial fibrillation & 1514 & [TODO] \\
+    Atrial flutter & 73 & [TODO] \\
+    Sinus tachycardia & 826 & [TODO] \\
+    Sinus bradycardia & 637 & [TODO] \\
     \bottomrule
   \end{tabular}
 \end{table}
 
+There also might be Emory Healthcare to consider: However, I have not done the training for it yet (Mention to IDRIS)
 \textbf{Real images.} The ECG-Image-Database provides 35,595 images of 1,977 recordings,
 977 from PTB-XL and 1,000 from Emory Healthcare, printed, degraded and then scanned or
 photographed \cite{reyna_ecg-image-database_2024}. The PTB-XL part can be matched to the
@@ -84,18 +85,14 @@ others, for example swapping the pretrained model for the own CNN.
 \end{figure}
 
 The interface has a student view, with the explanation and teaching support, and a clinician
-view, with a short list of flags and measured values. [TODO: insert wireframes of both
-views, and state the priority of the clinician view you decided on.]
+view, with a short list of flags and measured values. Wireframe prototypes are underneath:
 
-% =====================================================================
 \section{Prototypes}
 \label{sec:prototypes}
 
 Three prototypes were built to test the main risks of the plan.
 
-\textbf{Prototype 1: data and rendering.} [TODO: describe what you did: how many PTB-XL
-records were rendered with ECG-Image-Kit \cite{shivashankara_ecg-image-kit_2024}, how long
-it took, any problems, and what the class counts showed.]
+\textbf{Prototype 1: data and rendering.}
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{images/rendered_vs_signal.png}

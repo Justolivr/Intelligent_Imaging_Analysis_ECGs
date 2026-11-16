@@ -1,422 +1,169 @@
-\chapter{Literature Review}
-\label{ch:lit}
 
-% =====================================================================
-\section{Introduction}
+\chapter{Methodology}
+\label{ch:method}
 
-The electrocardiogram (ECG) is one of the most common tests of the heart, so reading it
-correctly matters. Yet many ECGs are kept only as printouts or photographs, which software
-built for digital signals cannot read. This chapter reviews what is needed to analyse ECGs
-directly from images. Its argument is that image-based ECG classification has mostly been
-tested on synthetic or limited images, and that calibration and explanation, which decide
-whether a user can trust the output, have received little attention.
+\section{Research Goals}
+\label{sec:goals}
+The project addresses one main question:
+\begin{quote}
+\emph{Can a CNN trained on rendered ECG images detect cardiac abnormalities and rhythm disorders in real ECG images, and how can its information be made reliable and understandable to users?}
+\end{quote} 
+It has three parts, each tied to the gaps identified
+in Chapter~\ref{ch:lit}:
+\begin{itemize}
+  \item \textbf{SQ1 (O1--O4):} How much does performance fall from rendered to real images, and how far do preprocessing and timing features reduce the fall?
+  \item \textbf{SQ2 (O5):} How reliable is the model's confidence per class, and how much does temperature scaling improve it?
+  \item \textbf{SQ3 (O6):} Do the explanations highlight the expected regions, and can students understand the confidence and explanation shown?
+\end{itemize}
 
-The chapter moves from the general to the specific. Sections~\ref{sec:image-processing} and
-\ref{sec:medical-imaging} cover image processing and its use in medicine;
-Sections~\ref{sec:ecg-fundamentals} and \ref{sec:ecg-imaging} cover the ECG and how it ends up
-as an image; Sections~\ref{sec:preprocessing} to \ref{sec:waveform} cover preparing the image,
-measuring it and finding the waveforms; and Sections~\ref{sec:ml-ecg} and
-\ref{sec:existing-systems} cover the learning methods and existing systems, which show the gaps
-this project addresses. Sources were found by searching Google Scholar and PubMed between
-[TODO: dates] for terms such as [TODO: your real search terms], and by following the
-citations of key papers.
-
-% =====================================================================
-\section{Digital Image Processing}
-\label{sec:image-processing}
-
-An ECG image is a measurement taken through a camera or scanner, so the first question is what
-a digital image is. It is a two-dimensional function $f(x,y)$ whose value at each pixel is the
-intensity at that point \cite{gonzalez_digital_2018}. That intensity is the product of the
-illumination falling on the scene and the proportion of light the surface reflects
-\cite{stockham_image_1972}, $f(x,y)=i(x,y)\,r(x,y)$, where $r$ lies between 0 (total
-absorption) and 1 (total reflection). Because $i$ can change while $r$ stays fixed, the same
-printed trace gives different images under different lighting, and this is the source of much
-of the variation the project has to cope with. A computer cannot store a continuous function,
-so an image is sampled onto a grid of pixels and each value is rounded to one of a finite
-number of levels. Sampling sets the resolution, and the rounding is irreversible, although at
-8 bits per pixel the loss is seldom visible \cite{gonzalez_digital_2018}.
-
-Enhancement and restoration try to undo the effects of capture. Histogram equalisation spreads
-pixel values across the full intensity range to raise contrast, but it handles local detail
-poorly; contrast-limited adaptive histogram equalisation (CLAHE) works on local regions and
-limits the amplification of noise \cite{zuiderveld_contrast_1994}. Noise is usually cleaned
-with filters that look at each pixel and its neighbours, and each gives something up. Gaussian
-filters reduce random noise but blur edges, median filters remove isolated specks and preserve
-edges better \cite{gonzalez_digital_2018}, and bilateral filters smooth flat regions while
-keeping boundaries sharp \cite{verma_ali_2013}. Frequency-domain methods work on a transformed
-image instead: regular patterns, such as a printed grid, appear as sharp peaks in the Fourier
-transform and can be removed with a notch filter. Homomorphic filtering takes the logarithm of
-the image, which turns the product $i\,r$ into a sum, so that uneven illumination can be
-suppressed; it can also amplify noise. Wavelet transforms split an image into components at
-several scales, which suits noise removal \cite{lepcha_deep_2023}. Removing noise can also remove real detail, and no single method
-suits every image, so the choice depends on the degradation and the task
-\cite{qi_comprehensive_2022}.
-
-Once an image is clean, segmentation separates the trace from the background. Thresholding
-picks an intensity cut-off, manually or automatically \cite{otsu_threshold_1979}, edge detection finds boundaries
-\cite{canny_computational_1986}, and morphological opening and closing tidy the result
-\cite{gonzalez_digital_2018}.
-
-Rather than designing each of these steps by hand, a convolutional neural network (CNN) learns
-its features from labelled examples, using small filters that are adjusted during training
-\cite{lecun_gradient_1998}. Stacked layers build up from simple edges to complex patterns, so
-nobody has to decide in advance what to look for, although a large dataset is needed. Every
-stage so far trades the removal of unwanted variation against the loss of detail, and that
-trade-off matters most when the image supports a medical decision.
-
-% =====================================================================
-\section{Medical Image Processing}
-\label{sec:medical-imaging}
-
-Medical images go through the same processing, but there is less room for error because
-anatomical detail has to survive it. Noise is the main threat: \textcite{prasad_systematic_2023}
-state that it can degrade diagnostic quality by blurring borders, reducing contrast and hiding
-small but important details. A common model adds Gaussian noise independently to each pixel,
-\begin{equation}
-  I(x,y) = J(x,y) + N(x,y),
-  \label{eq:gaussian-noise}
-\end{equation}
-where $I$ is the noisy image, $J$ is the original and $N$ is drawn from a normal distribution
-with mean 0 and variance $\sigma^2$, so a larger $\sigma^2$ means stronger noise.
-
-The general methods have been adapted for medicine, but each keeps its trade-off. Adaptive
-histogram equalisation was developed for medical image display \cite{pizer_adaptive_1987}, yet
-even the contrast-limited form needs its clip limit tuned, and averaging filters suppress noise
-at the cost of the edges that carry diagnostic information. Whether an enhancement helps
-therefore depends on the task: in medical imaging, quality is best judged by how well an
-observer can perform a specific task, not by how the image looks \cite{barrett_foundations_2004}.
-A sharper image does not necessarily lead to a better decision, and an enhancement that suits
-a human viewer may not help a classifier.
-
-Because hand-designed methods rest on assumptions about the image, learned methods have largely
-replaced them. A survey of over 300 studies found CNNs used across medical imaging, including
-cardiac applications \cite{litjens_survey_2017}. They bring problems of their own. Labelled
-data is expensive and abnormal cases are rare, and performance may not carry over to new data:
-\textcite{zech_variable_2018} found that networks detecting pneumonia on chest radiographs
-performed differently across three hospital systems. Models can also rely on shortcuts,
-features that correlate with the label but do not matter \cite{geirhos_shortcut_2020}. And
-because predictions may influence patient decisions, a system should explain its output, for
-example with Grad-CAM \cite{selvaraju_gradcam_2017}, and report a calibrated confidence
-\cite{guo_calibration_2017}.
-
-Both problems apply to this project. Preprocessing will be judged by how it affects
-classification, not by how the image looks. The gap between rendered training images and real
-test images is also a generalisation problem, and the model may learn features of the rendering
-that real images lack.
-
-% =====================================================================
-\section{ECG Fundamentals}
-\label{sec:ecg-fundamentals}
-
-The ECG is an electrical tracing of the heart, recorded from the surface of the body
-\cite{sattar_electrocardiogram_2023}. It shows how the impulse that triggers each heartbeat
-spreads through the heart, which makes it well suited to finding problems of rhythm and
-conduction. Each beat produces a repeating sequence of deflections
-(Figure~\ref{fig:ecg-beat}): the P wave reflects activation of the atria, the QRS complex
-activation of the ventricles, and the T wave their recovery. The gaps between these features
-carry diagnostic information. The PR interval reflects the delay as the impulse passes from the
-atria to the ventricles, the QRS duration shows how quickly the ventricles are activated, and
-the QT interval spans their activation and recovery. Abnormalities are defined by changes to
-these features, so a model working from an image has to find them and judge their shape and
-spacing.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.28\linewidth]{images/LabelledHeartbeat.jpg}
-  \caption[A single PQRST wave]{A single heartbeat, showing the P wave, QRS complex,
-    T wave and main intervals. Generated by the author from
-    \cite{Mazomenos_ECG_2012}.}
-  \label{fig:ecg-beat}
-\end{figure}
-
-A standard resting ECG records twelve leads, six on the limbs and six on the chest
-\cite{sattar_electrocardiogram_2023}. Each lead views the same heartbeat from a different
-direction, so a problem in one region of the heart often shows in only some of them. A page
-cannot hold twelve full-length traces, so the printout cuts each into a short piece and
-arranges them on a $3\times4$ grid \cite{ashley_conquering_2004}
-(Figure~\ref{fig:ecg-grid}). One image therefore contains twelve traces, and a classifier has
-to learn which leads matter for which condition. On the grid, a distance $x$ along the paper
-and a deflection $y$ convert to time and voltage by $t=x/v$ and $V=y/g$, where $v$ is the paper
-speed and $g$ the gain, normally 25\,mm/s and 10\,mm/mV \cite{sattar_electrocardiogram_2023}.
-Clinicians read rate and intervals by counting squares: the heart rate is
-\(\mathrm{HR}=60/\mathrm{RR}=300/N\), where RR is the time in seconds between successive R
-peaks and $N$ is the number of large squares between them. Timing and amplitude can only be
-read from an image if the grid scale is known, so making any changes to
-the page distort them.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.32\linewidth]{images/ECGGrid.jpg}
-  \caption[An ECG paper trace]{A single trace, showing a $3\times4$ grid of leads
-    \cite{ashley_conquering_2004}.}
-  \label{fig:ecg-grid}
-\end{figure}
-
-The abnormalities that matter can be grouped by what they affect. Abnormal heart rates and
-rhythms are known as arrhythmias \cite{nhs_heart_2018}. In atrial fibrillation the beats are
-irregularly spaced and there are no  clear P waves \cite{van_gelder_2024_2024}, whereas atrial
-flutter is regular and shows a saw-tooth pattern in the inferior leads
-\cite{cosio_atrial_2017}. Conduction disturbances such as bundle branch block usually widen the
-QRS complex \cite{scherbak_left_2024}. Myocardial infarction and other ischaemic changes often alter the ST segment and T wave, in the leads facing the affected region, and hypertrophy of the
-heart's chambers is associated with changes in amplitude \cite{channer_myocardial_2002}. Some
-of these signs depend on the shape of the trace and others on timing and regularity, which in
-an image depends on the grid scale.
-
-Public datasets encode these findings as labels. PTB-XL contains roughly 21,800 ten-second
-twelve-lead ECGs from about 19,000 patients, annotated by cardiologists, with  labels
-grouped into five diagnostic superclasses (normal, myocardial infarction, ST/T change, conduction
-disturbance and hypertrophy) plus rhythm and form statements, and a single record can carry
-several labels \cite{wagner_ptbxl_2020}. It provides signals, not images; a separate dataset
-supplies real ECG images \cite{khan_ecg_2021}. Together these fix the classes this project will
-detect and the two kinds of information the classifier must use: the shape of each beat and the
-timing between beats.
-
-% =====================================================================
-\section{ECG Imaging and Digitisation}
-\label{sec:ecg-imaging}
-
-Although ECGs are recorded electronically, they are often printed, scanned or photographed, and
-the resulting images cannot be used by software that expects time-series data
-\cite{shivashankara_ecg-image-kit_2024}. They also vary widely. The ECG-Image-Database, for
-example, contains printed ECGs that were scanned or photographed under different lighting and
-camera angles, some deliberately soaked, stained or left to grow mould, which gives shadows,
-perspective shifts, blur, creases and stains \cite{reyna_ecg-image-database_2024}. This is the
-illumination effect of Section~\ref{sec:image-processing} at work, and its consequences show in
-practice: \textcite{gliner_domain_2023} needed domain adaptation to move a model trained on
-scans to phone-captured images. Resolution matters too, because it limits the interval and rate
-measurements that some classes depend on.
-
-Two approaches address the problem. Digitisation rebuilds the time-series signal from the image
-so that signal-based methods can be used. It gives measurable intervals, but it needs several
-steps (finding the grid, separating the leads, tracing each waveform), and an error at any step
-carries through. The George B.\ Moody PhysioNet Challenge 2024,
-for example, scored digitisation by the signal-to-noise ratio (SNR) of the recovered signal
-\cite{physionet_challenge_2024}. The alternative is to classify the image directly
-(Section~\ref{sec:ml-ecg}). That avoids reconstruction, but the model must then learn timing
-from pixels, so its results depend on how the images were produced, which is the generalisation
-problem of Section~\ref{sec:medical-imaging}. Data for this approach comes from two sources.
-ECG-Image-Kit generates synthetic images from real signals, with added artefacts
-\cite{shivashankara_ecg-image-kit_2024}, and the ECG-Image-Database provides 35,595 images of
-1,977 recordings from PTB-XL and Emory Healthcare that were printed, degraded, and then scanned
-or photographed \cite{reyna_ecg-image-database_2024}. This project classifies images directly
-and avoids a full digitisation step. It trains on images rendered from PTB-XL and tests on real
-images, so that the effect of real imaging conditions can be measured.
-
-% =====================================================================
-\section{Pre-processing and Noise Removal}
-\label{sec:preprocessing}
-
-Preprocessing corrects the problems introduced by printing and capture, using the methods of
-Section~\ref{sec:image-processing} matched to the faults that ECG images have, and each choice
-carries a risk. Uneven lighting and shadows can be reduced with CLAHE
-\cite{pizer_adaptive_1987,zuiderveld_contrast_1994} or homomorphic filtering
-\cite{stockham_image_1972}, at the cost of amplifying noise. Noise and specks
-(Equation~\ref{eq:gaussian-noise}) can be reduced with median filtering, bilateral filtering
-\cite{tomasi_bilateral_1998} or non-local means \cite{buades_non-local_2005}, although
-smoothing can flatten thin peaks. The printed grid can be removed by colour segmentation or
-notch filtering \cite{gonzalez_digital_2018}, which struggles with faded or monochrome prints,
-and rotation can be corrected by line detection, which cannot fully undo the perspective of a
-photograph. Published digitisation pipelines combine steps of this kind, binarising the image,
-removing the grid and repairing the trace \cite{wu_automated_2022}, but they judge them by how
-well the signal is reconstructed, not by how well a classifier performs afterwards.
-
-The grid needs particular care because it is both noise and information. It crosses the trace
-and can confuse a classifier, but it is also the only record of the time and voltage scale
-(Section~\ref{sec:ecg-fundamentals}), so removing it without recording the scale first would
-throw away what the measurements depend on. The trace is also thin, so smoothing or enhancement
-can erase P waves and sharp QRS peaks that are only a few pixels wide. It is not even certain
-that preprocessing helps a CNN, since a network trained on varied, degraded images may learn to
-cope with them. Following the task-based view of Section~\ref{sec:medical-imaging}, preprocessing
-is therefore a design choice, judged by its effect on classification and not by how the image
-looks.
-
-% =====================================================================
-\section{Feature Extraction}
-\label{sec:features}
-
-Before deep learning, automated ECG analysis relied on hand-designed features. Once the beats
-were located, quantities such as interval lengths and wave amplitudes were measured and passed
-to a classical classifier, as in the heartbeat classification of
-\textcite{de_chazal_automatic_2004}, which combined morphology and interval features. Such
-features have a clear clinical meaning, which makes a model easier to explain, and timing
-features are especially useful for rhythm: the regularity of the RR intervals, for example,
-separates a regular rhythm from an irregular one such as atrial fibrillation. The alternative is
-learned features, where a CNN builds its own directly from pixels \cite{lecun_deep_2015}.
-Hand-designed features are easy to interpret but depend on every earlier step succeeding, since
-a missed beat corrupts every feature that follows. Learned features avoid that dependency, but
-they are harder to explain and need a large labelled dataset.
-
-This project uses both. The CNN learns shape-based features from the image, which suits the
-diagnostic superclasses. The rhythm classes, such as tachycardia, bradycardia and atrial
-fibrillation, depend on the spacing between beats, which a model can only judge correctly if the
-scale is consistent across images. Timing features measured in the waveform-detection step
-(Section~\ref{sec:waveform}) are meant to supply that.
-
-% =====================================================================
-\section{Waveform Detection}
-\label{sec:waveform}
-
-Waveform detection finds the parts of the ECG that features are measured from. In digital
-signals this usually means locating the QRS complex. The Pan--Tompkins algorithm does so in real
-time by band-pass filtering and differentiating the signal, squaring it, smoothing it with a
-moving window and applying adaptive thresholds \cite{pan_real-time_1985}. For an image, the
-first task is finding the trace itself. Published pipelines binarise the image, remove the grid
-and text, repair gaps in the trace and locate each lead, using a Hough transform to find grid
-lines or lead baselines \cite{wadehn_ecg_2024,wu_automated_2022}. Each column of the isolated
-trace is then reduced to a single value, for example the median vertical position of its pixels
-\cite{wu_automated_2022}, and converted to time and voltage using the grid scale, after which
-peaks can be found as in the signal case.
-
-Explicit detection gives measurable intervals and a rate that a clinician can check, and it can
-be accurate. \textcite{randazzo_development_2022} reported an average correlation of 0.94 with
-reference signals on images from 16 subjects, and \textcite{wu_automated_2022} about 99\% on
-standard layouts once images with overlapping leads were excluded. It is also fragile: the
-correlation of \textcite{wu_automated_2022} fell to about 96\% on printed and rescanned ECGs,
-while the classical pipeline of \textcite{wadehn_ecg_2024} scored a signal-to-noise ratio of
-$-2.44$\,dB on 100 rendered PTB-XL images, a poor reconstruction by that measure. A missed or
-false peak changes the RR intervals and every timing feature built from them, so errors here
-carry through to the prediction. This project therefore uses waveform detection to locate the
-trace and the beats and to supply timing features alongside the learned image features, and it
-will evaluate the detection step on real images, not only on rendered ones.
-
-% =====================================================================
-\section{AI/ML Algorithms for ECG Analysis}
-\label{sec:ml-ecg}
-
-Deep learning has largely replaced feature-based methods for ECG classification
-(Table~\ref{tab:ecg-studies}). On signals, networks have reached cardiologist-level performance
-on single-lead rhythm classification \cite{hannun_cardiologist_2019}, outperformed cardiology
-residents on 12-lead abnormalities \cite{ribeiro_automatic_2020}, and a PTB-XL benchmark found
-convolutional architectures, especially ResNet- and Inception-based ones, performed best
-\cite{strodthoff_deep_2021}. Work on images is newer. \textcite{sangha_automated_2022} trained a
-CNN on images generated from signals and tested it on held-out, external and printed ECGs,
-\textcite{gliner_domain_2023} used domain adaptation to move a model to phone-captured images,
-and \textcite{wang_pipeline_2025} fine-tuned a ConvNeXt backbone on synthetic and external
-images. Labelled ECG images are scarce, so this work leans on transfer learning, where a network
-such as ResNet \cite{he_deep_2016}, pretrained on natural images, supplies general features for
-a new task \cite{yosinski_how_2014}.
+\section{Project Requirements}
+The table below shows each part of the system and its importance, in order of devlopment. If there is time at the end of the system's development, more features may be implemented. MoSCoW method has been used to keep objectives on track, and to limit scope creeping.
 
 \begin{table}[ht]
   \centering
   \footnotesize
-  \caption{Key studies in deep learning for ECG classification.}
-  \label{tab:ecg-studies}
-  \begin{tabular}{@{}p{0.13\linewidth} p{0.27\linewidth} p{0.25\linewidth} p{0.25\linewidth}@{}}
-    \toprule
-    \textbf{Study} & \textbf{Input and data} & \textbf{Reported result} &
-      \textbf{Limitation for this project} \\
-    \midrule
-    \textcite{hannun_cardiologist_2019} &
-      Single-lead signals; 91,232 ECGs, 53,549 patients &
-      12 rhythm classes; F1 0.837 vs.\ 0.780 for cardiologists &
-      Single lead; signals, not images \\
-    \textcite{ribeiro_automatic_2020} &
-      12-lead signals; over two million exams &
-      Six abnormalities; F1 above 80\%, specificity above 99\% &
-      Signals, not images \\
-    \textcite{strodthoff_deep_2021} &
-      12-lead signals, PTB-XL &
-      Convolutional models performed best &
-      Signals; hidden weakness in subclasses \\
-    \textcite{sangha_automated_2022} &
-      Images generated from signals; printed ECGs to test &
-      Strong performance on held-out, external and printed ECGs [TODO: AUROC] &
-      Training images generated from signals [TODO: check] \\
-    \textcite{gliner_domain_2023} &
-      79,226 scanned labelled ECGs plus unlabelled phone-captured frames &
-      Average ROC-AUC 0.91 on phone-captured images &
-      Phone images made by filming printed pages; six unseen formats tested \\
-    \textcite{wang_pipeline_2025} &
-      Synthetic PTB-XL images plus external scanned sets &
-      AUROC about 0.97 on the hidden test set &
-      Synthetic test data; possible leakage from PTB-XL \\
-    \bottomrule
+  \setlength{\arrayrulewidth}{0.8pt}      % thickness of every line
+  \renewcommand{\arraystretch}{1.3}       % row height
+  \caption{Functional and Non-Functional Requirements}
+  \label{tab:functional-req}
+  \begin{tabular}{|p{0.08\linewidth}|p{0.5\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Requirement}} &
+    \textcolor{white}{\textbf{MoSCoW}} & \textcolor{white}{\textbf{Objective}} \\
+    \hline
+    FR01 & The user can upload an ECG image (scans or photos). & Must & O1, O6 \\
+    \hline
+    FR02 & The system preprocesses the image. & Must & O2 \\
+    \hline
+    FR03 & The system traces R peak. & Must & O2 \\
+    \hline
+    FR04 & The system extracts \textbf{HR} and RR regularity. & Must & O2 \\
+    \hline
+    FR05 & The system flags possible abnormalities across nine classes. & Must & O3 \\
+    \hline
+    FR06 & Each flag shows a confidence score & Must & O5 \\
+    \hline
+    FR07 & A heatmap is overlaid on the original image for each flagged class. & Should & O6 \\
+    \hline
+    FR08 & The interface shows measured values. & Should & O2,O6 \\
+    \hline
+    FR09 & A plain language explanation of each flagged condition. & Should & O6 \\
+    \hline
+    FR10 & A labelled diagram of the waves for referencing. & Could & O6 \\
+    \hline
+    FR11 & A clinical view with a short flag list, and no teaching text. & Could & O6 \\
+    \hline
+    FR12 & The user can export a result. & Could & O6 \\
+    \hline
+    FR13 & The user can save a result. & Could & O6 \\
+    \hline
+    FR14 & The system warns the user if an image is too poor quality to analyse. & Should & O2 \\
+    \hline
+    FR15 & Real-Time/Live ECG analysis & Won't & N/A \\ % as no equipment
+    \hline
+    FR16 & Advice on treatments, or diagnosis  & Won't & N/A \\
+    \hline
+    NFR01 & System will return a result within a set time period (<10s) & Must & O6 \\
+    \hline
+    NFR02 & Accuracy should be measured, with a target percentage for the main 5 classes & Must & O3 \\
+    \hline
+    NFR03 & Stated confidence scores should match the accuracy of the model. & Must & O5 \\
+    \hline
+    NFR04 & System must work on rendered to real images of varying quality & Must & O4 \\
+    \hline   
+    NFR05 & Users can understand the output without previous training. & Should & O6 \\
+    \hline 
+    NFR06 & Limitations of model are shown to the user. & Should & O6 \\
+    \hline
+    NFR07 & Uploaded images are not shared or stored beyond the session. & Should & N/A \\
+    \hline
+    NFR08 & Other users should be able to repeat my results. & Must & O3 \\
+    \hline
+    NFR09 & System can run on a standard machine. & Could & N/A \\
+    \hline
+    NFR10 & System should be maintainable for future devlopment. & Could & N/A \\
+    \hline
   \end{tabular}
 \end{table}
 
-These results do not carry over directly to images. \textcite{hannun_cardiologist_2019} used a
-single lead, with test labels from a consensus committee of cardiologists, and they and
-\textcite{ribeiro_automatic_2020} worked on signals, which arrive with a known sampling rate and
-amplitude scale. An image carries its scale only through the printed grid, so timing has to be
-recovered from pixels (Section~\ref{sec:ecg-imaging}). Label quality is a further limit.
-PTB-XL's labels come from at most two cardiologists \cite{wagner_ptbxl_2020}, and agreement
-between cardiologists can be only poor to moderate \cite{dhutia_interrater_2017}, so a high
-AUROC partly measures agreement with imperfect labels. The studies also use different datasets,
-label sets and metrics (F1, specificity, AUROC), so their headline numbers cannot be ranked
-against each other.
+\section{Development Plan}
+\label{sec:dev-plan}
 
-Evaluation therefore needs care. ECG datasets are imbalanced, so accuracy can look high while
-rare but important conditions are missed. Sensitivity, specificity and the Matthews correlation
-coefficient give a more honest picture \cite{chicco_advantages_2020}, and the data should be
-split by patient, for which PTB-XL provides suggested folds \cite{wagner_ptbxl_2020}. A model
-used for decision support must also show how far its outputs can be trusted. Modern neural
-networks are often overconfident, but temperature scaling can calibrate their scores
-\cite{guo_calibration_2017}. In multi-label classification each class has its own sigmoid
-output, so each class score $z_k$ is divided by a temperature $T$, giving
-\(\hat{p}_k=\sigma(z_k/T)\), with $T$ fitted on a held-out validation set by minimising the
-binary cross-entropy. Dividing by $T$ does not change the ranking of scores, so AUC is unaffected
-and only the reliability of the probabilities changes, which is measured for each class with the
-expected calibration error. Guo et al.\ described the method for single-label classification, so
-using it on independent sigmoid outputs is an adaptation. A larger concern is that $T$ is fitted
-on validation data that look like the training data. Calibration has been found to deteriorate
-as data shift away from the training distribution \cite{ovadia_trust_2019}, and this project
-fits $T$ on rendered images and then applies the model to real ones. Whether calibration
-survives that step is something the project has to measure.
+The work is divided into seven phases. Each phase produces a result that the next one needs, and the corresponding Gantt Chart is in Appendix~\ref{app:gantt}.
 
-Explanation raises a similar question. Grad-CAM heatmaps show which image regions influenced a
-prediction \cite{selvaraju_gradcam_2017}, but a map that looks sensible is not proof that it
-reflects what the model learned: sanity checks on saliency methods found some whose maps barely
-changed when the model's weights were randomised \cite{adebayo_sanity_2018}. The heatmaps here
-will therefore be checked against known cases, not trusted by appearance.
+\textbf{Phase 1: Preparing Data (O1).} The first phase builds the datasets. Training images for the CNN are rendered from PTB-XL, using ECG-Image-Kit, with the labels for the five
+diagnostic superclasses and the four rhythm classes, and the records are split by patient. A separate test set is prepared from ECG-Image-Database, and the labels these images carry are checked so that it is clear which
+classes can be evaluated on them. The class counts are recorded early, since rare classes such as atrial flutter may need to be reported separately.
 
-% =====================================================================
-\section{Existing Systems and Limitations}
-\label{sec:existing-systems}
+\textbf{Phase 2: Image Processing and Timing Features (O2).} OpenCV will be used to preprocess the images and to isolate the trace. This will be built first, to ensure the timing measurements are reliable before any learned method is created. The R peaks are then
+located in addition to the heart rate and RR regularity being calculated. The detection is checked against the Pan--Tompkins Equation, which is applied to the source signal. If detection proves unreliable on real
+images, the classifier will use the image alone and the failure will be reported.
 
-Automated interpretation has been part of clinical ECG machines for decades. Millions of ECGs
-are recorded each year, and most are analysed by computer with an immediate report
-\cite{schlapfer_computer-interpreted_2017}. Their limitations were recognised early and persist:
-the authors state that over-reading and confirmation by an experienced ECG reader are essential,
-because inexperienced physicians may accept an automated reading without question
-\cite{schlapfer_computer-interpreted_2017}. These systems also work on the digital signal at the
-point of recording, so they cannot analyse an ECG that exists only as a printout or image.
+\textbf{Phase 3: Model Development (O3, O4).} A multi-label CNN, will be created, and it will be trained on the rendered images, with and without the timing features. A different, pretrained
+CNN will be fine-tuned on the same splits for comparison. Both are evaluated per class on the rendered test fold and on the real images, so that the drop in performance between the two is measured. The performance of the CNN will be recorded for evaluation.
 
-Deep learning systems have achieved strong results (Section~\ref{sec:ml-ecg}), but four gaps
-remain that matter for this project. First, image-based classification has mostly been tested on
-synthetic or limited real images. \textcite{gliner_domain_2023} adapted a model to
-phone-captured ECGs, but their images came from filming printed pages and only six unseen
-formats were tested, and a challenge-winning pipeline was evaluated on synthetic images rendered
-from PTB-XL, which its authors note may inflate results through data leakage
-\cite{wang_pipeline_2025}. Second, calibration has been studied for signal-based atrial
-fibrillation detection, where uncertainty estimates improved the expected calibration error
-\cite{chen_quantifying_2022}, but the image-based studies above report discrimination measures
-such as AUROC. Third, explanations are seldom assessed: a review of explainable AI in cardiology
-found that 43\% of the studies examined did not evaluate their explanations at all, and only
-11\% involved clinicians \cite{salih_review_2024}. Fourth, how results are presented matters and
-depends on the user. In interviews with 23 clinicians, accuracy mattered more than explanation,
-and visualisations of what the algorithm analysed were preferred
-\cite{hughes-noehrer_contrasting_2024}, while an experiment with 44 cardiologists using a
-simulated AI found that explanations raised the trust of novices more than experts and could
-mislead \cite{cabitza_painting_2023}. Datasets add a limit of their own. PTB-XL, for instance,
-was collected between 1989 and 1996 using devices from a single manufacturer
-\cite{wagner_ptbxl_2020}, so models may not generalise to other settings, an ethical concern
-discussed in the PLES section.
+\textbf{Phase 4: Calibration and Explanation (O5, O6).} Temperature scaling will be fitted on the validation fold and its effect on calibration error reported per class. Grad-CAM
+heatmaps will then be produced for each flagged class and checked on labelled cases against the expected region, and for shortcuts such as attention on the grid or printed text.
 
-These gaps define the aims of this project. A preprocessing and detection pipeline tested on
-real images addresses the first. A calibrated multi-label classifier, evaluated with
-imbalance-aware metrics and checked for calibration on real images, addresses the second. An
-application that presents explained results to different users addresses the third and fourth.
+\textbf{Phase 5: Integration and Testing (O6).} The components will be combined into one Python application with a user-friendly GUI: upload of an image, any flagged
+conditions with a calibrated confidence, and a heatmap. The workflow runs from the uploaded image through the pipeline and the model to
+the results screen. Each module is tested on its own before the whole system is tested. If there is no time, the interface will instead be reduced to uploading, flagging and having the heatmap.
 
-% =====================================================================
-\section{Summary}
-\label{sec:lit-summary}
+\textbf{Phase 6: Advanced Features.} If the core system performs reliably, extra features will be considered, such as a clinician view with a short list of flags and measured values, and explanations in plain language for each condition. These are optional and are dropped
+first if the schedule slips.
 
-Reading an ECG from an image combines two problems that the literature has mostly treated
-separately: the image problem of recovering a measurable trace from a degraded picture, and the
-clinical problem of deciding what the trace shows. Signal-based deep learning is mature, but
-image-based work has relied on synthetic data and has paid little attention to whether its
-confidence can be trusted or its explanations understood, especially once the images change
-from those the model was trained on. This project responds by training on rendered images,
-testing on real ones, adding timing features alongside the learned ones, and reporting
-calibrated confidence with explanations. Chapter~\ref{ch:method} sets out how.
+\textbf{Phase 7: Evaluation and Review.} All components will be evaluated as described in Section~\ref{sec:evaluation}, including the user study with students within the approved
+ethics application. The results will be recorded and compared with the success criteria. If participants cannot be recruited, an expert review will
+replace the user study. The risks behind these fallbacks are analysed in
+Appendix~\ref{app:risks}.
+\section{Evaluation Strategy}
+\label{sec:evaluation}
+
+\textbf{Test scenarios.} Models are tested on (i) the held-out rendered fold, using the
+folds suggested with PTB-XL (folds 1--8 for training, 9 for validation and 10 for testing,
+split by patient) \cite{wagner_ptbxl_2020}, and (ii) real images from the
+ECG-Image-Database \cite{reyna_ecg-image-database_2024}. The difference between (i) and (ii)
+answers our SQ1, and results on real images are also split by image type, such as scan and
+photograph, where the numbers allow.  % (I need tostate which classes the real images can evaluate)
+
+\textbf{Metrics.} For each class, predictions are turned into flags using a threshold
+chosen on the validation fold. Each class threshold is chosen on the validation fold to maximise the Matthews correlation coefficient, after temperature scaling, and then held fixed for all test sets; classes with too few validation cases use 0.5. On the
+test sets, each class is then scored for sensitivity, $\mathrm{TP}/(\mathrm{TP}+\mathrm{FN})$
+(the share of true cases found), specificity, $\mathrm{TN}/(\mathrm{TN}+\mathrm{FP})$ (the
+share of non-cases correctly cleared), the Matthews correlation coefficient (MCC), and the
+area under the ROC curve (AUROC), which does not depend on the threshold. These are used
+instead of accuracy because the classes are imbalanced \cite{chicco_advantages_2020}. The
+\emph{rendered-to-real gap} for SQ1 is the difference in AUROC and in MCC for each class
+between the rendered test fold and the real images.
+Calibration (SQ2) is measured per class as the expected calibration error,
+$\mathrm{ECE}=\sum_{m=1}^{M}\frac{|B_m|}{n}\,|\mathrm{acc}(B_m)-\mathrm{conf}(B_m)|$,
+where predictions are grouped into $M$ confidence bins $B_m$ and $\mathrm{acc}$ and
+$\mathrm{conf}$ are the observed frequency of the class and the mean predicted probability in
+each bin; it is computed on the test sets before and after temperature scaling and shown in
+reliability diagrams. Detection of the trace and beats is measured on images whose source
+signal is available, by comparing the image-based result with Pan--Tompkins applied to that
+signal \cite{pan_real-time_1985}: the mean absolute error of the heart rate (beats per
+minute) and of the RR intervals (milliseconds), and the share of R peaks found within
+a specific tolerance of the true peak.
+
+\textbf{Comparisons.} The own CNN is compared with the pretrained model on identical splits,
+and a variant without timing features tests H2. Because some classes are small
+(like AFLT), results are reported with bootstrap confidence
+intervals and the class counts.
+
+\textbf{Explanation and user study (SQ3).} Heatmaps are checked on labelled cases against the
+expected region, and for shortcuts such as attention on the grid or printed text. The
+application is tested with university students under the approved ethics application
+, using a questionnaire to measure
+whether the confidence and heatmap are understood. Clinician testing is future work.
+
+\textbf{Success criteria.} The criteria are: calibration error is lower after scaling for
+every class reported; the rendered-to-real gap is measured and reported per class; and the
+detection error is within a tolerance justified by the results.
+
+\textbf{Limitations.} Labels come from at most two annotators \cite{wagner_ptbxl_2020} and
+agreement between cardiologists can be poor \cite{dhutia_interrater_2017}, so scores partly
+measure agreement with imperfect labels. PTB-XL reflects one period and one manufacturer.
+The system supports review and does not give a diagnosis; the wider issues are discussed in
+Appendix~\ref{app:ples}.
