@@ -6,8 +6,26 @@
 \section{Risk Analysis}
 \label{sec:risks}
 
+This lists the main risks, with their severity and likelihood, whilst also considering any mitigation. A small table was previously mentioned in Chapter~\ref{sec:feas-risks}, but this is the complete version of the risk analysis.
+
+\begin{table}[!ht]
+  \centering
+  \footnotesize
+  \caption{Risk analysis.}
+  \label{tab:risks}
+  \begin{tabular}{@{}p{0.27\linewidth} p{0.09\linewidth} p{0.09\linewidth} p{0.45\linewidth}@{}}
+    \toprule
+    \textbf{Risk} & \textbf{Severity} & \textbf{Likelihood} & \textbf{Mitigation} \\
+    \midrule
+    A model on rendered images might not work on real images. & High & Medium & Use the ECG-Image-Kit to generate a large number of images. Added augmentation of real artefacts to these images to make them more realistic. Report the gap as a result. \\
+    Trace detection falls apart on very poor quality images. & Medium & Medium & Detection is evaluated separately on real images. If it is too unreliable for analysis, the CNN uses the image alone. The failure is reported. \\
+    Some classes have too few examples to train a model. & Medium & High &
+    Results are reported per class. Some classes like AFLT and AFIB are combined into a single class. 
 
 
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \section{PLES}
 \label{app:ples}
@@ -36,7 +54,7 @@ PTB-XL and ECG-Image-Database are released under CC BY 4.0, whilst ECG-Image-Kit
 The project will have ethical approval. Participants in the user study will give informed consent, in addition to be able to withdraw at any time, and are also not asked personal or health information.
 
 The main risk of a tool that flags abnormalities is that users may rely on it. False negatives or positives can cause unecessary worry. Automation bias is documented in computer-interpreted ECGs. Inexperienced
-users may accept an automated reading without question \cite{schlapfer_computer-interpreted_2017},
+users may accept an automated reading without question,
 and explanations can raise the trust of novices more than experts. The project therefore reports a calibrated confidence for each
 class so that any uncertainty is shown. It also checks heatmaps against known cases, and presents the
 tool as a learning and research aid whose output has to be checked by a person.
