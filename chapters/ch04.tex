@@ -23,7 +23,7 @@ kept under version control on GitHub. Python has been chosen as it has a wide ra
 \textbf{PTB-XL.} PTB-XL contains 21,800 ten-second twelve-lead ECGs, with diagnostic
 labels and rhythm statements, and suggested patient-wise folds
 \cite{wagner_ptbxl_2020}. Table~\ref{tab:class-counts} gives the number of records for each
-class used in this project. [TODO: fill in from your own count in Prototype~1.]
+class used in this project.
 
 \begin{table}[ht]
   \centering
@@ -76,16 +76,16 @@ others, for example swapping the pretrained model for the own CNN.
 
 \begin{figure}[ht]
   \centering
-  \fbox{\parbox{0.85\linewidth}{\centering [TODO: pipeline diagram: image $\rightarrow$
+  \fbox{\parbox{0.85\linewidth}{\centering Uploaded image $\rightarrow$
   preprocessing $\rightarrow$ trace and beat detection $\rightarrow$ timing features
   $+$ image $\rightarrow$ CNN $\rightarrow$ calibration $\rightarrow$ Grad-CAM
-  $\rightarrow$ interface]}}
+  $\rightarrow$ interface}}
   \caption{Planned system pipeline.}
   \label{fig:pipeline}
 \end{figure}
 
-The interface has a student view, with the explanation and teaching support, and a clinician
-view, with a short list of flags and measured values. Wireframe prototypes are underneath:
+The interface will have a student view, with the explanation and teaching support, and a clinician
+view, with a short list of flags and measured values. Wireframe prototypes are listed in 
 
 \section{Prototypes}
 \label{sec:prototypes}
@@ -93,7 +93,8 @@ view, with a short list of flags and measured values. Wireframe prototypes are u
 Three prototypes were built to test the main risks of the plan.
 
 \textbf{Prototype 1: data and rendering.}
-\begin{figure}[ht]
+PTB-XL was downloaded, and its labels were mapped to the nine classes. To test the pipeline, 2-3 recordings were rendered using ECG-Image-Kit, and using its default settings, the signal data was encoded into an image. The figure below shows the rendered image, and the signal it came from. Both are verified to be similar timings. The rendered trace looks flatter, so it will produce cleaner recordings then real life. This prototype was to show that training images can be created for PTB-XL.
+\begin{figure}[ht] 
   \centering
   \includegraphics[width=\linewidth]{images/rendered_vs_signal.png}
   \caption{A clean rendering of PTB-XL record 00001\_lr with ECG-Image-Kit
@@ -102,19 +103,25 @@ Three prototypes were built to test the main risks of the plan.
   \label{fig:rendered}
 \end{figure}
 
-\textbf{Prototype 2: preprocessing and detection.} [TODO: describe the steps applied to
-[N] images, and the heart-rate error against the value calculated from the source signal
-\cite{pan_real-time_1985}, with one before and after figure. State what the result means for
-the plan, including any failures.]
+\textbf{Prototype 2: preprocessing and detection.}  
+To test image processing for Chapter~\ref{ch:lit}, OpenCV operations were applied sequentially to a rendered ECG image (Figure~\ref{fig:proto2}). It used thresholding, to separate the ECG trace from the background, whilst also removing colour. I then used feature detection to remove the grid. Each step worked, and as expected, a rendering of just the trace was the final result. The final pipeline will involve all kinds of ECG images, so the preprocessing will be chosen by their effectiveness.
 
-\textbf{Prototype 3: baseline model.} [TODO: if completed: describe the small CNN, the subset
-and number of epochs, and give a per-class table. State clearly that it is a pilot result and
-what it shows about the rare classes and the rendered-to-real gap. If not completed, say it
-is planned and explain why this does not change the plan.]
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.9\linewidth]{images/prototype2_preprocessing.png}
+  \caption{Preprocessing steps applied to a rendered ECG image.}
+  \label{fig:proto2}
+\end{figure}
+
+
+\textbf{Prototype 3: Wireframe.}
+This prototype is to show off the wireframes for the two views - one for general users, the other for clinicians.
+
+[TO COMPLETE]
 \section{Risks}
 \label{sec:feas-risks}
 
-Table~\ref{tab:feas-risks} lists the main risks. The full analysis is in
+Table~\ref{tab:feas-risks} lists the main risks. The full risk analysis is in
 Appendix~\ref{app:risks}.
 \begin{table}[ht]
   \centering
@@ -144,8 +151,7 @@ Appendix~\ref{app:risks}.
 % =====================================================================
 \section{Summary}
 
-The preliminary work shows that [TODO: what the prototypes demonstrated, for example that
-images can be rendered and processed and that the detection step can be measured], and
+The preliminary work shows that signals are able to be rendered into images to be assigned as training data. In addition, we can see the techniques used for preprocessing an image before applying it. In addition and
 identifies the rendered-to-real gap and the rare classes as the main risks. The next stage is
 to build the full pipeline, models, calibration, explanation and interface, and to evaluate
 them as set out in Chapter~\ref{ch:method}.
