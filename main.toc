@@ -38,10 +38,12 @@
 \contentsline {section}{\numberline {5.1}Motivation and Goals}{20}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Proposed Work}{20}{section.5.2}%
 \contentsline {chapter}{\numberline {A}Appendix A}{21}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Risk Assessment}{21}{appendix.A.1}%
+\contentsline {section}{\numberline {A.1}Risk Analysis}{21}{appendix.A.1}%
 \contentsline {section}{\numberline {A.2}PLES}{21}{appendix.A.2}%
 \contentsline {subsection}{\numberline {A.2.1}Professional Issues}{21}{subsection.A.2.1}%
 \contentsline {subsection}{\numberline {A.2.2}Legal Issues}{21}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{22}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}Social Issues}{22}{subsection.A.2.4}%
 \contentsline {section}{\numberline {A.3}Gantt Chart}{22}{appendix.A.3}%
 \contentsline {section}{\numberline {A.4}Glossary}{22}{appendix.A.4}%
-\contentsline {chapter}{References}{23}{appendix*.9}%
+\contentsline {chapter}{References}{24}{appendix*.9}%
