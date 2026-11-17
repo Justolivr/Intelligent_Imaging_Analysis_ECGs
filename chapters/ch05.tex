@@ -9,4 +9,6 @@ The aim of this project is to build, and evaluate a CNN application, that will f
 \section{Proposed Work}
 \label{sec:prop-work}
 
-The work is currently organised into seven phases (Chapter~\ref{ch:method}). The classifier is a multi-labelled CNN designed specifically for this project.
+The work is currently organised into seven phases (Chapter~\ref{ch:method}). The classifier is a multi-labelled CNN designed specifically for this project. It covers the nine classes in PTB-XL. Confidence scores are calibrated with temperature scaling, and explanations are given as heatmaps. Success will be judged per class, the calibration error, and by a user study with students or clinicians under the approved ethics application.
+
+The feasibility chapter (Chapter~\ref{ch:feasibility}) discusses that the plan is feasible. This is shown by showing prototypes regarding signal-to-image conversion, using specific types of preprocessing via OpenCV, and wireframes drawn to show the GUI design for both general users and clinical users. The main risks are that models trained on synthesized images may not be as good on real images, the detection of the ECG trace may fail on poor images, and that certain classes have too few examples to be trained on. Each has a fallback mentioned in the plan.
