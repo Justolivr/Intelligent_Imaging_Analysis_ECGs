@@ -11,19 +11,64 @@ This lists the main risks, with their severity and likelihood, whilst also consi
 \begin{table}[!ht]
   \centering
   \footnotesize
+  \renewcommand{\arraystretch}{1.2}
   \caption{Risk analysis.}
   \label{tab:risks}
-  \begin{tabular}{@{}p{0.27\linewidth} p{0.09\linewidth} p{0.09\linewidth} p{0.45\linewidth}@{}}
-    \toprule
+  \begin{tabular}{|p{0.27\linewidth}|p{0.09\linewidth}|p{0.09\linewidth}|p{0.45\linewidth}|}
+    \hline
     \textbf{Risk} & \textbf{Severity} & \textbf{Likelihood} & \textbf{Mitigation} \\
-    \midrule
-    A model on rendered images might not work on real images. & High & Medium & Use the ECG-Image-Kit to generate a large number of images. Added augmentation of real artefacts to these images to make them more realistic. Report the gap as a result. \\
-    Trace detection falls apart on very poor quality images. & Medium & Medium & Detection is evaluated separately on real images. If it is too unreliable for analysis, the CNN uses the image alone. The failure is reported. \\
-    Some classes have too few examples to train a model. & Medium & High &
-    Results are reported per class. Some classes like AFLT and AFIB are combined into a single class. 
+    \hline
+    A model on rendered images might not work on real images. & \High & \Med & Use the ECG-Image-Kit to generate a large number of images. Added augmentation of real artefacts to these images to make them more realistic. Report the gap as a result. \\
+    \hline
+    Trace detection falls apart on very poor quality images. & \Med & \Med & Detection is evaluated separately on real images. If it is too unreliable for analysis, the CNN uses the image alone. The failure is reported. \\
+    \hline
+    Some classes have too few examples to train a model. & \Med & \High &
+    Results are reported per class. Some classes like AFLT and AFIB are combined into a single class. \\
+    \hline
+    Class imbalances cause the model to be biased towards the majority class. & \Med & \High &
+    Use class weights, to balance the loss function. Use metrics that are aware of imbalances, (like sensitivity, specificity, AUROC). Thresholds are adjusted to account for the imbalance. \\
+    \hline
+    ECG-Image-Database has very few images for some classes. & \Med & \High &
+    Only classes with enough images are evaluated. The rest are reported as a limitation. \\
+    \hline
+    Labels are subjective and may be inconsistent. & \Med & \Med &
+    Validation and test folds that were checked by multiple annotators are used. The model is then evaluated on these folds. \\
+    \hline
+    Heatmaps can be misleading. & \Med & \Med & Heatmaps will be checked against known cases and shortcuts. The grid is masked if its needed. The heatmaps are evaluated in the user study. \\
+    \hline
+    The CNN underperforms. & \Med & \Med & A pretrained model might be used for comparison. \\
+    \hline
+    Training is too slow. & \Low & \Low & Use smaller models. This is to reduce the cost. \\
+    \hline
+  \end{tabular}
+\end{table}
 
-
-    \bottomrule
+\begin{table}[!ht]
+  \centering
+  \footnotesize
+  \renewcommand{\arraystretch}{1.2}
+  \caption{Project and Ethical Risks.}
+  \label{tab:project-risks}
+  \begin{tabular}{|p{0.27\linewidth}|p{0.09\linewidth}|p{0.09\linewidth}|p{0.45\linewidth}|}
+    \hline
+    \textbf{Risk} & \textbf{Severity} & \textbf{Likelihood} & \textbf{Mitigation} \\
+    \hline
+    The scope is too large for the time available. & \Med & \Med & Requirements are prioritised with MoSCoW. This means that most important requirements are implemented first. In addition, the interface can be reduced to a single view if time is short. \\
+    \hline
+    There are not enough participants for the user study. & \Med & \Med & Recruitment of users starts early. If this fails, then an expert review replaces the study. \\
+    \hline
+    Clinicians are not able to take part. & \Low & \High & Requirements will be based on published studies from clinicians. Clinician testing is described at future work, and in addition the limitation is stated. \\
+    \hline
+    Software problems. & \Low & \Med & Use version control. Also, a virtual environment can be used with specific versions. This will have a recorded list of requirements. \\
+    \hline
+    Loss of code or data & \High & \Low & Keep remote copies. Also keep regular backups of results. \\
+    \hline
+    Work goes beyond the scope & \High & \Low & The work will stay in the approved scope. User data is destroyed upon completion of the project. Images are processed locally. \\
+    \hline
+    A dataset or tool update may change its availability or license & \Low & \Low & Local copies of the datasets are kept. Licenses are checked and cited. \\
+    \hline
+    Author might not be able to complete the project due to illness, or other personal reasons. & \High & \Low & The project is planned with deadlines, and the supervisor is kept informed of the progress. \\
+    \hline
   \end{tabular}
 \end{table}
 
@@ -67,7 +112,50 @@ The tool could help students learn about ECG interpretation, and systems that re
 
 For the environment, training deep models use a lot of energy. The project limits this using a small model, and pretrained weight if possible.
 \section{Gantt Chart}
+\label{sec:gantt}
+\begin{figure}[!ht]
+  \centering
+  \resizebox{\linewidth}{!}{%
+  \begin{ganttchart}[
+      hgrid,                          % horizontal grid lines
+      vgrid,                          % vertical grid lines
+      x unit=0.55cm,                  % width of one week
+      y unit chart=0.6cm,             % height of one row
+      time slot format=simple,        % plain numbers instead of dates
+      title label font=\scriptsize,
+      bar/.append style={fill=blue!30},
+      group/.append style={fill=black!70},
+      milestone/.append style={fill=red!60},
+      link/.style={-latex, thick, black!60}
+    ]{1}{24}                          % weeks 1 to 24
 
+    \gantttitle{Week}{24} \\
+    \gantttitlelist{1,...,24}{1} \\
+
+    \ganttgroup{Research}{1}{6} \\
+    \ganttbar[name=lit]{Literature review}{1}{4} \\
+    \ganttbar[name=req]{Requirements}{3}{6} \\
+
+    \ganttgroup{Implementation}{6}{18} \\
+    \ganttbar[name=data]{Dataset generation}{6}{9} \\
+    \ganttbar[name=cnn]{CNN training}{9}{15} \\
+    \ganttbar[name=gui]{GUI development}{12}{18} \\
+    \ganttmilestone[name=proto]{Prototype complete}{15} \\
+
+    \ganttgroup{Evaluation}{16}{22} \\
+    \ganttbar[name=study]{User study}{17}{20} \\
+    \ganttbar[name=write]{Dissertation writing}{16}{24} \\
+    \ganttmilestone{Submission}{24}
+
+    \ganttlink{lit}{req}
+    \ganttlink{data}{cnn}
+    \ganttlink{cnn}{proto}
+    \ganttlink{gui}{study}
+  \end{ganttchart}%
+  }
+  \caption{Project plan.}
+  \label{fig:gantt}
+\end{figure}
 \section{GenAI Summary}
 Generative AI was used for LaTex debugging, and grammatical as well as spelling errors. It was also used to help with formatting certain parts of the structure, but all the written body is in my own words. Every reference and citation I have found without the use of generative ai.
 

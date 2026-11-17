@@ -39,12 +39,12 @@
 \contentsline {section}{\numberline {5.2}Proposed Work}{20}{section.5.2}%
 \contentsline {chapter}{\numberline {A}Appendix A}{21}{appendix.A}%
 \contentsline {section}{\numberline {A.1}Risk Analysis}{21}{appendix.A.1}%
-\contentsline {section}{\numberline {A.2}PLES}{21}{appendix.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}Professional Issues}{21}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}Legal Issues}{22}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{22}{subsection.A.2.3}%
-\contentsline {subsection}{\numberline {A.2.4}Social Issues}{22}{subsection.A.2.4}%
-\contentsline {section}{\numberline {A.3}Gantt Chart}{23}{appendix.A.3}%
-\contentsline {section}{\numberline {A.4}GenAI Summary}{23}{appendix.A.4}%
-\contentsline {section}{\numberline {A.5}Glossary}{23}{appendix.A.5}%
-\contentsline {chapter}{References}{24}{appendix*.9}%
+\contentsline {section}{\numberline {A.2}PLES}{22}{appendix.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Professional Issues}{22}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}Legal Issues}{23}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{23}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}Social Issues}{23}{subsection.A.2.4}%
+\contentsline {section}{\numberline {A.3}Gantt Chart}{24}{appendix.A.3}%
+\contentsline {section}{\numberline {A.4}GenAI Summary}{24}{appendix.A.4}%
+\contentsline {section}{\numberline {A.5}Glossary}{24}{appendix.A.5}%
+\contentsline {chapter}{References}{25}{appendix*.9}%
