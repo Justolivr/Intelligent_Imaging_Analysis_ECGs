@@ -112,50 +112,115 @@ The tool could help students learn about ECG interpretation, and systems that re
 
 For the environment, training deep models use a lot of energy. The project limits this using a small model, and pretrained weight if possible.
 \section{Gantt Chart}
-\label{sec:gantt}
-\begin{figure}[!ht]
+
+\begin{figure}[H]
   \centering
-  \resizebox{\linewidth}{!}{%
+  \makebox[\linewidth][c]{%
   \begin{ganttchart}[
-      hgrid,                          % horizontal grid lines
-      vgrid,                          % vertical grid lines
-      x unit=0.55cm,                  % width of one week
-      y unit chart=0.6cm,             % height of one row
-      time slot format=simple,        % plain numbers instead of dates
-      title label font=\scriptsize,
+      hgrid,
+      vgrid={*1{black!25, dotted}},
+      x unit=1.0cm,
+      y unit title=0.9cm,
+      y unit chart=0.9cm,
+      time slot format=simple,
+      title label font=\normalsize\bfseries,
+      bar label font=\large,
+      group label font=\large\bfseries,
+      milestone label font=\large\itshape,
+      bar height=0.55,
       bar/.append style={fill=blue!30},
       group/.append style={fill=black!70},
       milestone/.append style={fill=red!60},
       link/.style={-latex, thick, black!60}
-    ]{1}{24}                          % weeks 1 to 24
+    ]{1}{12}
 
-    \gantttitle{Week}{24} \\
-    \gantttitlelist{1,...,24}{1} \\
+    \gantttitle{Week}{12} \\
+    \gantttitlelist{1,...,12}{1} \\
 
-    \ganttgroup{Research}{1}{6} \\
-    \ganttbar[name=lit]{Literature review}{1}{4} \\
-    \ganttbar[name=req]{Requirements}{3}{6} \\
+    \ganttgroup{D1 report}{1}{12} \\
+    \ganttbar[name=supervisor]{Supevisor Selection}{1}{3} \\
+    \ganttbar[name=topic]{Topic Selection}{1}{3} \\
+    \ganttbar[name=abs]{Abstract}{3}{3} \\
+    \ganttbar[name=intro]{Introduction}{3}{4} \\
+    \ganttbar[name=lit]{Literature review}{4}{7} \\
+    \ganttbar[name=meth]{Methodology}{7}{8} \\
+    \ganttbar[name=req]{Requirements}{8}{8} \\
+    \ganttbar[name=pp]{Project Plan}{8}{9} \\
+    \ganttbar[name=feasi]{Feasibility}{9}{10} \\
+    \ganttbar[name=conc]{Conclusion}{10}{10} \\
+    \ganttbar[name=prt]{Prototypes}{9}{11} \\
+    \ganttbar[name=appe]{Appendix}{3}{11} \\
+    \ganttbar[name=ethics]{Ethics form}{3}{7} \\
+    \ganttmilestone[name=esub]{Ethics Submission}{7} \\
+    \ganttmilestone[name=dsub]{D1 and D2 submission}{11} \\
 
-    \ganttgroup{Implementation}{6}{18} \\
-    \ganttbar[name=data]{Dataset generation}{6}{9} \\
-    \ganttbar[name=cnn]{CNN training}{9}{15} \\
-    \ganttbar[name=gui]{GUI development}{12}{18} \\
-    \ganttmilestone[name=proto]{Prototype complete}{15} \\
-
-    \ganttgroup{Evaluation}{16}{22} \\
-    \ganttbar[name=study]{User study}{17}{20} \\
-    \ganttbar[name=write]{Dissertation writing}{16}{24} \\
-    \ganttmilestone{Submission}{24}
-
-    \ganttlink{lit}{req}
-    \ganttlink{data}{cnn}
-    \ganttlink{cnn}{proto}
-    \ganttlink{gui}{study}
+    \ganttlink{topic}{abs}
+    \ganttlink{abs}{intro}
+  
+    \ganttlink{intro}{lit}
+    \ganttlink{lit}{meth}
+    \ganttlink{meth}{req}
+    \ganttlink{req}{pp}
+    \ganttlink{pp}{feasi}
+    \ganttlink{feasi}{conc}
+    \ganttlink{conc}{prt}
+    \ganttlink{appe}{dsub}
+    \ganttlink{ethics}{esub}
   \end{ganttchart}%
   }
-  \caption{Project plan.}
-  \label{fig:gantt}
+  \caption{Project plan for Semester 1.}
+  \label{fig:gantt-s1}
 \end{figure}
+\clearpage
+
+% ================= Semester 2 =================
+\begin{figure}[H]
+  \centering
+  \makebox[\linewidth][c]{%
+  \begin{ganttchart}[
+      hgrid,
+      vgrid={*1{black!25, dotted}},
+      x unit=1.25cm,
+      y unit title=0.9cm,
+      y unit chart=1.1cm,
+      time slot format=simple,
+      title label font=\normalsize\bfseries,
+      bar label font=\large,
+      group label font=\large\bfseries,
+      milestone label font=\large\itshape,
+      bar height=0.55,
+      bar/.append style={fill=blue!30},
+      group/.append style={fill=black!70},
+      milestone/.append style={fill=red!60},
+      link/.style={-latex, thick, black!60}
+    ]{1}{12}
+
+    \gantttitle{Week}{12} \\
+    \gantttitlelist{1,...,12}{1} \\
+
+    \ganttgroup{Implementation}{1}{12} \\
+    \ganttbar[name=data]{Image generation}{1}{3} \\
+    \ganttbar[name=pre]{Preprocessing}{2}{4} \\
+    \ganttbar[name=cnn]{CNN training}{3}{7} \\
+    \ganttbar[name=pt]{Pretrained comparison}{6}{8} \\
+    \ganttbar[name=heat]{Heatmaps \& explanations}{7}{9} \\
+    \ganttbar[name=gui]{GUI development}{4}{9} \\
+    \ganttmilestone[name=proto]{Working prototype}{9} \\
+    \ganttbar[name=study]{User study}{9}{11} \\
+    \ganttbar{Evaluation \& results}{10}{11} \\
+    \ganttbar{Dissertation writing}{6}{12} \\
+    \ganttmilestone{Final submission}{12}
+
+    \ganttlink{data}{cnn}
+    \ganttlink{cnn}{pt}
+    \ganttlink{cnn}{heat}
+    \ganttlink{proto}{study}
+  \end{ganttchart}%
+  }
+  \caption{Project plan for Semester 2.}
+  \label{fig:gantt-s2}
+\end{figure}
+\clearpage
 \section{GenAI Summary}
 Generative AI was used for LaTex debugging, and grammatical as well as spelling errors. It was also used to help with formatting certain parts of the structure, but all the written body is in my own words. Every reference and citation I have found without the use of generative ai.
 

@@ -45,6 +45,6 @@
 \contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{23}{subsection.A.2.3}%
 \contentsline {subsection}{\numberline {A.2.4}Social Issues}{23}{subsection.A.2.4}%
 \contentsline {section}{\numberline {A.3}Gantt Chart}{24}{appendix.A.3}%
-\contentsline {section}{\numberline {A.4}GenAI Summary}{24}{appendix.A.4}%
-\contentsline {section}{\numberline {A.5}Glossary}{24}{appendix.A.5}%
-\contentsline {chapter}{References}{25}{appendix*.9}%
+\contentsline {section}{\numberline {A.4}GenAI Summary}{26}{appendix.A.4}%
+\contentsline {section}{\numberline {A.5}Glossary}{26}{appendix.A.5}%
+\contentsline {chapter}{References}{27}{appendix*.9}%
