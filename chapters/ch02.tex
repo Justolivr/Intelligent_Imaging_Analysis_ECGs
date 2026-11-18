@@ -22,12 +22,12 @@ illumination of the scene and the proportion of light its surface reflects
 \cite{stockham_image_1972}: \[f(x,y) = i(x,y)\,r(x,y),\]
 where $i$ is the illumination and $r$ is the reflectance, bounded by 0 (total
 absorption) and 1 (total reflection). As $i$ can change whilst $r$ stays the
-same, one object can look different under different lighting. In the same way, a single \textbf{ECG}
-trace can form many different images. Signals like \textbf{ECGs} are often continuous. As computers have insufficient memory to store continuous
+same, one object can look different under different lighting. In the same way, a single ECG
+trace can form many different images. ECG signals are often continuous. As computers have insufficient memory to store continuous
 functions, images are instead digitised by sampling, which divides the image into a grid
 of pixels, and quantisation, which rounds each value to one of a finite number of
 intensity levels. A higher sample rate produces a higher resolution. The quantisation step is irreversible, as rounding up or down discards any difference (albeit at 8 bits per pixel
-this loss is rarely visible).\cite{gonzalez_digital_2018}.
+this loss is rarely visible)\cite{gonzalez_digital_2018}.
 
 Image enhancement makes an image more suitable for a task, whereas image restoration fixes found degradations. One technique that is used is \textbf{Histogram equalisation (HE)}, which spreads pixel values across
 the full intensity range. Whilst this increases contrast, the drawback is it handles local detail poorly. An updated version named \textbf{contrast-limited adaptive histogram equalisation (CLAHE)} instead works on local
@@ -142,9 +142,9 @@ all distort it.
   \label{fig:ecg-grid}
 \end{figure}
 
-Abnormalities are grouped by what they affect. Abnormal heart
+Abnormalities are grouped by what they affect. For example, abnormal heart
 rates and rhythms are known as arrhythmias \cite{nhs_heart_2018}; they include atrial
-fibrillation and atrial flutter % put in glossary mate 
+fibrillation and atrial flutter 
 , where beats are irregularly spaced and clear P waves are absent
 \cite{van_gelder_2024_2024}, and atrial flutter, which shows a regular saw-tooth
 pattern in the inferior leads \cite{cosio_atrial_2017}. Conduction disturbances such as
@@ -166,15 +166,18 @@ information the classifier must use: the shape of each beat, and the timing betw
 Although ECGs are recorded digitally, they are often scanned, photographed, or printed. Such images cannot be used directly by software that expects
 signalled data \cite{shivashankara_ecg-image-kit_2024}. Physical ECGs also vary widely. The
 ECG-Image-Database, for example, contains printed ECGs that were scanned or photographed under different lighting conditions, artifacts on the image and camera angles \cite{reyna_ecg-image-database_2024}. This is the illumination and reflectance
-effect of Section~\ref{sec:image-processing} at work, and its consequence was reported in practice: \textcite{gliner_domain_2023} needed to adaptation to the domain to retrain a model from scans to captured images. To further add, image resolution also limits how accurately the trace can be read, therefore it directly limits the timing measurements that some classes depend on.
-
-There are two approaches that address the problem. Digitisation reconstructs the  signal
+effect of Section~\ref{sec:image-processing} at work, and its consequence was reported in practice: \textcite{gliner_domain_2023} needed to adaptation to the domain to retrain a model from scans to captured images. To further add, image resolution also limits how accurately the trace can be read, therefore it directly limits the timing measurements that some classes depend on. There are two approaches that address the problem.
+\subsection{ECG Digitisation Approach}
+\label{sec:digitisation}
+ Digitisation reconstructs the  signal
 from the image so that signal-based methods can be applied. Whilst this produces
-measurable intervals, it needs several steps (locating the grid, separating the leads
-and tracing each waveform). Additionally, a single error at any step will carry through to the
-reconstructed signal. The George B.\ Moody PhysioNet Challenge 2024, for example,
+measurable intervals, it needs several instructions (locating the grid, separating the leads
+and tracing each waveform). Additionally, any single error at any step will carry through to the reconstructed signal. The George B.\ Moody PhysioNet Challenge 2024, for example,
 evaluated digitisation by the \textbf{signal-to-noise ratio (SNR)} of the recovered
-signal \cite{physionet_challenge_2024}. The other option is to classify the image directly (Section~\ref{sec:ml-ecg}), which avoids reconstruction, but the model must then learn the timing from pixels. This means its results depend on how the images were produced, which is the generalisation problem of Section~\ref{sec:medical-imaging}.Data for this approach have been taken from 2 sources. \textit{ECG-Image-Kit} generates
+signal \cite{physionet_challenge_2024}. 
+\subsection{Direct Classification Approach}
+\label{sec:direct-classification}
+The other option is to classify the image directly (Section~\ref{sec:ml-ecg}), which avoids reconstruction, but the model must then learn the timing from pixels. This means its results depend on how the images were produced, which is the generalisation problem of Section~\ref{sec:medical-imaging}.Data for this approach have been taken from 2 sources. \textit{ECG-Image-Kit} generates
 synthesized ECG images from real signals, with the addition of artefacts
 \cite{shivashankara_ecg-image-kit_2024}. The \textit{ECG-Image-Database} provides about 36,000
 images by combining records from PTB-XL and Emory Healthcare that were printed, degraded, % mention Emory Healthcare
@@ -216,7 +219,41 @@ alternative is learned features, where a \textbf{CNN} builds its features direct
 \cite{lecun_deep_2015}. This indicates that no one has to decide in advance what to measure.
 Hand-designed features are easy to interpret, but depend on every previous step succeeding, as a missed beat or a broken trace corrupts every feature that follows. Learned
 features avoid this dependency, but also are harder to explain and need a large labelled
-dataset to be trained on.
+dataset to be trained on. Figure~\ref{fig:feature-extraction} compares the two routes.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      node distance=6mm and 8mm,
+      box/.style={draw, rounded corners=2pt, align=center, minimum height=11mm,
+                  text width=24mm, fill=#1},
+      box/.default=white,
+      arr/.style={-{Latex[length=2mm]}, thick}
+    ]
+    \node[box=black!8] (img) at (0,0) {ECG image};
+    \node[box=blue!12] (det) at (38mm,13mm) {Trace and beat detection};
+    \node[box=blue!12] (meas) at (72mm,13mm) {Measured features\\[-1pt]\footnotesize RR, HR, QRS width};
+    \node[box=orange!15] (conv) at (38mm,-13mm) {CNN layers\\[-1pt]\footnotesize edges $\rightarrow$ waves};
+    \node[box=orange!15] (learn) at (72mm,-13mm) {Learned feature vector};
+    \node[box=black!8] (clf) at (110mm,0) {Classifier\\[-1pt]\footnotesize class scores};
+
+    \draw[arr] (img.east) -- (det.west);
+    \draw[arr] (det) -- (meas);
+    \draw[arr] (meas.east) -- (clf.west);
+    \draw[arr] (img.east) -- (conv.west);
+    \draw[arr] (conv) -- (learn);
+    \draw[arr] (learn.east) -- (clf.west);
+
+    % route labels
+    \node[above=1mm of meas.north west, anchor=south west, font=\footnotesize\itshape, text=blue!60!black] {Hand-designed: interpretable, fragile};
+    \node[below=1mm of learn.south west, anchor=north west, font=\footnotesize\itshape, text=orange!60!black] {Learned: robust, needs data, harder to explain};
+  \end{tikzpicture}
+  \caption{Hand-designed and learned feature extraction from an ECG image. This project
+    will combine both routes: timing features from detected beats are passed to the
+    classifier alongside the features the CNN learns.}
+  \label{fig:feature-extraction}
+\end{figure}
 
 This project uses both. A \textbf{CNN} learns shape-based features from the image, which suits the diagnostic superclasses.The rhythm classes depend on the spacing between beats, which a model can only judge correctly
 if the scale is consistent across images. Measured timing features from the
