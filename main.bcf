@@ -2475,10 +2475,10 @@
     <bcf:citekey order="99" intorder="1">gliner_domain_2023</bcf:citekey>
     <bcf:citekey order="100" intorder="1">wang_pipeline_2025</bcf:citekey>
     <bcf:citekey order="101" intorder="1">chen_quantifying_2022</bcf:citekey>
-    <bcf:citekey order="102" intorder="1">wagner_ptbxl_2020</bcf:citekey>
-    <bcf:citekey order="103" intorder="1">reyna_ecg-image-database_2024</bcf:citekey>
-    <bcf:citekey order="104" intorder="1">chicco_advantages_2020</bcf:citekey>
-    <bcf:citekey order="105" intorder="1">pan_real-time_1985</bcf:citekey>
+    <bcf:citekey order="102" intorder="1">pan_real-time_1985</bcf:citekey>
+    <bcf:citekey order="103" intorder="1">wagner_ptbxl_2020</bcf:citekey>
+    <bcf:citekey order="104" intorder="1">reyna_ecg-image-database_2024</bcf:citekey>
+    <bcf:citekey order="105" intorder="1">chicco_advantages_2020</bcf:citekey>
     <bcf:citekey order="106" intorder="1">wagner_ptbxl_2020</bcf:citekey>
     <bcf:citekey order="107" intorder="1">dhutia_interrater_2017</bcf:citekey>
     <bcf:citekey order="108" intorder="1">bradski_opencv_2000</bcf:citekey>
