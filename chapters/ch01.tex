@@ -16,8 +16,7 @@ Chapter~\ref{ch:lit} shows that it is limited in four ways:
   \item Explanations are rarely evaluated in depth.
   \item There is little data gathered about how results should be displayed to a wide range of users.
 \end{enumerate}
-Developing a system that flags possible cardiac abnormalities from real and synthesized ECG images, stating how confident its output is to the user, and showing the steps it took to reach that conclusion, would address these gaps. [TODO: tighten this to match the final
-wording of your Chapter~\ref{ch:lit} gaps.]
+Developing a system that flags possible cardiac abnormalities from real and synthesized ECG images, stating how confident its output is to the user, and showing the steps it took to reach that conclusion, would address these gaps.
 
 \section{Aim and Objectives}
 
@@ -36,16 +35,12 @@ The objectives are:
         reporting calibration error per class.
   \item \textbf{O6:} Provide Grad-CAM explanations and a GUI with views suited to different users, and evaluate it with a small user study.
 \end{enumerate}
-
-\section{Problems to Be Solved}
-Completing the objectives above means fixing several gaps. Models trained on rendered images may not work on real ones, and the gap may have originated from rendering shortcuts (O3, O4). An additional issue is that printed ECGs carry the timing/voltage scales through the grid only, so any preprocessing must not destroy it (O2). Currently, labels from publicly available datasets come from very few annotators. To further this point, current classes are imbalanced between normal and abnormal images, which limits our training and evaluation sets (O3).
-Lastly, explanations and scores are only inherently useful if multiple users can understand, and semi-trust it (O5,O6). 
 \section{Structure of the Dissertation}
 
 Chapter~\ref{ch:lit} reviews the literature on image processing, ECG fundamentals, ECG
 imaging, feature extraction, waveform detection and machine-learning methods, and ends
 with the gaps this project addresses. Chapter~\ref{ch:method} sets out the research
-questions, requirements and methods, linking each to an objective. Chapter~\ref{ch:feas}
+questions, requirements and methods, linking each to an objective. Chapter~\ref{ch:feasibility}
 presents the preliminary work, design and evaluation strategy that show the project is
 feasible. Chapter~\ref{ch:conc} summarises the document and the plan for the next
 stage.
