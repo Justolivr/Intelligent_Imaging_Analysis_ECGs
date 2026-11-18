@@ -5,11 +5,12 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces An ECG paper trace}}{6}{figure.2.3}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Hand-designed and learned feature extraction from an ECG image. This project will combine both routes: timing features from detected beats are passed to the classifier alongside the features the CNN learns.}}{9}{figure.2.4}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Project workflow. Phase 6 is optional and is dropped first if the schedule slips.}}{14}{figure.3.1}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Planned system pipeline.}}{18}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces A clean rendering of PTB-XL record 00001\_lr with ECG-Image-Kit \blx@tocontentsinit {0}\cite {shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}}{19}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Preprocessing steps applied to a rendered ECG image.}}{19}{figure.4.3}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Planned system pipeline.}}{19}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces A clean rendering of PTB-XL record 00001\_lr with ECG-Image-Kit \blx@tocontentsinit {0}\cite {shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}}{20}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Preprocessing steps applied to a rendered ECG image.}}{20}{figure.4.3}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Project plan for Semester 1.}}{25}{figure.A.1}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Project plan for Semester 2.}}{26}{figure.A.2}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Project plan for Semester 1.}}{26}{figure.A.1}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Project plan for Semester 2.}}{27}{figure.A.2}%

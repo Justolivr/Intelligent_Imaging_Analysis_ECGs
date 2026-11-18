@@ -27,26 +27,26 @@
 \contentsline {chapter}{\numberline {3}Methodology}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Research Goals}{13}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Project Requirements}{13}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Development Plan}{13}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Evaluation Strategy}{14}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Feasibility}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Coding Environment}{17}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Datasets}{17}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Design}{18}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Prototypes}{18}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Risks}{19}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Summary}{20}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Conclusion}{21}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Motivation and Goals}{21}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Proposed Work}{21}{section.5.2}%
-\contentsline {chapter}{\numberline {A}Appendix A}{22}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Risk Analysis}{22}{appendix.A.1}%
-\contentsline {section}{\numberline {A.2}PLES}{23}{appendix.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}Professional Issues}{23}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}Legal Issues}{24}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{24}{subsection.A.2.3}%
-\contentsline {subsection}{\numberline {A.2.4}Social Issues}{24}{subsection.A.2.4}%
-\contentsline {section}{\numberline {A.3}Gantt Chart}{25}{appendix.A.3}%
-\contentsline {section}{\numberline {A.4}GenAI Summary}{27}{appendix.A.4}%
-\contentsline {section}{\numberline {A.5}Glossary}{27}{appendix.A.5}%
-\contentsline {chapter}{References}{28}{appendix*.9}%
+\contentsline {section}{\numberline {3.3} Project Development Process}{13}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Evaluation Strategy}{15}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Feasibility}{18}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Coding Environment}{18}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Datasets}{18}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Design}{19}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Prototypes}{19}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Risks}{20}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Summary}{21}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Conclusion}{22}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Motivation and Goals}{22}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Proposed Work}{22}{section.5.2}%
+\contentsline {chapter}{\numberline {A}Appendix A}{23}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Risk Analysis}{23}{appendix.A.1}%
+\contentsline {section}{\numberline {A.2}PLES}{24}{appendix.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Professional Issues}{24}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}Legal Issues}{25}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{25}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}Social Issues}{25}{subsection.A.2.4}%
+\contentsline {section}{\numberline {A.3}Gantt Chart}{26}{appendix.A.3}%
+\contentsline {section}{\numberline {A.4}GenAI Summary}{28}{appendix.A.4}%
+\contentsline {section}{\numberline {A.5}Glossary}{28}{appendix.A.5}%
+\contentsline {chapter}{References}{29}{appendix*.9}%

@@ -89,11 +89,44 @@ The table below shows each part of the system and its importance, in order of de
   \end{tabular}
 \end{table}
 
-\section{Development Plan}
+\section{ Project Development Process}
 \label{sec:dev-plan}
 
 The work is divided into seven phases. Each phase produces a result that the next one needs, and the corresponding Gantt Chart is in Appendix~\ref{app:gantt}.
 
+\begin{figure}[H]
+  \centering
+  \makebox[\linewidth][c]{%
+  \begin{tikzpicture}[
+      font=\small,
+      phase/.style={draw, rounded corners=2pt, align=center, text width=30mm,
+                    minimum height=15mm, fill=#1},
+      phase/.default=blue!10,
+      arr/.style={-{Latex[length=2mm]}, thick}
+    ]
+    \node[phase] (p1) at (0,0)     {\textbf{Phase 1}\\Preparing data\\\footnotesize(O1)};
+    \node[phase] (p2) at (38mm,0)  {\textbf{Phase 2}\\Image processing\\\& timing\\\footnotesize(O2)};
+    \node[phase] (p3) at (76mm,0)  {\textbf{Phase 3}\\Model development\\\footnotesize(O3, O4)};
+    \node[phase] (p4) at (114mm,0) {\textbf{Phase 4}\\Calibration \& explanation\\\footnotesize(O5, O6)};
+    \node[phase=orange!12] (p5) at (114mm,-26mm) {\textbf{Phase 5}\\Integration \& testing\\\footnotesize(O6)};
+    \node[phase=black!5, dashed] (p6) at (76mm,-26mm) {\textbf{Phase 6}\\Advanced features\\\footnotesize(optional)};
+    \node[phase=green!12] (p7) at (38mm,-26mm) {\textbf{Phase 7}\\Evaluation \& review\\\footnotesize(all)};
+
+    \draw[arr] (p1) -- (p2);
+    \draw[arr] (p2) -- (p3);
+    \draw[arr] (p3) -- (p4);
+    \draw[arr] (p4) -- (p5);
+    \draw[arr, dashed] (p5) -- (p6);
+    \draw[arr, dashed] (p6) -- (p7);
+    \draw[arr] (p5.south) -- ++(0,-5mm) -| node[pos=0.25, below, font=\scriptsize]{tested system} (p7.south);
+
+    % fallback
+    \draw[arr, dotted, red!70!black] (p2.north) -- ++(0,5mm) -| node[pos=0.25, above, font=\scriptsize]{fallback: image only if detection fails} (p3.north);
+  \end{tikzpicture}%
+  }
+  \caption{Project workflow. Phase 6 is optional and is dropped first if the schedule slips.}
+  \label{fig:workflow}
+\end{figure}
 \textbf{Phase 1: Preparing Data (O1).} The first phase builds the datasets. Training images for the CNN are rendered from PTB-XL, using ECG-Image-Kit, with the labels for the five
 diagnostic superclasses and the four rhythm classes, and the records are split by patient. A separate test set is prepared from ECG-Image-Database, and the labels these images carry are checked so that it is clear which
 classes can be evaluated on them. The class counts are recorded early, since rare classes such as atrial flutter may need to be reported separately.
