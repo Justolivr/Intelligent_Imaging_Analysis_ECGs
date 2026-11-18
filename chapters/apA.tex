@@ -137,7 +137,7 @@ For the environment, training deep models use a lot of energy. The project limit
     \gantttitle{Week}{12} \\
     \gantttitlelist{1,...,12}{1} \\
 
-    \ganttgroup{D1 report}{1}{12} \\
+    \ganttgroup{D1 report}{1}{11} \\
     \ganttbar[name=supervisor]{Supevisor Selection}{1}{3} \\
     \ganttbar[name=topic]{Topic Selection}{1}{3} \\
     \ganttbar[name=abs]{Abstract}{3}{3} \\
@@ -198,23 +198,33 @@ For the environment, training deep models use a lot of energy. The project limit
     \gantttitle{Week}{12} \\
     \gantttitlelist{1,...,12}{1} \\
 
-    \ganttgroup{Implementation}{1}{12} \\
-    \ganttbar[name=data]{Image generation}{1}{3} \\
-    \ganttbar[name=pre]{Preprocessing}{2}{4} \\
-    \ganttbar[name=cnn]{CNN training}{3}{7} \\
-    \ganttbar[name=pt]{Pretrained comparison}{6}{8} \\
-    \ganttbar[name=heat]{Heatmaps \& explanations}{7}{9} \\
+    \ganttgroup{Implementation}{1}{11} \\
+    \ganttbar[name=env]{Environment Setup}{1}{1} \\
+    \ganttbar[name=img-gen]{Image generation}{2}{2} \\
+    \ganttbar[name=pre]{Preprocessing}{3}{3} \\
+    \ganttbar[name=cnn-creat]{CNN creation}{4}{5} \\
+    \ganttbar[name=cnn-train]{CNN training}{5}{7} \\
+    \ganttbar[name=heat]{Heatmaps}{7}{7} \\
+    \ganttbar[name=exp]{Explanations}{8}{8} \\
     \ganttbar[name=gui]{GUI development}{4}{9} \\
     \ganttmilestone[name=proto]{Working prototype}{9} \\
     \ganttbar[name=study]{User study}{9}{11} \\
-    \ganttbar{Evaluation \& results}{10}{11} \\
-    \ganttbar{Dissertation writing}{6}{12} \\
-    \ganttmilestone{Final submission}{12}
+    \ganttbar[name=eval]{Evaluation \& results}{10}{11} \\
+    \ganttbar[name=d3]{Dissertation writing}{6}{11} \\
+    \ganttmilestone[name=d3sub]{Final submission}{11} \\
 
-    \ganttlink{data}{cnn}
-    \ganttlink{cnn}{pt}
-    \ganttlink{cnn}{heat}
+    \ganttlink{env}{img-gen}
+    \ganttlink{img-gen}{pre}
+    \ganttlink{pre}{cnn-creat}
+    \ganttlink{cnn-creat}{cnn-train}
+    \ganttlink{cnn-train}{heat}
+    \ganttlink{heat}{exp}
+    \ganttlink{gui}{proto}
+    \ganttlink{exp}{proto}
     \ganttlink{proto}{study}
+    \ganttlink{study}{eval}
+    \draw[-latex, thick, black!60] (eval.east) -- (d3sub.north); % Added to stop overlapping
+    \draw[-latex, thick, black!60] (d3.east) -- (d3sub.north);
   \end{ganttchart}%
   }
   \caption{Project plan for Semester 2.}
