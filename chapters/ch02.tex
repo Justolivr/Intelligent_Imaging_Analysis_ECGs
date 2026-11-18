@@ -280,7 +280,7 @@ uses waveform detection to find the trace and the beats, whilst supplying  the t
 alongside the learned image features. It will evaluate the detection step on real-world images
 and not only on rendered ones.
 
-\section{AI/ML Algorithms for ECG Analysis}
+\section{ECG Classification Algorithms}
 \label{sec:ml-ecg}
 
 Deep learning has largely replaced feature-based methods for \textbf{ECG}classification
@@ -342,6 +342,8 @@ further limit. PTB-XL's labels come from at most two cardiologists
 \cite{wagner_ptbxl_2020}, and agreement between cardiologists can be only poor to moderate
 \cite{dhutia_interrater_2017}, so a high AUROC partly measures agreement with imperfect labels. Studies also use different datasets, label sets and metrics (F1, specificity,
 AUROC), so their "headline" numbers cannot be ranked directly.
+\section{ECG Dataset Evaluation}
+\label{sec:ml-eval}
 
 Evaluation therefore needs particular care. ECG datasets are imbalanced, so accuracy can be high even when rare conditions are missed. Measures like sensitivity, specificity and the Matthews correlation coefficient give a more truthful picture % matthews correlation
 \cite{chicco_advantages_2020}. Data should be split by patient, for which PTB-XL
@@ -376,7 +378,45 @@ studies above report discrimination in measures like AUROC. Third, explanations 
 all, and only 11\% involved clinicians \cite{salih_review_2024}. Fourth, how results are presented matters and depends on the user. In interviews with 23 clinicians, accuracy mattered more than explanation, and visualisations of what the algorithm analysed were preferred \cite{hughes-noehrer_contrasting_2024}. Another simulated-AI experiment with 44
 cardiologists found that explanations raised the trust of novices more than experts and could be misunderstood \cite{cabitza_painting_2023}. Datasets also reflect limited populations and
 recording conditions: PTB-XL, for instance, was collected between 1989 and 1996 using devices from a single manufacturer \cite{wagner_ptbxl_2020}, so models may not generalise
-to other settings.
+to other settings. Table~\ref{tab:existing-systems} summarises the systems discussed.
+
+\begin{table}[ht]
+  \centering
+  \footnotesize
+  \caption{Comparison of existing ECG analysis systems and the planned system.}
+  \label{tab:existing-systems}
+  \begin{tabular}{@{}p{0.17\linewidth} p{0.17\linewidth} p{0.27\linewidth} p{0.31\linewidth}@{}}
+    \toprule
+    \textbf{System} & \textbf{Input} & \textbf{Key features} & \textbf{Limitations} \\
+    \midrule
+    Computer interpretation in ECG machines \cite{schlapfer_computer-interpreted_2017} &
+      Digital signal at recording &
+      Immediate automated report for most ECGs recorded &
+      Limited accuracy, so needs over-reading by an experienced reader; cannot analyse printouts or images \\
+    \textcite{sangha_automated_2022} &
+      Images generated from signals &
+      CNN on images; tested on held-out, external and printed ECGs &
+      Trained on images generated from signals; reports discrimination only, not calibration \\
+    \textcite{gliner_domain_2023} &
+      Scanned images; phone-captured frames &
+      Domain adaptation from scans to phone-captured images &
+      Phone images made by filming printed pages; only six unseen formats tested \\
+    \textcite{wang_pipeline_2025} &
+      Synthetic and external scanned images &
+      Challenge-winning pipeline; ConvNeXt fine-tuned on synthetic then external images &
+      Evaluated on synthetic PTB-XL images, with possible leakage inflating results \\
+    \textcite{chen_quantifying_2022} &
+      Digital signals &
+      Uncertainty estimates for atrial fibrillation detection; improved calibration error &
+      Signals only, one condition; not applied to images \\
+    \midrule
+    This project (planned) &
+      Rendered images for training; real images for testing &
+      Multi-label CNN with timing features; calibrated confidence per class; Grad-CAM; views for different users; user study &
+      Labels from at most two annotators; real-image test set limited to the ECG-Image-Database \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 These gaps define the aims of this project. A preprocessing and detection pipeline tested
 on real-world images addresses the first gap; a calibrated multi-label classifier
