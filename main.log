@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  18 NOV 2026 18:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  18 NOV 2026 19:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -886,7 +886,7 @@ Package biblatex Warning: The following entry could not be found
 )
 Package biblatex Info: Reference section=0 on input line 94.
 Package biblatex Info: Reference segment=0 on input line 94.
-<./images/HWUlogo.jpg, id=210, 455.7828pt x 227.6505pt>
+<./images/HWUlogo.jpg, id=214, 455.7828pt x 227.6505pt>
 File: ./images/HWUlogo.jpg Graphic file (type jpg)
 <use ./images/HWUlogo.jpg>
 Package pdftex.def Info: ./images/HWUlogo.jpg  used on input line 128.
@@ -958,19 +958,19 @@ Chapter 2.
 
 
 ]
-<images/OtsuSegmentation.jpg, id=396, 266.05592pt x 79.30513pt>
+<images/OtsuSegmentation.jpg, id=403, 266.05592pt x 79.30513pt>
 File: images/OtsuSegmentation.jpg Graphic file (type jpg)
 <use images/OtsuSegmentation.jpg>
 Package pdftex.def Info: images/OtsuSegmentation.jpg  used on input line 60.
 (pdftex.def)             Requested size: 169.7572pt x 50.60143pt.
  [4 <./images/OtsuSegmentation.jpg>]
-<images/LabelledHeartbeat.jpg, id=429, 301.87115pt x 297.39424pt>
+<images/LabelledHeartbeat.jpg, id=436, 301.87115pt x 297.39424pt>
 File: images/LabelledHeartbeat.jpg Graphic file (type jpg)
 <use images/LabelledHeartbeat.jpg>
 Package pdftex.def Info: images/LabelledHeartbeat.jpg  used on input line 114.
 (pdftex.def)             Requested size: 156.35603pt x 154.04236pt.
  [5]
-<images/ECGGrid.jpg, id=451, 675.52374pt x 387.4475pt>
+<images/ECGGrid.jpg, id=458, 675.52374pt x 387.4475pt>
 File: images/ECGGrid.jpg Graphic file (type jpg)
 <use images/ECGGrid.jpg>
 Package pdftex.def Info: images/ECGGrid.jpg  used on input line 139.
@@ -979,11 +979,7 @@ Package pdftex.def Info: images/ECGGrid.jpg  used on input line 139.
 
 LaTeX Warning: Citation 'wadehn_ecg_2024' on page 9 undefined on input line 276.
 
-[9] [10]
-
-LaTeX Warning: Reference `tab:existing-systems' on page 11 undefined on input line 381.
-
-)
+[9] [10])
 Overfull \hbox (6.34814pt too wide) in paragraph at lines 429--252
 \OT1/cmr/m/n/10.95 Reading an ECG from an im-age com-bines two prob-lems that the lit-er-a-ture has mostly treated 
  []
@@ -994,10 +990,13 @@ Overfull \hbox (6.34814pt too wide) in paragraph at lines 429--252
  (chapters/ch03.tex
 Chapter 3.
 
-LaTeX Warning: Reference `app:gantt' on page 13 undefined on input line 93.
+LaTeX Warning: Float too large for page by 101.85245pt on input line 90.
 
 
-Overfull \hbox (2.65245pt too wide) in paragraph at lines 93--94
+LaTeX Warning: Reference `app:gantt' on page 13 undefined on input line 95.
+
+
+Overfull \hbox (2.65245pt too wide) in paragraph at lines 95--96
 \OT1/cmr/m/n/10.95 The work is di-vided into seven phases. Each phase pro-duces a re-sult that the next one needs, 
  []
 
@@ -1008,15 +1007,15 @@ Overfull \hbox (2.65245pt too wide) in paragraph at lines 93--94
 
 ]
 
-LaTeX Warning: Reference `app:risks' on page 14 undefined on input line 119.
+LaTeX Warning: Reference `app:risks' on page 14 undefined on input line 121.
 
 
-Overfull \hbox (11.35172pt too wide) in paragraph at lines 130--149
+Overfull \hbox (11.35172pt too wide) in paragraph at lines 132--151
 \OT1/cmr/m/n/10.95 val-i-da-tion fold. Each class thresh-old is cho-sen on the val-i-da-tion fold to max-imise the Matthews 
  []
 
 [14]
-Overfull \hbox (15.13332pt too wide) in paragraph at lines 161--164
+Overfull \hbox (15.13332pt too wide) in paragraph at lines 163--166
 []\OT1/cmr/bx/n/10.95 Success cri-te-ria. \OT1/cmr/m/n/10.95 Cal-i-bra-tion er-ror is lower af-ter scal-ing for ev-ery class re-ported, the rendered- 
  []
 
@@ -1031,7 +1030,7 @@ Chapter 4.
 
 
 ]
-<images/rendered_vs_signal.png, id=644, 867.24pt x 325.215pt>
+<images/rendered_vs_signal.png, id=650, 867.24pt x 325.215pt>
 File: images/rendered_vs_signal.png Graphic file (type png)
 <use images/rendered_vs_signal.png>
 Package pdftex.def Info: images/rendered_vs_signal.png  used on input line 99.
@@ -1041,7 +1040,7 @@ Overfull \hbox (2.28601pt too wide) in paragraph at lines 95--105
 []\OT1/cmr/bx/n/10.95 Prototype 1: data and ren-der-ing. \OT1/cmr/m/n/10.95 PTB-XL was down-loaded, and its la-bels were mapped 
  []
 
-<images/prototype2_preprocessing.png, id=650, 1850.112pt x 953.2413pt>
+<images/prototype2_preprocessing.png, id=656, 1850.112pt x 953.2413pt>
 File: images/prototype2_preprocessing.png Graphic file (type png)
 <use images/prototype2_preprocessing.png>
 Package pdftex.def Info: images/prototype2_preprocessing.png  used on input line 111.
@@ -1175,33 +1174,24 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 9D3E35D25D98491A932DCA764A378E1F;6994
-(rerunfilecheck)             After:  F9241C541A819233D02F2809D438495B;7140.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: F9241C541A819233D02F2809D438495B;7140.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31767 strings out of 467310
- 644026 string characters out of 5402813
- 1468388 words of memory out of 5000000
- 60519 multiletter control sequences out of 15000+600000
+ 31768 strings out of 467310
+ 644040 string characters out of 5402813
+ 1471529 words of memory out of 5000000
+ 60520 multiletter control sequences out of 15000+600000
  639111 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  107i,11n,118p,946b,1482s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Ollie\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (40 pages, 3219267 bytes).
+Output written on main.pdf (40 pages, 3220428 bytes).
 PDF statistics:
- 950 PDF objects out of 1000 (max. 8388607)
+ 956 PDF objects out of 1000 (max. 8388607)
  178 named destinations out of 1000 (max. 500000)
- 451 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 459 words of extra memory for PDF output out of 10000 (max. 10000000)
 

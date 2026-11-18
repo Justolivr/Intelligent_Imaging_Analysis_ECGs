@@ -8,10 +8,10 @@ The project addresses one main question:
 \begin{quote}
 \emph{Can a CNN trained on rendered ECG images detect cardiac abnormalities and rhythm disorders in real ECG images, and how can its information be made reliable and understandable to users?}
 \end{quote} 
-It has three parts, each tied to the gaps identified
-in Chapter~\ref{ch:lit}:
+The main question is divided into three sub-questions (SQ1--SQ3), each tied to the gaps identified
+in Chapter~\ref{ch:lit} as well as the objectives in brackets:
 \begin{itemize}
-  \item \textbf{SQ1 (O1--O4):} How much does performance fall from rendered to real images, and how far do preprocessing and timing features reduce the fall?
+  \item \textbf{SQ1 (O1--O4):} How much does performance fall from rendered to real images, and how much does preprocessing and timing features reduce the fall?
   \item \textbf{SQ2 (O5):} How reliable is the model's confidence per class, and how much does temperature scaling improve it?
   \item \textbf{SQ3 (O6):} Do the explanations highlight the expected regions, and can students understand the confidence and explanation shown?
 \end{itemize}
@@ -32,57 +32,59 @@ The table below shows each part of the system and its importance, in order of de
     \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Requirement}} &
     \textcolor{white}{\textbf{MoSCoW}} & \textcolor{white}{\textbf{Objective}} \\
     \hline
-    FR01 & The user can upload an ECG image (scans or photos). & Must & O1, O6 \\
+    FR01 & The user must upload an ECG image (scans or photos). & Must & O1, O6 \\
     \hline
     FR02 & The system preprocesses the image. & Must & O2 \\
     \hline
-    FR03 & The system traces R peak. & Must & O2 \\
+    FR03 & The system detects the trace and locates the R peak. & Should & O2 \\
     \hline
-    FR04 & The system extracts \textbf{HR} and RR regularity. & Must & O2 \\
+    FR04 & The system extracts the heart rate (HR) and RR regularity from the detected beats. & Should & O2 \\
     \hline
-    FR05 & The system flags possible abnormalities across nine classes. & Must & O3 \\
+    FR05 & The system flags possible abnormalities for the five diagnostic superclasses. & Must & O3 \\
     \hline
-    FR06 & Each flag shows a confidence score & Must & O5 \\
+    FR06 & The system flags the four rhythm classes. & Should & O3 \\
     \hline
-    FR07 & A heatmap is overlaid on the original image for each flagged class. & Should & O6 \\
+    FR07 & Each flag shows a calibrated confidence score & Must & O5 \\
     \hline
-    FR08 & The interface shows measured values. & Should & O2,O6 \\
+    FR08 & A heatmap is overlaid on the original image for each flagged class. & Should & O6 \\
     \hline
-    FR09 & A plain language explanation of each flagged condition. & Should & O6 \\
+    FR09 & The interface shows measured values (HR, RR). & Should & O2,O6 \\
     \hline
-    FR10 & A labelled diagram of the waves for referencing. & Could & O6 \\
+    FR10 & A plain language explanation is shown for each flagged condition. & Should & O6 \\
     \hline
-    FR11 & A clinical view with a short flag list, and no teaching text. & Could & O6 \\
+    FR11 & A labelled diagram of the waves is avialble for reference. & Could & O6 \\
     \hline
-    FR12 & The user can export a result. & Could & O6 \\
+    FR12 & A clinical view shows a short flag list, and no teaching text. & Could & O6 \\
     \hline
-    FR13 & The user can save a result. & Could & O6 \\
+    FR13 & The user can export a result. & Could & O6 \\
     \hline
-    FR14 & The system warns the user if an image is too poor quality to analyse. & Should & O2 \\
+    FR14 & The user can save a result. & Could & O6 \\
     \hline
-    FR15 & Real-Time/Live ECG analysis & Won't & N/A \\ % as no equipment
+    FR15 & The system warns the user if an image is too poor quality to analyse. & Should & O2 \\
     \hline
-    FR16 & Advice on treatments, or diagnosis  & Won't & N/A \\
+    FR16 & Real-Time/Live ECG analysis. & Won't & N/A \\ % as no equipment
     \hline
-    NFR01 & System will return a result within a set time period (<10s) & Must & O6 \\
+    FR17 & Advice on treatments, or diagnosis.  & Won't & N/A \\
     \hline
-    NFR02 & Accuracy should be measured, with a target percentage for the main 5 classes & Must & O3 \\
+    NFR01 & System will return a result within 10\,s of upload on the devlopment PC & Must & O6 \\
     \hline
-    NFR03 & Stated confidence scores should match the accuracy of the model. & Must & O5 \\
+    NFR02 & The mean AUROC across the five diagnostic supperclasses on the rendered PTB-XL test fold is at least 0.85 & Must & O3 \\
     \hline
-    NFR04 & System must work on rendered to real images of varying quality & Must & O4 \\
+    NFR03 & After temperature scaling, the expected calibration error is at most 0.05 for each reported class on the test fold, and lower than before scaling. & Must & O5 \\
+    \hline
+    NFR04 & The fall in AUROC from the rendered test fold, to the real images, is measured for each class, with a target of at most 0.10 for the superclasses. & Should & O4 \\
     \hline   
-    NFR05 & Users can understand the output without previous training. & Should & O6 \\
+    NFR05 & Without prior training, at least 60\% of user-study participants correctly interpret the confidence score and heatmap, and the mean System Usability Scale (SUS) score is at least 68. & Should & O6 \\
     \hline 
-    NFR06 & Limitations of model are shown to the user. & Should & O6 \\
+    NFR06 & The results screen shows the model's limitations, like classes with few, real test images. & Should & O6 \\
     \hline
     NFR07 & Uploaded images are not shared or stored beyond the session. & Should & N/A \\
     \hline
-    NFR08 & Other users should be able to repeat my results. & Must & O3 \\
+    NFR08 & Results can be reproducef from the repository, using fixed random seeds, recorded versions, and scripts that regenerate the reported tables. & Must & O3 \\
     \hline
-    NFR09 & System can run on a standard machine. & Could & N/A \\
+    NFR09 & The trained system runs on a standard laptop, without a GPU (training excluded). & Could & N/A \\
     \hline
-    NFR10 & System should be maintainable for future devlopment. & Could & N/A \\
+    NFR10 & The pipeline, model and interface, are separate modules, with documented inputs and outputs, meaning one can be replaced without changing the others. & Could & N/A \\
     \hline
   \end{tabular}
 \end{table}
