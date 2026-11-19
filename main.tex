@@ -59,6 +59,7 @@
 %% -------------------------------------------------------
 \usepackage{pgfgantt}
 \usetikzlibrary{positioning,arrows.meta,fit}
+\usepackage{longtable}
 \usepackage{hyperref}
 \usepackage[table]{xcolor}
 \newcommand{\High}{\cellcolor{red!90}High}
@@ -88,7 +89,7 @@
     style=ieee,
     sorting=none
 ]{biblatex}
-
+\input{floatfix}
 \addbibresource{image_processing_bibliography.bib}
 
 \begin{document}

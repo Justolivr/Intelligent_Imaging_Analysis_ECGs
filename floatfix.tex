@@ -1,0 +1,41 @@
+% ---- Fit figures and tables closer to the text ----
+\renewcommand{\topfraction}{0.9}        % floats may fill 90% of the top of a page
+\renewcommand{\bottomfraction}{0.8}     % ... and 80% of the bottom
+\renewcommand{\textfraction}{0.07}      % a page needs only 7% text
+\renewcommand{\floatpagefraction}{0.8}  % float-only pages must be 80% full
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{5}
+\setlength{\textfloatsep}{10pt plus 2pt minus 4pt}  % gap between floats and text
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}       % gap between two floats
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}      % gap around [h] / [H] floats
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+
+% ---- Compact chapter headings (book class default leaves ~1/4 page blank) ----
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{0pt}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        {\Large\bfseries \@chapapp\space \thechapter}\par\nobreak
+        \vskip 6\p@
+      \fi
+    \fi
+    {\LARGE \bfseries #1}\par\nobreak
+    \vskip 18\p@}}
+\renewcommand{\@makeschapterhead}[1]{%
+  \vspace*{0pt}%
+  {\parindent \z@ \raggedright \normalfont
+    {\LARGE \bfseries #1}\par\nobreak
+    \vskip 18\p@}}
+\makeatother
+
+% ---- Slightly tighter spacing around section headings ----
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+  {-2.4ex \@plus -0.6ex \@minus -.2ex}{1.3ex \@plus .2ex}{\normalfont\Large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+  {-2ex \@plus -0.5ex \@minus -.2ex}{1ex \@plus .2ex}{\normalfont\large\bfseries}}
+\makeatother

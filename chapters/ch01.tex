@@ -3,44 +3,32 @@
 
 \section{Context and Motivation}
 
-The electrocardiogram (ECG) is one of the most common tests for the heart, and so reading it is vital for potential diagnosis and treatment. However, interpretation of these ECGs are difficult. One factor is clinicians can have varying opinions regarding the same trace \cite{dhutia_interrater_2017}. A secondary factor to that is that these readings need to be reviewed by experienced readers\cite{schlapfer_computer-interpreted_2017}. Concurrently, many ECG results are stored as physical media or photographed. Current implementations of ECG analysis are built for digital signals only, thus the information in the images are currently out of reach for any automated analysis \cite{shivashankara_ecg-image-kit_2024}.
+The electrocardiogram (ECG) is one of the most common heart tests, but interpretation is difficult: clinicians can disagree about the same trace \cite{dhutia_interrater_2017}, and readings need to be reviewed by experienced readers \cite{schlapfer_computer-interpreted_2017}. Many ECGs are stored as prints or photographs, which automated analysis built for digital signals cannot use \cite{shivashankara_ecg-image-kit_2024}.
 
 \section{Problem Statement}
+\label{sec:problem}
 
-Currently, deep learning models can classify ECGs well when it is given raw signal data
-\cite{hannun_cardiologist_2019}\cite{ribeiro_automatic_2020}. However, work on images is newer, and
+Deep learning models classify ECGs well when given raw signal data
+\cite{hannun_cardiologist_2019,ribeiro_automatic_2020}. Work on images is newer, and
 Chapter~\ref{ch:lit} shows that it is limited in four ways:
-\begin{enumerate}
-  \item Image classifiers have mostly been tested on raw signal or synthesized  images.
-  \item Calibrated scores of the model's confidence is rarely reported.
-  \item Explanations are rarely evaluated in depth.
-  \item There is little data gathered about how results should be displayed to a wide range of users.
+\begin{enumerate}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+  \item Image-based classifiers have mostly been tested on synthesised images, or on a limited set of real images.
+  \item Image-based studies rarely report whether the model's confidence scores are calibrated.
+  \item Explanations of the predictions are rarely evaluated.
+  \item There is little evidence on how results should be presented to different kinds of users.
 \end{enumerate}
-Developing a system that flags possible cardiac abnormalities from real and synthesized ECG images, stating how confident its output is to the user, and showing the steps it took to reach that conclusion, would address these gaps.
+A system that flags possible abnormalities from real ECG images, states its confidence and shows what each prediction was based on would address these gaps. It must also cope with rendering shortcuts, a grid that is the only record of scale, and imbalanced classes.
 
 \section{Aim and Objectives}
 
 \textbf{Aim.} To build and evaluate a convolutional neural network (CNN) application that
-flags possible abnormalities from ECG images, reports its calibrated confidence, in addition to explaining its predictions, for multi-user functionality. The system is a supportive review and is not a diagnostic tool to replace health professional's advice.
+flags possible abnormalities from ECG images, reports its calibrated confidence, and explains its predictions to different users. The system is a supportive review and is not a diagnostic tool to replace health professionals' advice.
 
-The objectives are:
-\begin{enumerate}
-  \item \textbf{O1:} Generate a labelled training set of ECG images from PTB-XL using
-        ECG-Image-Kit, and assemble a test set of real images from the ECG-Image-Database.
-  \item \textbf{O2:} Develop a pre-processing and waveform-detection pipeline   that prepares images and detect the trace and the beat.
-  \item \textbf{O3:} Train a multi-label CNN classifier and evaluate it, keeping in mind of imbalanced metrics, with
-      sets split by patients.
+\begin{enumerate}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+  \item \textbf{O1:} Render a labelled training set from PTB-XL with ECG-Image-Kit, and assemble a real test set from the ECG-Image-Database.
+  \item \textbf{O2:} Develop a preprocessing and waveform-detection pipeline that detects the trace and the beats.
+  \item \textbf{O3:} Train a multi-label CNN and evaluate it with imbalance-aware metrics on patient-wise splits.
   \item \textbf{O4:} Measure the drop in performance from rendered to real images.
-  \item \textbf{O5:} Calibrate the classifier's confidence using "temperature scaling" and
-        reporting calibration error per class.
-  \item \textbf{O6:} Provide Grad-CAM explanations and a GUI with views suited to different users, and evaluate it with a small user study.
+  \item \textbf{O5:} Calibrate confidence with temperature scaling; report calibration error per class.
+  \item \textbf{O6:} Explain predictions with Grad-CAM in a GUI for different users, and run a user study.
 \end{enumerate}
-\section{Structure of the Dissertation}
-
-Chapter~\ref{ch:lit} reviews the literature on image processing, ECG fundamentals, ECG
-imaging, feature extraction, waveform detection and machine-learning methods, and ends
-with the gaps this project addresses. Chapter~\ref{ch:method} sets out the research
-questions, requirements and methods, linking each to an objective. Chapter~\ref{ch:feasibility}
-presents the preliminary work, design and evaluation strategy that show the project is
-feasible. Chapter~\ref{ch:conc} summarises the document and the plan for the next
-stage.

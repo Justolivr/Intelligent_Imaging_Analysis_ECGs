@@ -3,75 +3,83 @@
 \chapter{Project Management}
 
 \renewcommand{\thefigure}{A.\arabic{figure}}
-\section{Risk Analysis}
-\label{app:ranalysis}
+\section{Risk Assessment and Mitigation}
+\label{app:risks}
 
-This lists the main risks, with their severity and likelihood, whilst also considering any mitigation. A small table was previously mentioned in Chapter~\ref{sec:feas-risks}, but this is the complete version of the risk analysis.
+Table~\ref{tab:risks} gives the full risk assessment. Each risk is rated once for its likelihood and its severity, and lists every mitigation planned for it. Section~\ref{sec:feas-risks} refers to the risks most relevant to feasibility by their IDs.
 
-\begin{table}[!ht]
-  \centering
-  \footnotesize
-  \renewcommand{\arraystretch}{1.2}
-  \caption{Risk analysis.}
-  \label{tab:risks}
-  \begin{tabular}{|p{0.27\linewidth}|p{0.09\linewidth}|p{0.09\linewidth}|p{0.45\linewidth}|}
+\begingroup
+\footnotesize
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{|p{0.05\linewidth}|p{0.24\linewidth}|p{0.11\linewidth}|p{0.10\linewidth}|p{0.35\linewidth}|}
+  \caption{Risk assessment and mitigation.}
+  \label{tab:risks} \\
     \hline
-    \textbf{Risk} & \textbf{Severity} & \textbf{Likelihood} & \textbf{Mitigation} \\
+    \textbf{ID} & \textbf{Risk} & \textbf{Likelihood} & \textbf{Severity} & \textbf{Mitigation} \\
     \hline
-    A model on rendered images might not work on real images. & \High & \Med & Use the ECG-Image-Kit to generate a large number of images. Added augmentation of real artefacts to these images to make them more realistic. Report the gap as a result. \\
+  \endfirsthead
+    \multicolumn{5}{l}{\footnotesize\itshape Table~\ref{tab:risks} continued} \\
     \hline
-    Trace detection falls apart on very poor quality images. & \Med & \Med & Detection is evaluated separately on real images. If it is too unreliable for analysis, the CNN uses the image alone. The failure is reported. \\
+    \textbf{ID} & \textbf{Risk} & \textbf{Likelihood} & \textbf{Severity} & \textbf{Mitigation} \\
     \hline
-    Some classes have too few examples to train a model. & \Med & \High &
-    Results are reported per class. Some classes like AFLT and AFIB are combined into a single class. \\
+  \endhead
+    \multicolumn{5}{|l|}{\textbf{Technical risks}} \\
     \hline
-    Class imbalances cause the model to be biased towards the majority class. & \Med & \High &
-    Use class weights, to balance the loss function. Use metrics that are aware of imbalances, (like sensitivity, specificity, AUROC). Thresholds are adjusted to account for the imbalance. \\
+    R1 & A model trained on rendered images may not work on real images. & \High & \High &
+      Generate a large training set with ECG-Image-Kit, and add augmentation that imitates real artefacts. Evaluate on real images and report the gap as a result. \\
     \hline
-    ECG-Image-Database has very few images for some classes. & \Med & \High &
-    Only classes with enough images are evaluated. The rest are reported as a limitation. \\
+    R2 & Trace detection fails on poor-quality real images. & \Med & \Med &
+      Evaluate detection separately on real images. If it is too unreliable, the CNN uses the image alone, and the failure is reported. \\
     \hline
-    Labels are subjective and may be inconsistent. & \Med & \Med &
-    Validation and test folds that were checked by multiple annotators are used. The model is then evaluated on these folds. \\
+    R3 & Some classes have too few examples to train a model. & \High & \Med &
+      Report results per class with counts and bootstrap confidence intervals. Rare classes such as atrial flutter may be combined with atrial fibrillation, or evaluated on rendered images only. \\
     \hline
-    Heatmaps can be misleading. & \Med & \Med & Heatmaps will be checked against known cases and shortcuts. The grid is masked if its needed. The heatmaps are evaluated in the user study. \\
+    R4 & Class imbalance biases the model towards the majority class. & \High & \Med &
+      Use class weights to balance the loss function, and imbalance-aware metrics (sensitivity, specificity, MCC, AUROC). Choose a threshold for each class on the validation fold. \\
     \hline
-    The CNN underperforms. & \Med & \Med & A pretrained model might be used for comparison. \\
+    R5 & The ECG-Image-Database has very few images for some classes. & \High & \Med &
+      Evaluate only the classes with enough real images; report the rest as a limitation. \\
     \hline
-    Training is too slow. & \Low & \Low & Use smaller models. This is to reduce the cost. \\
+    R6 & Labels are subjective and may be inconsistent. & \Med & \Med &
+      Use the PTB-XL validation and test folds, whose labels were checked to a higher standard, and report label quality as a limitation. \\
     \hline
-  \end{tabular}
-\end{table}
-
-\begin{table}[!ht]
-  \centering
-  \footnotesize
-  \renewcommand{\arraystretch}{1.2}
-  \caption{Project and Ethical Risks.}
-  \label{tab:project-risks}
-  \begin{tabular}{|p{0.27\linewidth}|p{0.09\linewidth}|p{0.09\linewidth}|p{0.45\linewidth}|}
+    R7 & Heatmaps may be misleading. & \Med & \Med &
+      Check heatmaps against known cases and for shortcuts; mask the grid if needed; evaluate the heatmaps in the user study. \\
     \hline
-    \textbf{Risk} & \textbf{Severity} & \textbf{Likelihood} & \textbf{Mitigation} \\
+    R8 & The CNN underperforms. & \Med & \Med &
+      Fine-tune a pretrained model on the same splits for comparison, and use it as the main model if it performs better. \\
     \hline
-    The scope is too large for the time available. & \Med & \Med & Requirements are prioritised with MoSCoW. This means that most important requirements are implemented first. In addition, the interface can be reduced to a single view if time is short. \\
+    R9 & Training is too slow. & \Low & \Low &
+      Use smaller models or a lower image resolution to reduce the cost. \\
     \hline
-    There are not enough participants for the user study. & \Med & \Med & Recruitment of users starts early. If this fails, then an expert review replaces the study. \\
+    \multicolumn{5}{|l|}{\textbf{Project and ethical risks}} \\
     \hline
-    Clinicians are not able to take part. & \Low & \High & Requirements will be based on published studies from clinicians. Clinician testing is described at future work, and in addition the limitation is stated. \\
+    R10 & The scope is too large for the time available, including the full interface. & \Med & \Med &
+      Prioritise requirements with MoSCoW so that the most important are implemented first. Reduce the interface to uploading, flagging and the heatmap if time is short. \\
     \hline
-    Software problems. & \Low & \Med & Use version control. Also, a virtual environment can be used with specific versions. This will have a recorded list of requirements. \\
+    R11 & There are not enough participants for the user study. & \Med & \Med &
+      Start recruitment early. If this fails, an expert review replaces the study. \\
     \hline
-    Loss of code or data & \High & \Low & Keep remote copies. Also keep regular backups of results. \\
+    R12 & Clinicians are not able to take part. & \High & \Low &
+      Base the requirements on published studies of clinicians. State the limitation, and describe clinician testing as future work. \\
     \hline
-    Work goes beyond the scope & \High & \Low & The work will stay in the approved scope. User data is destroyed upon completion of the project. Images are processed locally. \\
+    R13 & Software problems, such as package conflicts. & \Med & \Low &
+      Use version control, and a virtual environment with a recorded list of package versions. \\
     \hline
-    A dataset or tool update may change its availability or license & \Low & \Low & Local copies of the datasets are kept. Licenses are checked and cited. \\
+    R14 & Loss of code or data. & \Low & \High &
+      Keep remote copies on GitHub and regular backups of results (Section~\ref{app:repo}). \\
     \hline
-    Author might not be able to complete the project due to illness, or other personal reasons. & \High & \Low & The project is planned with deadlines, and the supervisor is kept informed of the progress. \\
+    R15 & The user study goes beyond its approved ethical scope. & \Low & \High &
+      Keep the study within the approved scope. Process images locally, and destroy participant data on completion of the project. \\
     \hline
-  \end{tabular}
-\end{table}
-
+    R16 & A dataset or tool update changes its availability or licence. & \Low & \Low &
+      Keep local copies of the datasets; check and cite their licences. \\
+    \hline
+    R17 & The author cannot complete the project due to illness or other personal reasons. & \Low & \High &
+      Plan the project with deadlines, and keep the supervisor informed of progress. \\
+    \hline
+\end{longtable}
+\endgroup
 \section{PLES}
 \label{app:ples}
 
@@ -111,6 +119,23 @@ As PTB-XL was collected 40 years ago, patient recording are limited. A model tra
 The tool could help students learn about ECG interpretation, and systems that read ECG images could widen the access to automated analysis, where only paper records exist. In addition, the interface should be usable by people with different needs, and any explanations should be clear and simple. However, users that over-rely on the tool may learn less information. Therefore, it is designed to explain the reasoning, to support learning.
 
 For the environment, training deep models use a lot of energy. The project limits this using a small model, and pretrained weight if possible.
+\section{GenAI Summary}
+\label{app: genai}
+Generative AI was used for LaTex debugging, and grammatical as well as spelling errors. It was also used to help with formatting certain parts of the structure, but all the written body is in my own words. Every reference and citation I have found without the use of generative ai.
+
+\section{Repository Management}
+\label{app:repo}
+
+The project's code will be kept in a private GitHub repository, with a working copy on the development PC. The repository will be organised by module, matching the architecture in Section~\ref{sec:design}: separate folders for data preparation scripts, preprocessing, detection, models, calibration and explanation, the GUI, experiment configurations, and tests.
+
+\textbf{Data and large files.} The datasets (PTB-XL and the ECG-Image-Database) and the rendered images are too large to store in Git, and are distributed under their own licences, so they will be excluded with a \texttt{.gitignore} file. The repository will instead contain the scripts that download the datasets and render the images, so that they can be recreated (NFR08). Trained model weights will also be stored outside Git.
+
+\textbf{Branching and commits.} The \texttt{main} branch will always hold a working version. New work will be done on a separate branch for each phase or feature, and merged into \texttt{main} once its tests pass. Commits will be small, with descriptive messages, and each milestone (D1, the working prototype and the final submission) will be tagged so that it can be recovered.
+
+\textbf{Reproducibility.} The Python environment will be recorded in a \texttt{requirements.txt} file with pinned package versions, and each experiment will have a configuration file recording its settings and random seed, so that the reported results can be regenerated from a fresh clone (NFR08, TC23).
+
+\textbf{Backups.} GitHub will act as the remote copy of the code. Results, model weights and the report will be backed up weekly to the university OneDrive (R14).
+
 \section{Gantt Chart}
 \label{app:gantt}
 \begin{figure}[H]
@@ -231,9 +256,6 @@ For the environment, training deep models use a lot of energy. The project limit
   \label{fig:gantt-s2}
 \end{figure}
 \clearpage
-\section{GenAI Summary}
-\label{app: genai}
-Generative AI was used for LaTex debugging, and grammatical as well as spelling errors. It was also used to help with formatting certain parts of the structure, but all the written body is in my own words. Every reference and citation I have found without the use of generative ai.
 
 \section{Glossary}
 \label{app:glossary}
@@ -243,7 +265,141 @@ Supplementary material...
 
 
 
-\section*{GitHub Repository}
 
-Project planning is core aspect of any dissertation (especially for the initial groundwork).  Key tool is Git/Github
 
+\chapter{Requirements Traceability Matrix}
+\label{app:rtm}
+
+Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref{tab:functional-req} to the module that implements it, its deliverable and its test case. The result column will be completed after system testing. The Won't requirements (FR16 and FR17) are not implemented, so they are not tested.
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}
+  \renewcommand{\arraystretch}{1.25}
+  \caption{Requirements Traceability Matrix: functional requirements.}
+  \label{tab:rtm-fr}
+  \begin{tabular}{|p{0.07\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|p{0.39\linewidth}|p{0.08\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Module}} &
+    \textcolor{white}{\textbf{Deliverable}} & \textcolor{white}{\textbf{Test case}} &
+    \textcolor{white}{\textbf{Result}} \\
+    \hline
+    FR01 & GUI & Upload screen & TC01: Upload a scan and a photograph (PNG and JPG); both load and are displayed. & \\
+    \hline
+    FR02 & Preprocessing & Preprocessing module & TC02: Run on 20 rendered and 20 real images; the output keeps the trace, removes the grid and records the grid scale. & \\
+    \hline
+    FR03 & Detection & R-peak detector & TC03: On images with a source signal, at least 90\% of R peaks are found within $\pm150$\,ms of Pan--Tompkins. & \\
+    \hline
+    FR04 & Detection & Timing features & TC04: Heart-rate mean absolute error is at most 5\,bpm against the source signal. & \\
+    \hline
+    FR05 & Classifier & Trained CNN & TC05: A score is produced for each of the five superclasses on the test fold (performance tested by TC17). & \\
+    \hline
+    FR06 & Classifier & Trained CNN & TC06: A score is produced for each rhythm class; performance is reported where class counts allow. & \\
+    \hline
+    FR07 & Calibration, GUI & Results screen & TC07: Each flag shows a probability between 0 and 1, taken after temperature scaling. & \\
+    \hline
+    FR08 & Explanation, GUI & Heatmap overlay & TC08: A heatmap aligned with the image is shown for each flagged class. & \\
+    \hline
+    FR09 & GUI & Results screen & TC09: The HR and RR values shown match the detector output. & \\
+    \hline
+    FR10 & GUI & Explanation text & TC10: Each of the nine classes shows its plain-language description when flagged. & \\
+    \hline
+    FR11 & GUI & Wave diagram & TC11: The labelled diagram opens from the results screen. & \\
+    \hline
+    FR12 & GUI & Clinical view & TC12: Switching view shows only the flag list and measured values. & \\
+    \hline
+    FR13 & GUI & Export function & TC13: The exported file opens and contains the flags and scores. & \\
+    \hline
+    FR14 & GUI & Save function & TC14: A saved result reloads with the same contents. & \\
+    \hline
+    FR15 & Preprocessing, Detection & Quality check & TC15: On 20 heavily degraded images a warning is shown and no flags are given; on 20 clean images no warning is shown. & \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}
+  \renewcommand{\arraystretch}{1.25}
+  \caption{Requirements Traceability Matrix: non-functional requirements.}
+  \label{tab:rtm-nfr}
+  \begin{tabular}{|p{0.07\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|p{0.39\linewidth}|p{0.08\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Module}} &
+    \textcolor{white}{\textbf{Deliverable}} & \textcolor{white}{\textbf{Test case}} &
+    \textcolor{white}{\textbf{Result}} \\
+    \hline
+    NFR01 & Whole system & Integrated application & TC16: The time from upload to results is under 10\,s for each of 20 images on the development PC. & \\
+    \hline
+    NFR02 & Classifier & Evaluation report & TC17: Mean AUROC on PTB-XL fold 10 is at least 0.85 across the five superclasses. & \\
+    \hline
+    NFR03 & Calibration & Reliability diagrams & TC18: ECE is at most 0.05 for each reported class after scaling, and lower than before. & \\
+    \hline
+    NFR04 & Classifier & Rendered-to-real report & TC19: The fall in AUROC per class is at most 0.10 for the five superclasses. & \\
+    \hline
+    NFR05 & GUI & User-study results & TC20: At least 70\% of participants interpret the confidence and heatmap correctly; mean SUS is at least 68. & \\
+    \hline
+    NFR06 & GUI & Limitations panel & TC21: The results screen lists the classes with few or no real test images. & \\
+    \hline
+    NFR07 & GUI & Session handling & TC22: After the session closes, no uploaded image remains on disk. & \\
+    \hline
+    NFR08 & Repository & Scripts and environment file & TC23: Re-running the evaluation script from a fresh clone reproduces the reported metrics. & \\
+    \hline
+    NFR09 & Whole system & Integrated application & TC24: Inference runs on a laptop without a GPU. & \\
+    \hline
+    NFR10 & Architecture & Module interfaces & TC25: The own CNN is replaced with the pretrained model without changing the pipeline or GUI code. & \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\chapter{Supplementary Literature Material}
+\label{app:lit}
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \caption{Key studies in deep learning for ECG classification.}
+  \label{tab:ecg-studies}
+  \begin{tabular}{@{}p{0.13\linewidth} p{0.27\linewidth} p{0.25\linewidth} p{0.25\linewidth}@{}}
+    \toprule
+    \textbf{Study} & \textbf{Input and data} & \textbf{Reported result} &
+      \textbf{Limitation for this project} \\
+    \midrule
+    \textcite{hannun_cardiologist_2019} &
+      Single-lead signals; 91,232 ECGs, 53,549 patients &
+      12 rhythm classes; F1 0.837 vs.\ 0.780 for cardiologists &
+      Single lead; signals, not images \\
+    \textcite{ribeiro_automatic_2020} &
+      12-lead signals; over two million exams &
+      Six abnormalities; F1 above 80\%, specificity above 99\% &
+      Signals, not images \\
+    \textcite{strodthoff_deep_2021} &
+      12-lead signals, PTB-XL &
+      Convolutional models performed best &
+      Signals; hidden weakness in subclasses \\
+    \textcite{sangha_automated_2022} &
+      Images generated from signals; printed ECGs to test &
+      Strong performance on held-out, external and printed ECGs (0.98 AUROC average) &
+      Training images are generated from signals \\
+    \textcite{gliner_domain_2023} &
+      79,226 scanned labelled ECGs plus unlabelled phone-captured frames &
+      Average AUROC of 0.91 on phone-captured images &
+      Phone images made by filming printed pages; six unseen formats tested \\
+    \textcite{wang_pipeline_2025} &
+      Synthetic PTB-XL images plus external scanned sets &
+      AUROC about 0.97 on the hidden test set &
+      Synthetic test data; possible leakage from PTB-XL \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.38\linewidth]{images/OtsuSegmentation.jpg}
+  \caption[Otsu segmentation of a dermatoscopic image]{Example of Otsu thresholding (Table~\ref{tab:techniques}) on a dermatoscopic image from the \(PH^2\) dataset. Reproduced from \cite{mendonca_ph_2013}.}
+  \label{fig:otsu-dermatoscopic}
+\end{figure}

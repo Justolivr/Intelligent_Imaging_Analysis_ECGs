@@ -1,0 +1,368 @@
+
+\chapter{Methodology}
+\label{ch:method}
+
+\section{Research Goals}
+\label{sec:goals}
+The project addresses one main question:
+\begin{quote}
+\emph{Can a CNN trained on rendered ECG images detect cardiac abnormalities and rhythm disorders in real ECG images, and how can its information be made reliable and understandable to users?}
+\end{quote} 
+The main question is divided into three sub-questions (SQ1--SQ3), each tied to the gaps identified
+in Chapter~\ref{ch:lit} as well as the objectives in brackets:
+\begin{itemize}
+  \item \textbf{SQ1 (O1--O4):} How much does performance fall from rendered to real images, and how much does preprocessing and timing features reduce the fall?
+  \item \textbf{SQ2 (O5):} How reliable is the model's confidence per class, and how much does temperature scaling improve it?
+  \item \textbf{SQ3 (O6):} Do the explanations highlight the expected regions, and can students understand the confidence and explanation shown?
+\end{itemize}
+
+\section{Project Requirements}
+The table below shows each part of the system and its importance, in order of devlopment. If there is time at the end of the system's development, more features may be implemented. MoSCoW method has been used to keep objectives on track, and to limit scope creeping.
+
+\begin{table}[ht]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}      % thickness of every line
+  \renewcommand{\arraystretch}{1}       % row height
+  \caption{Functional and Non-Functional Requirements}
+  \label{tab:functional-req}
+  \begin{tabular}{|p{0.08\linewidth}|p{0.5\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Requirement}} &
+    \textcolor{white}{\textbf{MoSCoW}} & \textcolor{white}{\textbf{Objective}} \\
+    \hline
+    FR01 & The user must upload an ECG image (scans or photos). & Must & O1, O6 \\
+    \hline
+    FR02 & The system preprocesses the image. & Must & O2 \\
+    \hline
+    FR03 & The system detects the trace and locates the R peak. & Should & O2 \\
+    \hline
+    FR04 & The system extracts the heart rate (HR) and RR regularity from the detected beats. & Should & O2 \\
+    \hline
+    FR05 & The system flags possible abnormalities for the five diagnostic superclasses. & Must & O3 \\
+    \hline
+    FR06 & The system flags the four rhythm classes. & Should & O3 \\
+    \hline
+    FR07 & Each flag shows a calibrated confidence score & Must & O5 \\
+    \hline
+    FR08 & A heatmap is overlaid on the original image for each flagged class. & Should & O6 \\
+    \hline
+    FR09 & The interface shows measured values (HR, RR). & Should & O2,O6 \\
+    \hline
+    FR10 & A plain language explanation is shown for each flagged condition. & Should & O6 \\
+    \hline
+    FR11 & A labelled diagram of the waves is avialble for reference. & Could & O6 \\
+    \hline
+    FR12 & A clinical view shows a short flag list, and no teaching text. & Could & O6 \\
+    \hline
+    FR13 & The user can export a result. & Could & O6 \\
+    \hline
+    FR14 & The user can save a result. & Could & O6 \\
+    \hline
+    FR15 & The system warns the user if an image is too poor quality to analyse. & Should & O2 \\
+    \hline
+    FR16 & Real-Time/Live ECG analysis. & Won't & N/A \\ % as no equipment
+    \hline
+    FR17 & Advice on treatments, or diagnosis.  & Won't & N/A \\
+    \hline
+    NFR01 & System will return a result within 10\,s of upload on the devlopment PC & Must & O6 \\
+    \hline
+    NFR02 & The mean AUROC across the five diagnostic supperclasses on the rendered PTB-XL test fold is at least 0.85 & Must & O3 \\
+    \hline
+    NFR03 & After temperature scaling, the expected calibration error is at most 0.05 for each reported class on the test fold, and lower than before scaling. & Must & O5 \\
+    \hline
+    NFR04 & The fall in AUROC from the rendered test fold, to the real images, is measured for each class, with a target of at most 0.10 for the superclasses. & Should & O4 \\
+    \hline   
+    NFR05 & Without prior training, at least 60\% of user-study participants correctly interpret the confidence score and heatmap, and the mean System Usability Scale (SUS) score is at least 68. & Should & O6 \\
+    \hline 
+    NFR06 & The results screen shows the model's limitations, like classes with few, real test images. & Should & O6 \\
+    \hline
+    NFR07 & Uploaded images are not shared or stored beyond the session. & Should & N/A \\
+    \hline
+    NFR08 & Results can be reproducef from the repository, using fixed random seeds, recorded versions, and scripts that regenerate the reported tables. & Must & O3 \\
+    \hline
+    NFR09 & The trained system runs on a standard laptop, without a GPU (training excluded). & Could & N/A \\
+    \hline
+    NFR10 & The pipeline, model and interface, are separate modules, with documented inputs and outputs, meaning one can be replaced without changing the others. & Could & N/A \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\section{ Project Development Process}
+\label{sec:dev-plan}
+
+The work is divided into seven phases. Each phase produces a result that the next one needs, and the corresponding Gantt Chart is in Appendix~\ref{app:gantt}.
+
+\begin{figure}[H]
+  \centering
+  \makebox[\linewidth][c]{%
+  \begin{tikzpicture}[
+      font=\small,
+      phase/.style={draw, rounded corners=2pt, align=center, text width=30mm,
+                    minimum height=15mm, fill=#1},
+      phase/.default=blue!10,
+      arr/.style={-{Latex[length=2mm]}, thick}
+    ]
+    \node[phase] (p1) at (0,0)     {\textbf{Phase 1}\\Preparing data\\\footnotesize(O1)};
+    \node[phase] (p2) at (38mm,0)  {\textbf{Phase 2}\\Image processing\\\& timing\\\footnotesize(O2)};
+    \node[phase] (p3) at (76mm,0)  {\textbf{Phase 3}\\Model development\\\footnotesize(O3, O4)};
+    \node[phase] (p4) at (114mm,0) {\textbf{Phase 4}\\Calibration \& explanation\\\footnotesize(O5, O6)};
+    \node[phase=orange!12] (p5) at (114mm,-26mm) {\textbf{Phase 5}\\Integration \& testing\\\footnotesize(O6)};
+    \node[phase=black!5, dashed] (p6) at (76mm,-26mm) {\textbf{Phase 6}\\Advanced features\\\footnotesize(optional)};
+    \node[phase=green!12] (p7) at (38mm,-26mm) {\textbf{Phase 7}\\Evaluation \& review\\\footnotesize(all)};
+
+    \draw[arr] (p1) -- (p2);
+    \draw[arr] (p2) -- (p3);
+    \draw[arr] (p3) -- (p4);
+    \draw[arr] (p4) -- (p5);
+    \draw[arr, dashed] (p5) -- (p6);
+    \draw[arr, dashed] (p6) -- (p7);
+    \draw[arr] (p5.south) -- ++(0,-5mm) -| node[pos=0.25, below, font=\scriptsize]{tested system} (p7.south);
+
+    % fallback
+    \draw[arr, dotted, red!70!black] (p2.north) -- ++(0,5mm) -| node[pos=0.25, above, font=\scriptsize]{fallback: image only if detection fails} (p3.north);
+  \end{tikzpicture}%
+  }
+  \caption{Project workflow. Phase 6 is optional and is dropped first if the schedule slips.}
+  \label{fig:workflow}
+\end{figure}
+\textbf{Phase 1: Preparing Data (O1).} The first phase builds the datasets. Training images for the CNN are rendered from PTB-XL, using ECG-Image-Kit, with the labels for the five
+diagnostic superclasses and the four rhythm classes, and the records are split by patient. A separate test set is prepared from ECG-Image-Database, and the labels these images carry are checked so that it is clear which
+classes can be evaluated on them. The class counts are recorded early, since rare classes such as atrial flutter may need to be reported separately.
+
+\textbf{Phase 2: Image Processing and Timing Features (O2).} OpenCV will be used to preprocess the images and to isolate the trace. This will be built first, to ensure the timing measurements are reliable before any learned method is created. The R peaks are then
+located in addition to the heart rate and RR regularity being calculated. The detection is checked against the Pan--Tompkins Equation, which is applied to the source signal. If detection proves unreliable on real
+images, the classifier will use the image alone and the failure will be reported.
+
+\textbf{Phase 3: Model Development (O3, O4).} A multi-label CNN, will be created, and it will be trained on the rendered images, with and without the timing features. A different, pretrained
+CNN will be fine-tuned on the same splits for comparison. Both are evaluated per class on the rendered test fold and on the real images, so that the drop in performance between the two is measured. The performance of the CNN will be recorded for evaluation.
+
+\textbf{Phase 4: Calibration and Explanation (O5, O6).} Temperature scaling will be fitted on the validation fold and its effect on calibration error reported per class. Grad-CAM
+heatmaps will then be produced for each flagged class and checked on labelled cases against the expected region, and for shortcuts such as attention on the grid or printed text.
+
+\textbf{Phase 5: Integration and Testing (O6).} The components will be combined into one Python application with a user-friendly GUI: upload of an image, any flagged
+conditions with a calibrated confidence, and a heatmap. The workflow runs from the uploaded image through the pipeline and the model to
+the results screen. Each module will be tested on its own before the whole system is tested against the requirements (Section~\ref{sec:testing}). If there is no time, the interface will instead be reduced to uploading, flagging and showing the heatmap.
+
+\textbf{Phase 6: Advanced Features.} If the core system performs reliably, extra features will be considered, such as a clinician view with a short list of flags and measured values, and explanations in plain language for each condition. These are optional and are dropped
+first if the schedule slips.
+
+\textbf{Phase 7: Evaluation and Review.} All components will be evaluated as described in Section~\ref{sec:evaluation}, including the user study with students within the approved
+ethics application. The results will be recorded and compared with the success criteria. If participants cannot be recruited, an expert review will
+replace the user study. The risks behind these fallbacks are analysed in
+Appendix~\ref{app:ranalysis}.
+
+\subsection{Processing Pipeline}
+\label{sec:pipeline}
+
+Figure~\ref{fig:pipeline} shows the processing pipeline that Phases 2--5 will build. An uploaded image will be preprocessed, the trace
+and beats will be detected to give timing features, and the CNN will use the image and the timing
+features to produce a probability for each class. Temperature scaling will calibrate these
+probabilities, and Grad-CAM will produce a heatmap for each flagged class. The interface will show
+the flags, the calibrated confidence, the heatmap and the measured values.
+
+\begin{figure}[H]
+  \centering
+  \makebox[\linewidth][c]{%
+  \begin{tikzpicture}[
+      font=\small,
+      step/.style={draw, rounded corners=2pt, align=center, text width=25mm,
+                   minimum height=12mm, fill=#1},
+      step/.default=blue!10,
+      arr/.style={-{Latex[length=2mm]}, thick}
+    ]
+    \node[step=black!8] (up)  at (0,0)     {Uploaded image};
+    \node[step]         (pre) at (38mm,0)  {Preprocessing};
+    \node[step]         (det) at (76mm,0)  {Trace and beat detection};
+    \node[step]         (tim) at (114mm,0) {Timing features\\\footnotesize HR, RR regularity};
+    \node[step=orange!12] (cnn) at (114mm,-28mm) {Multi-label\\CNN};
+    \node[step=orange!12] (cal) at (76mm,-28mm)  {Temperature scaling};
+    \node[step=orange!12] (gc)  at (38mm,-28mm)  {Grad-CAM heatmaps};
+    \node[step=green!12]  (ui)  at (0,-28mm)     {Interface};
+
+    \draw[arr] (up) -- (pre);
+    \draw[arr] (pre) -- (det);
+    \draw[arr] (det) -- (tim);
+    \draw[arr] (tim) -- (cnn);
+    \draw[arr] (pre.south) -- ++(0,-5mm) -| node[pos=0.25, above, font=\scriptsize]{preprocessed image} ([xshift=-7mm]cnn.north);
+    \draw[arr] (cnn) -- node[above, font=\scriptsize]{scores} (cal);
+    \draw[arr] (cal) -- node[above, font=\scriptsize]{flags} (gc);
+    \draw[arr] (gc) -- (ui);
+  \end{tikzpicture}%
+  }
+  \caption{Planned processing pipeline, from an uploaded image to the results shown in the interface.}
+  \label{fig:pipeline}
+\end{figure}
+
+\section{Testing and Evaluation Strategy}
+\label{sec:evaluation}
+
+Testing and evaluation are two separate activities. Testing (Section~\ref{sec:testing}) will verify that each functional and non-functional requirement has been met. Evaluation (Section~\ref{sec:eval}) will assess the project as a whole against its aim, objectives and research questions.
+\subsection{Testing}
+\label{sec:testing}
+
+Each module will be tested by itself before the integrated system is tested. Every requirement in Table~\ref{tab:functional-req} is mapped to the design element that implements it; the deliverable that contains it; and a test case, in the Requirements Traceability Matrix (RTM), which is in the appendix. The column for results is only completed after system testing, and recording whether each requirement was met, partly met, or not met. FR16 and FR17 are not implemented, thus not tested.
+
+The R-peak detection will be tested on images whose source signal is available. This is by compating the image result with the Pan-Tompkins Algorithm applied to that signal \cite{pan_real-time_1985}. A detected R peak will count as correct if it likes within $\pm150$\,ms of the reference peak, the matching window used in standard beat-detection evaluation. The mean absolute error of the heart rate (BPM) and of the RR intervals (ms) will also be reported.
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}
+  \renewcommand{\arraystretch}{1.25}
+  \caption{Requirements Traceability Matrix: functional requirements.}
+  \label{tab:rtm-fr}
+  \begin{tabular}{|p{0.07\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|p{0.39\linewidth}|p{0.08\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Module}} &
+    \textcolor{white}{\textbf{Deliverable}} & \textcolor{white}{\textbf{Test case}} &
+    \textcolor{white}{\textbf{Result}} \\
+    \hline
+    FR01 & GUI & Upload screen & TC01: Upload a scan and a photograph (PNG and JPG); both load and are displayed. & \\
+    \hline
+    FR02 & Preprocessing & Preprocessing module & TC02: Run on 20 rendered and 20 real images; the output keeps the trace, removes the grid and records the grid scale. & \\
+    \hline
+    FR03 & Detection & R-peak detector & TC03: On images with a source signal, at least 90\% of R peaks are found within $\pm150$\,ms of Pan--Tompkins. & \\
+    \hline
+    FR04 & Detection & Timing features & TC04: Heart-rate mean absolute error is at most 5\,bpm against the source signal. & \\
+    \hline
+    FR05 & Classifier & Trained CNN & TC05: A score is produced for each of the five superclasses on the test fold (performance tested by TC17). & \\
+    \hline
+    FR06 & Classifier & Trained CNN & TC06: A score is produced for each rhythm class; performance is reported where class counts allow. & \\
+    \hline
+    FR07 & Calibration, GUI & Results screen & TC07: Each flag shows a probability between 0 and 1, taken after temperature scaling. & \\
+    \hline
+    FR08 & Explanation, GUI & Heatmap overlay & TC08: A heatmap aligned with the image is shown for each flagged class. & \\
+    \hline
+    FR09 & GUI & Results screen & TC09: The HR and RR values shown match the detector output. & \\
+    \hline
+    FR10 & GUI & Explanation text & TC10: Each of the nine classes shows its plain-language description when flagged. & \\
+    \hline
+    FR11 & GUI & Wave diagram & TC11: The labelled diagram opens from the results screen. & \\
+    \hline
+    FR12 & GUI & Clinical view & TC12: Switching view shows only the flag list and measured values. & \\
+    \hline
+    FR13 & GUI & Export function & TC13: The exported file opens and contains the flags and scores. & \\
+    \hline
+    FR14 & GUI & Save function & TC14: A saved result reloads with the same contents. & \\
+    \hline
+    FR15 & Preprocessing, Detection & Quality check & TC15: On 20 heavily degraded images a warning is shown and no flags are given; on 20 clean images no warning is shown. & \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}
+  \renewcommand{\arraystretch}{1.25}
+  \caption{Requirements Traceability Matrix: non-functional requirements.}
+  \label{tab:rtm-nfr}
+  \begin{tabular}{|p{0.07\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|p{0.39\linewidth}|p{0.08\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Module}} &
+    \textcolor{white}{\textbf{Deliverable}} & \textcolor{white}{\textbf{Test case}} &
+    \textcolor{white}{\textbf{Result}} \\
+    \hline
+    NFR01 & Whole system & Integrated application & TC16: The time from upload to results is under 10\,s for each of 20 images on the development PC. & \\
+    \hline
+    NFR02 & Classifier & Evaluation report & TC17: Mean AUROC on PTB-XL fold 10 is at least 0.85 across the five superclasses. & \\
+    \hline
+    NFR03 & Calibration & Reliability diagrams & TC18: ECE is at most 0.05 for each reported class after scaling, and lower than before. & \\
+    \hline
+    NFR04 & Classifier & Rendered-to-real report & TC19: The fall in AUROC per class is at most 0.10 for the five superclasses. & \\
+    \hline
+    NFR05 & GUI & User-study results & TC20: At least 70\% of participants interpret the confidence and heatmap correctly; mean SUS is at least 68. & \\
+    \hline
+    NFR06 & GUI & Limitations panel & TC21: The results screen lists the classes with few or no real test images. & \\
+    \hline
+    NFR07 & GUI & Session handling & TC22: After the session closes, no uploaded image remains on disk. & \\
+    \hline
+    NFR08 & Repository & Scripts and environment file & TC23: Re-running the evaluation script from a fresh clone reproduces the reported metrics. & \\
+    \hline
+    NFR09 & Whole system & Integrated application & TC24: Inference runs on a laptop without a GPU. & \\
+    \hline
+    NFR10 & Architecture & Module interfaces & TC25: The own CNN is replaced with the pretrained model without changing the pipeline or GUI code. & \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{Evaluation}
+\label{sec:eval}
+
+Evaluation will assess the project against the aim and objectives. Each objective will be marked as either achieved;partly achieved; or not achieved. This is by using the results in Table~\ref{tab:obj-eval}, and the percentage of objectives achieved will be reported. Any objective partly or not achieved will instead by explained, with reasoning as to why. The column for status is completed at the end of the project.
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}
+  \renewcommand{\arraystretch}{1.25}
+  \caption{Evaluation of the objectives.}
+  \label{tab:obj-eval}
+  \begin{tabular}{|p{0.07\linewidth}|p{0.36\linewidth}|p{0.34\linewidth}|p{0.11\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{Obj.}} & \textcolor{white}{\textbf{Evidence}} &
+    \textcolor{white}{\textbf{Requirements and tests}} & \textcolor{white}{\textbf{Status}} \\
+    \hline
+    O1 & Rendered training set and labelled real test set, with class counts & FR01; Phase 1 outputs & \\
+    \hline
+    O2 & Preprocessing and detection results on rendered and real images & FR02--FR04, FR15; TC02--TC04, TC15 & \\
+    \hline
+    O3 & Per-class sensitivity, specificity, MCC and AUROC & FR05, FR06, NFR02, NFR08; TC05, TC06, TC17, TC23 & \\
+    \hline
+    O4 & Rendered-to-real gap per class & NFR04; TC19 & \\
+    \hline
+    O5 & ECE and reliability diagrams before and after scaling & FR07, NFR03; TC07, TC18 & \\
+    \hline
+    O6 & Heatmap checks, working GUI and user-study results & FR08--FR14, NFR01, NFR05, NFR06; TC08--TC16, TC20, TC21 & \\
+    \hline
+  \end{tabular}
+\end{table}
+
+The research questions will be answered via the following experiments.
+
+\textbf{Test scenarios.} Models are tested on (i) the held-out rendered fold, using the
+folds suggested with PTB-XL (folds 1--8 for training, 9 for validation and 10 for testing,
+split by patient) \cite{wagner_ptbxl_2020}, and (ii) real images from the
+ECG-Image-Database \cite{reyna_ecg-image-database_2024}. The difference between (i) and (ii)
+answers our SQ1, and results on real images are also split by image type, such as scan and
+photograph, where the numbers allow.
+
+\textbf{Metrics.} For each class, predictions are turned into flags using a threshold
+chosen on the validation fold. Each class threshold is chosen on the validation fold to maximise the Matthews correlation coefficient, after temperature scaling, and then held fixed for all test sets. Classes with too few validation cases use 0.5 as the alternative. On the
+test sets, each class is then scored for sensitivity, $\mathrm{TP}/(\mathrm{TP}+\mathrm{FN})$
+(the share of true cases found), specificity, $\mathrm{TN}/(\mathrm{TN}+\mathrm{FP})$ (the
+share of non-cases correctly cleared), the Matthews correlation coefficient (MCC), and the
+area under the ROC curve (AUROC), which does not depend on the threshold. These are used
+instead of accuracy as the classes are imbalanced \cite{chicco_advantages_2020}. The
+\emph{rendered-to-real gap} for SQ1 is the difference in AUROC and in MCC for each class
+between the rendered test fold and the real images.
+Calibration (SQ2) is measured per class as the expected calibration error,
+$\mathrm{ECE}=\sum_{m=1}^{M}\frac{|B_m|}{n}\,|\mathrm{acc}(B_m)-\mathrm{conf}(B_m)|$,
+where predictions are grouped into $M$ confidence bins $B_m$ and $\mathrm{acc}$ and
+$\mathrm{conf}$ are the observed frequency of the class and the mean predicted probability in
+each bin; it is computed on the test sets before and after temperature scaling and shown in
+reliability diagrams.
+
+\textbf{Comparisons.} The own CNN is compared with the pretrained model on identical splits,
+and a variant without timing features will measure how far the timing features reduced the rendered-to-real RtR gap. As some classes are small
+(like AFLT), results are instead reported with bootstrap confidence
+intervals and the class counts.
+
+\textbf{Explanation and user study (SQ3).} Heatmaps will be checked on labelled cases against the
+expected region, and for shortcuts such as attention on the grid or printed text. The
+application will be tested with university students under the approved ethics application
+, using a questionnaire to measure
+whether the confidence and heatmap are understood. Clinician testing is future work.
+
+\textbf{Success criteria.} The project will be judged as successful if the targets set in Table~\ref{tab:functional-req} are met. The rendered-to-real gap will be reported per class, whether or not it's target is met, as it is a separate result.
+
+\textbf{Limitations.} Labels come from at most two annotators \cite{wagner_ptbxl_2020} and
+agreement between cardiologists can be poor \cite{dhutia_interrater_2017}, so scores partly
+measure agreement with imperfect labels. PTB-XL reflects one period and one manufacturer.
+The system supports review and does not give a diagnosis; the wider issues are discussed in
+Appendix~\ref{app:ples}.
