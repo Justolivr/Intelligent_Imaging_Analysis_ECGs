@@ -7,14 +7,13 @@ environment, Section~\ref{sec:datasets} reviews the datasets, Section~\ref{sec:d
 presents the design, Section~\ref{sec:prototypes} reports the prototypes, and
 Section~\ref{sec:feas-risks} summarises the main risks.
 
-% =====================================================================
 \section{Coding Environment}
 \label{sec:env}
 
-The system is developed in Python. OpenCV \cite{bradski_opencv_2000} is used for image
+The system will be developed in Python. OpenCV \cite{bradski_opencv_2000} will be used for image
 processing, PyTorch for the networks and Grad-CAM, and
-matplotlib % might change 
-for the interface. Training runs on my own PC, and the code is
+matplotlib 
+for the interface. Training will be ran on my own PC, and the code will be
 kept under version control on GitHub. Python has been chosen as it has a wide range of libraries like PyTorch to help me speed up processing, and matplotlib is useful for graph reading.
 
 \section{Datasets}
@@ -30,19 +29,19 @@ class used in this project.
   \footnotesize
   \caption{Records per class in PTB-XL.}
   \label{tab:class-counts}
-  \begin{tabular}{@{}p{0.35\linewidth} p{0.15\linewidth} p{0.3\linewidth}@{}}
+  \begin{tabular}{@{}p{0.45\linewidth} p{0.15\linewidth}@{}}
     \toprule
-    \textbf{Class} & \textbf{Records} & \textbf{In real-image subset} \\
+    \textbf{Class} & \textbf{Records} \\
     \midrule
-    Normal & 9514 & [TODO] \\
-    Myocardial infarction & 5469 & [TODO] \\
-    ST/T change & 5235 & [TODO] \\
-    Conduction disturbance & 4898 & [TODO] \\
-    Hypertrophy & 2649 & [TODO] \\
-    Atrial fibrillation & 1514 & [TODO] \\
-    Atrial flutter & 73 & [TODO] \\
-    Sinus tachycardia & 826 & [TODO] \\
-    Sinus bradycardia & 637 & [TODO] \\
+    Normal & 9514 \\
+    Myocardial infarction & 5469 \\
+    ST/T change & 5235 \\
+    Conduction disturbance & 4898 \\
+    Hypertrophy & 2649 \\
+    Atrial fibrillation & 1514 \\
+    Atrial flutter & 73 \\
+    Sinus tachycardia & 826 \\
+    Sinus bradycardia & 637 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -87,24 +86,104 @@ others, for example swapping the pretrained model for the own CNN.
 The interface will have a student view, with the explanation and teaching support, and a clinician
 view, with a short list of flags and measured values. Wireframe prototypes are listed in 
 
+\begin{figure}[H]
+  \centering
+  \makebox[\linewidth][c]{%
+  \begin{tikzpicture}[
+      font=\small,
+      mod/.style={draw, rounded corners=2pt, align=center, text width=28mm,
+                  minimum height=11mm, fill=#1},
+      mod/.default=blue!10,
+      arr/.style={-{Latex[length=2mm]}, thick},
+      lab/.style={font=\scriptsize, fill=white, inner sep=1pt}
+    ]
+    % analysis pipeline (middle column)
+    \node[mod] (pre) at (0,0)      {Preprocessing\\\footnotesize OpenCV};
+    \node[mod] (det) at (0,-19mm)  {Detection\\\footnotesize R peaks, HR, RR};
+    \node[mod=orange!12] (clf) at (0,-38mm) {Classifier\\\footnotesize CNN (PyTorch)};
+    \node[mod=orange!12] (cal) at (0,-57mm) {Calibration\\\footnotesize temperature $T$};
+    \node[mod=orange!12] (exp) at (0,-76mm) {Explanation\\\footnotesize Grad-CAM};
+    \node[draw, dashed, rounded corners, inner sep=3mm, fit=(pre)(exp),
+          label={[font=\footnotesize\itshape]above:Analysis pipeline}] (pipe) {};
+
+    % GUI (left)
+    \node[mod=green!12, minimum height=86mm, text width=26mm, anchor=north]
+         (gui) at (-56mm,5.5mm) {};
+    \node[align=center, font=\small, text width=24mm, anchor=north] at (gui.north)
+         {\textbf{GUI module}\\[3pt]Upload\\Results screen\\User view\\Clinical view};
+
+    % offline training (right)
+    \node[mod=black!5] (data) at (56mm,-10mm) {Data preparation\\\footnotesize ECG-Image-Kit, PTB-XL, ECG-Image-Database};
+    \node[mod=black!5] (train) at (56mm,-36mm) {Training};
+    \node[mod=black!5] (store) at (56mm,-62mm) {Saved model\\\footnotesize weights, $T$, thresholds};
+    \node[draw, dashed, rounded corners, inner sep=3mm, fit=(data)(store),
+          label={[font=\footnotesize\itshape]above:Offline training}] {};
+
+    % pipeline flow
+    \draw[arr] (pre) -- node[lab, right]{cleaned image, scale} (det);
+    \draw[arr] (det) -- node[lab, right]{timing features} (clf);
+    \draw[arr] (clf) -- node[lab, right]{class scores} (cal);
+    \draw[arr] (cal) -- node[lab, right]{flagged classes} (exp);
+
+    % GUI <-> pipeline
+    \draw[arr] (gui.east |- 0,2.5mm) -- node[lab, above]{image} ([yshift=2.5mm]pre.west);
+    \draw[arr] ([yshift=-2.5mm]pre.west) -- node[lab, below]{quality warning} (gui.east |- 0,-2.5mm);
+    \draw[arr] (det.west) -- node[lab, above]{HR, RR} (gui.east |- det);
+    \draw[arr] (cal.west) -- node[lab, above]{flags, confidence} (gui.east |- cal);
+    \draw[arr] (exp.west) -- node[lab, above]{heatmaps} (gui.east |- exp);
+
+    % offline flow
+    \draw[arr] (data) -- node[lab, right]{images, labels} (train);
+    \draw[arr] (train) -- (store);
+    \draw[arr, dashed] (store.north west) -- node[font=\scriptsize, above, sloped, pos=0.5]{weights} (clf.east);
+    \draw[arr, dashed] (store.south west) -- node[font=\scriptsize, below, sloped, pos=0.5]{$T$, thresholds} (cal.east);
+  \end{tikzpicture}%
+  }
+  \caption{Planned system architecture, showing the modules, their inputs and outputs, and how they connect.}
+  \label{fig:architecture}
+\end{figure}
+
 \section{Prototypes}
 \label{sec:prototypes}
 
 Three prototypes were built to test the main risks of the plan.
+Three prototypes test the main risks of the plan. Table~\ref{tab:prototypes} gives the status of each one and what it demonstrates.
+
+\begin{table}[H]
+  \centering
+  \footnotesize
+  \setlength{\arrayrulewidth}{0.8pt}
+  \renewcommand{\arraystretch}{1.25}
+  \caption{Status of the prototypes.}
+  \label{tab:prototypes}
+  \begin{tabular}{|p{0.25\linewidth}|p{0.14\linewidth}|p{0.49\linewidth}|}
+    \hline
+    \rowcolor{cyan!90!black}
+    \textcolor{white}{\textbf{Prototype}} & \textcolor{white}{\textbf{Status}} &
+    \textcolor{white}{\textbf{Demonstrates}} \\
+    \hline
+    1: Data and rendering & Completed & Training images can be rendered from PTB-XL signals with ECG-Image-Kit, with timing that matches the source signal. \\
+    \hline
+    2: Preprocessing & Completed & OpenCV thresholding and grid removal can isolate the trace on a rendered image. Beat detection is not yet built and is planned for Phase 2. \\
+    \hline
+    3: GUI wireframes & Planned & Will show the layout of the user view and the clinical view, and how flags, confidence, heatmaps and measured values will be presented. \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \textbf{Prototype 1: data and rendering.}
-PTB-XL was downloaded, and its labels were mapped to the nine classes. To test the pipeline, 2-3 recordings were rendered using ECG-Image-Kit, and using its default settings, the signal data was encoded into an image. The figure below shows the rendered image, and the signal it came from. Both are verified to be similar timings. The rendered trace looks flatter, so it will produce cleaner recordings then real life. This prototype was to show that training images can be created for PTB-XL.
+PTB-XL was downloaded, and its labels were mapped to the nine classes. To test the pipeline, 2-3 recordings were rendered using ECG-Image-Kit, and using its default settings, were encoded into an image. Figure~\ref{fig:proto1} shows the rendered image, and the signal it came from. Both are verified to be similar timings. The rendered trace looks flatter, so it will produce cleaner recordings then real life. This prototype was to show that training images can be created for PTB-XL.
 \begin{figure}[ht] 
   \centering
   \includegraphics[width=\linewidth]{images/rendered_vs_signal.png}
   \caption{A clean rendering of PTB-XL record 00001\_lr with ECG-Image-Kit
     \cite{shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated
     from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}
-  \label{fig:rendered}
+  \label{fig:proto2}
 \end{figure}
 
 \textbf{Prototype 2: preprocessing and detection.}  
-To test image processing for Chapter~\ref{ch:lit}, OpenCV operations were applied sequentially to a rendered ECG image (Figure~\ref{fig:proto2}). It used thresholding, to separate the ECG trace from the background, whilst also removing colour. I then used feature detection to remove the grid. Each step worked, and as expected, a rendering of just the trace was the final result. The final pipeline will involve all kinds of ECG images, so the preprocessing will be chosen by their effectiveness.
+To test image processing for Chapter~\ref{ch:lit}, OpenCV operations were applied sequentially to a rendered ECG image (Figure~\ref{fig:proto2}). Thresholding was used to separate the ECG trace from the background, whilst also removing colour, and then used feature detection to remove the grid. A rendering of just the trace was the final result. As the final pipeline will involve all kinds of ECG images, the preprocessing will be chosen by their effectiveness.
 
 \begin{figure}[ht]
   \centering
@@ -115,38 +194,13 @@ To test image processing for Chapter~\ref{ch:lit}, OpenCV operations were applie
 
 
 \textbf{Prototype 3: Wireframe.}
-This prototype is to show off the wireframes for the two views - one for general users, the other for clinicians.
+Wireframes are drawn for the two views: the user view, which contrains the flags, the confidence scores, heatmap, and explanations. The clinical view has a short flagged list and the measured values. This protoypes demonstrates how the results will be presented to each kind of user before the interface is built, and it also the basis of our interface tested in the user study.
 
 [TO COMPLETE]
 \section{Risks}
 \label{sec:feas-risks}
 
-Table~\ref{tab:feas-risks} lists the main risks. The full risk analysis is in
-Appendix~\ref{app:risks}.
-\begin{table}[ht]
-  \centering
-  \footnotesize
-  \caption{Main risks, ratings and fallbacks.}
-  \label{tab:feas-risks}
-  \begin{tabular}{@{}p{0.27\linewidth} p{0.09\linewidth} p{0.09\linewidth} p{0.45\linewidth}@{}}
-    \toprule
-    \textbf{Risk} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Fallback} \\
-    \midrule
-    Models trained on rendered images do not transfer to real images \cite{geirhos_shortcut_2020} &
-      High & High &
-      Report the gap as a result;add augmentation to the image that imitates real-life artefacts \\
-    Trace detection fails on poor real images &
-      Medium & High &
-      Guess on overall image; Report failure \\
-    Rare classes have too few cases &
-      High & Medium &
-      Report per class with counts; evaluate on rendered images only if there is not enough \\
-    Short on time for the full interface &
-      Medium & Medium &
-      Reduced GUI interface \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+The full risk assessment, with the severity, likelihood and mitigation of each risk, are given in Table~\ref{tab:project-risks} and Table~\ref{tab:risks} in the Project Management section (Appendix~\ref{app:ranalysis}). The main risks for feasibility are that models trained on rendered images may not transfer to real images (R1), that trace detection may fail on poor real images (R2), rare classes may have too few cases (R3), and that there may not be enough time for the full interface (R10). Each has a fallback: the rendered-to-real gap will be reported as a result, the classifier will use the image alone if detection fails, rare classes will be reported with their counts or evaluated on rendered images only, and the interface can be reduced to uploading, flagging and the heatmap. 
 
 % =====================================================================
 \section{Summary}

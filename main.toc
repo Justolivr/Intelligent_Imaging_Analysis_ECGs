@@ -36,20 +36,20 @@
 \contentsline {section}{\numberline {4.1}Coding Environment}{21}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Datasets}{21}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Design}{22}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Prototypes}{22}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Risks}{23}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Summary}{24}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Conclusion}{25}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Motivation and Goals}{25}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Proposed Work}{25}{section.5.2}%
-\contentsline {chapter}{\numberline {A}Appendix A}{26}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Risk Analysis}{26}{appendix.A.1}%
-\contentsline {section}{\numberline {A.2}PLES}{27}{appendix.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}Professional Issues}{27}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}Legal Issues}{28}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{28}{subsection.A.2.3}%
-\contentsline {subsection}{\numberline {A.2.4}Social Issues}{28}{subsection.A.2.4}%
-\contentsline {section}{\numberline {A.3}Gantt Chart}{29}{appendix.A.3}%
-\contentsline {section}{\numberline {A.4}GenAI Summary}{31}{appendix.A.4}%
-\contentsline {section}{\numberline {A.5}Glossary}{31}{appendix.A.5}%
-\contentsline {chapter}{References}{32}{appendix*.9}%
+\contentsline {section}{\numberline {4.4}Prototypes}{23}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Risks}{25}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Summary}{25}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Conclusion}{26}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Motivation and Goals}{26}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Proposed Work}{26}{section.5.2}%
+\contentsline {chapter}{\numberline {A}Project Management}{27}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Risk Analysis}{27}{appendix.A.1}%
+\contentsline {section}{\numberline {A.2}PLES}{28}{appendix.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Professional Issues}{28}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}Legal Issues}{29}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Ethical Issues}{29}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.2.4}Social Issues}{29}{subsection.A.2.4}%
+\contentsline {section}{\numberline {A.3}Gantt Chart}{30}{appendix.A.3}%
+\contentsline {section}{\numberline {A.4}GenAI Summary}{32}{appendix.A.4}%
+\contentsline {section}{\numberline {A.5}Glossary}{32}{appendix.A.5}%
+\contentsline {chapter}{References}{33}{appendix*.9}%
