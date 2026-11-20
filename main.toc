@@ -53,5 +53,5 @@
 \contentsline {chapter}{\numberline {B}Wireframes}{21}{appendix.B}%
 \contentsline {chapter}{\numberline {C}Requirements Traceability Matrix}{22}{appendix.C}%
 \contentsline {chapter}{\numberline {D}Supplementary Literature Material}{24}{appendix.D}%
-\contentsline {chapter}{Glossary}{25}{appendix*.28}%
-\contentsline {chapter}{References}{28}{appendix*.29}%
+\contentsline {chapter}{Glossary}{26}{appendix*.30}%
+\contentsline {chapter}{References}{29}{appendix*.31}%

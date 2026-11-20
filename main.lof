@@ -9,13 +9,15 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Planned system architecture, showing the modules, their inputs and outputs, and how they connect.}}{12}{figure.caption.17}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Prototype 1: PTB-XL record 00001\_lr rendered with ECG-Image-Kit \blx@tocontentsinit {0}\cite {shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}}{13}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Extracting a waveform from an ECG.}}{13}{figure.caption.20}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Project plan for Semester 1.}}{19}{figure.caption.20}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Project plan for Semester 2.}}{20}{figure.caption.21}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Project plan for Semester 1.}}{19}{figure.caption.21}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Project plan for Semester 2.}}{20}{figure.caption.22}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Prototype 3: Wireframe created of the user view.}}{21}{figure.caption.22}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Prototype 3: Wireframe created of the clinician view.}}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Prototype 3: Wireframe created of the user view.}}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Prototype 3: Wireframe created of the clinician view.}}{21}{figure.caption.24}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Otsu segmentation of a dermatoscopic image}}{24}{figure.caption.27}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Otsu segmentation of a dermatoscopic image}}{24}{figure.caption.28}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Various types of ECG images from the ECG-Image-Database.}}{25}{figure.caption.29}%

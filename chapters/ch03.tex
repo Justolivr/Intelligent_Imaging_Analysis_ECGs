@@ -9,9 +9,9 @@ The project addresses one main question:
 \end{quote}
 It is divided into three sub-questions (SQ1--SQ3), each tied to a gap from Chapter~\ref{ch:lit} and to the objectives in brackets:
 \begin{itemize}
-  \item \textbf{SQ1 (O1--O4):} How much does performance fall from rendered to real images, and how far do preprocessing and timing features reduce the fall?
-  \item \textbf{SQ2 (O5):} How reliable is the model's confidence per class, and how much does temperature scaling improve it?
-  \item \textbf{SQ3 (O6):} Do the explanations highlight the expected regions, and can users understand the confidence and explanation shown?
+  \item \textbf{SQ1 (Obj 1--Obj 4):} How much does performance fall from rendered to real images, and how far do preprocessing and timing features reduce the fall?
+  \item \textbf{SQ2 (Obj 5):} How reliable is the model's confidence per class, and how much does temperature scaling improve it?
+  \item \textbf{SQ3 (Obj 6):} Do the explanations highlight the expected regions, and can users understand the confidence and explanation shown?
 \end{itemize}
 
 \section{Project Requirements}
@@ -31,55 +31,55 @@ Table~\ref{tab:functional-req} lists the requirements in order of development, p
     \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Requirement}} &
     \textcolor{white}{\textbf{MoSCoW}} & \textcolor{white}{\textbf{Obj.}} \\
     \hline
-    FR01 & The user can upload an ECG image (scan or photograph). & Must & O1, O6 \\
+    FR01 & The user can upload an ECG image (scan or photograph). & Must & Obj 1, Obj 6 \\
     \hline
-    FR02 & The system preprocesses the image. & Must & O2 \\
+    FR02 & The system preprocesses the image. & Must & Obj 2 \\
     \hline
-    FR03 & The system detects the trace and locates the R peaks. & Should & O2 \\
+    FR03 & The system detects the trace and locates the R peaks. & Should & Obj 2 \\
     \hline
-    FR04 & The system extracts the HR and RR regularity. & Should & O2 \\
+    FR04 & The system extracts the HR and RR regularity. & Should & Obj 2 \\
     \hline
-    FR05 & The system flags possible abnormalities for the five diagnostic superclasses. & Must & O3 \\
+    FR05 & The system flags possible abnormalities for the five diagnostic superclasses. & Must & Obj 3 \\
     \hline
-    FR06 & The system flags the four rhythm classes. & Should & O3 \\
+    FR06 & The system flags the four rhythm classes. & Should & Obj 3 \\
     \hline
-    FR07 & Each flag shows a calibrated confidence score. & Must & O5 \\
+    FR07 & Each flag shows a calibrated confidence score. & Must & Obj 5 \\
     \hline
-    FR08 & A heatmap is overlaid on the original image for each flagged class. & Should & O6 \\
+    FR08 & A heatmap is overlaid on the original image for each flagged class. & Should & Obj 6 \\
     \hline
-    FR09 & The interface shows the measured values (HR and RR intervals). & Should & O2, O6 \\
+    FR09 & The interface shows the measured values (HR and RR intervals). & Should & Obj 2, Obj 6 \\
     \hline
-    FR10 & A plain-language explanation is shown for each flagged condition. & Should & O6 \\
+    FR10 & A plain-language explanation is shown for each flagged condition. & Should & Obj 6 \\
     \hline
-    FR11 & A labelled diagram of the waves is available for reference. & Could & O6 \\
+    FR11 & A labelled diagram of the waves is available for reference. & Could & Obj 6 \\
     \hline
-    FR12 & A clinical view shows all nine classes and their thresholds, and fuller values to measure. & Could & O6 \\
+    FR12 & A clinical view shows all nine classes and their thresholds, and fuller values to measure. & Could & Obj 6 \\
     \hline
-    FR13 & The user can export a result. & Could & O6 \\
+    FR13 & The user can export a result. & Could & Obj 6 \\
     \hline
-    FR14 & The user can save a result. & Could & O6 \\
+    FR14 & The user can save a result. & Could & Obj 6 \\
     \hline
-    FR15 & The system warns the user if an image is too poor in quality to analyse. & Should & O2 \\
+    FR15 & The system warns the user if an image is too poor in quality to analyse. & Should & Obj 2 \\
     \hline
     FR16 & Real-time/live ECG analysis. & Won't & N/A \\ % as no equipment
     \hline
     FR17 & Advice on treatments, or diagnosis. & Won't & N/A \\
     \hline
-    NFR01 & The system returns a result within 10\,s of upload on the development PC. & Must & O6 \\
+    NFR01 & The system returns a result within 10\,s of upload on the development PC. & Must & Obj 6 \\
     \hline
-    NFR02 & Mean AUROC across the five superclasses on the rendered test fold is at least 0.85. & Must & O3 \\
+    NFR02 & Mean AUROC across the five superclasses on the rendered test fold is at least 0.85. & Must & Obj 3 \\
     \hline
-    NFR03 & After temperature scaling, the ECE is at most 0.05 for each reported class, and lower than before scaling. & Must & O5 \\
+    NFR03 & After temperature scaling, the ECE is at most 0.05 for each reported class, and lower than before scaling. & Must & Obj 5 \\
     \hline
-    NFR04 & The fall in AUROC from rendered to real images is measured per class, with a target of at most 0.10 for the five superclasses. & Should & O4 \\
+    NFR04 & The fall in AUROC from rendered to real images is measured per class, with a target of at most 0.10 for the five superclasses. & Should & Obj4 \\
     \hline
-    NFR05 & Without training, at least 70\% of study participants correctly interpret the confidence and heatmap, and the mean SUS score is at least 68. & Should & O6 \\
+    NFR05 & Without training, at least 70\% of study participants correctly interpret the confidence and heatmap, and the mean SUS score is at least 68. & Should & Obj6 \\
     \hline
-    NFR06 & The results screen shows the model's limitations, such as classes with few real test images. & Should & O6 \\
+    NFR06 & The results screen shows the model's limitations, such as classes with few real test images. & Should & Obj 6 \\
     \hline
     NFR07 & Uploaded images are not shared or stored beyond the session. & Should & N/A \\
     \hline
-    NFR08 & Results can be reproduced from the repository (fixed seeds, pinned package versions, scripts for the reported tables). & Must & O3 \\
+    NFR08 & Results can be reproduced from the repository (fixed seeds, pinned package versions, scripts for the reported tables). & Must & Obj3 \\
     \hline
     NFR09 & The trained system runs on a standard laptop without a GPU (training excluded). & Could & N/A \\
     \hline
@@ -103,11 +103,11 @@ The work is divided into seven phases (Figure~\ref{fig:workflow}), each producin
       phase/.default=blue!10,
       arr/.style={-{Latex[length=2mm]}, thick}
     ]
-    \node[phase] (p1) at (0,0)     {\textbf{Phase 1}\\Preparing data\\\footnotesize(O1)};
-    \node[phase] (p2) at (38mm,0)  {\textbf{Phase 2}\\Image processing\\\& timing\\\footnotesize(O2)};
-    \node[phase] (p3) at (76mm,0)  {\textbf{Phase 3}\\Model development\\\footnotesize(O3, O4)};
-    \node[phase] (p4) at (114mm,0) {\textbf{Phase 4}\\Calibration \& explanation\\\footnotesize(O5, O6)};
-    \node[phase=orange!12] (p5) at (114mm,-26mm) {\textbf{Phase 5}\\Integration \& testing\\\footnotesize(O6)};
+    \node[phase] (p1) at (0,0)     {\textbf{Phase 1}\\Preparing data\\\footnotesize(Obj 1)};
+    \node[phase] (p2) at (38mm,0)  {\textbf{Phase 2}\\Image processing\\\& timing\\\footnotesize(Obj 2)};
+    \node[phase] (p3) at (76mm,0)  {\textbf{Phase 3}\\Model development\\\footnotesize(Obj 3, Obj 4)};
+    \node[phase] (p4) at (114mm,0) {\textbf{Phase 4}\\Calibration \& explanation\\\footnotesize(Obj 5, Obj 6)};
+    \node[phase=orange!12] (p5) at (114mm,-26mm) {\textbf{Phase 5}\\Integration \& testing\\\footnotesize(Obj 6)};
     \node[phase=black!5, dashed] (p6) at (76mm,-26mm) {\textbf{Phase 6}\\Advanced features\\\footnotesize(optional)};
     \node[phase=green!12] (p7) at (38mm,-26mm) {\textbf{Phase 7}\\Evaluation \& review\\\footnotesize(all)};
 
@@ -127,15 +127,15 @@ The work is divided into seven phases (Figure~\ref{fig:workflow}), each producin
   \label{fig:workflow}
 \end{figure}
 
-\textbf{Phase 1: Preparing data (O1).} Training images will be rendered from PTB-XL with ECG-Image-Kit, labelled with the nine classes and split by patient. A test set will be prepared from the PTB-XL part of the ECG-Image-Database, and the class counts recorded, as rare classes such as atrial flutter may need to be reported separately. As these real images are of PTB-XL recordings, their patients will be excluded from the training folds to prevent data leakage.
+\textbf{Phase 1: Preparing data (Obj 1).} Training images will be rendered from PTB-XL with ECG-Image-Kit, labelled with the nine classes and split by patient. A test set will be prepared from the PTB-XL part of the ECG-Image-Database, and the class counts recorded, as rare classes such as atrial flutter may need to be reported separately. As these real images are of PTB-XL recordings, their patients will be excluded from the training folds to prevent data leakage.
 
-\textbf{Phase 2: Image processing and timing (O2).} OpenCV will isolate the trace; R peaks, heart rate and RR regularity will then be measured and checked against Pan--Tompkins on the source signal. A quality check will warn the user when the trace cannot be found or the resolution is too low (FR15). If detection is unreliable on real images, the classifier will use the image alone.
+\textbf{Phase 2: Image processing and timing (Obj 2).} OpenCV will isolate the trace; R peaks, heart rate and RR regularity will then be measured and checked against Pan--Tompkins on the source signal. A quality check will warn the user when the trace cannot be found or the resolution is too low (FR15). If detection is unreliable on real images, the classifier will use the image alone.
 
-\textbf{Phase 3: Model development (O3, O4).} A multi-label CNN will be trained on rendered images, with and without timing features, and a pretrained CNN fine-tuned on the same splits for comparison. Both will be evaluated per class on rendered and real images.
+\textbf{Phase 3: Model development (Obj 3, Obj 4).} A multi-label CNN will be trained on rendered images, with and without timing features, and a pretrained CNN fine-tuned on the same splits for comparison. Both will be evaluated per class on rendered and real images.
 
-\textbf{Phase 4: Calibration and explanation (O5, O6).} Temperature scaling will be fitted on the validation fold, and Grad-CAM heatmaps checked against expected regions and for shortcuts such as attention on the grid or text.
+\textbf{Phase 4: Calibration and explanation (Obj 5, Obj 6).} Temperature scaling will be fitted on the validation fold, and Grad-CAM heatmaps checked against expected regions and for shortcuts such as attention on the grid or text.
 
-\textbf{Phases 5--7: Integration, extensions and evaluation (O6).} The modules will be combined into one Python application and tested against the requirements; if time is short, the interface will be reduced to uploading, flagging and the heatmap. Optional features (Phase 6) are dropped first if the schedule slips. The project will then be evaluated (Section~\ref{sec:eval}), including the user study under the approved ethics application, with an expert review as the fallback. The risks behind these fallbacks are in Table~\ref{tab:risks} (Appendix~\ref{app:risks}).
+\textbf{Phases 5--7: Integration, extensions and evaluation (Obj 6).} The modules will be combined into one Python application and tested against the requirements; if time is short, the interface will be reduced to uploading, flagging and the heatmap. Optional features (Phase 6) are dropped first if the schedule slips. The project will then be evaluated (Section~\ref{sec:eval}), including the user study under the approved ethics application, with an expert review as the fallback. The risks behind these fallbacks are in Table~\ref{tab:risks} (Appendix~\ref{app:risks}).
 
 Figure~\ref{fig:pipeline} shows the processing pipeline that Phases 2--5 will build: the CNN will use the preprocessed image and the timing features to give a score for each class, temperature scaling will calibrate the scores, and Grad-CAM will produce a heatmap for each flagged class.
 
@@ -200,17 +200,17 @@ Each objective will be marked as achieved, partly achieved or not achieved using
     \textcolor{white}{\textbf{Obj.}} & \textcolor{white}{\textbf{Evidence}} &
     \textcolor{white}{\textbf{Requirements and tests}} & \textcolor{white}{\textbf{Status}} \\
     \hline
-    O1 & Rendered training set and labelled real test set, with class counts & FR01; Phase 1 outputs & \\
+    Obj 1 & Rendered training set and labelled real test set, with class counts & FR01; Phase 1 outputs & \\
     \hline
-    O2 & Preprocessing and detection results on rendered and real images & FR02--FR04, FR15; TC02--TC04, TC15 & \\
+    Obj 2 & Preprocessing and detection results on rendered and real images & FR02--FR04, FR15; TC02--TC04, TC15 & \\
     \hline
-    O3 & Per-class sensitivity, specificity, MCC and AUROC & FR05, FR06, NFR02, NFR08; TC05, TC06, TC17, TC23 & \\
+    Obj 3 & Per-class sensitivity, specificity, MCC and AUROC & FR05, FR06, NFR02, NFR08; TC05, TC06, TC17, TC23 & \\
     \hline
-    O4 & Rendered-to-real gap per class & NFR04; TC19 & \\
+    Obj 4 & Rendered-to-real gap per class & NFR04; TC19 & \\
     \hline
-    O5 & ECE and reliability diagrams before and after scaling & FR07, NFR03; TC07, TC18 & \\
+    Obj 5 & ECE and reliability diagrams before and after scaling & FR07, NFR03; TC07, TC18 & \\
     \hline
-    O6 & Heatmap checks, working GUI and user-study results & FR08--FR14, NFR01, NFR05, NFR06; TC08--TC16, TC20, TC21 & \\
+    Obj 6 & Heatmap checks, working GUI and user-study results & FR08--FR14, NFR01, NFR05, NFR06; TC08--TC16, TC20, TC21 & \\
     \hline
   \end{tabular}
 \end{table}
