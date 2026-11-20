@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  20 NOV 2026 18:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  20 NOV 2026 18:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -859,7 +859,7 @@ Package: blx-case-expl3 2026/09/24 v3.22a expl3 case changing code for biblatex
 )) (floatfix.tex)
 \@quotelevel=\count500
 \@quotereset=\count501
- (main.aux)
+ (main.aux (chapters/ch01.aux) (chapters/ch02.aux) (chapters/ch03.aux) (chapters/ch04.aux) (chapters/ch05.aux) (chapters/apA.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
@@ -937,16 +937,12 @@ Package biblatex Warning: The following entry could not be found
 )
 Package biblatex Info: Reference section=0 on input line 96.
 Package biblatex Info: Reference segment=0 on input line 96.
-
-
-LaTeX Warning: Reference `LastPage' on page i undefined on input line 104.
-
-<./images/HWUlogo.jpg, id=233, 455.7828pt x 227.6505pt>
+<./images/HWUlogo.jpg, id=234, 455.7828pt x 227.6505pt>
 File: ./images/HWUlogo.jpg Graphic file (type jpg)
 <use ./images/HWUlogo.jpg>
 Package pdftex.def Info: ./images/HWUlogo.jpg  used on input line 130.
 (pdftex.def)             Requested size: 134.0185pt x 66.93747pt.
-[1
+ [1
 
 
 
@@ -1004,9 +1000,6 @@ Overfull \hbox (0.9828pt too wide) in paragraph at lines 11--11
  (chapters/ch01.tex
 Chapter 1.
 
-LaTeX Warning: Reference `ch:lit' on page 1 undefined on input line 13.
-
-
 Overfull \hbox (0.34062pt too wide) in paragraph at lines 30--31
 []\OT1/cmr/bx/n/10.95 O3: \OT1/cmr/m/n/10.95 Train a multi-label CNN and eval-u-ate it with imbalance-aware met-rics on patient- 
  []
@@ -1020,86 +1013,32 @@ Overfull \hbox (0.34062pt too wide) in paragraph at lines 30--31
 
  (chapters/ch02.tex
 Chapter 2.
-
-LaTeX Warning: Reference `tab:techniques' on page 2 undefined on input line 12.
-
 [2
 
 
 
 
 ]
-
-LaTeX Warning: Reference `fig:ecg-beat' on page 3 undefined on input line 47.
-
-
-LaTeX Warning: Reference `fig:ecg-grid' on page 3 undefined on input line 47.
-
-<images/LabelledHeartbeat.jpg, id=453, 301.87115pt x 297.39424pt>
+<images/LabelledHeartbeat.jpg, id=459, 301.87115pt x 297.39424pt>
 File: images/LabelledHeartbeat.jpg Graphic file (type jpg)
 <use images/LabelledHeartbeat.jpg>
 Package pdftex.def Info: images/LabelledHeartbeat.jpg  used on input line 53.
 (pdftex.def)             Requested size: 112.81448pt x 111.14137pt.
-<images/ECGGrid.jpg, id=456, 675.52374pt x 387.4475pt>
+<images/ECGGrid.jpg, id=462, 675.52374pt x 387.4475pt>
 File: images/ECGGrid.jpg Graphic file (type jpg)
 <use images/ECGGrid.jpg>
 Package pdftex.def Info: images/ECGGrid.jpg  used on input line 59.
 (pdftex.def)             Requested size: 162.60316pt x 93.26125pt.
-[3 <./images/LabelledHeartbeat.jpg> <./images/ECGGrid.jpg>]
-
-LaTeX Warning: Reference `tab:techniques' on page 4 undefined on input line 85.
-
-
-LaTeX Warning: Reference `fig:feature-extraction' on page 4 undefined on input line 90.
-
-
-LaTeX Warning: Reference `sec:waveform' on page 4 undefined on input line 90.
-
-[4]
-
-LaTeX Warning: Reference `sec:existing-systems' on page 5 undefined on input line 135.
-
-
-LaTeX Warning: Reference `tab:ecg-studies' on page 5 undefined on input line 135.
-
-
-LaTeX Warning: Reference `app:lit' on page 5 undefined on input line 135.
-
-
+ [3 <./images/LabelledHeartbeat.jpg> <./images/ECGGrid.jpg>] [4]
 Overfull \hbox (2.05934pt too wide) in paragraph at lines 140--141
 \OT1/cmr/m/n/10.95 ECG datasets are im-bal-anced, so ac-cu-racy can be high even when rare con-di-tions are missed; 
  []
 
-[5]
-
-LaTeX Warning: Reference `tab:existing-systems' on page 6 undefined on input line 145.
-
-
-LaTeX Warning: Reference `tab:existing-systems' on page 6 undefined on input line 186.
-
-
-LaTeX Warning: Reference `ch:method' on page 6 undefined on input line 191.
-
-) [6]
+[5]) [6]
 \openout2 = `./chapters/ch03.aux'.
 
  (chapters/ch03.tex
 Chapter 3.
-
-LaTeX Warning: Reference `ch:lit' on page 7 undefined on input line 10.
-
-
-LaTeX Warning: Reference `tab:functional-req' on page 7 undefined on input line 19.
-
-
-LaTeX Warning: Reference `sec:testing' on page 7 undefined on input line 19.
-
-
-LaTeX Warning: Reference `fig:workflow' on page 7 undefined on input line 94.
-
-
-LaTeX Warning: Reference `app:gantt' on page 7 undefined on input line 94.
-
 
 Overfull \hbox (8.55331pt too wide) in paragraph at lines 132--133
 \OT1/cmr/m/n/10.95 peaks, heart rate and RR reg-u-lar-ity will then be mea-sured and checked against Pan--Tompkins 
@@ -1110,41 +1049,9 @@ Overfull \hbox (8.55331pt too wide) in paragraph at lines 132--133
 
 
 
-] [8]
-
-LaTeX Warning: Reference `sec:eval' on page 9 undefined on input line 138.
-
-
-LaTeX Warning: Reference `tab:risks' on page 9 undefined on input line 138.
-
-
-LaTeX Warning: Reference `app:risks' on page 9 undefined on input line 138.
-
-
-LaTeX Warning: Reference `fig:pipeline' on page 9 undefined on input line 140.
-
-
-LaTeX Warning: Reference `tab:rtm-fr' on page 9 undefined on input line 183.
-
-
-LaTeX Warning: Reference `tab:rtm-nfr' on page 9 undefined on input line 183.
-
-
-LaTeX Warning: Reference `app:rtm' on page 9 undefined on input line 183.
-
-[9]
-
-LaTeX Warning: Reference `tab:obj-eval' on page 10 undefined on input line 188.
-
-
-LaTeX Warning: Reference `tab:functional-req' on page 10 undefined on input line 223.
-
-
-LaTeX Warning: Reference `app:ples' on page 10 undefined on input line 223.
-
-)
-Overfull \hbox (11.23994pt too wide) in paragraph at lines 223--261
-[]\OT1/cmr/bx/n/10.95 Success cri-te-ria \OT1/cmr/m/n/10.95 are the tar-gets in Ta-ble [] (FR03, FR04 and NFR02--NFR05); the rendered- 
+] [8] [9])
+Overfull \hbox (13.3388pt too wide) in paragraph at lines 223--261
+[]\OT1/cmr/bx/n/10.95 Success cri-te-ria \OT1/cmr/m/n/10.95 are the tar-gets in Ta-ble [][]3.1[][] (FR03, FR04 and NFR02--NFR05); the rendered- 
  []
 
 [10]
@@ -1152,87 +1059,38 @@ Overfull \hbox (11.23994pt too wide) in paragraph at lines 223--261
 
  (chapters/ch04.tex
 Chapter 4.
-
-LaTeX Warning: Reference `ch:method' on page 11 undefined on input line 4.
-
-
-LaTeX Warning: Reference `app:repo' on page 11 undefined on input line 9.
-
-
-LaTeX Warning: Reference `tab:class-counts' on page 11 undefined on input line 41.
-
-
-LaTeX Warning: Reference `fig:architecture' on page 11 undefined on input line 48.
-
 [11
 
 
 
 
 ]
-
-LaTeX Warning: Reference `tab:prototypes' on page 12 undefined on input line 110.
-
-
-LaTeX Warning: Reference `fig:rendered' on page 12 undefined on input line 110.
-
-
-LaTeX Warning: Reference `fig:proto2' on page 12 undefined on input line 110.
-
-
-LaTeX Warning: Reference `app:wireframes' on page 12 undefined on input line 110.
-
-
-LaTeX Warning: Reference `app:wireframes' on page 12 undefined on input line 129.
-
-<images/rendered_vs_signal.png, id=596, 867.24pt x 325.215pt>
+<images/rendered_vs_signal.png, id=635, 867.24pt x 325.215pt>
 File: images/rendered_vs_signal.png Graphic file (type png)
 <use images/rendered_vs_signal.png>
 Package pdftex.def Info: images/rendered_vs_signal.png  used on input line 136.
 (pdftex.def)             Requested size: 362.2666pt x 135.84998pt.
-[12]
-<images/p2_initial.png, id=604, 580.41844pt x 487.06969pt>
+ [12]
+<images/p2_initial.png, id=643, 580.41844pt x 487.06969pt>
 File: images/p2_initial.png Graphic file (type png)
 <use images/p2_initial.png>
 Package pdftex.def Info: images/p2_initial.png  used on input line 147.
 (pdftex.def)             Requested size: 156.35603pt x 131.20584pt.
-<images/p2_thre.png, id=605, 573.64313pt x 469.755pt>
+<images/p2_thre.png, id=644, 573.64313pt x 469.755pt>
 File: images/p2_thre.png Graphic file (type png)
 <use images/p2_thre.png>
 Package pdftex.def Info: images/p2_thre.png  used on input line 153.
 (pdftex.def)             Requested size: 156.35603pt x 128.03975pt.
-<images/p2_remov.png, id=606, 639.89063pt x 515.67656pt>
+<images/p2_remov.png, id=645, 639.89063pt x 515.67656pt>
 File: images/p2_remov.png Graphic file (type png)
 <use images/p2_remov.png>
 Package pdftex.def Info: images/p2_remov.png  used on input line 159.
 (pdftex.def)             Requested size: 156.35603pt x 125.99957pt.
-
-
-LaTeX Warning: Reference `tab:risks' on page 13 undefined on input line 169.
-
-
-LaTeX Warning: Reference `app:risks' on page 13 undefined on input line 169.
-
 ) [13 <./images/rendered_vs_signal.png> <./images/p2_initial.png> <./images/p2_thre.png> <./images/p2_remov.png>]
 \openout2 = `./chapters/ch05.aux'.
 
  (chapters/ch05.tex
 Chapter 5.
-
-LaTeX Warning: Reference `sec:dev-plan' on page 14 undefined on input line 9.
-
-
-LaTeX Warning: Reference `app:risks' on page 14 undefined on input line 9.
-
-
-LaTeX Warning: Reference `fig:gantt-s2' on page 14 undefined on input line 23.
-
-
-LaTeX Warning: Reference `app:gantt' on page 14 undefined on input line 23.
-
-
-LaTeX Warning: Reference `sec:dev-plan' on page 14 undefined on input line 23.
-
 ) [14
 
 
@@ -1243,23 +1101,6 @@ LaTeX Warning: Reference `sec:dev-plan' on page 14 undefined on input line 23.
 
  (chapters/apA.tex
 Appendix A.
-
-LaTeX Warning: Reference `tab:risks' on page 15 undefined on input line 9.
-
-
-LaTeX Warning: Reference `sec:feas-risks' on page 15 undefined on input line 9.
-
-
-Overfull \hbox (3.23021pt too wide) in paragraph at lines 9--10
-\OT1/cmr/m/n/10.95 Table [] gives the full risk as-sess-ment. Each risk is rated once for its like-li-hood and its sever- 
- []
-
-
-LaTeX Warning: Reference `tab:risks' on page 15 undefined on input line 21.
-
-
-LaTeX Warning: Reference `app:repo' on page 15 undefined on input line 70.
-
 [15
 
 
@@ -1270,20 +1111,16 @@ Overfull \hbox (1.00998pt too wide) in paragraph at lines 87--88
 \OT1/cmr/m/n/10.95 This sec-tion con-sid-ers the pro-fes-sional, le-gal, eth-i-cal and so-cial is-sues that this project raises. 
  []
 
-[16] [17]
-
-LaTeX Warning: Reference `sec:design' on page 18 undefined on input line 129.
-
-[18] [19] [20
+[16] [17] [18] [19] [20
 
 ]
 Appendix B.
-<images/user_view.png, id=649, 1527.7075pt x 845.1575pt>
+<images/user_view.png, id=700, 1527.7075pt x 845.1575pt>
 File: images/user_view.png Graphic file (type png)
 <use images/user_view.png>
 Package pdftex.def Info: images/user_view.png  used on input line 264.
 (pdftex.def)             Requested size: 379.7114pt x 210.06372pt.
-<images/clinician_view.png, id=650, 1527.7075pt x 845.1575pt>
+<images/clinician_view.png, id=701, 1527.7075pt x 845.1575pt>
 File: images/clinician_view.png Graphic file (type png)
 <use images/clinician_view.png>
 Package pdftex.def Info: images/clinician_view.png  used on input line 271.
@@ -1293,51 +1130,36 @@ Package pdftex.def Info: images/clinician_view.png  used on input line 271.
 
  <./images/user_view.png> <./images/clinician_view.png>]
 Appendix C.
-
-LaTeX Warning: Reference `tab:rtm-fr' on page 22 undefined on input line 280.
-
-
-LaTeX Warning: Reference `tab:rtm-nfr' on page 22 undefined on input line 280.
-
-
-LaTeX Warning: Reference `tab:functional-req' on page 22 undefined on input line 280.
-
 [22
 
 ] [23]
 Appendix D.
-<images/OtsuSegmentation.jpg, id=672, 266.05592pt x 79.30513pt>
+<images/OtsuSegmentation.jpg, id=726, 266.05592pt x 79.30513pt>
 File: images/OtsuSegmentation.jpg Graphic file (type jpg)
 <use images/OtsuSegmentation.jpg>
 Package pdftex.def Info: images/OtsuSegmentation.jpg  used on input line 409.
 (pdftex.def)             Requested size: 169.7572pt x 50.60143pt.
-
-LaTeX Warning: Reference `tab:techniques' on page 24 undefined on input line 410.
-
-
-LaTeX Warning: Reference `tab:techniques' on page 24 undefined on input line 410.
-
-<images/ecg_norm.jpg, id=675, 1311.90125pt x 566.115pt>
+<images/ecg_norm.jpg, id=731, 1311.90125pt x 566.115pt>
 File: images/ecg_norm.jpg Graphic file (type jpg)
 <use images/ecg_norm.jpg>
 Package pdftex.def Info: images/ecg_norm.jpg  used on input line 418.
 (pdftex.def)             Requested size: 156.35603pt x 67.4644pt.
-<images/ecg_pict.jpg, id=676, 1204.5pt x 579.16376pt>
+<images/ecg_pict.jpg, id=732, 1204.5pt x 579.16376pt>
 File: images/ecg_pict.jpg Graphic file (type jpg)
 <use images/ecg_pict.jpg>
 Package pdftex.def Info: images/ecg_pict.jpg  used on input line 424.
 (pdftex.def)             Requested size: 156.35603pt x 75.17905pt.
-<images/ecg_rotat.jpg, id=677, 1204.5pt x 670.505pt>
+<images/ecg_rotat.jpg, id=733, 1204.5pt x 670.505pt>
 File: images/ecg_rotat.jpg Graphic file (type jpg)
 <use images/ecg_rotat.jpg>
 Package pdftex.def Info: images/ecg_rotat.jpg  used on input line 430.
 (pdftex.def)             Requested size: 156.35603pt x 87.0357pt.
-<images/ecg_crease.jpg, id=678, 1204.5pt x 644.4075pt>
+<images/ecg_crease.jpg, id=734, 1204.5pt x 644.4075pt>
 File: images/ecg_crease.jpg Graphic file (type jpg)
 <use images/ecg_crease.jpg>
 Package pdftex.def Info: images/ecg_crease.jpg  used on input line 436.
 (pdftex.def)             Requested size: 156.35603pt x 83.64809pt.
-<images/ecg_mark.jpg, id=679, 1204.5pt x 581.17125pt>
+<images/ecg_mark.jpg, id=735, 1204.5pt x 581.17125pt>
 File: images/ecg_mark.jpg Graphic file (type jpg)
 <use images/ecg_mark.jpg>
 Package pdftex.def Info: images/ecg_mark.jpg  used on input line 442.
@@ -1414,38 +1236,24 @@ L3 programming layer <2026-09-09>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.72pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 16C4893485F33A0B9D2F75C550DFB3B1;8065.
-
-Package lastpage Warning: Rerun to get the references right on input line 271.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                main
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33590 strings out of 467310
- 678264 string characters out of 5402813
- 1480738 words of memory out of 5000000
- 62323 multiletter control sequences out of 15000+600000
+ 33608 strings out of 467310
+ 679185 string characters out of 5402813
+ 1505804 words of memory out of 5000000
+ 62329 multiletter control sequences out of 15000+600000
  639040 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 107i,11n,118p,1342b,1485s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 107i,11n,118p,1660b,1485s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Ollie\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (41 pages, 5108720 bytes).
+Output written on main.pdf (41 pages, 5119520 bytes).
 PDF statistics:
- 942 PDF objects out of 1000 (max. 8388607)
+ 997 PDF objects out of 1000 (max. 8388607)
  192 named destinations out of 1000 (max. 500000)
  544 words of extra memory for PDF output out of 10000 (max. 10000000)
 
