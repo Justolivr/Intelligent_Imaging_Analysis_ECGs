@@ -45,9 +45,9 @@ The system will be developed in Python. OpenCV \cite{bradski_opencv_2000} will b
 \section{Design}
 \label{sec:design}
 
-Figure~\ref{fig:architecture} shows the architecture, with each module's inputs and outputs. The modules will be separate, so any one can be replaced without changing the others (NFR10). The GUI will offer a user view, with explanations, and a clinical view, with a short flag list and measured values. Offline training will produce the model weights, temperature $T$ and class thresholds that the application loads.
+Figure~\ref{fig:architecture} shows the architecture, with each module's inputs and outputs. The modules will be separate, so any one can be replaced without changing the others (NFR10). The GUI will offer a user view, with explanations, and a clinical view, with every class score, its threshold and fuller measured values. Offline training will produce the model weights, temperature $T$ and class thresholds that the application loads.
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
   \centering
   \makebox[\linewidth][c]{%
   \begin{tikzpicture}[
@@ -107,7 +107,7 @@ Figure~\ref{fig:architecture} shows the architecture, with each module's inputs 
 \section{Prototypes}
 \label{sec:prototypes}
 
-Three prototypes test the main risks of the plan. Table~\ref{tab:prototypes} gives the status of each one and what it demonstrates, and Figures~\ref{fig:rendered} and~\ref{fig:proto2} show the results of the two completed prototypes.
+Three prototypes test the main risks of the plan. Table~\ref{tab:prototypes} gives the status of each one and what it demonstrates, Figures~\ref{fig:rendered} and~\ref{fig:proto2} show the first two, and the wireframes are in Appendix~\ref{app:wireframes}.
 
 \begin{table}[H]
   \centering
@@ -126,7 +126,7 @@ Three prototypes test the main risks of the plan. Table~\ref{tab:prototypes} giv
     \hline
     2: Preprocessing & Completed & OpenCV thresholding removed colour and separated the trace, and feature detection removed the grid, leaving the trace alone. Beat detection is planned for Phase 2. \\
     \hline
-    3: GUI wireframes & Planned & Will show the user and clinical views, and how flags, confidence, heatmaps and measured values are presented, before the interface is built in Phase 5. \\
+    3: GUI wireframes & Completed & Show the user and clinical views, and how flags, confidence, heatmaps and measured values are presented, before the interface is built (Appendix~\ref{app:wireframes}). \\
     \hline
   \end{tabular}
 \end{table}
@@ -138,13 +138,6 @@ Three prototypes test the main risks of the plan. Table~\ref{tab:prototypes} giv
     \cite{shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated
     from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}
   \label{fig:rendered}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\linewidth,height=0.25\textheight,keepaspectratio]{images/prototype2_preprocessing.png}
-  \caption{Prototype 2: preprocessing steps applied to a rendered ECG image.}
-  \label{fig:proto2}
 \end{figure}
 
 \section{Risks}

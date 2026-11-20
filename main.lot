@@ -1,18 +1,19 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Image processing techniques relevant to ECG images, and their trade-offs.}}{2}{table.2.1}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Comparison of existing ECG analysis systems and the planned system.}}{6}{table.2.2}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Image processing techniques relevant to ECG images, and their trade-offs.}}{2}{table.caption.8}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Comparison of existing ECG analysis systems and the planned system.}}{6}{table.caption.11}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Functional and non-functional requirements.}}{8}{table.3.1}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Evaluation of the objectives.}}{10}{table.3.2}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Functional and non-functional requirements.}}{8}{table.caption.12}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Evaluation of the objectives.}}{10}{table.caption.15}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Records per class in PTB-XL.}}{11}{table.4.1}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Status of the prototypes.}}{12}{table.4.2}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Records per class in PTB-XL.}}{11}{table.caption.16}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Status of the prototypes.}}{12}{table.caption.18}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{Risk assessment and mitigation.}}{15}{table.A.1}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Risk assessment and mitigation.}}{15}{table.A.1}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Requirements Traceability Matrix: functional requirements.}}{22}{table.B.1}%
-\contentsline {table}{\numberline {B.2}{\ignorespaces Requirements Traceability Matrix: non-functional requirements.}}{23}{table.B.2}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {C.1}{\ignorespaces Key studies in deep learning for ECG classification.}}{24}{table.C.1}%
+\contentsline {table}{\numberline {C.1}{\ignorespaces Requirements Traceability Matrix: functional requirements.}}{22}{table.caption.24}%
+\contentsline {table}{\numberline {C.2}{\ignorespaces Requirements Traceability Matrix: non-functional requirements.}}{23}{table.caption.25}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {D.1}{\ignorespaces Key studies in deep learning for ECG classification.}}{24}{table.caption.26}%

@@ -34,7 +34,7 @@
 \contentsline {section}{\numberline {4.1}Coding Environment}{11}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Datasets}{11}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Design}{11}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Prototypes}{11}{section.4.4}%
+\contentsline {section}{\numberline {4.4}Prototypes}{12}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Risks}{13}{section.4.5}%
 \contentsline {chapter}{\numberline {5}Conclusion}{14}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Summary}{14}{section.5.1}%
@@ -50,7 +50,8 @@
 \contentsline {section}{\numberline {A.3}GenAI Summary}{18}{appendix.A.3}%
 \contentsline {section}{\numberline {A.4}Repository Management}{18}{appendix.A.4}%
 \contentsline {section}{\numberline {A.5}Gantt Chart}{19}{appendix.A.5}%
-\contentsline {section}{\numberline {A.6}Glossary}{21}{appendix.A.6}%
-\contentsline {chapter}{\numberline {B}Requirements Traceability Matrix}{22}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Supplementary Literature Material}{24}{appendix.C}%
-\contentsline {chapter}{References}{25}{appendix*.8}%
+\contentsline {chapter}{\numberline {B}Wireframes}{21}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Requirements Traceability Matrix}{22}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Supplementary Literature Material}{24}{appendix.D}%
+\contentsline {chapter}{Glossary}{25}{appendix*.28}%
+\contentsline {chapter}{References}{28}{appendix*.29}%

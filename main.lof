@@ -1,19 +1,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces A single PQRST wave}}{3}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces An ECG paper trace}}{3}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Hand-designed and learned feature extraction from an ECG image. This project will pass timing features from detected beats to the classifier alongside the features the CNN learns.}}{5}{figure.2.3}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A single PQRST wave}}{3}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces An ECG paper trace}}{3}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Hand-designed and learned feature extraction from an ECG image. This project will pass timing features from detected beats to the classifier alongside the features the CNN learns.}}{5}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Project workflow. Phase 6 is optional and is dropped first if the schedule slips.}}{9}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Planned processing pipeline, from an uploaded image to the results shown in the interface.}}{9}{figure.3.2}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Project workflow. Phase 6 is optional and is dropped first if the schedule slips.}}{9}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Planned processing pipeline, from an uploaded image to the results shown in the interface.}}{9}{figure.caption.14}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Planned system architecture, showing the modules, their inputs and outputs, and how they connect.}}{12}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Prototype 1: PTB-XL record 00001\_lr rendered with ECG-Image-Kit \blx@tocontentsinit {0}\cite {shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}}{13}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Prototype 2: preprocessing steps applied to a rendered ECG image.}}{13}{figure.4.3}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Project plan for Semester 1.}}{19}{figure.A.1}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Project plan for Semester 2.}}{20}{figure.A.2}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Planned system architecture, showing the modules, their inputs and outputs, and how they connect.}}{12}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Prototype 1: PTB-XL record 00001\_lr rendered with ECG-Image-Kit \blx@tocontentsinit {0}\cite {shivashankara_ecg-image-kit_2024} (left), and the lead II signal it was generated from (right). Both show 11 beats at about 0.9--1.0\,s spacing.}}{13}{figure.caption.19}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Otsu segmentation of a dermatoscopic image}}{24}{figure.C.1}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Project plan for Semester 1.}}{19}{figure.caption.20}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Project plan for Semester 2.}}{20}{figure.caption.21}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Prototype 3: Wireframe created of the user view.}}{21}{figure.caption.22}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Prototype 3: Wireframe created of the clinician view.}}{21}{figure.caption.23}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Otsu segmentation of a dermatoscopic image}}{24}{figure.caption.27}%

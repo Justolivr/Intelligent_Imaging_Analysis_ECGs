@@ -256,15 +256,22 @@ The project's code will be kept in a private GitHub repository, with a working c
   \label{fig:gantt-s2}
 \end{figure}
 \clearpage
+\chapter{Wireframes}
+\label{app:wireframes}
 
-\section{Glossary}
-\label{app:glossary}
-\section*{Scripts}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth,height=0.5\textheight,keepaspectratio]{images/user_view.png}
+  \caption{Prototype 3: Wireframe created of the user view.}
+  \label{fig:proto3user}
+\end{figure}
 
-Supplementary material...
-
-
-
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth,height=0.5\textheight,keepaspectratio]{images/clinician_view.png}
+  \caption{Prototype 3: Wireframe created of the clinician view.}
+  \label{fig:proto3clin}
+\end{figure}
 
 
 \chapter{Requirements Traceability Matrix}
@@ -403,3 +410,70 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \caption[Otsu segmentation of a dermatoscopic image]{Example of Otsu thresholding (Table~\ref{tab:techniques}) on a dermatoscopic image from the \(PH^2\) dataset. Reproduced from \cite{mendonca_ph_2013}.}
   \label{fig:otsu-dermatoscopic}
 \end{figure}
+
+\chapter*{Glossary}
+\addcontentsline{toc}{chapter}{Glossary}
+\label{glossary}
+
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth} p{0.68\linewidth}@{}}
+  \toprule
+  \textbf{Term} & \textbf{Definition} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Term} & \textbf{Definition} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  \textbf{Arrhythmia} & Any abnormal heart rate or rhythm. \\
+  \textbf{Atrial fibrillation (AFIB)} & An arrhythmia in which the atria beat irregularly, giving irregularly spaced beats without clear P waves. \\
+  \textbf{Atrial flutter (AFLT)} & An arrhythmia with a rapid, regular atrial rhythm that appears as a saw-tooth pattern. \\
+  \textbf{AUROC} & Area under the receiver operating characteristic curve: the probability that a classifier scores a random positive case above a random negative one. 0.5 is chance and 1.0 is perfect; it does not depend on a threshold. \\
+  \textbf{Augmentation} & Artificially altering training images (for example adding blur, shadows or rotation) so the model learns to cope with real-world variation. \\
+  \textbf{Bootstrap confidence interval} & A range for a metric found by repeatedly resampling the test set with replacement; used when classes are small. \\
+  \textbf{Bundle branch block (BBB)} & A conduction disturbance in which one of the heart's bundle branches is blocked, widening the QRS complex. \\
+  \textbf{Calibration} & How well a model's stated confidence matches how often it is correct; a calibrated 80\% prediction is right about 80\% of the time. \\
+  \textbf{CLAHE} & Contrast-limited adaptive histogram equalisation: histogram equalisation applied to small regions, with a limit on contrast to avoid amplifying noise. \\
+  \textbf{CNN} & Convolutional neural network: a neural network that learns small image filters, stacking layers to build up from edges to complex patterns. \\
+  \textbf{Conduction disturbance (CD)} & An abnormality in how the electrical impulse travels through the heart, such as a bundle branch block. \\
+  \textbf{Data leakage} & When information from the test set is present in training, making results look better than they would be on unseen data. \\
+  \textbf{Domain adaptation} & Techniques that adapt a model trained on one kind of data (for example scans) to another (for example phone photographs). \\
+  \textbf{ECE} & Expected calibration error: the weighted average gap between predicted confidence and observed frequency, over confidence bins. Lower is better. \\
+  \textbf{ECG} & Electrocardiogram: a recording of the heart's electrical activity, taken from electrodes on the body surface. \\
+  \textbf{ECG-Image-Database} & A public dataset of about 36,000 real images of printed ECGs (from PTB-XL and Emory Healthcare) that were degraded and then scanned or photographed. \\
+  \textbf{ECG-Image-Kit} & A software tool that renders ECG signals into synthetic ECG images, optionally with artefacts. \\
+  \textbf{Fold} & One of the fixed subsets a dataset is divided into; PTB-XL provides ten patient-wise folds for training, validation and testing. \\
+  \textbf{FR / NFR} & Functional requirement (what the system does) / non-functional requirement (how well it does it). \\
+  \textbf{Grad-CAM} & Gradient-weighted class activation mapping: a method that produces a heatmap of the image regions that most influenced a CNN's prediction for a class. \\
+  \textbf{GUI} & Graphical user interface. \\
+  \textbf{Heart rate (HR)} & Beats per minute, calculated from the RR interval as $60/\mathrm{RR}$. \\
+  \textbf{Histogram equalisation (HE)} & Spreading an image's intensity values across the full range to increase contrast. \\
+  \textbf{Hough transform} & A technique for detecting straight lines (such as grid lines or lead baselines) in an image. \\
+  \textbf{Hypertrophy (HYP)} & Thickening of a heart chamber's wall, associated with changes in ECG amplitude. \\
+  \textbf{Lead} & One of the twelve views of the heart's electrical activity recorded in a standard ECG. \\
+  \textbf{MCC} & Matthews correlation coefficient: a single measure of classification quality, from $-1$ to $1$, that remains informative when classes are imbalanced. \\
+  \textbf{MI} & Myocardial infarction (heart attack): damage to heart muscle from a loss of blood supply, often visible as ST-segment and T-wave changes. \\
+  \textbf{MoSCoW} & A prioritisation method that rates requirements as Must, Should, Could or Won't have. \\
+  \textbf{Multi-label classification} & Classification in which one input can belong to several classes at once, each with its own output. \\
+  \textbf{Otsu thresholding} & A method that automatically chooses the intensity cut-off separating foreground from background. \\
+  \textbf{P wave, QRS complex, T wave }& The deflections of one heartbeat: atrial activation, ventricular activation and ventricular recovery. \\
+  \textbf{Pan--Tompkins algorithm} & A standard real-time algorithm for detecting QRS complexes in an ECG signal. \\
+  \textbf{PLES} & Professional, legal, ethical and social issues. \\
+  \textbf{PTB-XL} & A public dataset of 21,800 labelled twelve-lead ECG signals from about 19,000 patients. \\
+  \textbf{RR interval} & The time between successive R peaks, used to measure heart rate and rhythm regularity. \\
+  \textbf{RTM} & Requirements Traceability Matrix: a table mapping each requirement to its design element, deliverable, test case and result. \\
+  \textbf{Sensitivity} & The share of true cases a classifier finds: $\mathrm{TP}/(\mathrm{TP}+\mathrm{FN})$. \\
+  \textbf{Shortcut learning} & When a model relies on features that happen to correlate with the label in training data (such as printed text) instead of the features that matter. \\
+  \textbf{Sinus bradycardia / tachycardia} & A normal rhythm that is slower than 60 / faster than 100 beats per minute. \\
+  \textbf{SNR} & Signal-to-noise ratio: the strength of a signal relative to background noise, usually in decibels. \\
+  \textbf{Specificity} & The share of non-cases a classifier correctly clears: $\mathrm{TN}/(\mathrm{TN}+\mathrm{FP})$. \\
+  \textbf{ST/T change (STTC)} & Changes to the ST segment or T wave, often linked to ischaemia. \\
+  \textbf{SUS} & System Usability Scale: a standard ten-item questionnaire giving a usability score from 0 to 100, where 68 is average. \\
+  \textbf{Temperature scaling} & A calibration method that divides each class score by a single value $T$, fitted on validation data, before the sigmoid. \\
+  \textbf{Transfer learning} & Starting from a network pretrained on another task (for example natural images) and fine-tuning it for the new task. \\
+\end{longtable}
+\endgroup
