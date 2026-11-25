@@ -1,0 +1,119 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'name_of_file' (item size: 1) to 30 items.
+The style file: ACM-Reference-Format-Unsorted.bst
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: references.bib
+Warning--I didn't find a database entry for "dpa_2018"
+Warning--I didn't find a database entry for "uk_mdr_2002"
+Warning--I didn't find a database entry for "mhra_samd_2025"
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Warning--page numbers missing in both pages and numpages fields in shivashankara_ecg-image-kit_2024
+Warning--empty publisher in tomasi_bilateral_1998
+Warning--empty address in tomasi_bilateral_1998
+Warning--empty publisher in prasad_systematic_2023
+Warning--empty address in prasad_systematic_2023
+Warning--empty address in ashley_conquering_2004
+Warning--empty publisher in Mazomenos_ECG_2012
+Warning--empty address in Mazomenos_ECG_2012
+Warning--page numbers missing in both pages and numpages fields in Mazomenos_ECG_2012
+Warning--empty publisher in physionet_challenge_2024
+Warning--empty address in physionet_challenge_2024
+Warning--empty publisher in hempel_driving_2024
+Warning--empty address in hempel_driving_2024
+Warning--page numbers missing in both pages and numpages fields in hempel_driving_2024
+Warning--empty publisher in krones_combining_2024
+Warning--empty address in krones_combining_2024
+Warning--page numbers missing in both pages and numpages fields in krones_combining_2024
+Warning--page numbers missing in both pages and numpages fields in wu_automated_2022
+Warning--page numbers missing in both pages and numpages fields in sangha_automated_2022
+Warning--empty address in yosinski_transfer_2014
+Warning--page numbers missing in both pages and numpages fields in yosinski_transfer_2014
+Warning--empty publisher in dosovitskiy_image_2021
+Warning--empty address in dosovitskiy_image_2021
+Warning--page numbers missing in both pages and numpages fields in dosovitskiy_image_2021
+Warning--empty publisher in liu_convnet_2022
+Warning--empty address in liu_convnet_2022
+Warning--empty publisher in lin_focal_2017
+Warning--empty address in lin_focal_2017
+Warning--empty publisher in guo_calibration_2017
+Warning--empty address in guo_calibration_2017
+Warning--empty address in platt_probabilistic_1999
+Warning--empty publisher in mukhoti_calibrating_2020
+Warning--empty address in mukhoti_calibrating_2020
+Warning--empty publisher in lakshminarayanan_simple_2017
+Warning--empty address in lakshminarayanan_simple_2017
+Warning--page numbers missing in both pages and numpages fields in lakshminarayanan_simple_2017
+Warning--empty publisher in gal_dropout_2016
+Warning--empty address in gal_dropout_2016
+Warning--empty address in ovadia_trust_2019
+Warning--page numbers missing in both pages and numpages fields in ovadia_trust_2019
+Warning--empty publisher in minderer_revisiting_2021
+Warning--empty address in minderer_revisiting_2021
+Warning--page numbers missing in both pages and numpages fields in minderer_revisiting_2021
+Warning--empty publisher in selvaraju_gradcam_2017
+Warning--empty address in selvaraju_gradcam_2017
+Warning--empty publisher in ribeiro_why_2016
+Warning--empty address in ribeiro_why_2016
+Warning--empty publisher in lundberg_unified_2017
+Warning--empty address in lundberg_unified_2017
+Warning--page numbers missing in both pages and numpages fields in lundberg_unified_2017
+Warning--empty address in adebayo_sanity_2018
+Warning--page numbers missing in both pages and numpages fields in adebayo_sanity_2018
+Warning--page numbers missing in both pages and numpages fields in salih_review_2024
+Warning--empty publisher in tonekaboni_what_2019
+Warning--empty address in tonekaboni_what_2019
+Warning--no number and no volume in bradski_opencv_2000
+Warning--page numbers missing in both pages and numpages fields in bradski_opencv_2000
+Warning--no number and no volume in verma_ali_2013
+Warning--page numbers missing in both pages and numpages fields in verma_ali_2013
+You've used 74 entries,
+            5981 wiz_defined-function locations,
+            1978 strings with 38692 characters,
+and the built_in function-call counts, 92624 in all, are:
+= -- 12008
+> -- 3841
+< -- 0
++ -- 1363
+- -- 1345
+* -- 7238
+:= -- 9309
+add.period$ -- 371
+call.type$ -- 74
+change.case$ -- 687
+chr.to.int$ -- 74
+cite$ -- 133
+duplicate$ -- 7487
+empty$ -- 5238
+format.name$ -- 1601
+if$ -- 22455
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 277
+newline$ -- 800
+num.names$ -- 528
+pop$ -- 3015
+preamble$ -- 1
+purify$ -- 1277
+quote$ -- 0
+skip$ -- 2714
+stack$ -- 0
+substring$ -- 6240
+swap$ -- 754
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1658
+warning$ -- 59
+while$ -- 449
+width$ -- 0
+write$ -- 1625
+(There were 62 warnings)

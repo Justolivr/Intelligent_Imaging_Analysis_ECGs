@@ -1,0 +1,1192 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{74}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Dhutia et~al\mbox{.}(2017)]%
+        {dhutia_interrater_2017}
+\bibfield{author}{\bibinfo{person}{Harshil Dhutia}, \bibinfo{person}{Aneil
+  Malhotra}, \bibinfo{person}{Tee~Joo Yeo}, \bibinfo{person}{Irina~Chis Ster},
+  \bibinfo{person}{Vincent Gabus}, \bibinfo{person}{Alexandros Steriotis},
+  \bibinfo{person}{Helder Dores}, \bibinfo{person}{Greg Mellor},
+  \bibinfo{person}{Carmen Garc{\'i}a-Corrales}, \bibinfo{person}{Bode Ensam},
+  \bibinfo{person}{Vivek Jayalapan}, \bibinfo{person}{Vivienne~A. Ezzat},
+  \bibinfo{person}{Gherardo Finocchiaro}, \bibinfo{person}{Sabiha Gati},
+  \bibinfo{person}{Michael Papadakis}, \bibinfo{person}{Maite Tome-Esteban},
+  {and} \bibinfo{person}{Sanjay Sharma}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Inter-Rater Reliability and Downstream Financial
+  Implications of Electrocardiography Screening in Young Athletes}.
+\newblock \bibinfo{journal}{\emph{Circulation: Cardiovascular Quality and
+  Outcomes}} \bibinfo{volume}{10}, \bibinfo{number}{8} (\bibinfo{year}{2017}),
+  \bibinfo{pages}{e003306}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1161/CIRCOUTCOMES.116.003306}
+\showDOI{\tempurl}
+
+
+\bibitem[Schläpfer and Wellens(2017)]%
+        {schlapfer_computer-interpreted_2017}
+\bibfield{author}{\bibinfo{person}{Jürg Schläpfer} {and}
+  \bibinfo{person}{Hein~J. Wellens}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Computer-Interpreted Electrocardiograms: Benefits
+  and Limitations}.
+\newblock \bibinfo{journal}{\emph{Journal of the American College of
+  Cardiology}} \bibinfo{volume}{70}, \bibinfo{number}{9}
+  (\bibinfo{year}{2017}), \bibinfo{pages}{1183--1192}.
+\newblock
+\showISSN{0735-1097}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.jacc.2017.07.723}
+\showDOI{\tempurl}
+
+
+\bibitem[Shivashankara et~al\mbox{.}(2024)]%
+        {shivashankara_ecg-image-kit_2024}
+\bibfield{author}{\bibinfo{person}{Kshama~Kodthalu Shivashankara},
+  \bibinfo{person}{Deepanshi}, \bibinfo{person}{Afagh Mehri~Shervedani},
+  \bibinfo{person}{Gari~D. Clifford}, \bibinfo{person}{Matthew~A. Reyna}, {and}
+  \bibinfo{person}{Reza Sameni}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{ECG}-Image-Kit: a synthetic image generation
+  toolbox to facilitate deep learning-based electrocardiogram digitization}.
+\newblock \bibinfo{journal}{\emph{Physiological Measurement}}
+  \bibinfo{volume}{45}, \bibinfo{number}{5} (\bibinfo{year}{2024}).
+\newblock
+\showISSN{1361-6579}
+\urldef\tempurl%
+\url{https://doi.org/10.1088/1361-6579/ad4954}
+\showDOI{\tempurl}
+
+
+\bibitem[Hannun et~al\mbox{.}(2019)]%
+        {hannun_cardiologist_2019}
+\bibfield{author}{\bibinfo{person}{Awni~Y. Hannun}, \bibinfo{person}{Pranav
+  Rajpurkar}, \bibinfo{person}{Masoumeh Haghpanahi},
+  \bibinfo{person}{Geoffrey~H. Tison}, \bibinfo{person}{Codie Bourn},
+  \bibinfo{person}{Mintu~P. Turakhia}, {and} \bibinfo{person}{Andrew~Y. Ng}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Cardiologist-level arrhythmia detection and
+  classification in ambulatory electrocardiograms using a deep neural network}.
+\newblock \bibinfo{journal}{\emph{Nature Medicine}} \bibinfo{volume}{25},
+  \bibinfo{number}{1} (\bibinfo{year}{2019}), \bibinfo{pages}{65--69}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41591-018-0268-3}
+\showDOI{\tempurl}
+
+
+\bibitem[Ribeiro et~al\mbox{.}(2020)]%
+        {ribeiro_automatic_2020}
+\bibfield{author}{\bibinfo{person}{Ant{\^o}nio~H. Ribeiro},
+  \bibinfo{person}{Manoel~Horta Ribeiro}, \bibinfo{person}{Gabriela M.~M.
+  Paix{\~a}o}, \bibinfo{person}{Derick~M. Oliveira}, \bibinfo{person}{Paulo~R.
+  Gomes}, \bibinfo{person}{J{\'e}ssica~A. Canazart}, \bibinfo{person}{Milton
+  P.~S. Ferreira}, \bibinfo{person}{Carl~R. Andersson},
+  \bibinfo{person}{Peter~W. Macfarlane}, \bibinfo{person}{Wagner Meira~Jr.},
+  \bibinfo{person}{Thomas~B. Sch{\"o}n}, {and} \bibinfo{person}{Antonio Luiz~P.
+  Ribeiro}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Automatic diagnosis of the 12-lead {ECG} using a
+  deep neural network}.
+\newblock \bibinfo{journal}{\emph{Nature Communications}}  \bibinfo{volume}{11}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{1760}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41467-020-15432-4}
+\showDOI{\tempurl}
+
+
+\bibitem[Gonzalez and Woods(2018)]%
+        {gonzalez_digital_2018}
+\bibfield{author}{\bibinfo{person}{Rafael~C. Gonzalez} {and}
+  \bibinfo{person}{Richard~E. Woods}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Digital image processing}}.
+\newblock \bibinfo{publisher}{Pearson}, \bibinfo{address}{New York, {NY}}.
+\newblock
+\showISBNx{978-0-13-335672-4}
+
+
+\bibitem[Stockham(1972)]%
+        {stockham_image_1972}
+\bibfield{author}{\bibinfo{person}{Thomas~G. Stockham, Jr.}}
+  \bibinfo{year}{1972}\natexlab{}.
+\newblock \showarticletitle{Image Processing in the Context of a Visual Model}.
+\newblock \bibinfo{journal}{\emph{Proc. IEEE}} \bibinfo{volume}{60},
+  \bibinfo{number}{7} (\bibinfo{year}{1972}), \bibinfo{pages}{828--842}.
+\newblock
+\showISSN{0018-9219}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/PROC.1972.8782}
+\showDOI{\tempurl}
+
+
+\bibitem[Pizer et~al\mbox{.}(1987)]%
+        {pizer_adaptive_1987}
+\bibfield{author}{\bibinfo{person}{Stephen~M. Pizer},
+  \bibinfo{person}{E.~Philip Amburn}, \bibinfo{person}{John~D. Austin},
+  \bibinfo{person}{Robert Cromartie}, \bibinfo{person}{Ari Geselowitz},
+  \bibinfo{person}{Trey Greer}, \bibinfo{person}{Bart ter Haar~Romeny},
+  \bibinfo{person}{John~B. Zimmerman}, {and} \bibinfo{person}{Karel
+  Zuiderveld}.} \bibinfo{year}{1987}\natexlab{}.
+\newblock \showarticletitle{Adaptive Histogram Equalization and its
+  Variations}.
+\newblock \bibinfo{journal}{\emph{Computer Vision, Graphics, and Image
+  Processing}} \bibinfo{volume}{39}, \bibinfo{number}{3}
+  (\bibinfo{year}{1987}), \bibinfo{pages}{355--368}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/S0734-189X(87)80186-X}
+\showDOI{\tempurl}
+
+
+\bibitem[Zuiderveld(1994)]%
+        {zuiderveld_contrast_1994}
+\bibfield{author}{\bibinfo{person}{Karel Zuiderveld}.}
+  \bibinfo{year}{1994}\natexlab{}.
+\newblock \showarticletitle{Contrast Limited Adaptive Histogram Equalization}.
+\newblock In \bibinfo{booktitle}{\emph{Graphics Gems {IV}}},
+  \bibfield{editor}{\bibinfo{person}{Paul~S. Heckbert}} (Ed.).
+  \bibinfo{publisher}{Academic Press}, \bibinfo{address}{San Diego},
+  \bibinfo{pages}{474--485}.
+\newblock
+
+
+\bibitem[Tomasi and Manduchi(1998)]%
+        {tomasi_bilateral_1998}
+\bibfield{author}{\bibinfo{person}{C. Tomasi} {and} \bibinfo{person}{R.
+  Manduchi}.} \bibinfo{year}{1998}\natexlab{}.
+\newblock \showarticletitle{Bilateral filtering for gray and color images}. In
+  \bibinfo{booktitle}{\emph{Sixth International Conference on Computer
+  Vision}}. \bibinfo{pages}{839--846}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICCV.1998.710815}
+\showDOI{\tempurl}
+
+
+\bibitem[Buades et~al\mbox{.}(2005)]%
+        {buades_non-local_2005}
+\bibfield{author}{\bibinfo{person}{A. Buades}, \bibinfo{person}{B. Coll}, {and}
+  \bibinfo{person}{J.-M. Morel}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{A Non-Local Algorithm for Image Denoising}. In
+  \bibinfo{booktitle}{\emph{2005 {IEEE} Computer Society Conference on Computer
+  Vision and Pattern Recognition ({CVPR}'05)}}, Vol.~\bibinfo{volume}{2}.
+  \bibinfo{publisher}{{IEEE}}, \bibinfo{address}{San Diego, {CA}, {USA}},
+  \bibinfo{pages}{60--65}.
+\newblock
+\showISBNx{978-0-7695-2372-9}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/CVPR.2005.38}
+\showDOI{\tempurl}
+
+
+\bibitem[Lepcha et~al\mbox{.}(2023)]%
+        {lepcha_deep_2023}
+\bibfield{author}{\bibinfo{person}{Dawa~Chyophel Lepcha},
+  \bibinfo{person}{Bhawna Goyal}, \bibinfo{person}{Ayush Dogra},
+  \bibinfo{person}{Kanta~Prasad Sharma}, {and} \bibinfo{person}{Deena~Nath
+  Gupta}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{A deep journey into image enhancement: A survey of
+  current and emerging trends}.
+\newblock \bibinfo{journal}{\emph{Information Fusion}}  \bibinfo{volume}{93}
+  (\bibinfo{year}{2023}), \bibinfo{pages}{36--76}.
+\newblock
+\showISSN{1566-2535}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.inffus.2022.12.012}
+\showDOI{\tempurl}
+
+
+\bibitem[Otsu(1979)]%
+        {otsu_threshold_1979}
+\bibfield{author}{\bibinfo{person}{Nobuyuki Otsu}.}
+  \bibinfo{year}{1979}\natexlab{}.
+\newblock \showarticletitle{A Threshold Selection Method from Gray-Level
+  Histograms}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Systems, Man, and
+  Cybernetics}} \bibinfo{volume}{9}, \bibinfo{number}{1}
+  (\bibinfo{year}{1979}), \bibinfo{pages}{62--66}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TSMC.1979.4310076}
+\showDOI{\tempurl}
+
+
+\bibitem[Canny(1986)]%
+        {canny_computational_1986}
+\bibfield{author}{\bibinfo{person}{John Canny}.}
+  \bibinfo{year}{1986}\natexlab{}.
+\newblock \showarticletitle{A Computational Approach to Edge Detection}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}} \bibinfo{volume}{PAMI-8}, \bibinfo{number}{6}
+  (\bibinfo{year}{1986}), \bibinfo{pages}{679--698}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TPAMI.1986.4767851}
+\showDOI{\tempurl}
+
+
+\bibitem[Qi et~al\mbox{.}(2022)]%
+        {qi_comprehensive_2022}
+\bibfield{author}{\bibinfo{person}{Yunliang Qi}, \bibinfo{person}{Zhen Yang},
+  \bibinfo{person}{Wenhao Sun}, \bibinfo{person}{Meng Lou},
+  \bibinfo{person}{Jing Lian}, \bibinfo{person}{Wenwei Zhao},
+  \bibinfo{person}{Xiangyu Deng}, {and} \bibinfo{person}{Yide Ma}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{A Comprehensive Overview of Image Enhancement
+  Techniques}.
+\newblock \bibinfo{journal}{\emph{Archives of Computational Methods in
+  Engineering}} \bibinfo{volume}{29}, \bibinfo{number}{1}
+  (\bibinfo{year}{2022}), \bibinfo{pages}{617--622}.
+\newblock
+\showISSN{1886-1784}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/s11831-021-09587-6}
+\showDOI{\tempurl}
+
+
+\bibitem[Prasad et~al\mbox{.}(2023)]%
+        {prasad_systematic_2023}
+\bibfield{author}{\bibinfo{person}{Preena Prasad}, \bibinfo{person}{J Anitha},
+  {and} \bibinfo{person}{Divapriya Anil}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{A Systematic Review of Noise Types, Denoising
+  Methods, and Evaluation Metrics in Images}. In \bibinfo{booktitle}{\emph{2023
+  {IEEE} International Conference on Recent Advances in Systems Science and
+  Engineering ({RASSE})}}. \bibinfo{pages}{1--9}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/RASSE60029.2023.10363591}
+\showDOI{\tempurl}
+
+
+\bibitem[Barrett and Myers(2004)]%
+        {barrett_foundations_2004}
+\bibfield{author}{\bibinfo{person}{Harrison~H. Barrett} {and}
+  \bibinfo{person}{Kyle~J. Myers}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Foundations of Image Science}}.
+\newblock \bibinfo{publisher}{Wiley}, \bibinfo{address}{Hoboken, NJ}.
+\newblock
+
+
+\bibitem[LeCun et~al\mbox{.}(1998)]%
+        {lecun_gradient_1998}
+\bibfield{author}{\bibinfo{person}{Yann LeCun}, \bibinfo{person}{L{\'e}on
+  Bottou}, \bibinfo{person}{Yoshua Bengio}, {and} \bibinfo{person}{Patrick
+  Haffner}.} \bibinfo{year}{1998}\natexlab{}.
+\newblock \showarticletitle{Gradient-Based Learning Applied to Document
+  Recognition}.
+\newblock \bibinfo{journal}{\emph{Proc. IEEE}} \bibinfo{volume}{86},
+  \bibinfo{number}{11} (\bibinfo{year}{1998}), \bibinfo{pages}{2278--2324}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/5.726791}
+\showDOI{\tempurl}
+
+
+\bibitem[Litjens et~al\mbox{.}(2017)]%
+        {litjens_survey_2017}
+\bibfield{author}{\bibinfo{person}{Geert Litjens}, \bibinfo{person}{Thijs
+  Kooi}, \bibinfo{person}{Babak~Ehteshami Bejnordi}, \bibinfo{person}{Arnaud
+  Arindra~Adiyoso Setio}, \bibinfo{person}{Francesco Ciompi},
+  \bibinfo{person}{Mohsen Ghafoorian}, \bibinfo{person}{Jeroen A. W.~M. van~der
+  Laak}, \bibinfo{person}{Bram van Ginneken}, {and} \bibinfo{person}{Clara~I.
+  S{\'a}nchez}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{A survey on deep learning in medical image
+  analysis}.
+\newblock \bibinfo{journal}{\emph{Medical Image Analysis}}
+  \bibinfo{volume}{42} (\bibinfo{year}{2017}), \bibinfo{pages}{60--88}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.media.2017.07.005}
+\showDOI{\tempurl}
+
+
+\bibitem[Zech et~al\mbox{.}(2018)]%
+        {zech_variable_2018}
+\bibfield{author}{\bibinfo{person}{John~R. Zech}, \bibinfo{person}{Marcus~A.
+  Badgeley}, \bibinfo{person}{Manway Liu}, \bibinfo{person}{Anthony~B. Costa},
+  \bibinfo{person}{Joseph~J. Titano}, {and} \bibinfo{person}{Eric~Karl
+  Oermann}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Variable Generalization Performance of a Deep
+  Learning Model to Detect Pneumonia in Chest Radiographs: A Cross-Sectional
+  Study}.
+\newblock \bibinfo{journal}{\emph{PLOS Medicine}} \bibinfo{volume}{15},
+  \bibinfo{number}{11} (\bibinfo{year}{2018}), \bibinfo{pages}{e1002683}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1371/journal.pmed.1002683}
+\showDOI{\tempurl}
+
+
+\bibitem[Geirhos et~al\mbox{.}(2020)]%
+        {geirhos_shortcut_2020}
+\bibfield{author}{\bibinfo{person}{Robert Geirhos},
+  \bibinfo{person}{J{\"o}rn-Henrik Jacobsen}, \bibinfo{person}{Claudio
+  Michaelis}, \bibinfo{person}{Richard Zemel}, \bibinfo{person}{Wieland
+  Brendel}, \bibinfo{person}{Matthias Bethge}, {and} \bibinfo{person}{Felix~A.
+  Wichmann}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Shortcut learning in deep neural networks}.
+\newblock \bibinfo{journal}{\emph{Nature Machine Intelligence}}
+  \bibinfo{volume}{2}, \bibinfo{number}{11} (\bibinfo{year}{2020}),
+  \bibinfo{pages}{665--673}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s42256-020-00257-z}
+\showDOI{\tempurl}
+
+
+\bibitem[Sattar and Chhabra(2023)]%
+        {sattar_electrocardiogram_2023}
+\bibfield{author}{\bibinfo{person}{Yasar Sattar} {and} \bibinfo{person}{Lovely
+  Chhabra}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Electrocardiogram}.
+\newblock In \bibinfo{booktitle}{\emph{{StatPearls}}}.
+  \bibinfo{publisher}{{StatPearls} Publishing}, \bibinfo{address}{Treasure
+  Island ({FL})}.
+\newblock
+\urldef\tempurl%
+\url{http://www.ncbi.nlm.nih.gov/books/NBK549803/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Ashley and Niebauer(2004)]%
+        {ashley_conquering_2004}
+\bibfield{author}{\bibinfo{person}{Euan~A. Ashley} {and} \bibinfo{person}{Josef
+  Niebauer}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Conquering the {ECG}}.
+\newblock In \bibinfo{booktitle}{\emph{Cardiology Explained}}.
+  \bibinfo{publisher}{Remedica}.
+\newblock
+\urldef\tempurl%
+\url{https://www.ncbi.nlm.nih.gov/books/NBK2214/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Mazomenos et~al\mbox{.}(2012)]%
+        {Mazomenos_ECG_2012}
+\bibfield{author}{\bibinfo{person}{Evangelos Mazomenos},
+  \bibinfo{person}{Taihai Chen}, \bibinfo{person}{Amit Acharyya},
+  \bibinfo{person}{A. Bhattacharya}, \bibinfo{person}{James Rosengarten}, {and}
+  \bibinfo{person}{Koushik Maharatna}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{A Time-Domain Morphology and Gradient based
+  algorithm for ECG feature extraction}. In \bibinfo{booktitle}{\emph{2012
+  {IEEE} International Conference on Industrial Technology ({ICIT})}}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICIT.2012.6209924}
+\showDOI{\tempurl}
+
+
+\bibitem[{NHS}(2018)]%
+        {nhs_heart_2018}
+\bibfield{author}{\bibinfo{person}{{NHS}}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \bibinfo{title}{Heart rhythm problems (arrhythmia)}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://www.nhs.uk/conditions/arrhythmia/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Van~Gelder et~al\mbox{.}(2024)]%
+        {van_gelder_2024_2024}
+\bibfield{author}{\bibinfo{person}{Isabelle~C Van~Gelder},
+  \bibinfo{person}{Michiel Rienstra}, \bibinfo{person}{Karina~V Bunting},
+  \bibinfo{person}{Ruben Casado-Arroyo}, \bibinfo{person}{Valeria Caso},
+  \bibinfo{person}{Harry J G~M Crijns}, \bibinfo{person}{Tom J~R De~Potter},
+  \bibinfo{person}{Jeremy Dwight}, \bibinfo{person}{Luigina Guasti},
+  \bibinfo{person}{Thorsten Hanke}, \bibinfo{person}{Tiny Jaarsma},
+  \bibinfo{person}{Maddalena Lettino}, \bibinfo{person}{Maja-Lisa Løchen},
+  \bibinfo{person}{R~Thomas Lumbers}, \bibinfo{person}{Bart Maesen},
+  \bibinfo{person}{Inge Mølgaard}, \bibinfo{person}{Giuseppe M~C Rosano},
+  \bibinfo{person}{Prashanthan Sanders}, \bibinfo{person}{Renate~B Schnabel},
+  \bibinfo{person}{Piotr Suwalski}, \bibinfo{person}{Emma Svennberg},
+  \bibinfo{person}{Juan Tamargo}, \bibinfo{person}{Otilia Tica},
+  \bibinfo{person}{Vassil Traykov}, \bibinfo{person}{Stylianos Tzeis},
+  \bibinfo{person}{Dipak Kotecha}, {and} \bibinfo{person}{{ESC Scientific
+  Document Group}}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{2024 {ESC} Guidelines for the management of atrial
+  fibrillation developed in collaboration with the European Association for
+  Cardio-Thoracic Surgery ({EACTS}): Developed by the task force for the
+  management of atrial fibrillation of the European Society of Cardiology
+  ({ESC}), with the special contribution of the European Heart Rhythm
+  Association ({EHRA}) of the {ESC}. Endorsed by the European Stroke
+  Organisation ({ESO})}.
+\newblock \bibinfo{journal}{\emph{European Heart Journal}}
+  \bibinfo{volume}{45}, \bibinfo{number}{36} (\bibinfo{year}{2024}),
+  \bibinfo{pages}{3314--3414}.
+\newblock
+\showISSN{0195-668X}
+\urldef\tempurl%
+\url{https://doi.org/10.1093/eurheartj/ehae176}
+\showDOI{\tempurl}
+
+
+\bibitem[Cos{\'i}o(2017)]%
+        {cosio_atrial_2017}
+\bibfield{author}{\bibinfo{person}{Francisco~G. Cos{\'i}o}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Atrial Flutter, Typical and Atypical: A Review}.
+\newblock \bibinfo{journal}{\emph{Arrhythmia \& Electrophysiology Review}}
+  \bibinfo{volume}{6}, \bibinfo{number}{2} (\bibinfo{year}{2017}),
+  \bibinfo{pages}{55--62}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.15420/aer.2017.5.2}
+\showDOI{\tempurl}
+
+
+\bibitem[Scherbak et~al\mbox{.}(2024)]%
+        {scherbak_left_2024}
+\bibfield{author}{\bibinfo{person}{Dmitriy Scherbak}, \bibinfo{person}{Pirbhat
+  Shams}, {and} \bibinfo{person}{Gregory~J. Hicks}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Left Bundle Branch Block}.
+\newblock In \bibinfo{booktitle}{\emph{{StatPearls}}}.
+  \bibinfo{publisher}{{StatPearls} Publishing}, \bibinfo{address}{Treasure
+  Island ({FL})}.
+\newblock
+\urldef\tempurl%
+\url{http://www.ncbi.nlm.nih.gov/books/NBK482167/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Channer and Morris(2002)]%
+        {channer_myocardial_2002}
+\bibfield{author}{\bibinfo{person}{Kevin Channer} {and}
+  \bibinfo{person}{Francis Morris}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Myocardial ischaemia}.
+\newblock \bibinfo{journal}{\emph{{BMJ} : British Medical Journal}}
+  \bibinfo{volume}{324}, \bibinfo{number}{7344} (\bibinfo{year}{2002}),
+  \bibinfo{pages}{1023--1026}.
+\newblock
+\showISSN{0959-8138}
+\urldef\tempurl%
+\url{https://doi.org/10.1136/bmj.324.7344.1023}
+\showDOI{\tempurl}
+
+
+\bibitem[Wagner et~al\mbox{.}(2020)]%
+        {wagner_ptbxl_2020}
+\bibfield{author}{\bibinfo{person}{Patrick Wagner}, \bibinfo{person}{Nils
+  Strodthoff}, \bibinfo{person}{Ralf-Dieter Bousseljot},
+  \bibinfo{person}{Dieter Kreiseler}, \bibinfo{person}{Fatima~I. Lunze},
+  \bibinfo{person}{Wojciech Samek}, {and} \bibinfo{person}{Tobias Schaeffter}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{PTB}-{XL}, a large publicly available
+  electrocardiography dataset}.
+\newblock \bibinfo{journal}{\emph{Scientific Data}}  \bibinfo{volume}{7}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{154}.
+\newblock
+\showISSN{2052-4463}
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41597-020-0495-6}
+\showDOI{\tempurl}
+
+
+\bibitem[Reyna et~al\mbox{.}(2024)]%
+        {physionet_challenge_2024}
+\bibfield{author}{\bibinfo{person}{Matthew~A. Reyna},
+  \bibinfo{person}{Deepanshi}, \bibinfo{person}{James Weigle},
+  \bibinfo{person}{Zuzana Koscova}, \bibinfo{person}{Kiersten Campbell},
+  \bibinfo{person}{Salman Seyedi}, \bibinfo{person}{Andoni Elola},
+  \bibinfo{person}{Ali Bahrami~Rad}, \bibinfo{person}{Amit~J. Shah},
+  \bibinfo{person}{Neal~K. Bhatia}, \bibinfo{person}{Gari~D. Clifford}, {and}
+  \bibinfo{person}{Reza Sameni}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Digitization and Classification of {ECG} Images:
+  The {George B. Moody} {PhysioNet} Challenge 2024}. In
+  \bibinfo{booktitle}{\emph{Computing in Cardiology}},
+  Vol.~\bibinfo{volume}{51}. \bibinfo{pages}{1--4}.
+\newblock
+\urldef\tempurl%
+\url{https://moody-challenge.physionet.org/2024/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hempel and Spicher(2024)]%
+        {hempel_driving_2024}
+\bibfield{author}{\bibinfo{person}{Philip Hempel} {and}
+  \bibinfo{person}{Nicolai Spicher}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Driving {ECG} Digitization -- Using Techniques from
+  Autonomous Driving to Detect Regions of Interest in {ECG} Images}. In
+  \bibinfo{booktitle}{\emph{Computing in Cardiology}},
+  Vol.~\bibinfo{volume}{51}.
+\newblock
+\urldef\tempurl%
+\url{https://cinc.org/archives/2024/pdf/CinC2024-247.pdf}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Krones et~al\mbox{.}(2024)]%
+        {krones_combining_2024}
+\bibfield{author}{\bibinfo{person}{Felix Krones}, \bibinfo{person}{Ben Walker},
+  \bibinfo{person}{Terry Lyons}, {and} \bibinfo{person}{Adam Mahdi}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Combining {Hough} Transform and Deep Learning
+  Approaches to Reconstruct {ECG} Signals From Printouts}. In
+  \bibinfo{booktitle}{\emph{Computing in Cardiology}},
+  Vol.~\bibinfo{volume}{51}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.22489/CinC.2024.097}
+\showDOI{\tempurl}
+
+
+\bibitem[Reyna et~al\mbox{.}(2024)]%
+        {reyna_ecg-image-database_2024}
+\bibfield{author}{\bibinfo{person}{Matthew~A. Reyna},
+  \bibinfo{person}{Deepanshi}, \bibinfo{person}{James Weigle},
+  \bibinfo{person}{Zuzana Koscova}, \bibinfo{person}{Kiersten Campbell},
+  \bibinfo{person}{Kshama~Kodthalu Shivashankara}, \bibinfo{person}{Soheil
+  Saghafi}, \bibinfo{person}{Sepideh Nikookar}, \bibinfo{person}{Mohsen
+  Motie-Shirazi}, \bibinfo{person}{Yashar Kiarashi}, \bibinfo{person}{Salman
+  Seyedi}, \bibinfo{person}{Gari~D. Clifford}, {and} \bibinfo{person}{Reza
+  Sameni}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{{ECG}-Image-Database: A Dataset of {ECG} Images with
+  Real-World Imaging and Scanning Artifacts; A Foundation for Computerized
+  {ECG} Image Digitization and Analysis}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.48550/arXiv.2409.16612}
+\showDOI{\tempurl}
+\showeprint[arxiv]{2409.16612 [q-bio.QM]}
+
+
+\bibitem[Khan and Hussain(2021)]%
+        {khan_ecg_2021}
+\bibfield{author}{\bibinfo{person}{Ali~Haider Khan} {and}
+  \bibinfo{person}{Muzammil Hussain}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \bibinfo{title}{{ECG} Images dataset of Cardiac Patients}.
+\newblock \bibinfo{howpublished}{Mendeley Data}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.17632/gwbz3fsgp8.2}
+\showDOI{\tempurl}
+
+
+\bibitem[de~Chazal et~al\mbox{.}(2004)]%
+        {de_chazal_automatic_2004}
+\bibfield{author}{\bibinfo{person}{Philip de Chazal}, \bibinfo{person}{Maria
+  O'Dwyer}, {and} \bibinfo{person}{Richard~B. Reilly}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{Automatic classification of heartbeats using {ECG}
+  morphology and heartbeat interval features}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Trans Biomed Eng}}
+  \bibinfo{volume}{51}, \bibinfo{number}{7} (\bibinfo{year}{2004}),
+  \bibinfo{pages}{1196--1206}.
+\newblock
+\showISSN{0018-9294}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TBME.2004.827359}
+\showDOI{\tempurl}
+
+
+\bibitem[{LeCun} et~al\mbox{.}(2015)]%
+        {lecun_deep_2015}
+\bibfield{author}{\bibinfo{person}{Yann {LeCun}}, \bibinfo{person}{Yoshua
+  Bengio}, {and} \bibinfo{person}{Geoffrey Hinton}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Deep learning}.
+\newblock \bibinfo{journal}{\emph{Nature}} \bibinfo{volume}{521},
+  \bibinfo{number}{7553} (\bibinfo{year}{2015}), \bibinfo{pages}{436--444}.
+\newblock
+\showISSN{0028-0836, 1476-4687}
+\urldef\tempurl%
+\url{https://doi.org/10.1038/nature14539}
+\showDOI{\tempurl}
+
+
+\bibitem[Pan and Tompkins(1985)]%
+        {pan_real-time_1985}
+\bibfield{author}{\bibinfo{person}{Jiapu Pan} {and} \bibinfo{person}{Willis~J.
+  Tompkins}.} \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{A Real-Time {QRS} Detection Algorithm}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Transactions on Biomedical
+  Engineering}} \bibinfo{volume}{{BME}-32}, \bibinfo{number}{3}
+  (\bibinfo{year}{1985}), \bibinfo{pages}{230--236}.
+\newblock
+\showISSN{1558-2531}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TBME.1985.325532}
+\showDOI{\tempurl}
+
+
+\bibitem[Wu et~al\mbox{.}(2022)]%
+        {wu_automated_2022}
+\bibfield{author}{\bibinfo{person}{Huiyi Wu}, \bibinfo{person}{Kiran Patel},
+  \bibinfo{person}{Xinyang Li}, \bibinfo{person}{Bowen Zhang},
+  \bibinfo{person}{Christoforos Galazis}, \bibinfo{person}{Nikesh Bajaj},
+  \bibinfo{person}{Arunashis Sau}, \bibinfo{person}{Xili Shi},
+  \bibinfo{person}{Lin Sun}, \bibinfo{person}{Yanda Tao},
+  \bibinfo{person}{Harith Al-Qaysi}, \bibinfo{person}{Lorin Tarusan},
+  \bibinfo{person}{Nazla Yasmin}, \bibinfo{person}{Natasha Grewal},
+  \bibinfo{person}{Gaurika Kapoor}, \bibinfo{person}{Jonathan Waks},
+  \bibinfo{person}{Daniel Kramer}, \bibinfo{person}{Nicholas Peters}, {and}
+  \bibinfo{person}{Fu~Siong Ng}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{A fully-automated paper ECG digitisation algorithm
+  using deep learning}.
+\newblock \bibinfo{journal}{\emph{Scientific Reports}}  \bibinfo{volume}{12}
+  (\bibinfo{date}{12} \bibinfo{year}{2022}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41598-022-25284-1}
+\showDOI{\tempurl}
+
+
+\bibitem[Randazzo et~al\mbox{.}(2022)]%
+        {randazzo_development_2022}
+\bibfield{author}{\bibinfo{person}{Vincenzo Randazzo}, \bibinfo{person}{Elisa
+  Puleo}, \bibinfo{person}{Annunziata Paviglianiti}, \bibinfo{person}{Alberto
+  Vallan}, {and} \bibinfo{person}{Eros Pasero}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Development and Validation of an Algorithm for the
+  Digitization of {ECG} Paper Images}.
+\newblock \bibinfo{journal}{\emph{Sensors}} \bibinfo{volume}{22},
+  \bibinfo{number}{19} (\bibinfo{year}{2022}), \bibinfo{pages}{7138}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.3390/s22197138}
+\showDOI{\tempurl}
+
+
+\bibitem[Strodthoff et~al\mbox{.}(2021)]%
+        {strodthoff_deep_2021}
+\bibfield{author}{\bibinfo{person}{Nils Strodthoff}, \bibinfo{person}{Patrick
+  Wagner}, \bibinfo{person}{Tobias Schaeffter}, {and} \bibinfo{person}{Wojciech
+  Samek}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Deep Learning for {ECG} Analysis: Benchmarks and
+  Insights from {PTB-XL}}.
+\newblock \bibinfo{journal}{\emph{IEEE Journal of Biomedical and Health
+  Informatics}} \bibinfo{volume}{25}, \bibinfo{number}{5}
+  (\bibinfo{year}{2021}), \bibinfo{pages}{1519--1528}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/JBHI.2020.3022989}
+\showDOI{\tempurl}
+
+
+\bibitem[Sangha et~al\mbox{.}(2022)]%
+        {sangha_automated_2022}
+\bibfield{author}{\bibinfo{person}{Veer Sangha}, \bibinfo{person}{Bobak~J.
+  Mortazavi}, \bibinfo{person}{Adrian~D. Haimovich},
+  \bibinfo{person}{Antônio~H. Ribeiro}, \bibinfo{person}{Cynthia~A. Brandt},
+  \bibinfo{person}{Daniel~L. Jacoby}, \bibinfo{person}{Wade~L. Schulz},
+  \bibinfo{person}{Harlan~M. Krumholz}, \bibinfo{person}{Antonio Luiz~P.
+  Ribeiro}, {and} \bibinfo{person}{Rohan Khera}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Automated multilabel diagnosis on
+  electrocardiographic images and signals}.
+\newblock \bibinfo{journal}{\emph{Nature Communications}} \bibinfo{volume}{13},
+  \bibinfo{number}{1} (\bibinfo{year}{2022}).
+\newblock
+\showISSN{2041-1723}
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41467-022-29153-3}
+\showDOI{\tempurl}
+
+
+\bibitem[Gliner et~al\mbox{.}(2023)]%
+        {gliner_domain_2023}
+\bibfield{author}{\bibinfo{person}{Vadim Gliner}, \bibinfo{person}{Vladimir
+  Makarov}, \bibinfo{person}{Arutyun~I. Avetisyan}, \bibinfo{person}{Assaf
+  Schuster}, {and} \bibinfo{person}{Yael Yaniv}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Using domain adaptation for classification of
+  healthy and disease conditions from mobile-captured images of standard
+  12-lead electrocardiograms}.
+\newblock \bibinfo{journal}{\emph{Scientific Reports}}  \bibinfo{volume}{13}
+  (\bibinfo{year}{2023}), \bibinfo{pages}{14023}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41598-023-40693-6}
+\showDOI{\tempurl}
+
+
+\bibitem[Wang et~al\mbox{.}(2025)]%
+        {wang_pipeline_2025}
+\bibfield{author}{\bibinfo{person}{Xiaoyu Wang}, \bibinfo{person}{Ramesh
+  Nadarajah}, \bibinfo{person}{Zhiqiang Zhang}, {and} \bibinfo{person}{David
+  Wong}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{A Deep Learning Pipeline Using Synthetic Data to
+  Improve Interpretation of Paper {ECG} Images}.
+\newblock
+\newblock
+\showeprint[arxiv]{2507.21968}
+
+
+\bibitem[He et~al\mbox{.}(2016)]%
+        {he_deep_2016}
+\bibfield{author}{\bibinfo{person}{Kaiming He}, \bibinfo{person}{Xiangyu
+  Zhang}, \bibinfo{person}{Shaoqing Ren}, {and} \bibinfo{person}{Jian Sun}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Deep Residual Learning for Image Recognition}. In
+  \bibinfo{booktitle}{\emph{2016 {IEEE} Conference on Computer Vision and
+  Pattern Recognition ({CVPR})}}. \bibinfo{publisher}{{IEEE}},
+  \bibinfo{address}{Las Vegas, {NV}, {USA}}, \bibinfo{pages}{770--778}.
+\newblock
+\showISBNx{978-1-4673-8851-1}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/CVPR.2016.90}
+\showDOI{\tempurl}
+
+
+\bibitem[Yosinski et~al\mbox{.}(2014)]%
+        {yosinski_transfer_2014}
+\bibfield{author}{\bibinfo{person}{Jason Yosinski}, \bibinfo{person}{Jeff
+  Clune}, \bibinfo{person}{Yoshua Bengio}, {and} \bibinfo{person}{Hod Lipson}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{How transferable are features in deep neural
+  networks?}. In \bibinfo{booktitle}{\emph{Advances in Neural Information
+  Processing Systems}}, \bibfield{editor}{\bibinfo{person}{Z.~Ghahramani},
+  \bibinfo{person}{M.~Welling}, \bibinfo{person}{C.~Cortes},
+  \bibinfo{person}{N.~Lawrence}, {and} \bibinfo{person}{K.~Weinberger}} (Eds.),
+  Vol.~\bibinfo{volume}{27}. \bibinfo{publisher}{Curran Associates, Inc.}
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper_files/paper/2014/file/532a2f85b6977104bc93f8580abbb330-Paper.pdf}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Dosovitskiy et~al\mbox{.}(2021)]%
+        {dosovitskiy_image_2021}
+\bibfield{author}{\bibinfo{person}{Alexey Dosovitskiy}, \bibinfo{person}{Lucas
+  Beyer}, \bibinfo{person}{Alexander Kolesnikov}, \bibinfo{person}{Dirk
+  Weissenborn}, \bibinfo{person}{Xiaohua Zhai}, \bibinfo{person}{Thomas
+  Unterthiner}, \bibinfo{person}{Mostafa Dehghani}, \bibinfo{person}{Matthias
+  Minderer}, \bibinfo{person}{Georg Heigold}, \bibinfo{person}{Sylvain Gelly},
+  \bibinfo{person}{Jakob Uszkoreit}, {and} \bibinfo{person}{Neil Houlsby}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{An Image is Worth 16x16 Words: Transformers for
+  Image Recognition at Scale}. In \bibinfo{booktitle}{\emph{International
+  Conference on Learning Representations}}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2022)]%
+        {liu_convnet_2022}
+\bibfield{author}{\bibinfo{person}{Zhuang Liu}, \bibinfo{person}{Hanzi Mao},
+  \bibinfo{person}{Chao-Yuan Wu}, \bibinfo{person}{Christoph Feichtenhofer},
+  \bibinfo{person}{Trevor Darrell}, {and} \bibinfo{person}{Saining Xie}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{A {ConvNet} for the 2020s}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE/CVF Conference on Computer
+  Vision and Pattern Recognition}}. \bibinfo{pages}{11976--11986}.
+\newblock
+
+
+\bibitem[Chicco and Jurman(2020)]%
+        {chicco_advantages_2020}
+\bibfield{author}{\bibinfo{person}{Davide Chicco} {and}
+  \bibinfo{person}{Giuseppe Jurman}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{The Advantages of the {Matthews} Correlation
+  Coefficient ({MCC}) over {F1} Score and Accuracy in Binary Classification
+  Evaluation}.
+\newblock \bibinfo{journal}{\emph{BMC Genomics}}  \bibinfo{volume}{21}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{6}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1186/s12864-019-6413-7}
+\showDOI{\tempurl}
+
+
+\bibitem[Lin et~al\mbox{.}(2017)]%
+        {lin_focal_2017}
+\bibfield{author}{\bibinfo{person}{Tsung-Yi Lin}, \bibinfo{person}{Priya
+  Goyal}, \bibinfo{person}{Ross Girshick}, \bibinfo{person}{Kaiming He}, {and}
+  \bibinfo{person}{Piotr Doll{\'a}r}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Focal Loss for Dense Object Detection}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the IEEE International Conference on
+  Computer Vision}}. \bibinfo{pages}{2980--2988}.
+\newblock
+
+
+\bibitem[Noseworthy et~al\mbox{.}(2020)]%
+        {noseworthy_assessing_2020}
+\bibfield{author}{\bibinfo{person}{Peter~A. Noseworthy},
+  \bibinfo{person}{Zachi~I. Attia}, \bibinfo{person}{LaPrincess~C. Brewer},
+  \bibinfo{person}{Sharonne~N. Hayes}, \bibinfo{person}{Xiaoxi Yao},
+  \bibinfo{person}{Suraj Kapa}, \bibinfo{person}{Paul~A. Friedman}, {and}
+  \bibinfo{person}{Francisco Lopez-Jimenez}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Assessing and Mitigating Bias in Medical Artificial
+  Intelligence: The Effects of Race and Ethnicity on a Deep Learning Model for
+  {ECG} Analysis}.
+\newblock \bibinfo{journal}{\emph{Circulation: Arrhythmia and
+  Electrophysiology}} \bibinfo{volume}{13}, \bibinfo{number}{3}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{e007988}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1161/CIRCEP.119.007988}
+\showDOI{\tempurl}
+
+
+\bibitem[Perez~Alday et~al\mbox{.}(2022)]%
+        {perez_alday_age_2022}
+\bibfield{author}{\bibinfo{person}{Erick~A. Perez~Alday},
+  \bibinfo{person}{Ali~Bahrami Rad}, \bibinfo{person}{Matthew~A. Reyna},
+  \bibinfo{person}{Nadi Sadr}, \bibinfo{person}{Annie Gu},
+  \bibinfo{person}{Qiao Li}, \bibinfo{person}{Mircea Dumitru},
+  \bibinfo{person}{Joel Xue}, \bibinfo{person}{Dave Albert},
+  \bibinfo{person}{Reza Sameni}, {and} \bibinfo{person}{Gari~D. Clifford}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Age, Sex and Race Bias in Automated Arrhythmia
+  Detectors}.
+\newblock \bibinfo{journal}{\emph{Journal of Electrocardiology}}
+  \bibinfo{volume}{74} (\bibinfo{year}{2022}), \bibinfo{pages}{5--9}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.jelectrocard.2022.07.007}
+\showDOI{\tempurl}
+
+
+\bibitem[Guo et~al\mbox{.}(2017)]%
+        {guo_calibration_2017}
+\bibfield{author}{\bibinfo{person}{Chuan Guo}, \bibinfo{person}{Geoff Pleiss},
+  \bibinfo{person}{Yu Sun}, {and} \bibinfo{person}{Kilian~Q. Weinberger}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{On Calibration of Modern Neural Networks}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 34th International Conference on
+  Machine Learning}} \emph{(\bibinfo{series}{Proceedings of Machine Learning
+  Research}, Vol.~\bibinfo{volume}{70})}. \bibinfo{pages}{1321--1330}.
+\newblock
+
+
+\bibitem[Platt(1999)]%
+        {platt_probabilistic_1999}
+\bibfield{author}{\bibinfo{person}{John~C. Platt}.}
+  \bibinfo{year}{1999}\natexlab{}.
+\newblock \showarticletitle{Probabilistic Outputs for Support Vector Machines
+  and Comparisons to Regularized Likelihood Methods}.
+\newblock In \bibinfo{booktitle}{\emph{Advances in Large Margin Classifiers}}.
+  \bibinfo{publisher}{MIT Press}, \bibinfo{pages}{61--74}.
+\newblock
+
+
+\bibitem[Mukhoti et~al\mbox{.}(2020)]%
+        {mukhoti_calibrating_2020}
+\bibfield{author}{\bibinfo{person}{Jishnu Mukhoti}, \bibinfo{person}{Viveka
+  Kulharia}, \bibinfo{person}{Amartya Sanyal}, \bibinfo{person}{Stuart
+  Golodetz}, \bibinfo{person}{Philip H.~S. Torr}, {and}
+  \bibinfo{person}{Puneet~K. Dokania}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Calibrating Deep Neural Networks using Focal Loss}.
+  In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, Vol.~\bibinfo{volume}{33}. \bibinfo{pages}{15288--15299}.
+\newblock
+
+
+\bibitem[Lakshminarayanan et~al\mbox{.}(2017)]%
+        {lakshminarayanan_simple_2017}
+\bibfield{author}{\bibinfo{person}{Balaji Lakshminarayanan},
+  \bibinfo{person}{Alexander Pritzel}, {and} \bibinfo{person}{Charles
+  Blundell}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Simple and Scalable Predictive Uncertainty
+  Estimation using Deep Ensembles}. In \bibinfo{booktitle}{\emph{Advances in
+  Neural Information Processing Systems}}, Vol.~\bibinfo{volume}{30}.
+\newblock
+
+
+\bibitem[Gal and Ghahramani(2016)]%
+        {gal_dropout_2016}
+\bibfield{author}{\bibinfo{person}{Yarin Gal} {and} \bibinfo{person}{Zoubin
+  Ghahramani}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Dropout as a {Bayesian} Approximation: Representing
+  Model Uncertainty in Deep Learning}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the 33rd International Conference on Machine Learning}}.
+  \bibinfo{pages}{1050--1059}.
+\newblock
+
+
+\bibitem[Chen et~al\mbox{.}(2022)]%
+        {chen_quantifying_2022}
+\bibfield{author}{\bibinfo{person}{Brian Chen}, \bibinfo{person}{Golara
+  Javadi}, \bibinfo{person}{Alexander Hamilton}, \bibinfo{person}{Stephanie
+  Sibley}, \bibinfo{person}{Philip Laird}, \bibinfo{person}{Purang
+  Abolmaesumi}, \bibinfo{person}{David Maslove}, {and} \bibinfo{person}{Parvin
+  Mousavi}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Quantifying deep neural network uncertainty for
+  atrial fibrillation detection with limited labels}.
+\newblock \bibinfo{journal}{\emph{Scientific Reports}}  \bibinfo{volume}{12}
+  (\bibinfo{year}{2022}), \bibinfo{pages}{20140}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/s41598-022-24574-y}
+\showDOI{\tempurl}
+
+
+\bibitem[Ovadia et~al\mbox{.}(2019)]%
+        {ovadia_trust_2019}
+\bibfield{author}{\bibinfo{person}{Yaniv Ovadia}, \bibinfo{person}{Emily
+  Fertig}, \bibinfo{person}{Jie Ren}, \bibinfo{person}{Zachary Nado},
+  \bibinfo{person}{D. Sculley}, \bibinfo{person}{Sebastian Nowozin},
+  \bibinfo{person}{Joshua Dillon}, \bibinfo{person}{Balaji Lakshminarayanan},
+  {and} \bibinfo{person}{Jasper Snoek}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Can you trust your model\textquotesingle s
+  uncertainty? Evaluating predictive uncertainty under dataset shift}. In
+  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, \bibfield{editor}{\bibinfo{person}{H.~Wallach},
+  \bibinfo{person}{H.~Larochelle}, \bibinfo{person}{A.~Beygelzimer},
+  \bibinfo{person}{F.~d\textquotesingle Alch\'{e}-Buc},
+  \bibinfo{person}{E.~Fox}, {and} \bibinfo{person}{R.~Garnett}} (Eds.),
+  Vol.~\bibinfo{volume}{32}. \bibinfo{publisher}{Curran Associates, Inc.}
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper_files/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Minderer et~al\mbox{.}(2021)]%
+        {minderer_revisiting_2021}
+\bibfield{author}{\bibinfo{person}{Matthias Minderer}, \bibinfo{person}{Josip
+  Djolonga}, \bibinfo{person}{Rob Romijnders}, \bibinfo{person}{Frances Hubis},
+  \bibinfo{person}{Xiaohua Zhai}, \bibinfo{person}{Neil Houlsby},
+  \bibinfo{person}{Dustin Tran}, {and} \bibinfo{person}{Mario Lucic}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Revisiting the Calibration of Modern Neural
+  Networks}. In \bibinfo{booktitle}{\emph{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{34}.
+\newblock
+
+
+\bibitem[Selvaraju et~al\mbox{.}(2017)]%
+        {selvaraju_gradcam_2017}
+\bibfield{author}{\bibinfo{person}{Ramprasaath~R. Selvaraju},
+  \bibinfo{person}{Michael Cogswell}, \bibinfo{person}{Abhishek Das},
+  \bibinfo{person}{Ramakrishna Vedantam}, \bibinfo{person}{Devi Parikh}, {and}
+  \bibinfo{person}{Dhruv Batra}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{{Grad-CAM}: Visual Explanations from Deep Networks
+  via Gradient-Based Localization}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the IEEE International Conference on Computer Vision}}.
+  \bibinfo{pages}{618--626}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/ICCV.2017.74}
+\showDOI{\tempurl}
+
+
+\bibitem[Ribeiro et~al\mbox{.}(2016)]%
+        {ribeiro_why_2016}
+\bibfield{author}{\bibinfo{person}{Marco~Tulio Ribeiro},
+  \bibinfo{person}{Sameer Singh}, {and} \bibinfo{person}{Carlos Guestrin}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{``{Why} Should {I} Trust You?'': Explaining the
+  Predictions of Any Classifier}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data
+  Mining}}. \bibinfo{pages}{1135--1144}.
+\newblock
+
+
+\bibitem[Lundberg and Lee(2017)]%
+        {lundberg_unified_2017}
+\bibfield{author}{\bibinfo{person}{Scott~M. Lundberg} {and}
+  \bibinfo{person}{Su-In Lee}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{A Unified Approach to Interpreting Model
+  Predictions}. In \bibinfo{booktitle}{\emph{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{30}.
+\newblock
+
+
+\bibitem[Adebayo et~al\mbox{.}(2018)]%
+        {adebayo_sanity_2018}
+\bibfield{author}{\bibinfo{person}{Julius Adebayo}, \bibinfo{person}{Justin
+  Gilmer}, \bibinfo{person}{Michael Muelly}, \bibinfo{person}{Ian Goodfellow},
+  \bibinfo{person}{Moritz Hardt}, {and} \bibinfo{person}{Been Kim}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Sanity Checks for Saliency Maps}. In
+  \bibinfo{booktitle}{\emph{Advances in Neural Information Processing
+  Systems}}, \bibfield{editor}{\bibinfo{person}{S.~Bengio},
+  \bibinfo{person}{H.~Wallach}, \bibinfo{person}{H.~Larochelle},
+  \bibinfo{person}{K.~Grauman}, \bibinfo{person}{N.~Cesa-Bianchi}, {and}
+  \bibinfo{person}{R.~Garnett}} (Eds.), Vol.~\bibinfo{volume}{31}.
+  \bibinfo{publisher}{Curran Associates, Inc.}
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper_files/paper/2018/file/294a8ed24b1ad22ec2e7efea049b8737-Paper.pdf}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Ghassemi et~al\mbox{.}(2021)]%
+        {ghassemi_false_2021}
+\bibfield{author}{\bibinfo{person}{Marzyeh Ghassemi}, \bibinfo{person}{Luke
+  Oakden-Rayner}, {and} \bibinfo{person}{Andrew~L. Beam}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{The False Hope of Current Approaches to Explainable
+  Artificial Intelligence in Health Care}.
+\newblock \bibinfo{journal}{\emph{The Lancet Digital Health}}
+  \bibinfo{volume}{3}, \bibinfo{number}{11} (\bibinfo{year}{2021}),
+  \bibinfo{pages}{e745--e750}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1016/S2589-7500(21)00208-9}
+\showDOI{\tempurl}
+
+
+\bibitem[Salih et~al\mbox{.}(2024)]%
+        {salih_review_2024}
+\bibfield{author}{\bibinfo{person}{Ahmed~M. Salih} {et~al\mbox{.}}}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{A review of evaluation approaches for explainable
+  {AI} with applications in cardiology}.
+\newblock \bibinfo{journal}{\emph{Artificial Intelligence Review}}
+  \bibinfo{volume}{57}, \bibinfo{number}{9} (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/s10462-024-10852-w}
+\showDOI{\tempurl}
+
+
+\bibitem[Tonekaboni et~al\mbox{.}(2019)]%
+        {tonekaboni_what_2019}
+\bibfield{author}{\bibinfo{person}{Sana Tonekaboni}, \bibinfo{person}{Shalmali
+  Joshi}, \bibinfo{person}{Melissa~D. McCradden}, {and} \bibinfo{person}{Anna
+  Goldenberg}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{What Clinicians Want: Contextualizing Explainable
+  Machine Learning for Clinical End Use}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 4th Machine Learning for
+  Healthcare Conference}} \emph{(\bibinfo{series}{Proceedings of Machine
+  Learning Research}, Vol.~\bibinfo{volume}{106})}. \bibinfo{pages}{359--380}.
+\newblock
+
+
+\bibitem[Hughes-Noehrer et~al\mbox{.}(2024)]%
+        {hughes-noehrer_contrasting_2024}
+\bibfield{author}{\bibinfo{person}{Lukas Hughes-Noehrer}, \bibinfo{person}{Leda
+  Channer}, \bibinfo{person}{Gabriel Strain}, \bibinfo{person}{Gregory Yates},
+  \bibinfo{person}{Richard Body}, {and} \bibinfo{person}{Caroline Jay}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{Contrasting Attitudes Towards Current and Future {AI}
+  Applications for Computerised Interpretation of {ECG}: A Clinical Stakeholder
+  Interview Study}.
+\newblock
+\newblock
+\showeprint[arxiv]{2410.16879}
+
+
+\bibitem[Cabitza et~al\mbox{.}(2023)]%
+        {cabitza_painting_2023}
+\bibfield{author}{\bibinfo{person}{Federico Cabitza}, \bibinfo{person}{Andrea
+  Campagner}, \bibinfo{person}{Chiara Natali}, \bibinfo{person}{Enea
+  Parimbelli}, \bibinfo{person}{Luca Ronzio}, {and} \bibinfo{person}{Matteo
+  Cameli}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Painting the Black Box White: Experimental Findings
+  from Applying {XAI} to an {ECG} Reading Setting}.
+\newblock \bibinfo{journal}{\emph{Machine Learning and Knowledge Extraction}}
+  \bibinfo{volume}{5}, \bibinfo{number}{1} (\bibinfo{year}{2023}),
+  \bibinfo{pages}{269--286}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.3390/make5010017}
+\showDOI{\tempurl}
+
+
+\bibitem[Brooke(1996)]%
+        {brooke_sus_1996}
+\bibfield{author}{\bibinfo{person}{John Brooke}.}
+  \bibinfo{year}{1996}\natexlab{}.
+\newblock \showarticletitle{{SUS}: A ``Quick and Dirty'' Usability Scale}.
+\newblock In \bibinfo{booktitle}{\emph{Usability Evaluation in Industry}},
+  \bibfield{editor}{\bibinfo{person}{Patrick~W. Jordan}} (Ed.).
+  \bibinfo{publisher}{Taylor \& Francis}, \bibinfo{address}{London},
+  \bibinfo{pages}{189--194}.
+\newblock
+
+
+\bibitem[Bangor et~al\mbox{.}(2008)]%
+        {bangor_empirical_2008}
+\bibfield{author}{\bibinfo{person}{Aaron Bangor}, \bibinfo{person}{Philip~T.
+  Kortum}, {and} \bibinfo{person}{James~T. Miller}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{An Empirical Evaluation of the {System Usability
+  Scale}}.
+\newblock \bibinfo{journal}{\emph{International Journal of Human--Computer
+  Interaction}} \bibinfo{volume}{24}, \bibinfo{number}{6}
+  (\bibinfo{year}{2008}), \bibinfo{pages}{574--594}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1080/10447310802205776}
+\showDOI{\tempurl}
+
+
+\bibitem[Bradski(2000)]%
+        {bradski_opencv_2000}
+\bibfield{author}{\bibinfo{person}{G. Bradski}.}
+  \bibinfo{year}{2000}\natexlab{}.
+\newblock \showarticletitle{The {OpenCV} Library}.
+\newblock \bibinfo{journal}{\emph{Dr. Dobb's Journal of Software Tools}}
+  (\bibinfo{year}{2000}).
+\newblock
+
+
+\bibitem[Verma and Ali(2013)]%
+        {verma_ali_2013}
+\bibfield{author}{\bibinfo{person}{Rohit Verma} {and} \bibinfo{person}{Jahid
+  Ali}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{A Comparative Study of Various Types of Image Noise
+  and Efficient Noise Removal Techniques}.
+\newblock \bibinfo{journal}{\emph{International Journal of Advanced Research in
+  Computer Science and Software Engineering}} (\bibinfo{year}{2013}).
+\newblock
+\showISSN{22776451, 2277128X}
+
+
+\bibitem[Mendonca et~al\mbox{.}(2013)]%
+        {mendonca_ph_2013}
+\bibfield{author}{\bibinfo{person}{Teresa Mendonca}, \bibinfo{person}{Pedro~M.
+  Ferreira}, \bibinfo{person}{Jorge~S. Marques}, \bibinfo{person}{Andre R.~S.
+  Marcal}, {and} \bibinfo{person}{Jorge Rozeira}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{{PH}² - a dermoscopic image database for research
+  and benchmarking}.
+\newblock \bibinfo{journal}{\emph{Annual International Conference of the {IEEE}
+  Engineering in Medicine and Biology Society. {IEEE} Engineering in Medicine
+  and Biology Society. Annual International Conference}}
+  \bibinfo{volume}{2013} (\bibinfo{year}{2013}), \bibinfo{pages}{5437--5440}.
+\newblock
+\showISSN{2694-0604}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/EMBC.2013.6610779}
+\showDOI{\tempurl}
+
+
+\end{thebibliography}
