@@ -15,6 +15,10 @@
 \let\origbibliographystyle\bibliographystyle
 \renewcommand{\bibliographystyle}[1]{\origbibliographystyle{ACM-Reference-Format-Unsorted}}
 \usetikzlibrary{positioning,arrows.meta,fit}
+\usepackage{array}
+\usepackage{ragged2e}
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\raggedbottom
 
 % colour macros for the risk ratings
 \newcommand{\High}{\cellcolor{red!45}High}
@@ -68,7 +72,7 @@ Electrocardiograms (ECGs) are among the most common tests of the heart, yet many
 \frontmattersection{Abbreviations}{
 \begingroup
 \renewcommand{\arraystretch}{1.15}
-\begin{longtable}{@{}p{0.2\textwidth} p{0.75\textwidth}@{}}
+\begin{longtable}{@{}P{0.2\textwidth} P{0.75\textwidth}@{}}
 \textbf{AFIB} & \textbf{A}trial \textbf{Fib}rillation \\
 \textbf{AFLT} & \textbf{A}trial \textbf{Flu}tter \\
 \textbf{AUROC} & \textbf{A}rea \textbf{U}nder the \textbf{R}eceiver \textbf{O}perating characteristic \textbf{C}urve \\
@@ -304,7 +308,7 @@ A decision-support system must also show how far its outputs can be trusted, and
 \subsubsection{Calibration and Uncertainty}
 \label{sec:calibration}
 
-A model intended to support decisions must indicate the extent to which its outputs can be trusted. \citet{guo_calibration_2017} demonstrated that modern networks are frequently overconfident, and that temperature scaling, which divides the scores by a single parameter $T$ fitted on validation data, is a simple and effective solution. For multi-label outputs, each class score $z_k$ becomes $\hat{p}_k = \sigma(z_k/T)$; as division by $T$ preserves the ranking of scores, AUROC is unaffected, and only the reliability of the probabilities (measured by the ECE), changes. Its application to independent sigmoid outputs is, however, an adaptation of the original single-label formulation.
+A model intended to support decisions must indicate the extent to which its outputs can be trusted. \citet{guo_calibration_2017} demonstrated that modern networks are frequently overconfident, and that temperature scaling, which divides the scores by a single parameter $T$ fitted on validation data, is a simple and effective solution. For multi-label outputs, each class score $z_k$ becomes $\hat{P}_k = \sigma(z_k/T)$; as division by $T$ preserves the ranking of scores, AUROC is unaffected, and only the reliability of the probabilities (measured by the ECE), changes. Its application to independent sigmoid outputs is, however, an adaptation of the original single-label formulation.
 
 Several alternatives exist. One example is Platt scaling, which fits a logistic function to the scores \cite{platt_probabilistic_1999}. Training with focal loss yields better-calibrated networks and, combined with temperature scaling, achieved state-of-the-art calibration \cite{mukhoti_calibrating_2020}. Deep ensembles \cite{lakshminarayanan_simple_2017} and Monte Carlo dropout \cite{gal_dropout_2016} provide fuller estimates of uncertainty and improved calibration in signal-based atrial fibrillation detection \cite{chen_quantifying_2022}, although ensembles multiply the training cost. The literature is divided on whether calibration persists under distribution shift: \citet{ovadia_trust_2019} found that it deteriorates as data diverge from the training distribution, whereas \citet{minderer_revisiting_2021} found that recent architectures remain well calibrated and identified architecture as a major factor. The present work addresses precisely this question, since $T$ is fitted on rendered images but applied to real ones. Whether calibration survives this shift is therefore measured rather than assumed.
 
@@ -328,7 +332,7 @@ Most ECGs are interpreted by software on the recording device, but its accuracy 
   \renewcommand{\arraystretch}{1.0}
   \caption{Comparison of existing ECG analysis systems and the planned system.}
   \label{tab:existing-systems}
-  \begin{tabular}{@{}p{0.17\linewidth} p{0.17\linewidth} p{0.27\linewidth} p{0.31\linewidth}@{}}
+  \begin{tabular}{@{}P{0.17\linewidth} P{0.17\linewidth} P{0.27\linewidth} P{0.31\linewidth}@{}}
     \toprule
     \textbf{System} & \textbf{Input} & \textbf{Key features} & \textbf{Limitations} \\
     \midrule
@@ -371,7 +375,7 @@ Whereas signal-based deep learning for ECG analysis is well established, image-b
   \renewcommand{\arraystretch}{1.0}
   \caption{Design decisions, the alternatives considered, and the literature behind each choice.}
   \label{tab:lit-decisions}
-  \begin{tabular}{@{}p{0.14\linewidth} p{0.22\linewidth} p{0.24\linewidth} p{0.31\linewidth}@{}}
+  \begin{tabular}{@{}P{0.14\linewidth} P{0.22\linewidth} P{0.24\linewidth} P{0.31\linewidth}@{}}
     \toprule
     \textbf{Decision} & \textbf{Choice} & \textbf{Alternatives} & \textbf{Reason} \\
     \midrule
@@ -412,7 +416,7 @@ Table~\ref{tab:functional-req} lists the requirements in order of development, p
 \footnotesize
 \setlength{\arrayrulewidth}{0.8pt}
 \renewcommand{\arraystretch}{1.0}
-\begin{longtable}{|p{0.08\linewidth}|p{0.60\linewidth}|p{0.105\linewidth}|p{0.085\linewidth}|}
+\begin{longtable}{|P{0.08\linewidth}|P{0.60\linewidth}|P{0.105\linewidth}|P{0.085\linewidth}|}
   \caption{Functional and non-functional requirements.}
   \label{tab:functional-req} \\
     \hline
@@ -643,7 +647,7 @@ Three prototypes test the main risks (Table~\ref{tab:prototypes}); Figures~\ref{
   \caption{Prototypes and their results.} % CHANGED: "Status" column replaced by "Result" to give measurable feasibility evidence
   \label{tab:prototypes}
   % TODO: replace each [ADD: ...] with your own measured figure (do not leave any in the final PDF)
-  \begin{tabular}{|p{0.18\linewidth}|p{0.38\linewidth}|p{0.34\linewidth}|}
+  \begin{tabular}{|P{0.18\linewidth}|P{0.38\linewidth}|P{0.34\linewidth}|}
     \hline
     \rowcolor{cyan!90!black}
     \textcolor{white}{\textbf{Prototype}} & \textcolor{white}{\textbf{Demonstrates}} &
@@ -866,7 +870,7 @@ Table~\ref{tab:risks} gives the full risk assessment. Each risk is rated once fo
 \begingroup
 \footnotesize
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{|p{0.05\linewidth}|p{0.24\linewidth}|p{0.11\linewidth}|p{0.10\linewidth}|p{0.35\linewidth}|}
+\begin{longtable}{|P{0.05\linewidth}|P{0.24\linewidth}|P{0.11\linewidth}|P{0.10\linewidth}|P{0.35\linewidth}|}
   \caption{Risk assessment and mitigation.}
   \label{tab:risks} \\
     \hline
@@ -1010,7 +1014,7 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \renewcommand{\arraystretch}{1.25}
   \caption{Requirements Traceability Matrix: functional requirements.}
   \label{tab:rtm-fr}
-  \begin{tabular}{|p{0.07\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|p{0.39\linewidth}|p{0.08\linewidth}|}
+  \begin{tabular}{|P{0.07\linewidth}|P{0.15\linewidth}|P{0.16\linewidth}|P{0.39\linewidth}|P{0.08\linewidth}|}
     \hline
     \rowcolor{cyan!90!black}
     \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Module}} &
@@ -1057,7 +1061,7 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \renewcommand{\arraystretch}{1.25}
   \caption{Requirements Traceability Matrix: non-functional requirements.}
   \label{tab:rtm-nfr}
-  \begin{tabular}{|p{0.07\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|p{0.39\linewidth}|p{0.08\linewidth}|}
+  \begin{tabular}{|P{0.07\linewidth}|P{0.15\linewidth}|P{0.16\linewidth}|P{0.39\linewidth}|P{0.08\linewidth}|}
     \hline
     \rowcolor{cyan!90!black}
     \textcolor{white}{\textbf{ID}} & \textcolor{white}{\textbf{Module}} &
@@ -1094,7 +1098,7 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \renewcommand{\arraystretch}{1.12}
   \caption{Evidence used to evaluate each objective.}
   \label{tab:obj-eval}
-  \begin{tabular}{|p{0.07\linewidth}|p{0.36\linewidth}|p{0.34\linewidth}|p{0.11\linewidth}|}
+  \begin{tabular}{|P{0.07\linewidth}|P{0.36\linewidth}|P{0.34\linewidth}|P{0.11\linewidth}|}
     \hline
     \rowcolor{cyan!90!black}
     \textcolor{white}{\textbf{Obj.}} & \textcolor{white}{\textbf{Evidence}} &
@@ -1125,7 +1129,7 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \renewcommand{\arraystretch}{1.0}
   \caption{Image processing techniques relevant to ECG images, and their trade-offs.}
   \label{tab:techniques}
-  \begin{tabular}{@{}p{0.27\linewidth} p{0.30\linewidth} p{0.37\linewidth}@{}}
+  \begin{tabular}{@{}P{0.27\linewidth} P{0.30\linewidth} P{0.37\linewidth}@{}}
     \toprule
     \textbf{Technique} & \textbf{Use} & \textbf{Trade-off} \\
     \midrule
@@ -1145,7 +1149,7 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \footnotesize
   \caption{Key studies in deep learning for ECG classification.}
   \label{tab:ecg-studies}
-  \begin{tabular}{@{}p{0.13\linewidth} p{0.27\linewidth} p{0.25\linewidth} p{0.25\linewidth}@{}}
+  \begin{tabular}{@{}P{0.13\linewidth} P{0.27\linewidth} P{0.25\linewidth} P{0.25\linewidth}@{}}
     \toprule
     \textbf{Study} & \textbf{Input and data} & \textbf{Reported result} &
       \textbf{Limitation for this project} \\
@@ -1251,7 +1255,6 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
 The questionnaire below was delivered to participants through Microsoft Forms.
 
 \includepdf[pages=-, scale=0.85, pagecommand={\thispagestyle{standardpagestyle}}]{images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf}
-\end{document}
 
 % Glossary
 \newpage
@@ -1262,7 +1265,7 @@ The questionnaire below was delivered to participants through Microsoft Forms.
 \begingroup
 \small
 \renewcommand{\arraystretch}{1.5}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth} p{0.68\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}P{0.27\linewidth} P{0.68\linewidth}@{}}
   \toprule
   \textbf{Term} & \textbf{Definition} \\
   \midrule
@@ -1320,3 +1323,4 @@ The questionnaire below was delivered to participants through Microsoft Forms.
   \textbf{Transfer learning} & Starting from a network pretrained on another task (for example natural images) and fine-tuning it for the new task. \\
 \end{longtable}
 \endgroup
+  \end{document}
