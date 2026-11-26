@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  26 NOV 2026 00:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.10)  26 NOV 2026 01:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1568,11 +1568,6 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 333.
 
-Underfull \hbox (badness 10000) in paragraph at lines 340--340
-[]|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Scans; phone-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 341--341
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Domain adap-ta-tion from
  []
@@ -1593,57 +1588,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--345
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--352
+Underfull \hbox (badness 7667) in paragraph at lines 350--351
+[]|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Assumes a fixed lay-out and
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 350--351
+\T1/LinuxLibertineT-TLF/m/n/10 (+20) grid scale (which is resource-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--353
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) This project
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 353--353
+Underfull \hbox (badness 1540) in paragraph at lines 354--354
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Rendered im-ages
  []
 
 
-Underfull \hbox (badness 1082) in paragraph at lines 353--353
-\T1/LinuxLibertineT-TLF/m/n/10 (+20) for train-ing; real
+Underfull \hbox (badness 10000) in paragraph at lines 354--354
+\T1/LinuxLibertineT-TLF/m/n/10 (+20) for train-ing/real
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--377
+Underfull \hbox (badness 1077) in paragraph at lines 355--355
+[]|\T1/LinuxLibertineT-TLF/m/n/10 (+20) CNN with tim-ing fea-tures,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Direct clas-si-fi-ca-tion,
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 378--378
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
+[]|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Avoids chained er-rors and
+ []
+
+
+Underfull \hbox (badness 4647) in paragraph at lines 378--379
+\T1/LinuxLibertineT-TLF/m/n/10 (+20) fixed-layout as-sump-tions (Sec-
+ []
+
+
+Underfull \hbox (badness 1221) in paragraph at lines 379--379
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Rendered PTB-XL im-
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 379--380
-\T1/LinuxLibertineT-TLF/m/n/10 (+20) train-ing; lim-ited data and one
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 380--380
+Underfull \hbox (badness 10000) in paragraph at lines 381--381
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Class-weighted loss;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) One pa-ram-e-ter, AU-ROC un-
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 381--382
-\T1/LinuxLibertineT-TLF/m/n/10 (+20) changed; en-sem-bles too costly
+Underfull \hbox (badness 1072) in paragraph at lines 382--383
+\T1/LinuxLibertineT-TLF/m/n/10 (+20) changed. En-sem-bles too costly
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 383--384
+[]|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Class-specific and fast when
  []
 
 [8.16]
-Underfull \hbox (badness 10000) in paragraph at lines 429--430
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Obj 1,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Obj 2,
  []
 
@@ -1656,7 +1676,7 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [9.17]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 520.
+(Font)              scaled to size 10.95pt on input line 521.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1670,21 +1690,21 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 
 [11.19]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 9.0pt on input line 626.
+(Font)              scaled to size 9.0pt on input line 627.
 
 Underfull \vbox (badness 2409) has occurred while \output is active []
 
@@ -1692,22 +1712,22 @@ Underfull \vbox (badness 2409) has occurred while \output is active []
 <images/rendered_vs_signal.png, id=639, 867.24pt x 325.215pt>
 File: images/rendered_vs_signal.png Graphic file (type png)
 <use images/rendered_vs_signal.png>
-Package pdftex.def Info: images/rendered_vs_signal.png  used on input line 662.
+Package pdftex.def Info: images/rendered_vs_signal.png  used on input line 663.
 (pdftex.def)             Requested size: 207.30817pt x 77.74055pt.
 <images/p2_initial.png, id=643, 580.41844pt x 487.06969pt>
 File: images/p2_initial.png Graphic file (type png)
 <use images/p2_initial.png>
-Package pdftex.def Info: images/p2_initial.png  used on input line 676.
+Package pdftex.def Info: images/p2_initial.png  used on input line 677.
 (pdftex.def)             Requested size: 104.52428pt x 87.71335pt.
 <images/p2_thre.png, id=644, 573.64313pt x 469.755pt>
 File: images/p2_thre.png Graphic file (type png)
 <use images/p2_thre.png>
-Package pdftex.def Info: images/p2_thre.png  used on input line 682.
+Package pdftex.def Info: images/p2_thre.png  used on input line 683.
 (pdftex.def)             Requested size: 104.52428pt x 85.59158pt.
 <images/p2_remov.png, id=645, 639.89063pt x 515.67656pt>
 File: images/p2_remov.png Graphic file (type png)
 <use images/p2_remov.png>
-Package pdftex.def Info: images/p2_remov.png  used on input line 688.
+Package pdftex.def Info: images/p2_remov.png  used on input line 689.
 (pdftex.def)             Requested size: 104.52428pt x 84.23315pt.
 
 
@@ -1724,13 +1744,14 @@ LaTeX Info: Redefining \tempurl on input line 108.
 LaTeX Info: Redefining \tempurl on input line 128.
 LaTeX Info: Redefining \tempurl on input line 152.
 LaTeX Info: Redefining \tempurl on input line 171.
-LaTeX Info: Redefining \tempurl on input line 196.
-LaTeX Info: Redefining \tempurl on input line 212.
-LaTeX Info: Redefining \tempurl on input line 229.
-LaTeX Info: Redefining \tempurl on input line 244.
-LaTeX Info: Redefining \tempurl on input line 258.
-LaTeX Info: Redefining \tempurl on input line 277.
-LaTeX Info: Redefining \tempurl on input line 291.
+LaTeX Info: Redefining \tempurl on input line 188.
+LaTeX Info: Redefining \tempurl on input line 201.
+LaTeX Info: Redefining \tempurl on input line 217.
+LaTeX Info: Redefining \tempurl on input line 234.
+LaTeX Info: Redefining \tempurl on input line 249.
+LaTeX Info: Redefining \tempurl on input line 263.
+LaTeX Info: Redefining \tempurl on input line 282.
+LaTeX Info: Redefining \tempurl on input line 296.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1743,40 +1764,36 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [15.23]
-LaTeX Info: Redefining \tempurl on input line 315.
-LaTeX Info: Redefining \tempurl on input line 333.
-LaTeX Info: Redefining \tempurl on input line 350.
-LaTeX Info: Redefining \tempurl on input line 367.
-LaTeX Info: Redefining \tempurl on input line 381.
-LaTeX Info: Redefining \tempurl on input line 395.
-LaTeX Info: Redefining \tempurl on input line 411.
-LaTeX Info: Redefining \tempurl on input line 445.
-LaTeX Info: Redefining \tempurl on input line 459.
-LaTeX Info: Redefining \tempurl on input line 474.
-LaTeX Info: Redefining \tempurl on input line 490.
-LaTeX Info: Redefining \tempurl on input line 508.
-LaTeX Info: Redefining \tempurl on input line 527.
-LaTeX Info: Redefining \tempurl on input line 542.
-LaTeX Info: Redefining \tempurl on input line 558.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+LaTeX Info: Redefining \tempurl on input line 320.
+LaTeX Info: Redefining \tempurl on input line 338.
+LaTeX Info: Redefining \tempurl on input line 355.
+LaTeX Info: Redefining \tempurl on input line 372.
+LaTeX Info: Redefining \tempurl on input line 386.
+LaTeX Info: Redefining \tempurl on input line 400.
+LaTeX Info: Redefining \tempurl on input line 416.
+LaTeX Info: Redefining \tempurl on input line 450.
+LaTeX Info: Redefining \tempurl on input line 464.
+LaTeX Info: Redefining \tempurl on input line 479.
+LaTeX Info: Redefining \tempurl on input line 495.
+LaTeX Info: Redefining \tempurl on input line 513.
+LaTeX Info: Redefining \tempurl on input line 532.
+LaTeX Info: Redefining \tempurl on input line 546.
  [16.24]
-LaTeX Info: Redefining \tempurl on input line 578.
-LaTeX Info: Redefining \tempurl on input line 591.
-LaTeX Info: Redefining \tempurl on input line 608.
-LaTeX Info: Redefining \tempurl on input line 623.
-LaTeX Info: Redefining \tempurl on input line 638.
-LaTeX Info: Redefining \tempurl on input line 660.
-LaTeX Info: Redefining \tempurl on input line 676.
-LaTeX Info: Redefining \tempurl on input line 692.
-LaTeX Info: Redefining \tempurl on input line 712.
-LaTeX Info: Redefining \tempurl on input line 729.
-LaTeX Info: Redefining \tempurl on input line 757.
-LaTeX Info: Redefining \tempurl on input line 774.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+LaTeX Info: Redefining \tempurl on input line 561.
+LaTeX Info: Redefining \tempurl on input line 581.
+LaTeX Info: Redefining \tempurl on input line 594.
+LaTeX Info: Redefining \tempurl on input line 611.
+LaTeX Info: Redefining \tempurl on input line 626.
+LaTeX Info: Redefining \tempurl on input line 641.
+LaTeX Info: Redefining \tempurl on input line 663.
+LaTeX Info: Redefining \tempurl on input line 679.
+LaTeX Info: Redefining \tempurl on input line 695.
+LaTeX Info: Redefining \tempurl on input line 715.
+LaTeX Info: Redefining \tempurl on input line 732.
+LaTeX Info: Redefining \tempurl on input line 746.
+LaTeX Info: Redefining \tempurl on input line 763.
+LaTeX Info: Redefining \tempurl on input line 780.
+LaTeX Info: Redefining \tempurl on input line 798.
 
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1786,21 +1803,32 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [17.25]
-LaTeX Info: Redefining \tempurl on input line 817.
-LaTeX Info: Redefining \tempurl on input line 847.
-LaTeX Info: Redefining \tempurl on input line 866.
-LaTeX Info: Redefining \tempurl on input line 940.
+LaTeX Info: Redefining \tempurl on input line 813.
+LaTeX Info: Redefining \tempurl on input line 828.
+LaTeX Info: Redefining \tempurl on input line 842.
+LaTeX Info: Redefining \tempurl on input line 861.
+LaTeX Info: Redefining \tempurl on input line 880.
+LaTeX Info: Redefining \tempurl on input line 895.
+LaTeX Info: Redefining \tempurl on input line 921.
+LaTeX Info: Redefining \tempurl on input line 935.
+LaTeX Info: Redefining \tempurl on input line 949.
+LaTeX Info: Redefining \tempurl on input line 966.
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 952.
-LaTeX Info: Redefining \tempurl on input line 961.
-LaTeX Info: Redefining \tempurl on input line 991.
+(Font)              scaled to size 10.0pt on input line 978.
+LaTeX Info: Redefining \tempurl on input line 987.
+LaTeX Info: Redefining \tempurl on input line 1003.
+LaTeX Info: Redefining \tempurl on input line 1019.
+LaTeX Info: Redefining \tempurl on input line 1034.
  [18.26]
-LaTeX Info: Redefining \tempurl on input line 1032.
-LaTeX Info: Redefining \tempurl on input line 1049.
-LaTeX Info: Redefining \tempurl on input line 1063.
-LaTeX Info: Redefining \tempurl on input line 1107.
-LaTeX Info: Redefining \tempurl on input line 1135.
-LaTeX Info: Redefining \tempurl on input line 1214.
+LaTeX Info: Redefining \tempurl on input line 1047.
+LaTeX Info: Redefining \tempurl on input line 1066.
+LaTeX Info: Redefining \tempurl on input line 1082.
+LaTeX Info: Redefining \tempurl on input line 1096.
+LaTeX Info: Redefining \tempurl on input line 1112.
+LaTeX Info: Redefining \tempurl on input line 1128.
+LaTeX Info: Redefining \tempurl on input line 1146.
+LaTeX Info: Redefining \tempurl on input line 1174.
+LaTeX Info: Redefining \tempurl on input line 1241.
 ))
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
@@ -1810,17 +1838,17 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [19.27] [20.28]
-Underfull \hbox (badness 3977) in paragraph at lines 881--881
+Underfull \hbox (badness 3977) in paragraph at lines 883--883
 \T1/LinuxLibertineT-TLF/m/n/10 (+20) dered im-ages may not
  []
 
 
-Underfull \hbox (badness 5832) in paragraph at lines 913--913
+Underfull \hbox (badness 5832) in paragraph at lines 915--915
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) There are not enough
  []
 
 
-Underfull \hbox (badness 5388) in paragraph at lines 932--933
+Underfull \hbox (badness 5388) in paragraph at lines 934--935
 \T1/LinuxLibertineT-TLF/m/n/10 (+20) keep the su-per-vi-sor in-formed of
  []
 
@@ -1840,26 +1868,26 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [23.31]
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 967.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 969.
  (C:\Users\Ollie\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 12.0pt on input line 967.
+(Font)              scaled to size 12.0pt on input line 969.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [24.32{C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-4.enc}]
-<images/user_view.png, id=820, 1527.7075pt x 845.1575pt>
+<images/user_view.png, id=837, 1527.7075pt x 845.1575pt>
 File: images/user_view.png Graphic file (type png)
 <use images/user_view.png>
-Package pdftex.def Info: images/user_view.png  used on input line 983.
+Package pdftex.def Info: images/user_view.png  used on input line 985.
 (pdftex.def)             Requested size: 370.17725pt x 204.78925pt.
-<images/clinician_view.png, id=821, 1527.7075pt x 845.1575pt>
+<images/clinician_view.png, id=838, 1527.7075pt x 845.1575pt>
 File: images/clinician_view.png Graphic file (type png)
 <use images/clinician_view.png>
-Package pdftex.def Info: images/clinician_view.png  used on input line 991.
+Package pdftex.def Info: images/clinician_view.png  used on input line 993.
 (pdftex.def)             Requested size: 370.17725pt x 204.78925pt.
 
 
@@ -1870,37 +1898,37 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [25.33 <./images/user_view.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1020--1020
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1022
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Preprocessing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1032--1032
+Underfull \hbox (badness 10000) in paragraph at lines 1034--1034
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Explanation,
  []
 
 
-Underfull \hbox (badness 1838) in paragraph at lines 1040--1040
+Underfull \hbox (badness 1838) in paragraph at lines 1042--1042
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) TC12: Switch-ing view shows all nine
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1046--1046
+Underfull \hbox (badness 10000) in paragraph at lines 1048--1048
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Preprocessing,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1071
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Reliability di-a-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1073--1073
+Underfull \hbox (badness 10000) in paragraph at lines 1075--1075
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) User-study re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1083--1083
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1085
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Module in-ter-
  []
 
@@ -1913,72 +1941,75 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [27.35]
-Underfull \hbox (badness 1178) in paragraph at lines 1111--1111
+Underfull \hbox (badness 1178) in paragraph at lines 1113--1113
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Heatmap checks, work-ing GUI and
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 1131--1131
+Package natbib Warning: Citation `zuiderveld_contrast_1994' on page 28 undefined on input line 1132.
+
+
+Underfull \hbox (badness 6825) in paragraph at lines 1133--1133
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Random and salt-and-pepper
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1132--1132
+Underfull \hbox (badness 10000) in paragraph at lines 1134--1134
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Bilateral fil-ter; non-local
  []
 
 [28.36]
-Underfull \hbox (badness 10000) in paragraph at lines 1149--1150
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1152
 []|\T1/LinuxLibertineT-TLF/b/n/10 (+20) Limitation for this
  []
 
 
-Underfull \hbox (badness 5302) in paragraph at lines 1152--1152
+Underfull \hbox (badness 5302) in paragraph at lines 1154--1154
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Single-lead sig-nals; 91,232
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 1155--1155
+Underfull \hbox (badness 1221) in paragraph at lines 1157--1157
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Ribeiro et al[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1159--1159
+Underfull \hbox (badness 10000) in paragraph at lines 1161--1161
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Strodthoff
  []
 
 
-Underfull \hbox (badness 1024) in paragraph at lines 1163--1163
+Underfull \hbox (badness 1024) in paragraph at lines 1165--1165
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Sangha et al[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1165
+Underfull \hbox (badness 10000) in paragraph at lines 1167--1167
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Strong per-for-mance on
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1165
+Underfull \hbox (badness 10000) in paragraph at lines 1167--1167
 \T1/LinuxLibertineT-TLF/m/n/10 (+20) held-out, ex-ter-nal and
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 1167--1167
+Underfull \hbox (badness 5475) in paragraph at lines 1169--1169
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Gliner et al[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1168--1168
+Underfull \hbox (badness 10000) in paragraph at lines 1170--1170
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) 79,226 scanned la-belled
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1171--1171
+Underfull \hbox (badness 10000) in paragraph at lines 1173--1173
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Wang et al[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1172--1172
+Underfull \hbox (badness 10000) in paragraph at lines 1174--1174
 []|\T1/LinuxLibertineT-TLF/m/n/10 (+20) Synthetic PTB-XL im-ages
  []
 
@@ -1990,57 +2021,42 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [29.37]
-<images/OtsuSegmentation.jpg, id=867, 266.05592pt x 79.30513pt>
+<images/OtsuSegmentation.jpg, id=882, 266.05592pt x 79.30513pt>
 File: images/OtsuSegmentation.jpg Graphic file (type jpg)
 <use images/OtsuSegmentation.jpg>
-Package pdftex.def Info: images/OtsuSegmentation.jpg  used on input line 1203.
+Package pdftex.def Info: images/OtsuSegmentation.jpg  used on input line 1205.
 (pdftex.def)             Requested size: 165.49512pt x 49.33081pt.
-<images/ecg_norm.jpg, id=872, 1311.90125pt x 566.115pt>
+<images/ecg_norm.jpg, id=887, 1311.90125pt x 566.115pt>
 File: images/ecg_norm.jpg Graphic file (type jpg)
 <use images/ecg_norm.jpg>
-Package pdftex.def Info: images/ecg_norm.jpg  used on input line 1213.
+Package pdftex.def Info: images/ecg_norm.jpg  used on input line 1215.
 (pdftex.def)             Requested size: 152.4304pt x 65.77132pt.
-<images/ecg_pict.jpg, id=873, 1204.5pt x 579.16376pt>
+<images/ecg_pict.jpg, id=888, 1204.5pt x 579.16376pt>
 File: images/ecg_pict.jpg Graphic file (type jpg)
 <use images/ecg_pict.jpg>
-Package pdftex.def Info: images/ecg_pict.jpg  used on input line 1219.
+Package pdftex.def Info: images/ecg_pict.jpg  used on input line 1221.
 (pdftex.def)             Requested size: 152.4304pt x 73.28786pt.
-<images/ecg_rotat.jpg, id=874, 1204.5pt x 670.505pt>
+<images/ecg_rotat.jpg, id=889, 1204.5pt x 670.505pt>
 File: images/ecg_rotat.jpg Graphic file (type jpg)
 <use images/ecg_rotat.jpg>
-Package pdftex.def Info: images/ecg_rotat.jpg  used on input line 1225.
+Package pdftex.def Info: images/ecg_rotat.jpg  used on input line 1227.
 (pdftex.def)             Requested size: 152.4304pt x 84.84625pt.
-<images/ecg_crease.jpg, id=875, 1204.5pt x 644.4075pt>
+<images/ecg_crease.jpg, id=890, 1204.5pt x 644.4075pt>
 File: images/ecg_crease.jpg Graphic file (type jpg)
 <use images/ecg_crease.jpg>
-Package pdftex.def Info: images/ecg_crease.jpg  used on input line 1231.
+Package pdftex.def Info: images/ecg_crease.jpg  used on input line 1233.
 (pdftex.def)             Requested size: 152.4304pt x 81.54385pt.
-<images/ecg_mark.jpg, id=876, 1204.5pt x 581.17125pt>
+<images/ecg_mark.jpg, id=891, 1204.5pt x 581.17125pt>
 File: images/ecg_mark.jpg Graphic file (type jpg)
 <use images/ecg_mark.jpg>
-Package pdftex.def Info: images/ecg_mark.jpg  used on input line 1237.
+Package pdftex.def Info: images/ecg_mark.jpg  used on input line 1239.
 (pdftex.def)             Requested size: 152.4304pt x 73.54189pt.
 
-Underfull \hbox (badness 1675) in paragraph at lines 1238--1238
+Underfull \hbox (badness 1675) in paragraph at lines 1240--1240
 []\T1/LinuxBiolinumT-TLF/m/n/10.95 (+20) (e) |ECG with pen-cil marks on
  []
 
 [30.38 <./images/OtsuSegmentation.jpg>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=882, 597.19106pt x 845.07718pt>
-File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf  used on input line 1250.
-(pdftex.def)             Requested size: 597.1896pt x 845.07512pt.
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=884, page=1, 597.19106pt x 845.07718pt>
-File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1250.
-(pdftex.def)             Requested size: 597.1896pt x 845.07512pt.
-File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1250.
-(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
-
 
 Package fancyhdr Warning: \headheight is too small (13.0pt): 
 (fancyhdr)                Make it at least 14.0pt, for example:
@@ -2049,29 +2065,28 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 [31.39 <./images/ecg_norm.jpg> <./images/ecg_pict.jpg> <./images/ecg_rotat.jpg> <./images/ecg_crease.jpg> <./images/ecg_mark.jpg>]
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=902, 597.19106pt x 845.07718pt>
+File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf  used on input line 1253.
+(pdftex.def)             Requested size: 597.1896pt x 845.07512pt.
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=904, page=1, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
 <use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1250.
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1253.
+(pdftex.def)             Requested size: 597.1896pt x 845.07512pt.
+File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1253.
+(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
+ [32.40]
+File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
 <use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1250.
-(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
-File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1250.
-(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
- [32.40
-
- <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=908, page=2, 597.19106pt x 845.07718pt>
-File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 2>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page2 used on input line 1250.
-(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
-File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 2>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page2 used on input line 1250.
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 
 
@@ -2082,36 +2097,36 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 2>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page2 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 1>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page1 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 [33.41
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=913, page=3, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=927, page=2, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 3>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page3 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 2>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page2 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 3>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page3 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 2>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page2 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 3>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page3 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 2>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page2 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
  [34.42
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=918, page=4, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=932, page=3, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 4>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page4 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 3>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page3 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 4>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page4 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 3>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page3 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 
 
@@ -2122,36 +2137,36 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 4>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page4 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 3>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page3 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 [35.43
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=924, page=5, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=938, page=4, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 5>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page5 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 4>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page4 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 5>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page5 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 4>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page4 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 5>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page5 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 4>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page4 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
  [36.44
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=929, page=6, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=943, page=5, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 6>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page6 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 5>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page5 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 6>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page6 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 5>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page5 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 
 
@@ -2162,36 +2177,36 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 6>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page6 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 5>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page5 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 [37.45
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=934, page=7, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=948, page=6, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 7>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page7 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 6>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page6 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 7>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page7 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 6>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page6 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 7>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page7 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 6>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page6 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
  [38.46
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=940, page=8, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=953, page=7, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 8>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page8 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 7>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page7 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 8>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page8 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 7>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page7 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 
 
@@ -2202,36 +2217,36 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 8>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page8 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 7>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page7 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 [39.47
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=945, page=9, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=959, page=8, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 9>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page9 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 8>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page8 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 9>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page9 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 8>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page8 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 9>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page9 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 8>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page8 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
  [40.48
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=960, page=10, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=964, page=9, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 10>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page10 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 9>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page9 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 10>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page10 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 9>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page9 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 
 
@@ -2242,32 +2257,60 @@ Package fancyhdr Warning: \headheight is too small (13.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
 
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
-<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 10>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page10 used on input line 1250.
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 9>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page9 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 [41.49
 
  <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
-<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=966, page=11, 597.19106pt x 845.07718pt>
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=980, page=10, 597.19106pt x 845.07718pt>
+File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 10>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page10 used on input line 1253.
+(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
+File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 10>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page10 used on input line 1253.
+(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
+File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
+<use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 10>
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page10 used on input line 1253.
+(pdftex.def)             Requested size: 507.6148pt x 718.319pt.
+ [42.50
+
+ <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
+<images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, id=985, page=11, 597.19106pt x 845.07718pt>
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
 <use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 11>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page11 used on input line 1250.
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page11 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
 <use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 11>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page11 used on input line 1250.
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page11 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
+
+
+Package fancyhdr Warning: \headheight is too small (13.0pt): 
+(fancyhdr)                Make it at least 14.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.0pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.0pt}.
+
 File: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf Graphic file (type pdf)
 <use images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf, page 11>
-Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page11 used on input line 1250.
+Package pdftex.def Info: images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf , page11 used on input line 1253.
 (pdftex.def)             Requested size: 507.6148pt x 718.319pt.
- (C:\Users\Ollie\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-pdfdoc.def
+(C:\Users\Ollie\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 ) (C:\Users\Ollie\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-utf8.def
 File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
-) [42.50
+) [43.51
 
- <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>] (main.aux)
+ <./images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf>]
+
+Package natbib Warning: There were undefined citations.
+
+(main.aux)
  ***********
 LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
@@ -2276,17 +2319,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AB609948B66154C20EF46C674B09CCFB;6738.
  ) 
 Here is how much of TeX's memory you used:
- 41544 strings out of 467310
- 795951 string characters out of 5402813
- 1227570 words of memory out of 5000000
- 69103 multiletter control sequences out of 15000+600000
- 897173 words of font info for 673 fonts, out of 8000000 for 9000
+ 41552 strings out of 467310
+ 796067 string characters out of 5402813
+ 1227684 words of memory out of 5000000
+ 69105 multiletter control sequences out of 15000+600000
+ 897809 words of font info for 677 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  107i,18n,131p,1465b,987s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinBiolinumT.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinBiolinumTI.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/Ollie/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on main.pdf (50 pages, 4129858 bytes).
+Output written on main.pdf (51 pages, 4133863 bytes).
 PDF statistics:
- 1084 PDF objects out of 1200 (max. 8388607)
+ 1103 PDF objects out of 1200 (max. 8388607)
  227 named destinations out of 1000 (max. 500000)
  150521 words of extra memory for PDF output out of 154059 (max. 10000000)
 

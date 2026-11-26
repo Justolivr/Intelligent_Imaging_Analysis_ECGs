@@ -170,12 +170,12 @@ This subsection introduces the image processing principles on which ECG image an
 
 A digital image may be described as a two-dimensional function $f(x,y)$, whose value at each spatial coordinate gives the intensity at that point \cite{gonzalez_digital_2018}. This intensity is the product of the illumination $i$ incident on a surface and the reflectance $r$ of that surface, $f(x,y) = i(x,y)\,r(x,y)$ \cite{stockham_image_1972}. A consequence of this model is that a single printed trace, whose reflectance is fixed, yields a different image under each lighting condition. Digitisation then samples the image into pixels and quantises each value to a finite number of levels, which is irreversible \cite{gonzalez_digital_2018}. A low-resolution scan therefore loses timing information that cannot subsequently be recovered.
 
-Image processing comprises enhancement, noise removal and segmentation. Contrast methods such as CLAHE compensate for uneven illumination \cite{pizer_adaptive_1987,zuiderveld_contrast_1994}. Gaussian, median, bilateral and non-local means filters suppress noise \cite{gonzalez_digital_2018,tomasi_bilateral_1998,buades_non-local_2005}. Notch, homomorphic and wavelet filters operate in the frequency domain \cite{stockham_image_1972,lepcha_deep_2023}, and Otsu thresholding and edge detection separate the trace from its background \cite{otsu_threshold_1979,canny_computational_1986}. These techniques are compared in Table~\ref{tab:techniques} (Appendix~\ref{app:lit}). Each technique involves a trade-off, like noise filters can blur the narrow peaks that carry diagnostic information, whilst illumination correction tends to amplify noise. The appropriate method therefore depends on both the degradation and the task \cite{qi_comprehensive_2022}.
+Image processing comprises enhancement, noise removal and segmentation. Contrast methods such as CLAHE compensate for uneven illumination \cite{pizer_adaptive_1987,pizer_contrast_1990}. Gaussian, median, bilateral and non-local means filters suppress noise \cite{gonzalez_digital_2018,tomasi_bilateral_1998,buades_non-local_2005}. Notch, homomorphic and wavelet filters operate in the frequency domain \cite{stockham_image_1972,lepcha_deep_2023}, and Otsu thresholding and edge detection separate the trace from its background \cite{otsu_threshold_1979,canny_computational_1986}. These techniques are compared in Table~\ref{tab:techniques} (Appendix~\ref{app:lit}). Each technique involves a trade-off, like noise filters can blur the narrow peaks that carry diagnostic information, whilst illumination correction tends to amplify noise. The appropriate method therefore depends on both the degradation and the task \cite{qi_comprehensive_2022}.
 
 \subsubsection{Medical Image Processing}
 \label{sec:medical-imaging}
 
-Medical images must preserve diagnostic detail, which noise can obscure by blurring boundaries and reducing contrast \cite{prasad_systematic_2023}. \citet{barrett_foundations_2004} argue that medical image quality should be defined by an observer's performance on a specific task, rather than appearance. Where the observer is a classifier, an enhancement that renders an ECG clearer to a reader may remove the features on which the network depends on.
+Medical images must preserve diagnostic detail, which noise can obscure by blurring boundaries and reducing contrast \cite{prasad_systematic_2023}. \citet{barrett_foundations_2004} argue that medical image quality should be defined by an observer's performance on a specific task, rather than appearance. In situations where the observer is a classifier, an enhancement that renders an ECG clearer to a reader may remove the features on which the network depends on.
 
 CNNs, which learn convolutional filters from labelled examples \cite{lecun_gradient_1998}, are now applied throughout medical imaging \cite{litjens_survey_2017}, although three limitations recur. Labelled data is costly and abnormal cases are rare; Performance frequently fails to generalise, as shown by pneumonia detectors whose accuracy varied across three hospital systems \cite{zech_variable_2018}; and models may exploit shortcuts that correlate with the label rather than clinically meaningful features \cite{geirhos_shortcut_2020}. A model trained on rendered images could, for instance, learn the clean appearance of the rendering itself. The rendered-to-real gap is therefore treated in this work as a generalisation problem to be measured rather than assumed away.
 
@@ -285,14 +285,14 @@ This subsection reviews the classifiers applied to ECGs and the practices needed
 \subsubsection{ECG Classification Algorithms}
 \label{sec:ml-ecg}
 
-Deep learning has largely superseded feature-based ECG classification. On signals, a CNN achieved cardiologist-level rhythm classification (F1 of 0.837 compared with 0.780 for cardiologists) \cite{hannun_cardiologist_2019}, whilst a network outperformed cardiology residents on six 12-lead abnormalities \cite{ribeiro_automatic_2020}in addition to a PTB-XL benchmark finding convolutional architectures, particularly ResNet- and Inception-based models, to perform best \cite{strodthoff_deep_2021}. These results demonstrate that the target classes are learnable, albeit from signals with a known scale.
+Deep learning has largely superseded feature-based ECG classification. On signals, a CNN achieved cardiologist-level rhythm classification (F1 of 0.837 compared with 0.780 for cardiologists) \cite{hannun_cardiologist_2019}, whilst a network outperformed cardiology residents on six 12-lead abnormalities \cite{ribeiro_automatic_2020} in addition to a PTB-XL benchmark finding convolutional architectures, particularly ResNet- and Inception-based models, to perform best \cite{strodthoff_deep_2021}. These results demonstrate that the target classes are learnable, albeit from signals with a known scale.
 
 Image-based classification is a more recent development. \citet{sangha_automated_2022} trained a CNN on images generated from signals and reported strong performance on external and printed ECGs. \citet{gliner_domain_2023} adapted a model from scanned to phone-captured images, and \citet{wang_pipeline_2025} fine-tuned a ConvNeXt backbone first on synthetic and then on external images. Owing to the scarcity of labelled ECG images, these studies rely on transfer learning from networks pretrained on natural images, such as ResNet \cite{he_deep_2016,yosinski_transfer_2014}. More recent architectures offer alternatives: Vision Transformers can outperform CNNs, but only when pretrained on very large datasets \cite{dosovitskiy_image_2021}, whereas ConvNeXt modernises the convolutional design and performs comparably to transformers at similar cost \cite{liu_convnet_2022}. Given the limited data and a single GPU, a compact CNN compared against a pretrained ResNet is the most feasible design, with architecture treated as an experimental variable. The principal signal and image-based studies are summarised in Table~\ref{tab:ecg-studies} (Appendix~\ref{app:lit}).
 
 \subsubsection{ECG Dataset Evaluation}
 \label{sec:ml-eval}
 
-Four recurring weaknesses are evident in the evaluation of ECG classifiers. First, the classes are imbalanced, so accuracy may remain high even when rare conditions are missed. Sensitivity, specificity and MCC provide a more informative assessment \cite{chicco_advantages_2020}. Imbalance may also be mitigated during training by weighting the loss towards rare classes, oversampling them, or adopting focal loss, which down-weights easily classified examples \cite{lin_focal_2017}. Second, records must be partitioned by patient, as in PTB-XL's recommended folds \cite{wagner_ptbxl_2020}, to prevent the same patient appearing in both training and test sets - \citet{wang_pipeline_2025} acknowledge that their results might have been inflated by such leakage. Third, labels are imperfect: those in PTB-XL derive from at most two cardiologists \cite{wagner_ptbxl_2020}, and inter-rater agreement can be only poor to moderate \cite{dhutia_interrater_2017}, therfore a high AUROC partly reflects agreement with imperfect labels.
+Four recurring weaknesses are evident in the evaluation of ECG classifiers. First, the classes are imbalanced, so accuracy may remain high even when rare conditions are missed. Sensitivity, specificity and MCC provide a more informative assessment \cite{chicco_advantages_2020}. Imbalance may also be mitigated during training by weighting the loss towards rare classes, oversampling them, or adopting focal loss, which down-weights easily classified examples \cite{lin_focal_2017}. Second, records must be partitioned by patient, as in PTB-XL's recommended folds \cite{wagner_ptbxl_2020}, to prevent the same patient appearing in both training and test sets - \citet{wang_pipeline_2025} acknowledge that their results might have been inflated by such leakage. Third, labels are imperfect: those in PTB-XL derive from at most two cardiologists \cite{wagner_ptbxl_2020}, and inter-rater agreement can be only poor to moderate \cite{dhutia_interrater_2017}, therefore a high AUROC partly reflects agreement with imperfect labels.
 
 Fourth, performance may not generalise across patient groups. \citet{noseworthy_assessing_2020} observed that ECG characteristics vary by race without affecting their CNN's performance, and recommended that new ECG models report performance by ethnicity, race, age and sex. A comparison of 56 arrhythmia algorithms on over 130,000 ECGs found that performance varied with age, and that a fairness constraint reduced bias at a modest cost in performance \cite{perez_alday_age_2022}. As PTB-XL was recorded between 1989 and 1996 using a single manufacturer's devices \cite{wagner_ptbxl_2020}, generalisation to other populations cannot be assessed here and is acknowledged as a limitation.
 
@@ -335,24 +335,25 @@ Most ECGs are interpreted by software on the recording device, but its accuracy 
     \citet{sangha_automated_2022} &
       Images generated from signals &
       CNN tested on held-out, external and printed ECGs (AUROC 0.98) &
-      Trained on generated images; reports discrimination only, not calibration \\
+      Trained on generated images - reports discrimination only, not calibration. \\
     \citet{gliner_domain_2023} &
-      Scans; phone-captured frames &
+      Scans and phone-captured frames &
       Domain adaptation from scans to phone images (AUROC 0.91) &
-      Phone images made by filming printed pages; six unseen formats tested \\
+      Phone images made by filming printed pages - six unseen formats tested. \\
     \citet{wang_pipeline_2025} &
       Synthetic and external scanned images &
       Challenge-winning ConvNeXt pipeline (AUROC about 0.97) &
-      Evaluated on synthetic PTB-XL images, with possible leakage \\
+      Evaluated on synthetic PTB-XL images, with possible leakage. \\
     \citet{krones_combining_2024} &
       Scanned and photographed images &
       Winning digitisation: Hough transform and deep-learning segmentation &
-      Assumes a fixed layout and grid scale; resource-intensive \\
+      Assumes a fixed layout and grid scale (which is resource-intensive). \\
     \midrule
-    This project (planned) &
-      Rendered images for training; real images for testing &
-      CNN with timing features; calibration; Grad-CAM; user views; user study &
-      Labels from at most two annotators; real test set limited to the ECG-Image-Database \\
+    \bottomrule
+      This project (planned) &
+      Rendered images for training/real images for testing &
+      CNN with timing features, calibration confidence, Grad-CAM, user views, and user study &
+      Labels from at most two annotators and  real test set limited to the ECG-Image-Database. \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -374,13 +375,13 @@ Whereas signal-based deep learning for ECG analysis is well established, image-b
     \toprule
     \textbf{Decision} & \textbf{Choice} & \textbf{Alternatives} & \textbf{Reason} \\
     \midrule
-    Approach & Direct classification, with timing features & Full digitisation \cite{krones_combining_2024} & Avoids chained errors and fixed-layout assumptions (Section~\ref{sec:ecg-imaging}) \\
-    Training data & Rendered PTB-XL images, tested on real images & Real images only & Real labelled images are too few to train on \cite{reyna_ecg-image-database_2024} \\
-    Model & Own CNN vs pretrained ResNet & ConvNeXt, Vision Transformer \cite{liu_convnet_2022,dosovitskiy_image_2021} & Transformers need very large pretraining; limited data and one GPU \\
-    Imbalance & Class-weighted loss; per-class thresholds & Oversampling, focal loss \cite{lin_focal_2017} & Simple and widely used; focal loss kept as an option \\
-    Calibration & Temperature scaling & Platt scaling, ensembles, MC dropout \cite{platt_probabilistic_1999,lakshminarayanan_simple_2017,gal_dropout_2016} & One parameter, AUROC unchanged; ensembles too costly \cite{guo_calibration_2017} \\
-    Explanation & Grad-CAM, checked on known cases & LIME, SHAP \cite{ribeiro_why_2016,lundberg_unified_2017} & Class-specific and fast; checking addresses \cite{adebayo_sanity_2018,ghassemi_false_2021} \\
-    Presentation & User and clinical views, user study with SUS & Single interface & Novices and experts respond differently \cite{cabitza_painting_2023,tonekaboni_what_2019} \\
+    Approach & Direct classification, with timing features & Full digitisation \cite{krones_combining_2024} & Avoids chained errors and fixed-layout assumptions (Section~\ref{sec:ecg-imaging}). \\
+    Training data & Rendered PTB-XL images, tested on real images & Real images only & Real labelled images are too few to train on \cite{reyna_ecg-image-database_2024}. \\
+    Model & Own CNN vs pretrained ResNet & ConvNeXt, Vision Transformer \cite{liu_convnet_2022,dosovitskiy_image_2021} & Transformers need very large pretraining; limited data and only one GPU available. \\
+    Imbalance & Class-weighted loss; per-class thresholds & Oversampling, focal loss \cite{lin_focal_2017} & Simple and widely used - focal loss kept as an option. \\
+    Calibration & Temperature scaling & Platt scaling, ensembles, MC dropout \cite{platt_probabilistic_1999,lakshminarayanan_simple_2017,gal_dropout_2016} & One parameter, AUROC unchanged. Ensembles too costly \cite{guo_calibration_2017}. \\
+    Explanation & Grad-CAM, checked on known cases & LIME, SHAP \cite{ribeiro_why_2016,lundberg_unified_2017} & Class-specific and fast when checking addresses \cite{adebayo_sanity_2018,ghassemi_false_2021}. \\
+    Presentation & User and clinical views, user study with SUS & Single interface & Novices and experts respond differently \cite{cabitza_painting_2023,tonekaboni_what_2019}. \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -652,7 +653,7 @@ Three prototypes test the main risks (Table~\ref{tab:prototypes}); Figures~\ref{
     \hline
     2: Preprocessing & Thresholding and feature detection remove colour and grid, leaving the trace. & \textbf{Traces were isolated in 3 of 3 test images}. \\
     \hline
-    3: GUI wireframes & Layout of the user and clinical views. & \textbf{Both views designed and mapped to FR07--FR12 (Appendix~\ref{app:wireframes})}. \\ % CHECK: confirm your wireframes show FR07--FR12
+    3: GUI wireframes & Layout of the user and clinical views. & \textbf{Both views designed and mapped to functional requirements FR07 - FR12 (Appendix~\ref{app:wireframes})}. \\ % CHECK: confirm your wireframes show FR07--FR12
     \hline
   \end{tabular}
 \end{table}
@@ -787,7 +788,8 @@ Figures~\ref{fig:gantt-s1} and~\ref{fig:gantt-s2} show the schedule for both sem
     \ganttbar[name=appe]{Appendices}{6}{11} \\
     \ganttbar[name=abs]{Abstract and conclusion}{10}{11} \\
     \ganttmilestone[name=esub]{Ethics submission}{7} \\
-    \ganttmilestone[name=dsub]{D1 submission}{11}
+    \ganttmilestone[name=dsub]{D1 submission}{11}\\
+    \ganttmilestone[name=d2sub]{D2 submission}{11}\\ 
 
     \ganttlink{topic}{ethics}
     \ganttlink{ethics}{esub}
@@ -841,7 +843,7 @@ Figures~\ref{fig:gantt-s1} and~\ref{fig:gantt-s2} show the schedule for both sem
     \ganttbar[name=study]{User study}{9}{11} \\
     \ganttbar[name=eval]{Evaluation and results}{9}{11} \\
     \ganttbar[name=write]{Dissertation writing}{4}{11} \\
-    \ganttmilestone[name=final]{Final submission}{11}
+    \ganttmilestone[name=final]{Final submission}{11}\\
 
     \ganttlink{env}{pre}
     \ganttlink{img}{train}
@@ -1129,7 +1131,7 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
     \midrule
     HE; CLAHE \cite{pizer_adaptive_1987,zuiderveld_contrast_1994} & Global; local contrast and uneven lighting & HE loses local detail; CLAHE needs tuning and can raise noise \\
     Gaussian and median filters \cite{gonzalez_digital_2018} & Random and salt-and-pepper noise & Blur edges and flatten thin peaks \\
-    Bilateral filter; non-local means \cite{tomasi_bilateral_1998,verma_ali_2013,buades_non-local_2005} & Smooth flat regions while keeping edges & Slower; need tuning \\
+    Bilateral filter; non-local means \cite{tomasi_bilateral_1998,buades_non-local_2005} & Smooth flat regions while keeping edges & Slower; need tuning \\
     Notch filter (Fourier domain) \cite{gonzalez_digital_2018} & Removes regular patterns such as the grid & Struggles with faded or monochrome prints \\
     Homomorphic filter \cite{stockham_image_1972} & Suppresses illumination $i$, boosts reflectance $r$ & Can amplify noise \\
     Wavelet transform \cite{lepcha_deep_2023} & Multi-scale noise removal & Choice of scale and threshold \\
@@ -1242,6 +1244,7 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \label{fig:ecgimages}
   \Description{Standard ECG Image.}
 \end{figure}
+\newpage
 \section{Research Participant Questionnaire}
 \label{app:questionnaire}
 % CHANGED: the Microsoft Forms questionnaire, inserted as a PDF
