@@ -206,7 +206,7 @@ The ECG records the electrical activity of the heart from electrodes on the body
   \Description{Two images: a single labelled heartbeat showing the P wave, QRS complex, T wave and intervals, and a twelve-lead ECG printed as a three-by-four grid.}
 \end{figure}
 
-The target classes depend on the trace properties. For example, arrhythmias alter the rate or rhythm of the heart \cite{nhs_heart_2018}, like atrial fibrillation, which produces irregularly spaced beats without distinct P waves \cite{van_gelder_2024_2024}, whereas atrial flutter produces a regular saw-tooth pattern \cite{cosio_atrial_2017}. Bundle branch blocks widen the QRS complex \cite{scherbak_left_2024}, MI alters the ST segment and T wave, and hypertrophy changes the wave amplitude \cite{channer_myocardial_2002}. The diagnostic superclasses are therefore characterised principally by waveform \emph{morphology}, whereas the rhythm classes depend on \emph{timing}, which an image conveys only through its grid scale. The PTB-XL dataset annotates 21,800 twelve-lead recordings from approximately 19,000 patients with five diagnostic superclasses and rhythm statements, and permits several labels per record \cite{wagner_ptbxl_2020}, so the classification task is multi-label.
+The target classes depend on the trace properties. For example, arrhythmias alter the rate or rhythm of the heart, like atrial fibrillation, which produces irregularly spaced beats without distinct P waves \cite{van_gelder_2024_2024}, whereas atrial flutter produces a regular saw-tooth pattern \cite{cosio_atrial_2017}. Bundle branch blocks widen the QRS complex \cite{scherbak_left_2024}, MI alters the ST segment and T wave, and hypertrophy changes the wave amplitude \cite{channer_myocardial_2002}. The diagnostic superclasses are therefore characterised principally by waveform \emph{morphology}, whereas the rhythm classes depend on \emph{timing}, which an image conveys only through its grid scale. The PTB-XL dataset annotates 21,800 twelve-lead recordings from approximately 19,000 patients with five diagnostic superclasses and rhythm statements, and permits several labels per record \cite{wagner_ptbxl_2020}, so the classification task is multi-label.
 
 \subsubsection{ECG Digitisation Approach}
 \label{sec:digitisation}
@@ -934,6 +934,8 @@ Table~\ref{tab:risks} gives the full risk assessment. Each risk is rated once fo
 \end{longtable}
 \endgroup
 
+\section{PLES}
+\label{app:ples}
 \subsubsection{Professional Issues}
 The project follows the BCS Code of Conduct, of which the following principles apply most directly:
 \begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
@@ -953,7 +955,7 @@ The project has received ethical approval on the 20/11/2026. Participants in the
 The principal ethical risk of a tool that flags abnormalities is inappropriate reliance on its output. A false negative may give unwarranted reassurance, and a false positive may cause unnecessary anxiety. Automation bias is documented for computer-interpreted ECGs, whose output may be accepted uncritically by inexperienced users \cite{schlapfer_computer-interpreted_2017}, and explanations have been found to raise the trust of novices more than that of experts \cite{cabitza_painting_2023}. The system therefore reports a calibrated confidence for each class so that uncertainty is visible, validates its heatmaps against known cases, states its limitations on the results screen (NFR06), and presents itself as a learning and research aid whose output must be checked by a qualified person.
 
 \subsubsection{Social Issues}
-PTB-XL was recorded between 1989 and 1996 using a single manufacturer's devices \cite{wagner_ptbxl_2020}, and ECG-based models have shown differences in performance across age, sex and ethnicity \cite{noseworthy_assessing_2020,perez_alday_age_2022}. As the project cannot test generalisation to other populations, it makes no claim that its results would hold elsewhere, and reports results by age and sex where the data permit.
+PTB-XL was recorded between 1989 and 1996 using a single manufacturer's devices \cite{wagner_ptbxl_2020}, and ECG-based models have shown differences in performance across age, sex and ethnicity \cite{noseworthy_assessing_2020,perez_alday_age_2022}. As the project cannot test generalisation to other populations, it makes no claim that its results would hold elsewhere, and reports results by age where the data permit.
 
 Systems that read ECG images could support teaching and extend automated analysis to settings where only paper records exist. Conversely, over-reliance on such a tool could reduce learning, so the interface explains its reasoning in plain language and is designed to be accessible to users with differing needs. Finally, training deep networks consumes considerable energy; the project limits this by using a compact model and, where appropriate, pretrained weights.
 
@@ -999,7 +1001,7 @@ The project's code will be kept in a private GitHub repository, with a working c
 
 Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref{tab:functional-req} to the module that implements it, its deliverable and its test case. The result column will be completed after system testing. The Won't requirements (FR16 and FR17) are not implemented, so they are not tested.
 
-\begin{table}[H]
+\begin{table}[!htbp]
   \centering
   \footnotesize
   \setlength{\arrayrulewidth}{0.8pt}
@@ -1240,6 +1242,13 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \label{fig:ecgimages}
   \Description{Standard ECG Image.}
 \end{figure}
+\section{Research Participant Questionnaire}
+\label{app:questionnaire}
+% CHANGED: the Microsoft Forms questionnaire, inserted as a PDF
+The questionnaire below was delivered to participants through Microsoft Forms.
+
+\includepdf[pages=-, scale=0.85, pagecommand={\thispagestyle{standardpagestyle}}]{images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf}
+\end{document}
 
 % Glossary
 \newpage
@@ -1308,10 +1317,3 @@ Tables~\ref{tab:rtm-fr} and~\ref{tab:rtm-nfr} map each requirement in Table~\ref
   \textbf{Transfer learning} & Starting from a network pretrained on another task (for example natural images) and fine-tuning it for the new task. \\
 \end{longtable}
 \endgroup
-\section{Research Participant Questionnaire}
-\label{app:questionnaire}
-% CHANGED: the Microsoft Forms questionnaire, inserted as a PDF
-The questionnaire below was delivered to participants through Microsoft Forms.
-
-\includepdf[pages=-, scale=0.85, pagecommand={\thispagestyle{standardpagestyle}}]{images/IntelligentECGImageAnalysisAndProcessingApplicationUserStudy.pdf}
-\end{document}

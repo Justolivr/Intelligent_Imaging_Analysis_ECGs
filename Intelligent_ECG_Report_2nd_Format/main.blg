@@ -8,9 +8,6 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 6000 items.
 Database file #1: references.bib
-Warning--I didn't find a database entry for "dpa_2018"
-Warning--I didn't find a database entry for "uk_mdr_2002"
-Warning--I didn't find a database entry for "mhra_samd_2025"
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
@@ -75,45 +72,45 @@ Warning--no number and no volume in bradski_opencv_2000
 Warning--page numbers missing in both pages and numpages fields in bradski_opencv_2000
 Warning--no number and no volume in verma_ali_2013
 Warning--page numbers missing in both pages and numpages fields in verma_ali_2013
-You've used 74 entries,
+You've used 76 entries,
             5981 wiz_defined-function locations,
-            1978 strings with 38692 characters,
-and the built_in function-call counts, 92624 in all, are:
-= -- 12008
-> -- 3841
+            1984 strings with 39131 characters,
+and the built_in function-call counts, 94097 in all, are:
+= -- 12183
+> -- 3875
 < -- 0
-+ -- 1363
-- -- 1345
-* -- 7238
-:= -- 9309
-add.period$ -- 371
-call.type$ -- 74
-change.case$ -- 687
-chr.to.int$ -- 74
-cite$ -- 133
-duplicate$ -- 7487
-empty$ -- 5238
-format.name$ -- 1601
-if$ -- 22455
++ -- 1373
+- -- 1359
+* -- 7318
+:= -- 9468
+add.period$ -- 384
+call.type$ -- 76
+change.case$ -- 697
+chr.to.int$ -- 76
+cite$ -- 135
+duplicate$ -- 7629
+empty$ -- 5339
+format.name$ -- 1615
+if$ -- 22778
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 277
-newline$ -- 800
-num.names$ -- 528
-pop$ -- 3015
+newline$ -- 818
+num.names$ -- 542
+pop$ -- 3052
 preamble$ -- 1
-purify$ -- 1277
+purify$ -- 1303
 quote$ -- 0
-skip$ -- 2714
+skip$ -- 2772
 stack$ -- 0
-substring$ -- 6240
-swap$ -- 754
+substring$ -- 6356
+swap$ -- 762
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1658
+type$ -- 1718
 warning$ -- 59
-while$ -- 449
+while$ -- 463
 width$ -- 0
-write$ -- 1625
-(There were 62 warnings)
+write$ -- 1666
+(There were 59 warnings)
